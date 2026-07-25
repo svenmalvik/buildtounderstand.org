@@ -31,6 +31,15 @@
           <p>{{ site.tagline | default: site.description | default: site.github.project_tagline }}</p>
           <nav class="site-nav" aria-label="Primary">
             <a href="{{ '/essays/' | relative_url }}"{% if page.url contains '/essays/' %} aria-current="page"{% endif %}><span>Essays</span></a>
+            <a class="site-nav-home" href="{{ '/' | relative_url }}" aria-label="Home"{% if page.url == '/' %} aria-current="page"{% endif %}>
+              <span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 10.5 12 3l9 7.5"></path>
+                  <path d="M5 9.5V21h14V9.5"></path>
+                  <path d="M9 21v-6h6v6"></path>
+                </svg>
+              </span>
+            </a>
             <a href="{{ '/experiments/' | relative_url }}"{% if page.url contains '/experiments/' %} aria-current="page"{% endif %}><span>Experiments</span></a>
           </nav>
         </div>
