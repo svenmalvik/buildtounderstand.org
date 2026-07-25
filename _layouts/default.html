@@ -29,10 +29,18 @@
             {% endif %}
           </h1>
           <p>{{ site.tagline | default: site.description | default: site.github.project_tagline }}</p>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="{{ '/essays/' | relative_url }}"{% if page.url contains '/essays/' %} aria-current="page"{% endif %}><span>Essays</span></a>
+            <a href="{{ '/experiments/' | relative_url }}"{% if page.url contains '/experiments/' %} aria-current="page"{% endif %}><span>Experiments</span></a>
+          </nav>
         </div>
 
         {{ content }}
       </section>
+      <footer class="site-footer">
+        <p>Sven Malvik</p>
+        <a href="https://www.linkedin.com/in/svenmalvik/" rel="me">LinkedIn</a>
+      </footer>
     </div>
   </body>
 </html>

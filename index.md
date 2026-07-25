@@ -51,16 +51,3 @@ Open protocols, open formats and transparent systems preserve freedom.
 {: .principle}
 
 No design decision should unnecessarily limit tomorrow’s choices.
-
-## Essays
-
-[Browse all essays]({{ "/essays/" | relative_url }}).
-
-Long-form arguments and reflections that connect ideas into a point of view.
-
-## Experiments
-
-[Browse all experiments]({{ "/experiments/" | relative_url }}).
-
-Practical trials, including the question, method, observations, and what
-changed afterward.
