@@ -11,32 +11,39 @@ systems, exercise judgment, and own the consequences of their decisions.
 <!--
 Add each principle directly below this comment. A useful shape is:
 
-### State the principle
+### 7. State the principle
+{: .principle}
 
 Explain why it matters, how it changes practice, and where its limits are.
 -->
 
-### Build to Understand
+### 1. Build to Understand
+{: .principle}
 
 Building is the fastest path to deep understanding.
 
-### Preserve Agency
+### 2. Preserve Agency
+{: .principle}
 
 Technology should expand a person’s ability to choose, not reduce it.
 
-### Optionality Is a Feature
+### 3. Optionality Is a Feature
+{: .principle}
 
 Every important decision should have an escape path.
 
-### Opinionated, Never Restrictive
+### 4. Opinionated, Never Restrictive
+{: .principle}
 
 Good systems have strong defaults but weak constraints.
 
-### Open Beats Closed
+### 5. Open Beats Closed
+{: .principle}
 
 Open protocols, open formats and transparent systems preserve freedom.
 
-### The User Owns Their Future
+### 6. The User Owns Their Future
+{: .principle}
 
 No design decision should unnecessarily limit tomorrow’s choices.
 

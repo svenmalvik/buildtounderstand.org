@@ -58,17 +58,17 @@ h3 {
 }
 
 a {
-  color: var(--accent);
+  color: var(--text-secondary);
   text-decoration-line: underline;
-  text-decoration-color: var(--accent-subtle);
+  text-decoration-color: var(--text-muted);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
   transition: color 150ms ease, text-decoration-color 150ms ease;
 }
 
 a:hover {
-  color: var(--accent-hi);
-  text-decoration-color: var(--accent-hi);
+  color: var(--text-primary);
+  text-decoration-color: var(--text-secondary);
 }
 
 a:focus-visible {
@@ -78,6 +78,10 @@ a:focus-visible {
 
 a small {
   color: var(--text-muted);
+}
+
+.principle {
+  color: var(--accent);
 }
 
 ul {
