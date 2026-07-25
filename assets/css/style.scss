@@ -183,8 +183,15 @@ section #title p {
   min-width: 0;
   padding: 2px;
   background: var(--accent);
-  border-radius: 10px;
-  color: var(--accent);
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+  color: var(--text-secondary);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -200,31 +207,6 @@ section #title p {
   min-height: 42px;
   padding: 0 20px;
   background: var(--bg-primary);
-  border-radius: 8px;
-  transition: background 150ms ease, color 150ms ease;
-}
-
-.site-nav a:hover span {
-  color: var(--accent-hi);
-  background: var(--bg-secondary);
-}
-
-.site-nav a[aria-current="page"] {
-  border-radius: 0;
-  clip-path: polygon(
-    14px 0,
-    100% 0,
-    100% calc(100% - 14px),
-    calc(100% - 14px) 100%,
-    0 100%,
-    0 14px
-  );
-}
-
-.site-nav a[aria-current="page"] span {
-  color: var(--accent-text);
-  background: var(--accent);
-  border-radius: 0;
   clip-path: polygon(
     13px 0,
     100% 0,
@@ -233,6 +215,13 @@ section #title p {
     0 100%,
     0 13px
   );
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.site-nav a:hover span,
+.site-nav a[aria-current="page"] span {
+  color: var(--accent-text);
+  background: var(--accent);
 }
 
 .site-nav a:active {
