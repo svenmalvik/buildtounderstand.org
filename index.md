@@ -16,6 +16,30 @@ Add each principle directly below this comment. A useful shape is:
 Explain why it matters, how it changes practice, and where its limits are.
 -->
 
+### Build to Understand
+
+Building is the fastest path to deep understanding.
+
+### Preserve Agency
+
+Technology should expand a person’s ability to choose, not reduce it.
+
+### Optionality Is a Feature
+
+Every important decision should have an escape path.
+
+### Opinionated, Never Restrictive
+
+Good systems have strong defaults but weak constraints.
+
+### Open Beats Closed
+
+Open protocols, open formats and transparent systems preserve freedom.
+
+### The User Owns Their Future
+
+No design decision should unnecessarily limit tomorrow’s choices.
+
 ## Essays
 
 [Browse all essays]({{ "/essays/" | relative_url }}).
