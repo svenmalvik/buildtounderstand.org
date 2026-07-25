@@ -1,0 +1,29 @@
+title: Build to Understand
+description: Essays, principles, and experiments about engineering freedom.
+theme: jekyll-theme-midnight
+markdown: kramdown
+permalink: pretty
+
+collections:
+  essays:
+    output: true
+    permalink: /essays/:name/
+  experiments:
+    output: true
+    permalink: /experiments/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: essays
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: experiments
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - _templates
