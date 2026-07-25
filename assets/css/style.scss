@@ -1,0 +1,242 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+:root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: ui-serif, "New York", Georgia, "Times New Roman", serif;
+  --bg-primary: #06080f;
+  --bg-secondary: #0d1220;
+  --bg-sidebar: #090d18;
+  --bg-input: #121a2e;
+  --text-primary: #e6ecf7;
+  --text-body: #d3dbe8;
+  --text-secondary: #a7b4cc;
+  --text-muted: #5e6b82;
+  --accent: #e2c275;
+  --accent-hi: #f0d693;
+  --accent-subtle: #e2c27552;
+  --accent-text: #0a0e18;
+  --border: #1e2a40;
+  --selection-bg: #5b8def33;
+  --syntax-string: #8fb4f2;
+  --syntax-number: #7fc8e8;
+  --syntax-success: #43c97a;
+  --syntax-error: #d2495f;
+  --syntax-raw: #8a95ab;
+  --shadow-inset: inset 0 1px 3px #0000004d;
+}
+
+body {
+  color: var(--text-body);
+  background: var(--bg-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  color: var(--text-primary);
+  background: var(--selection-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+h3 {
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent-subtle);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+a:hover {
+  color: var(--accent-hi);
+  text-decoration-color: var(--accent-hi);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+a small {
+  color: var(--text-muted);
+}
+
+ul {
+  list-style-image: none;
+}
+
+li::marker {
+  color: var(--accent);
+}
+
+blockquote {
+  color: var(--text-secondary);
+  border-left-color: var(--accent);
+}
+
+code {
+  color: var(--syntax-raw);
+}
+
+pre {
+  background: var(--bg-sidebar);
+  border-color: var(--border);
+  box-shadow: var(--shadow-inset);
+}
+
+pre code {
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+th {
+  color: var(--text-secondary);
+  border-bottom-color: var(--border);
+}
+
+td {
+  border-bottom-color: var(--border);
+}
+
+hr {
+  height: 1px;
+  background: var(--border);
+}
+
+dt {
+  color: var(--text-primary);
+}
+
+mark {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+
+section {
+  margin-top: 20px;
+}
+
+section #title::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: 0 auto 28px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+section #title h1 {
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+section #title h1 em {
+  color: var(--accent-hi);
+  font-weight: 500;
+}
+
+section #title p {
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  margin-top: 18px;
+}
+
+.highlight,
+.highlight pre {
+  color: var(--text-primary);
+  background: var(--bg-sidebar);
+}
+
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cp,
+.highlight .cs,
+.highlight .ge {
+  color: var(--text-muted);
+}
+
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .nt {
+  color: var(--accent);
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sr,
+.highlight .ss,
+.highlight .sx {
+  color: var(--syntax-string);
+}
+
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il {
+  color: var(--syntax-number);
+}
+
+.highlight .gd,
+.highlight .gr,
+.highlight .gt {
+  color: var(--syntax-error);
+}
+
+.highlight .gi {
+  color: var(--syntax-success);
+}
+
+.highlight .na,
+.highlight .nb,
+.highlight .nc,
+.highlight .nd,
+.highlight .ne,
+.highlight .nf,
+.highlight .nl,
+.highlight .nn,
+.highlight .no,
+.highlight .nv,
+.highlight .ow,
+.highlight .p,
+.highlight .w {
+  color: var(--text-secondary);
+}

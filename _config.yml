@@ -1,4 +1,6 @@
 title: Build to Understand
+title_lead: Build to
+title_emphasis: Understand
 description: Essays, principles, and experiments about engineering freedom.
 theme: jekyll-theme-midnight
 markdown: kramdown
