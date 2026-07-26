@@ -3,9 +3,9 @@ layout: default
 title: Build to Understand
 ---
 
-Every system I build changes how I think about the problem. That’s something reading documentation has never done for me. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in the existing one.
+Every system I build changes how I think about a problem. That’s something reading documentation has never done for me. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in the existing one.
 
-Once I understand a concept well enough, I often start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building changes how I think. Over time, that process led me to the realization that what I value most is the freedom to shape the systems I use. I now call that engineering freedom.
+Once I understand a concept well enough, I often start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building sets me free. Over time, I realized that what I value most is the freedom to shape the systems I use. I now call that engineering freedom.
 
 An open-source maintainer may decline my PR because it doesn’t fit the project’s roadmap. That is fair. I can still fork the project and make the change myself. A SaaS vendor can raise its price without making the product more useful, and my only choices may be to accept it or leave.
 
