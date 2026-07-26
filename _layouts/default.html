@@ -30,7 +30,7 @@
           </h1>
           <p>{{ site.tagline | default: site.description | default: site.github.project_tagline }}</p>
           <nav class="site-nav" aria-label="Primary">
-            <a href="{{ '/essays/' | relative_url }}"{% if page.url contains '/essays/' %} aria-current="page"{% endif %}><span>Essays</span></a>
+            <a href="{{ '/explorations/' | relative_url }}"{% if page.url contains '/explorations/' %} aria-current="page"{% endif %}><span>Explorations</span></a>
             <a class="site-nav-home" href="{{ '/' | relative_url }}" aria-label="Home"{% if page.url == '/' %} aria-current="page"{% endif %}>
               <span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -40,7 +40,7 @@
                 </svg>
               </span>
             </a>
-            <a href="{{ '/experiments/' | relative_url }}"{% if page.url contains '/experiments/' %} aria-current="page"{% endif %}><span>Experiments</span></a>
+            <a href="{{ '/systems/' | relative_url }}"{% if page.url contains '/systems/' %} aria-current="page"{% endif %}><span>Systems</span></a>
           </nav>
         </div>
 

@@ -27,10 +27,10 @@ GitHub Pages will rebuild the site whenever content is pushed to `main`.
 .
 ├── _config.yml              # GitHub Pages and collection configuration
 ├── index.md                 # Home page
-├── essays/index.md          # Generated essay listing
-├── experiments/index.md     # Generated experiment listing
-├── _essays/                 # Published long-form essays
-├── _experiments/            # Published experiment notes
+├── explorations/index.md    # Generated exploration listing
+├── systems/index.md         # Generated system listing
+├── _explorations/           # Published long-form explorations
+├── _systems/                # Published system notes
 └── _templates/              # Unpublished authoring templates
 ```
 
@@ -39,8 +39,8 @@ Files in the two content collections are published automatically. Their file
 names become their URLs:
 
 ```text
-_essays/engineering-freedom.md
-→ /essays/engineering-freedom/
+_explorations/engineering-freedom.md
+→ /explorations/engineering-freedom/
 ```
 
 ## Add content
@@ -49,12 +49,12 @@ Copy the matching template into its collection, give the file a short
 lowercase name with hyphens, and replace the template text:
 
 ```sh
-cp _templates/essay.md _essays/engineering-freedom.md
-cp _templates/experiment.md _experiments/remove-the-approval-gate.md
+cp _templates/exploration.md _explorations/engineering-freedom.md
+cp _templates/system.md _systems/remove-the-approval-gate.md
 ```
 
 Every document needs YAML front matter at the top. `title` and `summary`
-control how it appears on its collection page. Essays and experiments are
+control how it appears on its collection page. Explorations and systems are
 listed newest first by `date`.
 
 The files under `_templates/` are excluded from the published site.

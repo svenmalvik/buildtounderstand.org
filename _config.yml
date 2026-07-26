@@ -1,7 +1,7 @@
 title: Build to Understand
 title_lead: Build to
 title_emphasis: Understand
-description: Essays, principles, and experiments about engineering freedom.
+description: Explorations, principles, and systems about engineering freedom.
 theme_name: Manifold Royal Dark
 theme_slug: manifold-royal-dark
 # Manifold Royal Dark inherits its structure from the Midnight gem.
@@ -10,25 +10,26 @@ markdown: kramdown
 permalink: pretty
 
 collections:
-  essays:
+  explorations:
     output: true
-    permalink: /essays/:name/
-  experiments:
+    permalink: /explorations/:name/
+  systems:
     output: true
-    permalink: /experiments/:name/
+    permalink: /systems/:name/
 
 defaults:
   - scope:
       path: ""
-      type: essays
+      type: explorations
     values:
       layout: default
   - scope:
       path: ""
-      type: experiments
+      type: systems
     values:
       layout: default
 
 exclude:
+  - AGENTS.md
   - README.md
   - _templates

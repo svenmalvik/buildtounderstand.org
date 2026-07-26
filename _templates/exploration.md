@@ -1,12 +1,12 @@
 ---
-title: Essay title
+title: Exploration title
 date: YYYY-MM-DD
-summary: One sentence used on the essays index.
+summary: One sentence used on the explorations index.
 ---
 
-[All essays]({{ "/essays/" | relative_url }})
+[All explorations]({{ "/explorations/" | relative_url }})
 
-# Essay title
+# Exploration title
 
 Open with the concrete observation, tension, or question.
 
