@@ -3,13 +3,21 @@ layout: default
 title: Build to Understand
 ---
 
-I believe engineers should retain the ability to change the systems they depend on. I call this _engineering freedom_.
+I build systems to understand them.
 
-An open-source maintainer may decline my pull request because it does not fit the project's roadmap. That is fair. I can still fork the project and make the change myself. A SaaS vendor can raise its price without making the product more useful, and my only choices may be to accept it or leave. The difference is not whether someone tells me no. It is whether I still have a way forward.
+Building is how I think. Every system I create teaches me something that reading documentation never could. Once I understand a system deeply enough, I often find myself wanting to change it.
 
-That distinction matters to me. When I find software I like, I start wondering what else I could do with it. If a feature is missing or works differently from what I need, I want to understand the system and change it. If I cannot, I have to work within limits set by someone else.
+Over time, I realized I wasn’t just building systems to understand them. I was building them to preserve the freedom to change them. I now call that engineering freedom.
 
-The six principles below describe how I choose, use, and build systems that preserve that engineering freedom.
+I believe engineers should retain the ability to understand, change, and evolve the systems they depend on.
+
+An open-source maintainer may decline my pull request because it does not fit the project’s roadmap. That is fair. I can still fork the project and make the change myself. A SaaS vendor can raise its price without making the product more useful, and my only choices may be to accept it or leave.
+
+The difference is not whether someone tells me no. It is whether I still have a way forward.
+
+That distinction matters to me. When I find software I like, I immediately start wondering what else I could do with it. If a feature is missing or behaves differently from what I need, I want to understand the system and change it. If I cannot, I have to work within limits set by someone else.
+
+The principles below describe how I choose, build, and evolve systems that preserve engineering freedom.
 
 ## Principles
 
