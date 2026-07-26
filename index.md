@@ -3,7 +3,7 @@ layout: default
 title: Build to Understand
 ---
 
-Every system I build changes how I think about a problem. That’s something reading documentation has never done for me. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in the existing one.
+Every system I build changes how I think about a problem. That’s something reading documentation has never done for me. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in an existing one.
 
 Once I understand a concept well enough, I often start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building sets me free. Over time, I realized that what I value most is the freedom to shape the systems I use. I now call that engineering freedom.
 
