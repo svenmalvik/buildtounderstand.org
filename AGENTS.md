@@ -1,14 +1,22 @@
 # Repository instructions
 
-This is a GitHub Pages site built with Jekyll and the custom Manifold Royal
-Dark theme, which inherits its structure from the Midnight theme. It does not
-use a project-local package manager or application build.
+This is a GitHub Pages site built with Jekyll and the custom Manifold Royal Dark theme, which inherits its structure from the Midnight theme. It does not use a project-local package manager or application build.
 
-## Systems guidance
+This website tries to follow this graph:
+
+Exploration
+        ↓
+System
+        ↓
+Lesson (implicit)
+        ↓
+Principle
+
+## Systems guidance for Systems menu item
 
 Systems are living documents, not project pages. They capture the evolution of my understanding as I build. Each system starts with a question, explores different ideas, and gradually expresses the principles that emerged along the way. Rather than documenting features or releases, I document why the system exists, the architectural decisions behind it, the trade-offs I made, what changed my mind, and what I would design differently today. As my understanding evolves, so do the systems.
 
-## Exploration guidance
+## Exploration guidance for Explorations menu item
 
 Explorations are not tutorials, product reviews, or opinion pieces. They begin with a genuine question rather than a predetermined answer. Their purpose is to challenge assumptions, explore first principles, and develop understanding through reasoning and, when appropriate, building.
 
