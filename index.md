@@ -3,17 +3,13 @@ layout: default
 title: Build to Understand
 ---
 
-I build systems to understand the ideas behind them. Every system I create teaches me something that reading documentation never could. Building exposes trade-offs, assumptions, and constraints that only become visible through creation.
+Every system we create teaches us something that reading documentation never could. Building exposes trade-offs, assumptions, and constraints that only become visible through creation.
 
-Once I understand an idea deeply enough, I often think how I could make it better.
-
-Over time, I realized I wasn’t just building to make better solutions. I was building to preserve my freedom to shape and evolve the systems I want to use. I now call that engineering freedom.
-
-I believe engineers should retain the ability to understand, change, and evolve the systems they depend on.
+For me, once I understand an idea deeply enough, I often think how I could make it better. Over time, I realized I wasn’t building to make better solutions. I was building to preserve my freedom to shape and evolve the systems I want to use. I now call that engineering freedom.
 
 An open-source maintainer may decline my pull request because it does not fit the project’s roadmap. That is fair. I can still fork the project and make the change myself. A SaaS vendor can raise its price without making the product more useful, and my only choices may be to accept it or leave.
 
-The difference is not whether someone tells me no. It is whether I still have a way forward.
+The difference is not whether someone tells me no. It is whether I still have option.
 
 That distinction matters to me. When I discover software I like, I immediately start wondering how it works, what trade-offs it makes, and how I would ideally like to have it. Building my own version isn’t about replacing the original. It’s about the freedom to adjust it my way.
 
