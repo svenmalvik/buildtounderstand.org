@@ -11,14 +11,14 @@ An open-source maintainer may decline my PR because it doesn’t fit the project
 
 The difference is not whether someone tells me no. It is whether I still have a way forward.
 
-The principles below describe how I choose, build, and evolve systems that preserve that engineering freedom.
+The principles below describe how I choose, build, and evolve systems that preserve engineering freedom.
 
 ## Principles
 
 <!--
 Add each principle directly below this comment. A useful shape is:
 
-### 7. State the principle
+### 3. State the principle
 {: .principle}
 
 Explain why it matters, how it changes practice, and where its limits are.
@@ -27,29 +27,24 @@ Explain why it matters, how it changes practice, and where its limits are.
 ### 1. Build to Understand
 {: .principle}
 
-Building is the fastest path to deep understanding.
+Documentation explains how a system works. It shows how others understood and solved the problem. Building is different. It transforms that knowledge into your own understanding and reveals how you really think about the problem.
 
-### 2. Preserve Agency
+### 2. Preserve Engineering Freedom
 {: .principle}
 
-Technology should expand a person’s ability to choose, not reduce it.
+The question is not whether you depend on others, but whether you retain the freedom to shape and evolve the systems you want to use.
 
-### 3. Optionality Is a Feature
+### 3. Prefer Open Over Closed
 {: .principle}
 
-Every important decision should have an escape path.
+Open systems preserve optionality. Prefer open protocols, standards, and formats whenever they leave you with more freedom tomorrow than you have today. Openness is not the goal, engineering freedom is.
 
-### 4. Opinionated, Never Restrictive
+### 4. Design for Agency
 {: .principle}
 
-Good systems have strong defaults but weak constraints.
+Software should expand human agency, not reduce it. Every design decision should leave people with more freedom to shape their own solutions, not less.
 
-### 5. Open Beats Closed
+### 5. Keep Only What Matters
 {: .principle}
 
-Open protocols, open formats and transparent systems preserve freedom.
-
-### 6. The User Owns Their Future
-{: .principle}
-
-No design decision should unnecessarily limit tomorrow’s choices.
+Complexity should be intentional. Every additional layer makes a system harder to understand, evolve, and maintain. Complexity must earn its place.
