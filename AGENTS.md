@@ -6,13 +6,7 @@ use a project-local package manager or application build.
 
 ## Systems guidance
 
-Systems are living documents, not project pages. They capture the evolution of
-my understanding as I build. Each system starts with a question, explores
-different ideas, and gradually expresses the principles that emerged along the
-way. Rather than documenting features or releases, I document why the system
-exists, the architectural decisions behind it, the trade-offs I made, what
-changed my mind, and what I would design differently today. As my understanding
-evolves, so do the systems.
+Systems are living documents, not project pages. They capture the evolution of my understanding as I build. Each system starts with a question, explores different ideas, and gradually expresses the principles that emerged along the way. Rather than documenting features or releases, I document why the system exists, the architectural decisions behind it, the trade-offs I made, what changed my mind, and what I would design differently today. As my understanding evolves, so do the systems.
 
 ## Exploration guidance
 
