@@ -1,7 +1,8 @@
 # Repository instructions
 
-This is a GitHub Pages site built with Jekyll and the Midnight theme. It does
-not use a project-local package manager or application build.
+This is a GitHub Pages site built with Jekyll and the custom Manifold Royal
+Dark theme, which inherits its structure from the Midnight theme. It does not
+use a project-local package manager or application build.
 
 ## Local preview with Docker
 

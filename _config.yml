@@ -2,6 +2,9 @@ title: Build to Understand
 title_lead: Build to
 title_emphasis: Understand
 description: Essays, principles, and experiments about engineering freedom.
+theme_name: Manifold Royal Dark
+theme_slug: manifold-royal-dark
+# Manifold Royal Dark inherits its structure from the Midnight gem.
 theme: jekyll-theme-midnight
 markdown: kramdown
 permalink: pretty

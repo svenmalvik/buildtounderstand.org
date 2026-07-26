@@ -2,8 +2,13 @@
 
 This repository contains the source for a GitHub Pages site about engineering
 freedom. GitHub's built-in Jekyll support turns the Markdown into a site using
-the Midnight theme; no application build, package manager, or Actions workflow
-is required.
+the custom **Manifold Royal Dark** theme. It inherits its structure from
+Jekyll's Midnight theme; no application build, package manager, or Actions
+workflow is required.
+
+The `theme: jekyll-theme-midnight` setting in `_config.yml` intentionally names
+the underlying Jekyll gem. The site's theme identity and custom palette are
+Manifold Royal Dark.
 
 ## Publish from `main`
 
