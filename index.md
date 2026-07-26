@@ -11,7 +11,7 @@ An open-source maintainer may decline my PR because it doesn’t fit the project
 
 The difference is not whether someone tells me no. It is whether I still have a way forward.
 
-The principles below describe how I choose, build, and evolve systems that preserve engineering freedom.
+The principles below describe how I choose, build, and evolve systems that preserve that engineering freedom.
 
 ## Principles
 
