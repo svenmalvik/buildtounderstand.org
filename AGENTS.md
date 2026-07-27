@@ -22,6 +22,8 @@ Explorations are not tutorials, product reviews, or opinion pieces. They begin w
 
 An exploration should ask “What if…?”, “Should…?”, “Why…?”, or “Does…?” rather than immediately presenting a conclusion. The goal is not to defend an opinion but to discover one.
 
+When creating a new exploration, use `Under exploration.` as its excerpt.
+
 Prefer timeless questions over technology-specific commentary. Use current technologies as examples, but explore the underlying concepts instead. An article about AI gateways, Kubernetes, Git, or LLMs should ultimately be about broader ideas such as engineering freedom, agency, trustworthy autonomy, simplicity, modularity, opinionated software, or human-centered system design.
 
 Whenever possible, conclude an exploration by building something. Building is not the goal—it is the mechanism for transforming borrowed knowledge into personal understanding. The resulting prototype may be small, incomplete, or intentionally opinionated. Its purpose is to test an idea rather than compete with existing products.
