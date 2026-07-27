@@ -16,7 +16,7 @@ Principle
 
 Systems are living documents, not project pages. They capture the evolution of my understanding as I build. Each system starts with a question, explores different ideas, and gradually expresses the principles that emerged along the way. Rather than documenting features or releases, I document why the system exists, the architectural decisions behind it, the trade-offs I made, what changed my mind, and what I would design differently today. As my understanding evolves, so do the systems.
 
-## Exploration guidance for Explorations menu item
+## Exploration guidance
 
 Explorations are not tutorials, product reviews, or opinion pieces. They begin with a genuine question rather than a predetermined answer. Their purpose is to challenge assumptions, explore first principles, and develop understanding through reasoning and, when appropriate, building.
 
@@ -25,6 +25,37 @@ An exploration should ask “What if…?”, “Should…?”, “Why…?”, or
 Prefer timeless questions over technology-specific commentary. Use current technologies as examples, but explore the underlying concepts instead. An article about AI gateways, Kubernetes, Git, or LLMs should ultimately be about broader ideas such as engineering freedom, agency, trustworthy autonomy, simplicity, modularity, opinionated software, or human-centered system design.
 
 Whenever possible, conclude an exploration by building something. Building is not the goal—it is the mechanism for transforming borrowed knowledge into personal understanding. The resulting prototype may be small, incomplete, or intentionally opinionated. Its purpose is to test an idea rather than compete with existing products.
+
+### Choosing exploration questions
+
+An exploration begins with a question that the author genuinely wants to answer, regardless of whether it becomes popular or widely read. The primary audience is the author’s own curiosity. The purpose is to deepen understanding, not to maximize engagement.
+
+Before accepting a question, challenge it:
+
+* Is this the real question, or is there a deeper one underneath?
+* What assumption does this question take for granted?
+* Can the assumption itself be questioned?
+* Does the question explore a timeless concept rather than a specific technology?
+* Would the author still spend weeks exploring this question if nobody ever read the result?
+* Is this question likely to change how the author thinks?
+* Can the question be explored through building rather than only reasoning?
+
+Prefer questions that challenge assumptions over questions that ask for opinions. A strong exploration often begins with What problem…, When…, Who…, Why…, Can…, or Should…, and invites genuine discovery rather than defending a predetermined conclusion.
+
+Weak examples:
+
+* Does everyone need an AI platform?
+* Should there be one strategy for AI pull request reviews?
+
+Stronger versions:
+
+* What problem is an AI platform actually solving?
+* Who actually needs an AI platform?
+* What is the smallest AI platform that could possibly work?
+* What makes a code review strategy effective?
+* Should AI reviews optimize for consistency or diversity?
+
+The goal is not to find the most interesting title. The goal is to discover the most interesting question. A good exploration should leave both the author and the reader thinking differently than when they started.
 
 Good exploration questions include:
 

@@ -3,6 +3,8 @@ layout: default
 title: Build to Understand
 ---
 
+> This website exists to help me think. If others find value in it, that’s a wonderful consequence.
+
 Every system I build changes how I think about a problem. That’s something reading documentation has never done for me. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in an existing one.
 
 Once I understand a concept well enough, I often start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building sets me free.
