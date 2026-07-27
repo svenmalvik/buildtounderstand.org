@@ -9,9 +9,29 @@ published: false
 
 ## Chapter 1: What Problem Would a Platform Solve?
 
-- What problem is an AI platform actually solving?
-- What becomes difficult when teams build agents without an AI platform?
-- Does an AI platform actually help engineers and non-engineers build agents faster and more consistently?
+### What problem is an AI platform actually solving?
+
+Today, many organizations run one form of an Ai adoption initiative with the goal of working more efficient using Ai but also to create better or new products with Ai. The consequence is more people consume external Ai services, create Ai agents using LLMs, using skills, or integrating internal and external MCP servers. To make it simple I label all these as Ai agents or just agents.
+
+Here are the recurring areas where I see an increase in questions and demand because of Ai adoption initiatives:
+
+- Developers ask for LLMs for their agents
+- Finance want to know the spendings of these Ai agents by area, team, and product or agent
+- Compliance wants to be in control of the data flow and asks for governance and audit evidences
+
+These are only some of the most obvious points I have see. Other less obvious but still recurring works are:
+
+- Developers ask for Ai evaluation and tesing tooling
+- The incident and response teams ask for observing Ai agents.
+- Leaders asks for better coordination of who build what agent to avoid many special agents
+
+### What becomes difficult when teams build agents without an AI platform?
+
+The challenge of not addressing these recurring work centrally that I have seen is the following. Some engineers invent their own solutions which solves their immediate demands by adressing only one or few questions and neglecting others. An example can be a simple PR review agent that uses the best Ai frontier model with extra high reasoning effort. Such an agent solves an immediate and obvious issue. However, it neglects others such as what is the cost/value ratio, what rules and constraints is the PR review being done with this one team or agent, and how can other teams use or learn and also have a PR review agent.
+
+A central Ai platform must therefore do its best to take all necessary dimensions such as finance, compliance, procurement, governance, auditing, etc. into account in a way that it takes some or all of this burden from the people.
+
+### Does an AI platform actually help engineers and non-engineers build agents faster and more consistently?
 
 ## Chapter 2: When Does Shared Work Become a Platform?
 
