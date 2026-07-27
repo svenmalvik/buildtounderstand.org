@@ -35,6 +35,10 @@ A central Ai platform must therefore do its best to take all necessary dimension
 
 ### Does an AI platform actually help engineers and non-engineers build agents faster and more consistently?
 
+An Ai platform can help engineers and non-engineers to build agents. i say can because it depends on the ambitions of the Ai platform and what problems do you want it to solve. At Vipps for example we created an agent builder. You visit our internal developer portal (IDP), click a button and give the agent a name. The result is a repository with an agent shell that is being deployed in the test environment. For you as the agent engineer, you are left with a starter prompt for your coding agent. It clones the repo, then asks for next steps for vibe coding. We are currently building more into it to address the other qyestions as well: costs, auditing, observability, etc.
+
+You can argue that creating agents for non-engineers is a recurring problem that Vipps has been addressed and it therefore is a part of the Ai platform. The final answer to this depends on your organizational demands.
+
 ## Chapter 2: When Does Shared Work Become a Platform?
 
 - When does repeated work justify a shared platform?
