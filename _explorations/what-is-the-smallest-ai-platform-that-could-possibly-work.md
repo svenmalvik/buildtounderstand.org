@@ -2,7 +2,7 @@
 title: What Is the Smallest AI Platform That Could Possibly Work?
 date: 2026-07-27
 excerpt: Under exploration.
-published: false
+published: true
 ---
 
 # What Is the Smallest AI Platform That Could Possibly Work?
@@ -27,9 +27,11 @@ These are only some of the most obvious points I have see. Other less obvious bu
 
 ### What becomes difficult when teams build agents without an AI platform?
 
-The challenge of not addressing these recurring work centrally that I have seen is the following. Some engineers invent their own solutions which solves their immediate demands by adressing only one or few questions and neglecting others. An example can be a simple PR review agent that uses the best Ai frontier model with extra high reasoning effort. Such an agent solves an immediate and obvious issue. However, it neglects others such as what is the cost/value ratio, what rules and constraints is the PR review being done with this one team or agent, and how can other teams use or learn and also have a PR review agent.
+The most requested work is access providing access to LLMs. While it's easy to hand-over API keys and make engineers happy immediatly, most of the important demands from other units in the organization are not met. Finance doesn't know who is using what model and why. They just get a bill. Compliance doesn't know what data is flowing where. Nobody tells them. In case of an incident the incidet respond teams can't help simply because they are blind. There is nothing really to be observed.
 
-A central Ai platform must therefore do its best to take all necessary dimensions such as finance, compliance, procurement, governance, auditing, etc. into account in a way that it takes some or all of this burden from the people.
+An example I see again and again. An engineer build a PR review agent using the best Ai frontier model with extra high reasoning effort. Such an agent solves an immediate and obvious issue. However, it neglects others such as what is the cost/value ratio, what rules and constraints is the PR review being done with this one team or agent, and how can other teams use or learn and also have a PR review agent.
+
+A central Ai platform must therefore do its best to take all necessary dimensions such as finance, compliance, procurement, governance, auditing, etc. into account in a way that it takes some or all of these burdens from the people.
 
 ### Does an AI platform actually help engineers and non-engineers build agents faster and more consistently?
 
