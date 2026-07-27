@@ -4,13 +4,6 @@ title: Systems
 permalink: /systems/
 ---
 
-[Home]({{ "/" | relative_url }}) ·
-[Explorations]({{ "/explorations/" | relative_url }})
-
-# Systems
-
-Working systems and the engineering choices behind them.
-
 {% assign systems = site.systems | sort: "date" | reverse %}
 {% for system in systems %}
 ## [{{ system.title }}]({{ system.url | relative_url }})

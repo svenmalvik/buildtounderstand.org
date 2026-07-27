@@ -4,13 +4,6 @@ title: Explorations
 permalink: /explorations/
 ---
 
-[Home]({{ "/" | relative_url }}) ·
-[Systems]({{ "/systems/" | relative_url }})
-
-# Explorations
-
-Long-form arguments and reflections on engineering freedom.
-
 {% assign explorations = site.explorations | sort: "date" | reverse %}
 {% for exploration in explorations %}
 ## [{{ exploration.title }}]({{ exploration.url | relative_url }})
