@@ -43,23 +43,75 @@ A central AI platform must therefore account for the needs of finance, complianc
 
 ### Does an AI platform actually help engineers and non-engineers build agents faster and more consistently?
 
-An AI platform can help engineers and non-engineers build agents. I use the word "can" because its usefulness depends on the platform's ambitions and the problems it is meant to solve. At Vipps, we created an agent builder called AI Playground. You visit our internal developer portal (IDP), click a button, and give your new agent a name. The result is a repository with a functional agent shell already deployed to the test environment. As the agent engineer, you then receive a starter prompt for your coding agent. The coding agent clones the repository and asks what to do next. From there, you can start vibe coding. We are adding more capabilities to meet the needs of other stakeholders as well.
+An AI platform can help engineers and non-engineers build agents. I use the word "can" because its usefulness depends on the platform's ambitions and the problems it is meant to solve. At Vipps, we created an agent template called AI Playground. You visit our internal developer portal (IDP), click a button, and give your new agent a name. The result is a repository with a functional agent shell already deployed to the test environment. As the agent engineer, you then receive a starter prompt for your coding agent. The coding agent clones the repository and asks what to do next. From there, you can start vibe coding. We are adding more capabilities to meet the needs of other stakeholders as well.
 
 Whether this makes agent creation part of the AI platform is partly a matter of definition. It does solve one recurring problem. Non-engineers no longer need to ask engineers to rebuild the same foundation for every agent. They also start with the requirements of other stakeholders already included, even if they do not know about them. That, I think, is the point of an AI platform.
 
 ## Chapter 2: When Does Shared Work Become a Platform?
 
-- When does repeated work justify a shared platform?
-- Could documentation, conventions, and reusable libraries solve the problem instead?
-- central counterargument
-- A sharper decision rule: identify the repeated constraint blocking a valuable workflow, then add the smallest shared capability that removes it.
-- Who does not need an AI platform?
-- When would an AI platform create more friction than it removes?
+### What Is Actually Repeating?
+
+Here is a repeating pattern I have seen a few times. Non-engineers such as analysts or PMs start to use Claude Code or Codex in the desktop app and vibe code something that they find useful at first. It might be a dashboard of some sort. Then comes the next step where they typically ask someone for help to connect their service to a data source. That's not unusual even for engineers. What's unusual is the following step. Until now their solution runs on their local machine. But what they want is to make it available to others meaning that the solution must run on the company's runtime environment, so they reach out to the platform team. That's where the work really begins. All services run on Kubernetes in a certain way. We call our applications for VippsServices since they follow a certain contract that engineers get through the IDP as a self service. The platform team typically engages with these people and tries to help them.
+
+Another recurring work that is done by engineers we see is the rise of new Ai-powered Slack apps. Those engineers typically ask for no more then an API key to an LLM which is quickly done.
+
+### When Does Repetition Become a Meaningful Constraint?
+
+Teams may repeat work while they are still learning, and centralizing it too early would standardize assumptions that have not yet survived experience. The relevant repetition begins when several valuable workflows encounter the same constraint and solving it locally no longer produces meaningful new understanding.
+
+#### Incidents and Recovery
+
+Does the repeated constraint cause preventable incidents, or make incidents harder to detect, contain, and recover from?
+
+#### Audit Effort
+
+Does every team have to reconstruct the same evidence differently, and how much effort does that require?
+
+#### Cost
+
+What does the constraint cost through duplicated implementation, infrastructure consumption, waiting, support, and rework?
+
+#### Reliability
+
+Do local solutions fail inconsistently, create operational blind spots, or make dependable recovery difficult?
+
+#### Risk
+
+What are the consequences of getting this work wrong, and how widely could those consequences spread?
+
+### Could the Work Be Removed Instead?
+
+### Could Documentation, Conventions, or Reusable Libraries Be Enough?
+
+### Does the Shared Capability Remove the Work or Merely Move It?
+
+### When Does a Shared Capability Become a Platform?
+
+### Who Does Not Need an AI Platform?
+
+### When Does a Platform Create More Friction Than It Removes?
+
+### How Would We Know the Platform Helped?
+
+#### What Was the Baseline?
+
+Before introducing a shared capability, how often did the constraint occur, what consequences did it have, and how much work did it create?
+
+#### What Changed?
+
+Did incidents, containment time, audit effort, cost per successful outcome, reliability, or risk improve after introducing the shared capability?
+
+#### What New Costs and Risks Did the Platform Introduce?
+
+How much platform staffing, support, maintenance, exception handling, coupling, and common failure risk did the shared capability create?
+
+### What Is the Decision Rule?
 
 ## Chapter 3: What Does "Smallest" Mean?
 
 - What is the minimum capability that must be shared?
 - What can be removed without preventing users from succeeding?
+- When should a platform capability be shrunk, replaced, or removed?
 - Does the smallest platform need a user interface?
 - Does it need to run agents, or only help teams build them?
 - Could the smallest platform be a set of contracts rather than a deployed system?
