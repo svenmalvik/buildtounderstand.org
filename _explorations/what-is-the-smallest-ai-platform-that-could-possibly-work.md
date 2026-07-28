@@ -11,44 +11,48 @@ published: false
 
 ### What problem is an AI platform actually solving?
 
-Today, many organizations run one form of an Ai adoption initiative with the goal of working more efficient using Ai but also to create better or new products with Ai. The consequence is more people consume external Ai services, create Ai agents using LLMs, using skills, or integrating internal and external MCP servers. To make it simple I label all these as Ai agents or just agents.
+Today, many organizations run some form of AI adoption initiative with the goals of working more efficiently and creating better or entirely new products with AI. As a result, more people consume external AI services and create AI agents that use LLMs, skills, or integrations with internal and external MCP servers. For simplicity, I refer to all of these as AI agents, or just agents.
 
-Here are the recurring areas where I see an increase in questions and demand because of Ai adoption initiatives:
+Here are the recurring areas where I see an increase in questions and demand because of such AI adoption initiatives:
 
-- Developers ask for LLMs for their agents
-- Finance want to know the spendings of these Ai agents by area, team, and product or agent
-- Compliance wants to be in control of the data flow and asks for governance and audit evidences
+- Developers ask for access to LLMs for their agents
+- Finance wants to know how much these AI agents cost by area, team, product, or agent
+- Compliance wants control over data flows and asks for governance and audit evidence
 
-These are only some of the most obvious points I have see. Other less obvious but still recurring works are:
+These are only some of the most obvious points I have seen. Other less obvious but still recurring areas of work include:
 
-- Developers ask for Ai evaluation and tesing tooling
-- The incident and response teams ask for observing Ai agents.
-- Leaders asks for better coordination of who build what agent to avoid many special agents
+- Developers ask for AI evaluation and testing tools
+- Incident response teams ask for observability into AI agents
+- Leaders ask how their teams are doing with AI adoption
+
+None of these requests alone justifies an AI platform. One team asking for model access has an access problem. One finance department asking about a bill has an accounting problem. A collection of experiments does not become a platform problem just because the experiments use AI.
+
+The threshold is crossed when teams repeatedly need the same access controls, cost attribution, evaluation, observability, or audit evidence. Solving each use case separately would creates more work, inconsistent controls, or unnecessary risk.
+
+The number of agents is therefore a poor threshold. A company may have one hundred experiments and no platform problem. The same company may have only two agents in production that handle sensitive data and already need strict controls. What matters is whether a constraint has repeated, whether its consequences matter, and whether a shared capability would retire more work than it creates.
+
+Even then, the answer may be to extend the existing platform to a degree. A dedicated AI platform becomes justified only when those systems cannot remove the repeated constraint without every team rebuilding the same AI-specific machinery.
 
 ### What becomes difficult when teams build agents without an AI platform?
 
-The most requested work is access providing access to LLMs. While it's easy to hand-over API keys and make engineers happy immediatly, most of the important demands from other units in the organization are not met. Finance doesn't know who is using what model and why. They just get a bill. Compliance doesn't know what data is flowing where. Nobody tells them. In case of an incident the incidet respond teams can't help simply because they are blind. There is nothing really to be observed.
+The most common request I see is access to LLMs. While it is easy to hand over API keys and make engineers happy immediately, this does not meet most of the important demands from other parts of the organization. Finance does not know who is using which model or why. They just get a bill. Compliance does not know what data is flowing where. Nobody tells them. In the event of an incident, the incident response teams cannot help because they are blind. There is nothing useful to observe.
 
-An example I see again and again. An engineer build a PR review agent using the best Ai frontier model with extra high reasoning effort. Such an agent solves an immediate and obvious issue. However, it neglects others such as what is the cost/value ratio, what rules and constraints is the PR review being done with this one team or agent, and how can other teams use or learn and also have a PR review agent.
+Here is an example I see again and again. An engineer builds a PR review agent using the best AI frontier model with extra-high reasoning effort. Such an agent solves an immediate and obvious problem for the team. However, it neglects other dimensions and stakeholders, including the cost-to-value ratio, the rules and constraints governing the review, and how other teams can learn from it or build their own PR review agents.
 
-A central Ai platform must therefore do its best to take all necessary dimensions such as finance, compliance, procurement, governance, auditing, etc. into account in a way that it takes some or all of these burdens from the people.
+A central AI platform must therefore account for important or all stakeholders such as finance, compliance, procurement, governance, and auditing.
 
 ### Does an AI platform actually help engineers and non-engineers build agents faster and more consistently?
 
-An Ai platform can help engineers and non-engineers to build agents. i say can because it depends on the ambitions of the Ai platform and what problems do you want it to solve. At Vipps for example we created an agent builder. You visit our internal developer portal (IDP), click a button and give the agent a name. The result is a repository with an agent shell that is being deployed in the test environment. For you as the agent engineer, you are left with a starter prompt for your coding agent. It clones the repo, then asks for next steps for vibe coding. We are currently building more into it to address the other qyestions as well: costs, auditing, observability, etc.
+An AI platform can help engineers and non-engineers build agents. I use the word "can" because its usefulness depends on the platform's ambitions and the problems it is meant to solve. At Vipps, we created an agent builder and called it Ai playground. You visit our internal developer portal (IDP), click a button, and give your new agent a name. The result is a repository with a functional agent shell that is deployed to the test environment. As the agent engineer, you then receive a starter prompt for your coding agent. The coding agent clones the repository and asks what to do next. From there, you can start vibe coding. We are adding more capabilities to meet the demands from the other stakeholders as well.
 
-You can argue that creating agents for non-engineers is a recurring problem that Vipps has been addressed and it therefore is a part of the Ai platform. The final answer to this depends on your organizational demands. For us it answered 3 principles, see Home page:
-
-1. Build to Understand
-1. Preserve Engineering Freedom
-1. Design for Agency
-
-> TODO: read findings.md
+You could argue that enabling non-engineers to create agents is a recurring problem that Vipps has addressed and is therefore part of the AI platform. However you may think about it, it solves at least one recurring work. And that is the point of an Ai platform I'd argue. Non-engineers don't need to bother engineers to repeatedly build the foundation of agents with all of the stakeholder's demands; they probably wouldn't know about those anyway.
 
 ## Chapter 2: When Does Shared Work Become a Platform?
 
 - When does repeated work justify a shared platform?
 - Could documentation, conventions, and reusable libraries solve the problem instead?
+- central counterargument
+- A sharper decision rule: identify the repeated constraint blocking a valuable workflow, then add the smallest shared capability that removes it.
 - Who does not need an AI platform?
 - When would an AI platform create more friction than it removes?
 
