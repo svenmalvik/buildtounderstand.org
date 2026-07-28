@@ -51,13 +51,17 @@ Whether this makes agent creation part of the AI platform is partly a matter of 
 
 ### What Is Actually Repeating?
 
-Here is a repeating pattern I have seen a few times. Non-engineers such as analysts or PMs start to use Claude Code or Codex in the desktop app and vibe code something that they find useful at first. It might be a dashboard of some sort. Then comes the next step where they typically ask someone for help to connect their service to a data source. That's not unusual even for engineers. What's unusual is the following step. Until now their solution runs on their local machine. But what they want is to make it available to others meaning that the solution must run on the company's runtime environment, so they reach out to the platform team. That's where the work really begins. All services run on Kubernetes in a certain way. We call our applications for VippsServices since they follow a certain contract that engineers get through the IDP as a self service. The platform team typically engages with these people and tries to help them.
+I believe that repeating work can be very different from company to company. Below are 2 examples that I see repeatedly.
+
+Non-engineers such as analysts or PMs start to use Claude Code or Codex in the desktop app and vibe code something that they find useful. It might be a dashboard of some sort. Then comes the next step where they typically ask someone for help to connect their service to a data source. That's not unusual even for engineers. What's unusual is the next step. Until now their solution runs on their local machine. But what they want is to make it available to others meaning that the solution must run on the company's runtime environment, so they reach out to the platform team. That's where the work really begins. All services run on Kubernetes in a certain way. We call our applications for VippsServices since they follow a certain contract that engineers get through the IDP as a self service. Knowing how to follow the contract requires some engineering experience. The platform team typically engages with these people and tries to help them.
 
 Another recurring work that is done by engineers we see is the rise of new Ai-powered Slack apps. Those engineers typically ask for no more then an API key to an LLM which is quickly done.
 
+All other requests related to Ai haven't so far been recurring even though I may not remember or have seen all of them.
+
 ### When Does Repetition Become a Meaningful Constraint?
 
-Teams may repeat work while they are still learning, and centralizing it too early would standardize assumptions that have not yet survived experience. The relevant repetition begins when several valuable workflows encounter the same constraint and solving it locally no longer produces meaningful new understanding.
+Teams including the platform teams may repeat work simply for the sake of learning and gaining experience. Centralizing those work too early may result in solutions nobody really need. Repetition becomes first meaningful when several valuable workflows show similar obstacles or when solving those locally produces no meaningful new understanding, and the consequences are visible. Those consequences may appear in incidents, audit effort, cost, reliability, or risk.
 
 #### Incidents and Recovery
 
