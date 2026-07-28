@@ -89,6 +89,10 @@ What are the consequences of getting this work wrong, and how widely could those
 
 ### Does the Shared Capability Remove the Work or Merely Move It?
 
+Making agents visible in Backstage is one way to test this distinction. If someone must create and maintain an entry for every agent manually, the work has not disappeared. It has become documentation work that someone must remember to do.
+
+If creating or deploying an agent instead produces metadata that Backstage discovers automatically, the shared capability removes repeated coordination work. Backstage is then the surface through which agents become visible. The platform capability is the metadata contract and the automation that keeps it current.
+
 ### When Does a Shared Capability Become a Platform?
 
 ### Who Does Not Need an AI Platform?
@@ -118,7 +122,7 @@ How much platform staffing, support, maintenance, exception handling, coupling, 
 - When should a platform capability be shrunk, replaced, or removed?
 - Does the smallest platform need a user interface?
 - Does it need to run agents, or only help teams build them?
-- Could the smallest platform be a set of contracts rather than a deployed system?
+- Could the smallest platform be a set of contracts rather than a deployed system, such as an agent metadata contract consumed by Backstage?
 - What should the platform deliberately not provide?
 
 ## Chapter 4: Where Should the Platform End?
@@ -127,6 +131,7 @@ How much platform staffing, support, maintenance, exception handling, coupling, 
 - Which of those capabilities are necessary from the beginning?
 - Should the platform own integrations, or only define how integrations are exposed?
 - Are MCP-related tools part of an AI platform?
+- Should the AI platform own the agent catalogue, or only define and publish the agent-specific metadata that the existing developer platform displays?
 - Which capabilities should be centralized, and which should remain with individual teams?
 
 ## Chapter 5: How Can the Platform Preserve Freedom?
