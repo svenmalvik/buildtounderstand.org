@@ -51,69 +51,83 @@ Whether this makes agent creation part of the AI platform is partly a matter of 
 
 ### What Is Actually Repeating?
 
-I believe that repeating work can be very different from company to company. Below are 2 examples that I see repeatedly.
+Repeating work looks different from team to team. I have seen two examples often enough to be useful here.
 
-Non-engineers such as analysts or PMs start to use Claude Code or Codex in the desktop app and vibe code something that they find useful. It might be a dashboard of some sort. Then comes the next step where they typically ask someone for help to connect their service to a data source. That's not unusual even for engineers. What's unusual is the next step. Until now their solution runs on their local machine. But what they want is to make it available to others meaning that the solution must run on the company's runtime environment, so they reach out to the platform team. That's where the work really begins. All services run on Kubernetes in a certain way. We call our applications for VippsServices since they follow a certain contract that engineers get through the IDP as a self service. Knowing how to follow the contract requires some engineering experience. The platform team typically engages with these people and tries to help them.
+Non-engineers such as analysts and product managers use Claude Code or Codex to build something useful, perhaps a dashboard. It works on their machine. Making it available to others means connecting it to company data and deploying it to the company runtime. At Vipps, services follow a contract that engineers receive through the internal developer portal. Using that contract still requires engineering experience, so the platform team helps each new builder through much of the same work.
 
-Another recurring work that is done by engineers we see is the rise of new Ai-powered Slack apps. Those engineers typically ask for no more then an API key to an LLM which is quickly done.
+The second example is simpler. Engineers build AI-powered Slack apps and ask for an API key to an LLM. The request takes little time, but handing out a key does not provide cost attribution, data controls, evaluation, or useful observability.
 
-All other requests related to Ai haven't so far been recurring even though I may not remember or have seen all of them.
+The work is not identical. The first example repeats deployment support. The second repeats access without the controls other stakeholders need. Both may be platform candidates, but repetition alone proves very little.
 
-### When Does Repetition Become a Meaningful Constraint?
+### When Does Repeated Work Justify a Shared Solution?
 
-Teams including the platform teams may repeat work simply for the sake of learning and gaining experience. Centralizing those work too early may result in solutions nobody really need. Repetition becomes first meaningful when several valuable workflows show similar obstacles or when solving those locally produces no meaningful new understanding, and the consequences are visible. Those consequences may appear in incidents, audit effort, cost, reliability, or risk.
+Teams may repeat work because they are still learning. Centralizing it too early can turn useful experiments into a shared solution nobody needs. Repetition becomes a meaningful constraint when it blocks a valuable workflow and produces a visible consequence:
 
-#### Incidents and Recovery
+- **Incidents and Recovery:** Does the repeated constraint cause preventable incidents, or make incidents harder to detect, contain, and recover from?
+- **Audit Effort:** Does every team have to reconstruct the same evidence differently, and how much effort does that require?
+- **Cost:** What does the constraint cost through duplicated implementation, infrastructure consumption, waiting, support, and rework?
+- **Reliability:** Do local solutions fail inconsistently, create operational blind spots, or make dependable recovery difficult?
+- **Risk:** What are the consequences of getting this work wrong, and how widely could those consequences spread?
 
-Does the repeated constraint cause preventable incidents, or make incidents harder to detect, contain, and recover from?
-
-#### Audit Effort
-
-Does every team have to reconstruct the same evidence differently, and how much effort does that require?
-
-#### Cost
-
-What does the constraint cost through duplicated implementation, infrastructure consumption, waiting, support, and rework?
-
-#### Reliability
-
-Do local solutions fail inconsistently, create operational blind spots, or make dependable recovery difficult?
-
-#### Risk
-
-What are the consequences of getting this work wrong, and how widely could those consequences spread?
+There is no useful universal threshold based on the number of teams, agents, models, or requests. Two production agents handling sensitive data may justify shared controls. One hundred experiments may not.
 
 ### Could the Work Be Removed Instead?
 
+Before building a shared capability, I should ask whether the workflow or constraint should exist at all. The apparent platform problem may be unclear ownership, missing training, unnecessary variation, a poor procurement choice, or a workflow that should simply be removed.
+
+Calling it a platform problem too early gives the solution a shape before the cause is understood. Platforms are quite capable of standardizing work that nobody needed.
+
 ### Could Documentation, Conventions, or Reusable Libraries Be Enough?
 
-### Does the Shared Capability Remove the Work or Merely Move It?
+The next test is whether a lighter solution removes the constraint. The order matters: documentation, a convention, a template, a library, a CLI, and only then a narrow managed capability.
 
-Making agents visible in Backstage is one way to test this distinction. If someone must create and maintain an entry for every agent manually, the work has not disappeared. It has become documentation work that someone must remember to do.
-
-If creating or deploying an agent instead produces metadata that Backstage discovers automatically, the shared capability removes repeated coordination work. Backstage is then the surface through which agents become visible. The platform capability is the metadata contract and the automation that keeps it current.
+Small teams may need no more than a repository template and a CLI. Expensive or risky concerns such as identity, policy, databases, or audit evidence are stronger candidates for a managed service. The goal is not to build the smallest possible platform department. It is to use the lightest option that completes the work. We can always optimize our solutions later when they have been proved to be valuable.
 
 ### When Does a Shared Capability Become a Platform?
 
+A shared capability becomes platform-like when teams choose it as the common path because it is easier and safer than solving the problem locally.
+
+I am interested in whether the capability removes enough repeated work to justify the work it creates. Someone still has to own and maintain it. If that costs more than the coordination and risk it removes, we have built a new and maybe even larger problem.
+
+The first justified AI platform may therefore be a gateway, evaluation service, policy check, trace convention, cost-attribution layer, or deployment contract. It does not need to begin as one broad integrated product and label it Ai platform.
+
 ### Who Does Not Need an AI Platform?
 
+An AI platform is probably premature when there is only one team, few production workflows, or no valuable use case yet. It is also a poor answer when the real problems are skills, data access, or workflow design. By workflow design I am primarily thinking of non-technical teams who haven't yet identified how their work can be described as workflows which must clearly come first so you know what you may want to automate later.
+
+A dedicated AI platform also needs clear ownership, support, upgrades, and deprecation workflows. That means an investment you must be comfortable with.
+
 ### When Does a Platform Create More Friction Than It Removes?
+
+Warning signs include adoption by mandate, long waiting time for the users, and teams forking or bypassing the platform.
 
 ### How Would We Know the Platform Helped?
 
 #### What Was the Baseline?
 
-Before introducing a shared capability, how often did the constraint occur, what consequences did it have, and how much work did it create?
+Before introducing a shared capability, ask, how often did the constraint occur? Measure workflow completion time, waiting time, duplicated implementations, incidents, audit effort, and cost per successful outcome.
 
 #### What Changed?
 
-Did incidents, containment time, audit effort, cost per successful outcome, reliability, or risk improve after introducing the shared capability?
+Did more common cases complete without extra help? Did waiting, incidents, audit effort, or cost improve?
 
 #### What New Costs and Risks Did the Platform Introduce?
 
-How much platform staffing, support, maintenance, exception handling, coupling, and common failure risk did the shared capability create?
+Count platform staffing, support, maintenance, on-call load, switching cost, and common failure risk. We should also decide what would make us remove it again. The original problem may disappear or become less important. But ff the platform no longer removes enough work to justify the cost, we need to consider to remove it or parts.
 
 ### What Is the Decision Rule?
+
+For each proposed capability:
+
+1. **Workflow:** Is the workflow valuable, used, and owned? If not, stop.
+2. **Constraint:** What repeatedly blocks it, and what is the measured consequence?
+3. **Cause:** Is the cause technical, organizational, educational, contractual, or regulatory?
+4. **Substitute:** Can removal, documentation, a convention, template, library, CLI, or narrow service solve it?
+5. **Shared capability:** Can one bounded capability remove the common constraint end to end?
+6. **Escape:** Can unusual workloads leave the common path safely?
+7. **Measurement:** Does the result remain positive after all operating costs are included?
+
+Shared work becomes a platform when advice and local reuse no longer remove a consequential repeated constraint, and one owned capability can remove it with lower total coordination and risk.
 
 ## Chapter 3: What Does "Smallest" Mean?
 
