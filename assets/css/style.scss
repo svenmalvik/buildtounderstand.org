@@ -82,10 +82,6 @@ a small {
   color: var(--text-muted);
 }
 
-.principle {
-  color: var(--accent);
-}
-
 ul {
   list-style-image: none;
 }
@@ -97,6 +93,68 @@ li::marker {
 blockquote {
   color: var(--text-secondary);
   border-left-color: var(--accent);
+}
+
+.core-principle {
+  position: relative;
+  margin: 48px 0 28px;
+  padding: 2px;
+  background: var(--accent);
+  clip-path: polygon(
+    18px 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    0 100%,
+    0 18px
+  );
+}
+
+.core-principle__label {
+  position: absolute;
+  z-index: 1;
+  top: clamp(14px, 2.5vw, 20px);
+  right: 0;
+  left: 0;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.core-principle__inner {
+  padding: clamp(32px, 7vw, 52px) clamp(24px, 6vw, 48px);
+  background: var(--bg-primary);
+  clip-path: polygon(
+    16px 0,
+    100% 0,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0 100%,
+    0 16px
+  );
+  text-align: center;
+}
+
+.core-principle__statement {
+  margin: 0;
+  color: var(--text-primary);
+  border: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 7vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  text-shadow: none;
+}
+
+.core-principle__statement em {
+  color: var(--accent-hi);
+  font-weight: 500;
 }
 
 code {
