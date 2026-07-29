@@ -115,20 +115,6 @@ Did more common cases complete without extra help? Did waiting, incidents, audit
 
 Count platform staffing, support, maintenance, on-call load, switching cost, and common failure risk. We should also decide what would make us remove it again. The original problem may disappear or become less important. But ff the platform no longer removes enough work to justify the cost, we need to consider to remove it or parts.
 
-### What Is the Decision Rule?
-
-For each proposed capability:
-
-1. **Workflow:** Is the workflow valuable, used, and owned? If not, stop.
-2. **Constraint:** What repeatedly blocks it, and what is the measured consequence?
-3. **Cause:** Is the cause technical, organizational, educational, contractual, or regulatory?
-4. **Substitute:** Can removal, documentation, a convention, template, library, CLI, or narrow service solve it?
-5. **Shared capability:** Can one bounded capability remove the common constraint end to end?
-6. **Escape:** Can unusual workloads leave the common path safely?
-7. **Measurement:** Does the result remain positive after all operating costs are included?
-
-Shared work becomes a platform when advice and local reuse no longer remove a consequential repeated constraint, and one owned capability can remove it with lower total coordination and risk.
-
 ## Chapter 3: What Does "Smallest" Mean?
 
 - What is the minimum capability that must be shared?
