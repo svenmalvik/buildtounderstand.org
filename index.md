@@ -8,7 +8,7 @@ Every system I build changes how I think about a problem. It’s why I’m often
 Only much later did I realize what that freedom actually meant. It wasn’t the freedom to build my own software. It was the freedom to shape the systems I depend on instead of being limited by them. I now call that engineering freedom.
 
 <div class="core-principle">
-  <p class="core-principle__label">My guiding principle for engineering freedom</p>
+  <p class="core-principle__label">Guiding principle</p>
   <div class="core-principle__inner">
     <h2 class="core-principle__statement">Retain the freedom<br>to <em>shape.</em></h2>
   </div>
