@@ -3,7 +3,9 @@ layout: default
 title: Build to Understand
 ---
 
-> This website exists to help me think. If others find value in it, that’s a wonderful consequence.
+_This website exists to help me think. If others find value in it, that’s a wonderful consequence._
+
+---
 
 Every system I build changes how I think about a problem. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in an existing one.
 
@@ -15,40 +17,25 @@ An open-source maintainer may decline my PR because it doesn’t fit the project
 
 The difference is not whether someone tells me no. It is whether I still have a way forward.
 
-The principles below describe how I choose, build, and evolve systems that preserve engineering freedom.
+One principle guides how I choose, build, and evolve systems:
 
-## Principles
-
-<!--
-Add each principle directly below this comment. A useful shape is:
-
-### 3. State the principle
+> Retain the freedom to shape.
 {: .principle}
 
-Explain why it matters, how it changes practice, and where its limits are.
--->
+The question is not whether I depend on others, but whether I retain the freedom to shape and evolve the systems I depend on.
 
-### 1. Build to Understand
-{: .principle}
+## Practices
 
-Documentation explains how a system works. It shows how others understood and solved the problem. Building is different. It transforms that knowledge into your own understanding and reveals how you really think about the problem.
+These practices help me retain that freedom.
 
-### 2. Preserve Engineering Freedom
-{: .principle}
+### Build to Understand
 
-The question is not whether you depend on others, but whether you retain the freedom to shape and evolve the systems you want to use.
+Documentation explains how a system works. It shows how others understood and solved the problem. Building is different. It transforms that knowledge into my own understanding and reveals how I really think about the problem.
 
-### 3. Prefer Open Over Closed
-{: .principle}
+### Prefer Open Over Closed
 
-Open systems preserve optionality. Prefer open protocols, standards, and formats whenever they leave you with more freedom tomorrow than you have today. Openness is not the goal, engineering freedom is.
+Open systems preserve optionality. I prefer open protocols, standards, and formats whenever they leave me with more freedom tomorrow than I have today. Openness is not the goal; the freedom to shape is.
 
-### 4. Design for Agency
-{: .principle}
+### Design for Agency
 
 Software should expand human agency, not reduce it. Every design decision should leave people with more freedom to shape their own solutions, not less.
-
-### 5. Keep Only What Matters
-{: .principle}
-
-Complexity should be intentional. Every additional layer makes a system harder to understand, evolve, and maintain. Complexity must earn its place.
