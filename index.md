@@ -6,8 +6,8 @@ title: Build to Understand
 Every system I build changes how I think about a problem. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in an existing one. Once I understand a concept well enough, I start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building sets me free.
 
 <div class="core-principle">
-  <p class="core-principle__label">Guiding principle</p>
   <div class="core-principle__inner">
+    <p class="core-principle__label">Guiding principle</p>
     <h2 class="core-principle__statement">Retain the freedom<br>to <em>shape.</em></h2>
   </div>
 </div>
