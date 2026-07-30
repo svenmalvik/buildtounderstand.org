@@ -3,7 +3,7 @@ layout: default
 title: Build to Understand
 ---
 
-Every system I build changes how I think about a problem. Once I understand something well enough, I start wondering how I would shape it differently. I don’t build because I believe I have better answers. I build because building gives me a better understanding, and that understanding creates more freedom. The systems themselves may be temporary. But the understanding and the value it creates should last.
+Every system I build changes how I think about a problem. Once I understand something well enough, I start wondering how I would shape it differently. I don’t build because I believe I have better answers. I build because building gives me a better understanding, and that understanding gives me the freedom to shape a system in my own way. The systems may be temporary. What I learn from them, and the value that learning creates, should last however.
 
 <div class="core-principle">
   <div class="core-principle__inner">
