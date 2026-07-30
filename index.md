@@ -3,7 +3,7 @@ layout: default
 title: Build to Understand
 ---
 
-Every system I build changes how I think about a problem. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in an existing one. Once I understand a concept well enough, I start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building sets me free. The system may be temporary, but the understanding and the value it creates should be lasting.
+Every system I build changes how I think about a problem. Once I understand something well enough, I start wondering how I would shape it differently. I don’t build because I believe I have better answers. I build because building gives me a better understanding, and that understanding creates more freedom. The systems themselves may be temporary. But the understanding and the value it creates should last.
 
 <div class="core-principle">
   <div class="core-principle__inner">
@@ -12,7 +12,7 @@ Every system I build changes how I think about a problem. It’s why I’m often
   </div>
 </div>
 
-Only much later did I realize what that freedom actually meant. It wasn’t the freedom to build my own software. It was the freedom to shape the systems I depend on instead of being limited by them. I now call that engineering freedom.
+Only much later did I realize what that freedom actually meant. It wasn’t the freedom to write my own software. It was the freedom to shape the systems I depend on instead of being limited by them. I now call that engineering freedom.
 
 An open-source maintainer may decline my PR because it doesn’t fit the project’s roadmap. That is fair. I can still fork the project and make the change myself. A SaaS vendor can raise its price without making the product more useful, and my only choices may be to accept it or leave.
 
@@ -26,12 +26,12 @@ Documentation explains how a system works. It shows how others understood and so
 
 ### Prefer Open Over Closed
 
-Open systems preserve optionality. I prefer open protocols, standards, and formats whenever they leave me with more freedom tomorrow than I have today. Openness is not the goal; the freedom to shape is.
+I choose open protocols, standards, and formats whenever they increase my freedom. Openness isn’t the goal though. It's more freedom and flexibility.
 
 ### Design for Agency
 
-Software should expand human agency, not reduce it. Every design decision should leave people with more freedom to shape their own solutions, not less.
+Good software expands human agency. It leaves people with more freedom to shape their own solutions instead of forcing them into someone else’s.
 
 ### Build for Leverage
 
-Some work creates value once. Other work continues creating value after it is finished. I prefer systems, tools, and ideas that others can use, extend, and build upon.
+Some work solves today’s problem. Other work continues creating value long after it’s finished. I prefer systems, tools, and ideas that compound because others can use, extend, and build upon them.
