@@ -12,9 +12,15 @@ Lesson (implicit)
         ↓
 Principle
 
+Engineering freedom is the governing value of the site. Leverage is how useful work continues to create value after the initial effort. The site explores both: build so people retain the freedom to shape, and build so systems, tools, and ideas can be reused, extended, and built upon.
+
 ## Systems guidance for Systems menu item
 
 Systems are living documents, not project pages. They capture the evolution of my understanding as I build. Each system starts with a question, explores different ideas, and gradually expresses the principles that emerged along the way. Rather than documenting features or releases, I document why the system exists, the architectural decisions behind it, the trade-offs I made, what changed my mind, and what I would design differently today. As my understanding evolves, so do the systems.
+
+Each system should also explain where its leverage comes from. Document what the system makes reusable, what repeated work it removes, who can build upon it, and whether its value can continue growing without the same effort being repeated. Count the ongoing cost of ownership, support, coordination, migration, and exit. A system creates leverage only when the value it produces repeatedly exceeds the work it creates.
+
+Leverage must preserve engineering freedom. Describe how people can change, extend, replace, or leave the system. Scale, adoption, centralization, and automation are not leverage by themselves if they reduce agency or create more total work than they remove.
 
 ## Exploration guidance
 
@@ -24,7 +30,9 @@ An exploration should ask “What if…?”, “Should…?”, “Why…?”, or
 
 When creating a new exploration, use `Under exploration.` as its excerpt.
 
-Prefer timeless questions over technology-specific commentary. Use current technologies as examples, but explore the underlying concepts instead. An article about AI gateways, Kubernetes, Git, or LLMs should ultimately be about broader ideas such as engineering freedom, agency, trustworthy autonomy, simplicity, modularity, opinionated software, or human-centered system design.
+Prefer timeless questions over technology-specific commentary. Use current technologies as examples, but explore the underlying concepts instead. An article about AI gateways, Kubernetes, Git, or LLMs should ultimately be about broader ideas such as engineering freedom, leverage, compounding value, agency, trustworthy autonomy, simplicity, modularity, opinionated software, or human-centered system design.
+
+Every exploration should consider leverage without assuming that leverage is desirable or present. Ask what could continue creating value after the initial work, what can be reused or built upon, and whether a shared capability removes more total work than it creates. Also ask who benefits, what must be maintained, and whether the resulting leverage preserves the freedom to change direction. Treat leverage as a lens for discovering an answer, not as a conclusion the exploration must defend.
 
 Whenever possible, conclude an exploration by building something. Building is not the goal—it is the mechanism for transforming borrowed knowledge into personal understanding. The resulting prototype may be small, incomplete, or intentionally opinionated. Its purpose is to test an idea rather than compete with existing products.
 
@@ -41,6 +49,8 @@ Before accepting a question, challenge it:
 * Would the author still spend weeks exploring this question if nobody ever read the result?
 * Is this question likely to change how the author thinks?
 * Can the question be explored through building rather than only reasoning?
+* Could the answer reveal how value accumulates, compounds, or continues after the initial effort?
+* Does the question examine whether leverage expands or restricts the freedom to shape?
 
 Prefer questions that challenge assumptions over questions that ask for opinions. A strong exploration often begins with What problem…, When…, Who…, Why…, Can…, or Should…, and invites genuine discovery rather than defending a predetermined conclusion.
 
