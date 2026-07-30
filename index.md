@@ -26,11 +26,11 @@ Documentation explains how a system works. It shows how others understood and so
 
 ### Prefer Open Over Closed
 
-I choose open protocols, standards, and formats whenever they increase my freedom. Openness isn’t the goal though. It's more freedom and flexibility.
+Closed systems limit me to the choices their owners provide. Open systems let me inspect, change, replace, or leave. I choose openness when it keeps those options available.
 
 ### Design for Agency
 
-Good software expands human agency. It leaves people with more freedom to shape their own solutions instead of forcing them into someone else’s.
+Good software helps people make their own decisions. It provides useful defaults without taking away the ability to change direction.
 
 ### Build for Leverage
 
