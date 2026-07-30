@@ -3,7 +3,7 @@ layout: default
 title: Build to Understand
 ---
 
-Every system I build changes how I think about a problem. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in an existing one. Once I understand a concept well enough, I start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building sets me free.
+Every system I build changes how I think about a problem. It’s why I’m often more interested in building an opinionated version of a system than becoming an expert in an existing one. Once I understand a concept well enough, I start wondering how I could shape it differently. I don’t build because I think I have better answers. I build because building sets me free. The system may be temporary, but the understanding and the value it creates should be lasting.
 
 <div class="core-principle">
   <div class="core-principle__inner">
@@ -18,7 +18,7 @@ An open-source maintainer may decline my PR because it doesn’t fit the project
 
 The difference is not whether someone tells me no. It is whether I still have a way forward and the freedom to choose a different shape of a system.
 
-The following practices help me retain that freedom.
+The following practices help me retain that freedom and use it to create lasting value.
 
 ### Build to Understand
 
@@ -31,3 +31,7 @@ Open systems preserve optionality. I prefer open protocols, standards, and forma
 ### Design for Agency
 
 Software should expand human agency, not reduce it. Every design decision should leave people with more freedom to shape their own solutions, not less.
+
+### Build for Leverage
+
+Some work creates value once. Other work continues creating value after it is finished. I prefer systems, tools, and ideas that others can use, extend, and build upon.
