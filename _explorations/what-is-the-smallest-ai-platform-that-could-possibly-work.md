@@ -2,7 +2,7 @@
 title: What Is the Smallest (AI) Platform That Could Possibly Work?
 date: 2026-07-27
 excerpt: Under exploration.
-published: false
+published: true
 ---
 
 # What Is the Smallest (AI) Platform That Could Possibly Work?
@@ -270,14 +270,62 @@ That is the standard I want to use here. A small AI platform must count the cent
 
 ### Chapter 4: Where Should the Platform End?
 
-The contract could be the first shared capability. It does not define everything the platform should own. I still need to understand which responsibilities create value when shared and which ones should remain with the team that understands the workflow.
+The contract gives the platform a possible beginning. However, it does not tell where the platform should end. Model access, tools, identity, evaluation, observability, and deployment all affect the platform. However, they do not necessarily belong always to the platform team.
 
-- Are model access, tools, identity, evaluation, observability, and deployment all platform responsibilities?
-- Which of those capabilities are necessary from the beginning?
-- Should the platform own integrations, or only define how integrations are exposed?
-- Are MCP-related tools part of an AI platform?
-- Should the AI platform own the agent catalogue, or only define and publish the agent-specific metadata that the existing developer platform displays?
-- Which capabilities should be centralized, and which should remain with individual teams?
+| Capability | What could be shared | What should remain elsewhere |
+| --- | --- | --- |
+| Model access | Credentials, quotas, cost attribution, trace correlation, and a common interface | Existing identity and secret systems; the workflow team's model choice, prompts, fallback behavior, and product outcome |
+| Tools | Common rules for making tools available to agents, information about origin and ownership, authentication, and audit fields | Business rules, data access, side effects, authorization, support, and repair |
+| Identity | Agent identity metadata, delegated-user context, requested permissions, and a way to revoke access | The existing identity platform issues identities and credentials; the resource owner decides whether a business action is allowed |
+| Evaluation | A common runner, formats, scheduling, history, and reusable evidence | The domain team defines representative cases, possible harm, acceptance levels, and whether a release is good enough |
+| Observability | Shared trace fields that connect models, tools, evaluations, cost, and workflows | An existing observability platform handles the data; the product team defines service levels, alerts, and the meaning of a failure |
+| Deployment | A common description of the agent, its model, tools, evaluation evidence, running revision, and rollback | The existing delivery platform deploys and runs it; the product team decides when to release and whether a rollback is safe |
+
+The AI platform can define the common parts and connect them to systems the organization already uses. But decisions that depend on the workflow should stay with the team that understands it.
+
+### What Is Necessary From the Beginning?
+
+The first version needs enough information and control to make one real workflow accountable and replaceable. The contract from Chapter 3 already describes the owner, purpose, lifecycle, risk, interfaces, dependencies, requested access, evaluation evidence, traces, cost, deployed revision, rollback, incident contact, exceptions, and a way to leave.
+
+The first version does not need to provide all the systems behind that information. Existing identity systems can issue access. The downstream service can authorize a business action. The observability platform can collect its traces. The developer portal can display information from those systems.
+
+An ai gateway or a common evaluation service do not become necessary because the workflow uses an LLM. I would add those when it removes measured repeated work or provides a required control that the contract and existing systems cannot yet provide.
+
+### When Is a Contract Not Enough?
+
+A contract can be small and still create a large amount of work. Every team may still need to build an adapter, collect evidence, understand errors, and fix outdated information. The contract then describes the work in the same way for every team. It does not remove the work.
+
+To remove work, the contract needs a working implementation, compatibility checks, and information about where each fact came from. It also needs to compare what a team declared with what the systems observed. An agent can say which revision is deployed or which evaluation it passed. The delivery and evaluation systems must confirm it.
+
+I would move beyond the contract when teams still need the same help, when they keep rebuilding the same components, or when a required control can only work while the agent is running. The next capability could be a generator, evaluation service, (ai) gateway, authorization service, or dedicated runtime. The kind of repeated work should decide the priority.
+
+### Where Should Mandatory Controls Be Enforced?
+
+A shared policy and shared enforcement are different choices. Each control should be enforced by a system that cannot be bypassed.
+
+A gateway can enforce which model providers and regions are allowed because it controls that connection. A deployment system can require evaluation evidence before releasing an agent.
+
+The AI platform can connect these controls without making decisions it doesn't understand. A contract or catalogue entry can describe the required authority. However, it can't prove that a running action is allowed.
+
+### Should the Platform Own Integrations?
+
+I would start by defining how integrations are exposed. Owning them comes later. A common pattern can describe authentication, timeouts, retries, duplicate requests, versions, traces, ownership, and retirement.
+
+I would move an integration into the platform when several teams need the same stable behavior and someone has the knowledge and time to support it. That owner must be able to diagnose failures in the downstream system, support new versions, respond to incidents, and remove the integration later.
+
+### Where Does MCP Belong?
+
+MCP changes how a tool is exposed but doesn't change who understands the tool.
+
+The platform can define which parts of MCP it supports, how servers are registered, how identity is passed, which evidence is recorded, which minimum isolation applies, and how compatibility is tested. The team that understands the tool's inputs, side effects, permissions, and failures should still own the tool and the system behind it.
+
+The same boundary should apply to an MCP tool and an ordinary API integration. Finding a tool through MCP does not grant access to it. The downstream system still needs to check the current identity, permission, approval, and state before performing an action.
+
+### Should the AI Platform Own the Agent Catalogue?
+
+I do not see a reason to build a separate AI catalogue yet. The AI platform can define and validate agent-specific metadata, then publish it into the existing developer platform such as Backstage.
+
+I would try to extend the developer platform people already use and measure what remains missing. A separate AI catalogue may become useful if the existing platform cannot represent the agent lifecycle or the evidence people need.
 
 ### Chapter 5: How Can the Platform Preserve Freedom?
 
@@ -289,7 +337,7 @@ These questions remain open:
 - Could the platform slow teams down?
 - Who operates it, and what ongoing cost does that create?
 - How does it let teams change models, vendors, or agent frameworks?
-- Should safety and governance be included in the standard workflow or enforced by the systems around it?
+- How can mandatory safety and governance controls still leave room to choose a different path?
 
 ## Prototype
 
