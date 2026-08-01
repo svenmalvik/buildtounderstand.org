@@ -2,12 +2,10 @@
 title: What Is the Smallest (AI) Platform That Could Possibly Work?
 date: 2026-07-27
 excerpt: Under exploration.
-published: true
+published: false
 ---
 
 # What Is the Smallest (AI) Platform That Could Possibly Work?
-
-## Question
 
 At Vipps, one of the most common requests I see is access to LLMs. Giving an engineer an API key is easy. It solves the immediate access problem. It does not help finance attribute the bill, compliance understand the data flow, or incident response observe the system.
 
@@ -17,9 +15,7 @@ That difference made me ask two questions. When does recurring work justify a sh
 
 I am using AI agents as the current case. By agents, I mean software built with LLMs, skills, and integrations with internal or external tools. This raises a broader question: When does a shared system create leverage, and when does it merely centralize work and reduce freedom?
 
-## Exploration
-
-### Chapter 1: What Problem Would a Platform Solve?
+## Chapter 1: What Problem Would a Platform Solve?
 
 Organizations want engineers and non-engineers to build useful agents. As more people try, the same needs begin to appear. Developers need model access, evaluation tools, and a path to deployment. Finance needs cost attribution. Compliance needs control over data flows and audit evidence. Incident response needs a system it can observe.
 
@@ -45,7 +41,7 @@ Whether agent creation belongs to an AI platform is partly a matter of definitio
 
 The value is not the button in the portal. It is the repeated work that the button removes.
 
-### Chapter 2: When Does Shared Work Become a Platform?
+## Chapter 2: When Does Shared Work Become a Platform?
 
 ### What Is Actually Repeating?
 
@@ -125,7 +121,7 @@ I also have to count platform staffing, support, maintenance, on-call load, the 
 
 A platform needs criteria for removing it as much as it needs a measure of success.
 
-### Chapter 3: What Does "Smallest" Mean?
+## Chapter 3: What Does "Smallest" Mean?
 
 ### Is the Smallest Platform the One With the Fewest Features?
 
@@ -268,7 +264,7 @@ Removal is still a product change. It needs retention decisions, migration suppo
 
 That is the standard I want to use here. A small AI platform must count the central work, local work, required controls, and cost of leaving.
 
-### Chapter 4: Where Should the Platform End?
+## Chapter 4: Where Should the Platform End?
 
 The contract gives the platform a possible beginning. However, it does not tell where the platform should end. Model access, tools, identity, evaluation, observability, and deployment all affect the platform. However, they do not necessarily belong always to the platform team.
 
@@ -329,19 +325,72 @@ I would try to extend the developer platform people already use and measure what
 
 ### Chapter 5: How Can the Platform Preserve Freedom?
 
-Even a useful standard option can become a constraint. If teams cannot change, extend, replace, or stop using it, the platform may remove repeated work by removing agency. That is not the kind of leverage I want to build.
+A useful platform give teams an easier way to work. It becomes a problem for them when that way is the only way they can use. If teams cannot change the platform and use a different way to do their work, for whatever reason that might be important for them, it may remove repeated work, yes, but only by limiting their choices.
 
-These questions remain open:
+I thought first that teams could use standard options first, configuration over convention, then eventually leave the platform and build something else later if necessary.
 
-- How can teams stop using the platform when their needs differ?
-- Could the platform slow teams down?
-- Who operates it, and what ongoing cost does that create?
-- How does it let teams change models, vendors, or agent frameworks?
-- How can mandatory safety and governance controls still leave room to choose a different path?
+But being free to leave may not be enough. A team may depend on the platform for model access, deployment, observability, support, and cost attribution. If the team loses these when it chooses something else, it must rebuild the surrounding work first. The freedom exists, but it is not very practical.
 
-## Prototype
+Freedom needs a usable path forward.
 
-### Chapter 6: Can a Prototype Show Whether the Smallest Platform Works?
+### How Can Teams Stop Using the Platform?
+
+The platform team should make the standard way of working easier without leaving teams unsupported when they need something different. A team with different needs should be able to provide the same required outcomes through another implementation. This means separating the description of the workflow from the platform.
+
+However, leaving a platform still creates a lot of work. Prompts, tool schemas, evaluations, configuration, state, logs, and retained evidence may need to move or be recreated. Old access needs to be revoked, etc. The team may need to run both options during migration and a little while later.
+
+The platform has not preserved freedom by hiding this work. It preserves freedom by making the work visible, supported, and possible.
+
+A practical alternative path would therefore need:
+
+- the same access to existing identity, deployment, observability, incident response, and cost systems
+- a way to show that required controls still work
+- an export or reconstruction plan for the state and evidence the workflow depends on
+- a named owner and budget for migration and temporary parallel operation
+- a way to revoke the old path and return if the replacement fails
+
+An exception should not mean that a team is left alone. If only the standard platform receives normal support and audit recognition, using another implementation is not a real choice.
+
+### Can Teams Change or Extend the Platform?
+
+I would want three paths for a need the platform does not yet support:
+
+| Path | When it fits |
+| --- | --- |
+| Local extension | One workflow needs a provider-specific field, adapter, or check that does not change the shared contract |
+| Shared contribution | Several teams need the same capability and someone can maintain it as part of the platform |
+| Alternative implementation | The need does not fit the platform's direction, but the workflow can still provide the required outcomes |
+
+The shared contract needs versioning and compatibility rules so that one contribution does not break every consumer. Local extensions should be visible and namespaced so they do not pretend to be portable. A shared contribution needs an owner, support expectations, tests, and a way to remove it later.
+
+The platform team may still reject a contribution. It may create too much support work, weaken a boundary, or serve only one workflow. That can be a reasonable decision. The team proposing it should still have a supported way forward when the required controls can be met another way.
+
+Freedom includes the ability to leave. It also includes the ability to improve the system people still choose to use.
+
+### Who Decides What Is Mandatory?
+
+The word "mandatory" can mean different kinds of decisions. The platform team can explain what its standard path supports. The person accountable for the harm or obligation should decide which outcome is required. The team that understands the workflow should help define the evidence. An exception should have a named decision maker, a reason, and an expiry.
+
+This makes the source visible. It also gives the organization a way to review risk, workflow, or available technology changes.
+
+### How Can Mandatory Controls Leave Room for Another Path?
+
+Engineering freedom does not make every choice optional. One team's local choice can create incident, security, privacy, audit, and support work for everyone else.
+
+The platform should describe what each control must achieve. For each mandatory control, I would want to know:
+
+- which harm or accepted risk requires it
+- who owns the decision
+- which action or data it protects
+- what evidence shows that it worked
+- where it can still prevent the harm
+- when it must be reviewed or removed
+- how another implementation can provide equivalent evidence
+- how an exception is requested, decided, recorded, and expired
+
+An alternative implementation should pass the same outcome and evidence checks.
+
+## Chapter 6: Can a Prototype Show Whether the Smallest Platform Works?
 
 ### Can a Contract Be Enough?
 
