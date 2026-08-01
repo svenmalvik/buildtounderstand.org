@@ -2,132 +2,64 @@
 title: What Is the Smallest (AI) Platform That Could Possibly Work?
 date: 2026-07-27
 excerpt: Under exploration.
-published: false
+published: true
 ---
 
 # What Is the Smallest (AI) Platform That Could Possibly Work?
 
-At Vipps, one of the most common requests I see is access to LLMs. Giving an engineer an API key is easy. It solves the immediate access problem. It does not help finance attribute the bill, compliance understand the data flow, or incident response observe the system.
+At Vipps, one of the most common requests I see is access to LLMs. Giving an engineer an API key is easy. It solves the immediate access problem. However, it doesn't show finance which team created the cost, help compliance understand where the data goes, or give incident response a way to observe the system.
 
-The key is small. The work around it is not.
+The difference between giving someone access and handling everything around it made me ask two questions. When does recurring work justify a shared platform? And if it does, what is the smallest platform that could possibly work?
 
-That difference made me ask two questions. When does recurring work justify a shared platform? If it does, what is the smallest form that platform could take?
-
-I am using AI agents as the current case. By agents, I mean software built with LLMs, skills, and integrations with internal or external tools. This raises a broader question: When does a shared system create leverage, and when does it merely centralize work and reduce freedom?
+I am using AI agents as the current case. By agents, I mean software built with LLMs, skills, and integrations with internal or external tools.
 
 ## Chapter 1: What Problem Would a Platform Solve?
 
 Organizations want engineers and non-engineers to build useful agents. As more people try, the same needs begin to appear. Developers need model access, evaluation tools, and a path to deployment. Finance needs cost attribution. Compliance needs control over data flows and audit evidence. Incident response needs a system it can observe.
 
-None of these requests alone justifies an AI platform. One team asking for model access has an access problem. One finance department asking about a bill has an accounting problem. A collection of experiments does not become a platform problem just because the experiments use AI.
+None of these requests alone justifies an AI platform. One team asking for model access has an access problem. One finance department asking about a bill has an accounting problem. A collection of experiments doesn't become a platform problem just because the experiments use AI.
 
 I start seeing a platform problem when teams repeatedly need the same access controls, cost attribution, evaluation, observability, or audit evidence. At that point, solving every use case separately creates more work, inconsistent controls, or unnecessary risk.
 
-The number of agents is a poor threshold. A company may have one hundred experiments and no platform problem. The same company may have only two agents in production that handle sensitive data and already need strict controls. The difference is not the number of agents. It is whether a constraint repeats, what happens when it is ignored, and whether a shared capability would remove more work than it creates.
+The number of agents is a poor threshold. A company may have one hundred experiments and no platform problem. The same company may have only two agents in production that handle sensitive data and already need strict controls. The difference is whether a constraint repeats, what happens when it is ignored, and whether a shared capability would remove more work than it creates.
 
-Even then, the answer may be to extend a platform that already exists. I would consider a dedicated AI platform only when existing systems cannot remove the repeated constraint without every team rebuilding the same AI-specific components.
-
-I see a version of this with PR review agents. An engineer uses the most capable available model with extra-high reasoning effort. The agent solves an immediate and obvious problem for the team. It may still ignore the cost of each review, the rules that govern the review, and how another team could learn from the work or build upon it.
-
-The first version works for the team. The organization becomes responsible for everything around it.
-
-### Can a Platform Help People Build Agents?
-
-An AI platform can help engineers and non-engineers build agents. I use the word "can" because its usefulness depends on the problem it removes, not on how complete the platform looks.
-
-At Vipps, we created an agent template called AI Playground. A builder visits our internal developer portal, clicks a button, and gives the agent a name. This creates a repository with a working agent already deployed to the test environment. The builder also receives a starter prompt for a coding agent. The coding agent clones the repository and asks what to do next. From there, the builder can start shaping the agent instead of recreating the same setup.
-
-Whether agent creation belongs to an AI platform is partly a matter of definition. The template solves one recurring problem. Non-engineers no longer need an engineer to recreate the same setup for every agent. Requirements from other stakeholders can also be included in the process, even when the builder does not know about them yet.
-
-The value is not the button in the portal. It is the repeated work that the button removes.
-
-## Chapter 2: When Does Shared Work Become a Platform?
+Even then, the answer may be to extend a platform that already exists. I would consider a dedicated AI platform only when existing systems can't remove the repeated constraint without every team rebuilding the same AI-specific components.
 
 ### What Is Actually Repeating?
 
-Repeating work does not always look the same. I have seen two examples often enough to be useful here.
+Repeating work doesn't always look the same. I have seen two examples often enough to be useful here.
 
 Non-engineers such as analysts and product managers use Claude Code or Codex to build something useful, perhaps a dashboard. It works on their machine. Making it available to others means connecting it to company data and deploying it to the company runtime. At Vipps, services follow a contract that engineers receive through the internal developer portal. Using that contract still requires engineering experience, so the platform team helps each new builder through much of the same work.
 
-The second example is simpler. Engineers build AI-powered Slack apps and ask for an API key to an LLM. The request takes little time, but handing out a key does not provide cost attribution, data controls, evaluation, or useful observability.
+The second example is simpler. Engineers build AI-powered Slack apps and ask for an API key to an LLM. The request takes little time, but handing out a key doesn't provide cost attribution, data controls, evaluation, or useful observability.
 
 The work is not identical. The first example repeats deployment support. The second repeats access without the controls other stakeholders need. Both may be platform candidates.
 
-I start by looking for repeated work. Repetition alone is not a reason to build.
+AI Playground removes part of the first problem. A builder visits our internal developer portal, gives an agent a name, and receives a repository with a working agent deployed to the test environment. The builder also receives a starter prompt for a coding agent. The value is not the button in the portal. It is the repeated setup that the template removes.
 
 ### When Does Repeated Work Justify a Shared Solution?
 
 Teams may repeat work because they are still learning. Centralizing it too early can turn useful experiments into a shared solution nobody needs. I would treat repetition as a meaningful constraint only when it blocks a valuable workflow and produces a visible consequence:
 
-- **Incidents and Recovery:** Does the repeated constraint cause preventable incidents, or make incidents harder to detect, contain, and recover from?
-- **Audit Effort:** Does every team have to reconstruct the same evidence differently, and how much effort does that require?
+- **Incidents and recovery:** Does the repeated constraint cause preventable incidents, or make incidents harder to detect, contain, and recover from?
+- **Audit effort:** Does every team have to reconstruct the same evidence differently, and how much effort does that require?
 - **Cost:** What does the constraint cost through duplicated implementation, infrastructure use, waiting, support, and rework?
 - **Reliability:** Do local solutions fail inconsistently, make failures difficult to observe, or make dependable recovery difficult?
 - **Risk:** What are the consequences of getting this work wrong, and how widely could those consequences spread?
 
-There is no useful universal threshold based on the number of teams, agents, models, or requests. Two production agents handling sensitive data may justify shared controls. One hundred experiments may not. The consequences are more important than the count.
-
-### Could the Work Be Removed Instead?
-
-Before I build a shared capability, I should ask whether the workflow or constraint should exist at all. The apparent platform problem may be unclear ownership, missing training, unnecessary variation, a poor procurement choice, or a workflow that should simply be removed.
-
-Calling it a platform problem too early assumes a solution before the cause is understood. Platforms can standardize work that nobody needed.
-
-### Could Documentation, Conventions, or Reusable Libraries Be Enough?
+Before I build a shared capability, I should also ask whether the workflow or constraint should exist at all. The apparent platform problem may be unclear ownership, missing training, unnecessary variation, a poor procurement choice, or a workflow that should simply be removed. Platforms can standardize work that nobody needed.
 
 My next test is whether a simpler solution removes the constraint. The order is important: documentation, a convention, a template, a library, a CLI, and only then a narrow managed capability.
 
-A small team may need no more than a repository template and a CLI. Expensive or risky concerns such as identity, policy, databases, or audit evidence are stronger candidates for a managed service. The goal is to use the simplest option that completes the work.
+A shared capability becomes platform-like when teams choose it as the standard option because it is easier and safer than solving the problem locally. Adoption by mandate can make a platform common without making it useful.
 
-### When Does a Shared Capability Become a Platform?
+Someone still has to own and maintain the shared capability. If that costs more than the coordination and risk it removes, the platform has moved the work instead of creating leverage.
 
-A shared capability becomes platform-like when teams choose it as the standard option because it is easier and safer than solving the problem locally.
-
-That choice is important. Adoption by mandate can make a platform common without making it useful.
-
-I am interested in whether the capability removes enough repeated work to justify the work it creates. Someone still has to own and maintain it. If that costs more than the coordination and risk it removes, the platform has not created leverage. It has moved the work.
-
-The first justified AI platform may therefore be a gateway, evaluation service, policy check, trace convention, cost-attribution layer, or deployment contract. It does not need to begin as one broad integrated product labelled as an AI platform.
-
-### Who Does Not Need an AI Platform?
-
-An AI platform is probably premature when there is only one team, few production workflows, or no valuable use case yet. It is also a poor answer when the real problem is skills, data access, or workflow design.
-
-A team must first understand its work well enough to describe the workflow. Only then can it decide what should be automated and what, if anything, should be shared.
-
-A dedicated AI platform also needs clear ownership, support, upgrades, and a way to replace or remove old versions. That requires ongoing work.
-
-### When Does a Platform Create More Work Than It Removes?
-
-I would worry when adoption depends on a mandate, users wait longer than before, or teams keep forking and bypassing the platform. These signs show that the standard option may be creating more work than it removes.
-
-### How Would I Know the Platform Helped?
-
-To understand whether a platform, or one capability within it, actually helped, I need to compare what happened without it with what happens after it is introduced. If I can measure that difference clearly, I have useful evidence.
-
-Some effects are harder to measure. In those cases, I can ask the people using the platform whether it removed work or merely moved it.
-
-### What Was the Baseline?
-
-Before introducing a shared capability, I need to know how often the constraint occurs. Useful measures include workflow completion time, waiting time, duplicated implementations, incidents, audit effort, and cost per successful outcome.
-
-### What Changed?
-
-After introducing it, I can ask whether more common cases complete without extra help. Waiting time, incidents, audit effort, or cost should improve. Adoption alone tells me only that the capability is being used.
-
-### What New Costs and Risks Did the Platform Introduce?
-
-I also have to count platform staffing, support, maintenance, on-call load, the cost of moving away, and the risk that one failure affects everyone. The original problem may disappear or become less important. If the platform no longer removes enough work to justify its cost, I should be willing to remove it or the parts that no longer help.
-
-A platform needs criteria for removing it as much as it needs a measure of success.
-
-## Chapter 3: What Does "Smallest" Mean?
-
-### Is the Smallest Platform the One With the Fewest Features?
+## Chapter 2: What Does "Smallest" Mean?
 
 It is tempting to measure the size of a platform by counting its features, services, or lines of configuration. By that measure, a YAML file is smaller than a gateway, and a gateway is smaller than a runtime.
 
-A small central contract can force every team to build adapters, reconstruct audit evidence, and explain the same fields differently. A broad managed runtime may replace visible servers with a vendor invoice while creating one failure that affects every team, a permanent on-call responsibility, and a high cost to leave. Both may look small from the platform team's perspective.
+A small central contract can still force every team to build adapters, reconstruct audit evidence, and explain the same fields differently. A broad managed runtime can hide servers behind a vendor invoice while creating a permanent on-call responsibility and a high cost to leave. Both may look small from the platform team's perspective.
 
 I need a definition that counts the work done by the platform team and the teams using the platform:
 
@@ -138,108 +70,119 @@ This gives "smallest" four tests:
 | Test | Question |
 | --- | --- |
 | Outcome | Does it remove the measured constraint and let the intended user complete the job? |
-| Risk | Does it provide the minimum controls required by the data, authority, ability to reverse an action, and possible impact? |
+| Risk | Does it provide the minimum controls required by the data, authority, reversibility, and possible impact? |
 | Total work | Does it reduce central and local integration, support, audit, incident, migration, and exception work? |
 | Change and removal | Can its contracts, state, evidence, and users be changed or retired at an acceptable cost? |
 
 "Smallest" in that sense is the simplest solution that passes all four tests for a particular workflow.
 
-### What Is the Minimum Capability That Must Be Shared?
+### Could the Smallest Platform Begin With a Contract?
 
-We already have an agent runtime and an AI portal, although nobody really asked for either. My current hypothesis is that the first useful shared capability is simpler: a versioned agent contract stored with the code.
+My current candidate is a narrow platform capability built around a versioned agent contract. The contract alone is not the platform. The candidate also includes validation in CI, connections to the systems that own operational facts, and a view in the developer portal.
 
-The contract would describe at least:
+The first workflow I want to test is an internal, read-only agent. Its contract would declare only the information needed to make that workflow accountable and observable:
 
-- who the agent is, why it exists, who owns it, and whether it is experimental, active, or retired
-- what harm it could cause and what kinds of data it handles
-- where it runs and which revision is deployed
-- which model providers, models, and processing regions it may use
-- which tools it may call, what access each tool requires, and whose authority or identity it uses
-- how the agent is evaluated, which evaluation version applies, who owns it, and whether it currently passes
-- how to respond when something goes wrong, whom to contact, and how to disable the agent
-- how to connect each run to its traces, cost, product, and workflow
-- when the agent was last reviewed, when approval expires, and which exceptions were accepted
+- the agent's identity, purpose, owner, and lifecycle
+- its risk class and the kind of data it may use
+- references to approved model access and the application runtime
+- identifiers that connect its runs to cost and traces
+- an evaluation reference
+- an incident contact and instructions for disabling the agent
 
-This is already more than a catalogue entry. It connects the agent to decisions made by delivery, security, finance, compliance, and incident response. Every required field needs a named owner, a source responsible for the fact, a person or system that uses it, and a decision made from it.
+This is smaller than a general contract for every kind of agent. High-impact actions, tool approvals, accepted exceptions, and retained evidence can be added when a workflow requires them. They don't need to be part of the first test.
 
-Where a field comes from is also important. Some facts are **declared** by the team, some are **observed** by CI or the runtime, and some are **confirmed** by an independent owner. These are not interchangeable.
+### Which System Owns Each Fact?
 
-The contract needs checks against its schema, valid and invalid examples, compatibility tests for the systems that use it, and a policy for changing or removing fields. It also needs an owner.
+The contract shouldn't become a second source for facts that another system already knows. It should declare stable information and point to operational facts where they are produced.
 
-The smallest AI-specific addition could be an `Agent` kind or attached metadata that an IDP such as Backstage displays. CI, observability, FinOps, and deployment systems would remain the sources for the facts they already know.
+| Kind of fact | Examples | Source |
+| --- | --- | --- |
+| Declared with the code | Purpose, owner, lifecycle, risk class, allowed data, model-access reference, incident contact | Agent contract |
+| Observed while building or running | Deployed revision, evaluation result, traces, cost | CI, delivery, evaluation, observability, and billing systems |
+| Confirmed by an accountable owner | Approval, accepted exception, review decision, expiry | The system where that decision is made |
+
+The developer portal can combine these facts into one view without copying all of them into the repository. The contract can contain identifiers and requirements. The original systems remain responsible for the current state.
+
+This separation is important. A team can declare which revision it expects to run. Only the delivery system can show which revision is running. A team can reference an evaluation. Only the evaluation system can show whether the current revision passed it.
 
 ### How Should the Minimum Change With Risk?
 
-The controls an agent needs should depend on the consequences of getting it wrong. An experiment using public data and taking no external action does not need the same controls as an agent that moves money or changes production infrastructure.
+The controls an agent needs should depend on the consequences of getting it wrong. An experiment using public data and taking no external action doesn't need the same controls as an agent that moves money or changes production infrastructure.
 
-I find four working classes useful:
+I find four working classes useful. The controls are cumulative. Each class adds to the controls required by the classes above it.
 
-| Class | Example | Minimum shared capability |
+| Class | Example | Additional shared controls |
 | --- | --- | --- |
 | Experiment | Local prototype using synthetic or public data | Owner, purpose, lifecycle, access guidance, and deletion date |
 | Internal read-only | Search, summarization, or drafting with internal data | Data class, provider and region, evaluation reference, trace and cost correlation, and incident contact |
-| Reversible action | Drafts tickets, code changes, or limited transactions for review | Tool permissions, identity for each run, approval rule, rollback, audit log, incident response instructions, and a way to disable the agent |
+| Reviewed action | Drafts a ticket, code change, or transaction for approval | Tool permissions, identity for each run, approval rule, audit log, rollback where possible, incident instructions, and a way to disable the agent |
 | High-impact action | Customer, financial, employment, safety, regulated, or privileged action | Accountable risk owner, formal evaluation threshold, isolation, ongoing monitoring, retained evidence, and independent approval |
 
-This is an operating model I want to test. Each higher class requires more controls. Those controls can still be enforced without one central runtime.
+Reversibility is a separate property. An action can require review and still be difficult to reverse. That consequence should affect its risk class and the controls applied to it.
 
-Each control should be enforced by the last system that can still prevent harm. A missing description can produce a warning. An invalid owner reference can fail CI. Missing approval for a production agent can block deployment. A tool action with serious consequences must be authorized by the downstream system using the identity and authority of that run.
+### Who Defines and Enforces a Control?
 
-This is where a shared AI platform capability begins to make sense. It can define which controls apply, validate them consistently, and connect each control to the system that can still prevent harm. CI, deployment, and downstream systems may perform the enforcement, while the platform gives them a shared contract.
+A shared control has four different responsibilities:
 
-This distinction is important because contracts and enforcement do different jobs. A contract can define vocabulary, validate its structure, maintain compatibility, and support decisions about whether an agent may be deployed. But it cannot stop a running agent from using a credential with too much access.
+| Responsibility | Owner |
+| --- | --- |
+| Decide which outcome is required | The person accountable for the harm or obligation |
+| Define representative cases and evidence | The team that understands the workflow |
+| Encode and validate the shared rule | The platform capability |
+| Prevent a disallowed action | A system that has the context and authority to stop it |
 
-### What Can Be Removed Without Preventing Users From Succeeding?
+The enforcement point must be one the workflow cannot bypass and must have enough context and authority to prevent the harm. A gateway can enforce allowed model providers and processing regions if direct provider access is unavailable. A deployment system can require evaluation evidence before releasing an agent. A downstream service must authorize a business action using the identity and authority of that run.
 
-The useful sequence is:
+The contract connects these decisions. It doesn't replace enforcement. It can't stop a running agent from using a credential with too much access.
 
-> workflow documentation → template → contract → validation checks → deployment controls → gateway → shared runtime
+### Which Interface Is Smallest?
 
-I would start by documenting one valuable workflow and the controls it requires. For an internal read-only agent, the documentation could explain how to request model access, which data the agent may use, how to deploy and evaluate it, how to record its cost and traces, and who to contact if something goes wrong.
-
-If teams can complete the workflow without repeated platform-team help, documentation may be enough. If the same questions or manual steps continue, I would add the next simplest capability. Each new capability should remove a specific repeated task or provide a required control.
-
-This means reusing existing identity, deployment, observability, incident response, billing, and data-governance systems wherever they can do the job. I would add an AI-specific capability only when the existing system cannot provide it without several teams rebuilding the same controls for high-impact work.
-
-When removing a central capability, I also have to count the work this creates for each team. Removing a central evaluation service is not a saving if every team now creates its own scripts.
-
-I want to find the solution that produces the least total work but that still meets the required controls.
-
-### Does the Smallest Platform Need a User Interface?
-
-A platform needs an interface. It does not necessarily need its own graphical interface.
-
-An engineer may need only reviewed YAML with editor and CI feedback. A common repository may need only a template or CLI. Another system needs an API or export, not a new portal page.
-
-Other users have different jobs. A domain expert comparing agent outputs may need a review interface almost immediately. A risk owner may need evidence and approval controls in the existing system where the high-impact action happens. Finance, audit, and incident response may need a view of all agents in an IDP such as Backstage. Giving them raw records would only move the work of connecting those records to them.
-
-The smallest interface is therefore specific to a user and a job:
+A platform needs an interface. It doesn't necessarily need its own graphical interface.
 
 | User and job | Likely first interface |
 | --- | --- |
 | Engineer registers or changes an agent | Versioned file with editor and CI feedback |
-| Engineer creates a common repository | Template or CLI using the same schema |
-| Occasional or non-engineer builder configures a workflow with limited actions | Existing form, low-code interface, chat, or generated pull request |
+| Engineer creates a standard repository | Template or CLI using the same schema |
+| Occasional or non-engineer builder configures a limited workflow | Existing form, low-code interface, chat, or generated pull request |
 | Domain expert evaluates outputs | Review and annotation interface |
 | Risk owner approves an action | Existing approval interface close to the downstream system |
-| Finance, audit, or incident response inspects all agents | Existing portal or report using data from its original sources |
+| Finance, audit, or incident response inspects agents | Existing portal or report using data from the original sources |
 | Another system consumes metadata | API or export |
 
-### Could the Smallest Platform Be a Contract?
+The interface depends on the user and the job. Giving finance or incident response raw records would only move the work of connecting those records to them.
 
-Yes, but only if the contract removes real work.
+## Chapter 3: Where Should the Platform End?
 
-A versioned agent descriptor, validated in CI and displayed through an IDP such as Backstage, could solve ownership, discovery, cost allocation, lifecycle, and evidence problems. Small integrations could send the relevant fields to observability, cost-management, and governance systems.
+The contract gives the candidate a possible beginning. It doesn't decide which capabilities the platform team should own.
 
-This is the simplest possible starting point I can see for the problems described in the first two chapters.
+| Capability | What could be shared | What should remain elsewhere |
+| --- | --- | --- |
+| Model access | Credentials, quotas, cost attribution, trace correlation, and a common interface | Existing identity and secret systems; the workflow team's model choice, prompts, fallback behavior, and product outcome |
+| Tools | Common rules for exposing tools, origin and ownership information, authentication patterns, and audit fields | Business rules, data access, side effects, authorization, support, and repair |
+| Identity | Agent identity metadata, delegated-user context, requested permissions, and a way to revoke access | The existing identity platform issues identities and credentials; the resource owner decides whether a business action is allowed |
+| Evaluation | A common runner, formats, scheduling, history, and reusable evidence | The domain team defines representative cases, possible harm, acceptance levels, and whether a release is good enough |
+| Observability | Shared trace fields that connect models, tools, evaluations, cost, and workflows | The existing observability platform handles the data; the product team defines service levels, alerts, and the meaning of a failure |
+| Deployment | A common description of the agent, its dependencies, evaluation evidence, and rollback reference | The existing delivery platform deploys and runs it; the product team decides when to release and whether a rollback is safe |
 
-I still need to test this hypothesis. The contract fails the test if teams cannot complete the workflow without repeated help, if its data becomes outdated, if every consumer needs a custom adapter, or if a control for a high-impact action can only be applied at runtime. In those cases, the next simplest answer may be a generator, an authorization service, an ai gateway, or an evaluation service.
+The AI platform can define common parts and connect them to systems the organization already uses. Decisions that depend on the workflow should stay with the team that understands it.
 
-The contract also has to be removable. Its versions and consumers should be known. One agent record should be exportable and deletable without affecting the running agent. If catalogue metadata becomes required for execution without a decision, the catalogue has become a runtime dependency.
+An AI gateway or common evaluation service doesn't become necessary because the workflow uses an LLM. I would add one when it removes measured repeated work or provides a required control that the contract and existing systems can't provide.
+
+### When Is a Contract Not Enough?
+
+A contract can be small and still create a large amount of work. Every team may still need to build an adapter, collect evidence, understand errors, and fix outdated information. The contract then describes the work in the same way for every team. It doesn't remove the work.
+
+I would move beyond the contract when teams still need the same help, keep rebuilding the same components, or need a control that only works while the agent is running. The next capability could be a generator, evaluation service, AI gateway, authorization service, or dedicated runtime. The repeated work should decide the priority.
+
+### Should the Platform Own Integrations?
+
+I would start by defining how integrations are exposed. Owning them comes later. A common pattern can describe authentication, timeouts, retries, duplicate requests, versions, traces, ownership, and retirement.
+
+I would move an integration into the platform when several teams need the same stable behavior and someone has the knowledge and time to support it. That owner must be able to diagnose failures in the downstream system, support new versions, respond to incidents, and remove the integration later.
 
 ### What Should the Platform Not Provide?
 
-The platform I am describing should not:
+The candidate I am describing should not:
 
 - define one agent framework, prompt pattern, memory system, or orchestration model
 - own product prompts, domain tools, business evaluation rules, or the definition of acceptable harm
@@ -248,177 +191,91 @@ The platform I am describing should not:
 - force experiments through controls designed for high-impact production actions
 - run agents before repeated runtime problems justify the work required to operate them
 
-These limits are intentional. I would add any one of these capabilities to the platform only after a measured constraint shows that leaving it outside creates more work or risk.
+These limits are intentional. I would add one of these capabilities only after a measured constraint shows that leaving it outside creates more work or risk.
 
-### When Should a Capability Be Reduced, Replaced, or Removed?
+## Chapter 4: How Can the Platform Preserve Freedom?
 
-When I introduce a platform, I should also decide what would make me remove it. I need to understand this before deciding what to add next.
+A useful platform gives teams an easier way to work. It becomes a problem when that way is the only practical option.
 
-I would **reduce it** when a simpler option achieves the same outcome and risk result, most features have no active consumer, the number of exceptions and support requests does not decrease, or agents can run on the existing application platform while their contracts and evidence remain available.
-
-I would **replace it** when an existing platform or supplier provides the capability at lower total cost, the replacement preserves identity and evidence, and a typical agent can move without rebuilding product logic or evaluation data. The comparison must include migration and running both systems during the move.
-
-I would **remove it** when the original constraint has disappeared, no risk obligation or critical consumer remains, usage data shows that no remaining users depend on it, and every real user job has a tested alternative or intentionally no replacement.
-
-Removal is still a product change. It needs retention decisions, migration support, rollback, communication, and money.
-
-That is the standard I want to use here. A small AI platform must count the central work, local work, required controls, and cost of leaving.
-
-## Chapter 4: Where Should the Platform End?
-
-The contract gives the platform a possible beginning. However, it does not tell where the platform should end. Model access, tools, identity, evaluation, observability, and deployment all affect the platform. However, they do not necessarily belong always to the platform team.
-
-| Capability | What could be shared | What should remain elsewhere |
-| --- | --- | --- |
-| Model access | Credentials, quotas, cost attribution, trace correlation, and a common interface | Existing identity and secret systems; the workflow team's model choice, prompts, fallback behavior, and product outcome |
-| Tools | Common rules for making tools available to agents, information about origin and ownership, authentication, and audit fields | Business rules, data access, side effects, authorization, support, and repair |
-| Identity | Agent identity metadata, delegated-user context, requested permissions, and a way to revoke access | The existing identity platform issues identities and credentials; the resource owner decides whether a business action is allowed |
-| Evaluation | A common runner, formats, scheduling, history, and reusable evidence | The domain team defines representative cases, possible harm, acceptance levels, and whether a release is good enough |
-| Observability | Shared trace fields that connect models, tools, evaluations, cost, and workflows | An existing observability platform handles the data; the product team defines service levels, alerts, and the meaning of a failure |
-| Deployment | A common description of the agent, its model, tools, evaluation evidence, running revision, and rollback | The existing delivery platform deploys and runs it; the product team decides when to release and whether a rollback is safe |
-
-The AI platform can define the common parts and connect them to systems the organization already uses. But decisions that depend on the workflow should stay with the team that understands it.
-
-### What Is Necessary From the Beginning?
-
-The first version needs enough information and control to make one real workflow accountable and replaceable. The contract from Chapter 3 already describes the owner, purpose, lifecycle, risk, interfaces, dependencies, requested access, evaluation evidence, traces, cost, deployed revision, rollback, incident contact, exceptions, and a way to leave.
-
-The first version does not need to provide all the systems behind that information. Existing identity systems can issue access. The downstream service can authorize a business action. The observability platform can collect its traces. The developer portal can display information from those systems.
-
-An ai gateway or a common evaluation service do not become necessary because the workflow uses an LLM. I would add those when it removes measured repeated work or provides a required control that the contract and existing systems cannot yet provide.
-
-### When Is a Contract Not Enough?
-
-A contract can be small and still create a large amount of work. Every team may still need to build an adapter, collect evidence, understand errors, and fix outdated information. The contract then describes the work in the same way for every team. It does not remove the work.
-
-To remove work, the contract needs a working implementation, compatibility checks, and information about where each fact came from. It also needs to compare what a team declared with what the systems observed. An agent can say which revision is deployed or which evaluation it passed. The delivery and evaluation systems must confirm it.
-
-I would move beyond the contract when teams still need the same help, when they keep rebuilding the same components, or when a required control can only work while the agent is running. The next capability could be a generator, evaluation service, (ai) gateway, authorization service, or dedicated runtime. The kind of repeated work should decide the priority.
-
-### Where Should Mandatory Controls Be Enforced?
-
-A shared policy and shared enforcement are different choices. Each control should be enforced by a system that cannot be bypassed.
-
-A gateway can enforce which model providers and regions are allowed because it controls that connection. A deployment system can require evaluation evidence before releasing an agent.
-
-The AI platform can connect these controls without making decisions it doesn't understand. A contract or catalogue entry can describe the required authority. However, it can't prove that a running action is allowed.
-
-### Should the Platform Own Integrations?
-
-I would start by defining how integrations are exposed. Owning them comes later. A common pattern can describe authentication, timeouts, retries, duplicate requests, versions, traces, ownership, and retirement.
-
-I would move an integration into the platform when several teams need the same stable behavior and someone has the knowledge and time to support it. That owner must be able to diagnose failures in the downstream system, support new versions, respond to incidents, and remove the integration later.
-
-### Where Does MCP Belong?
-
-MCP changes how a tool is exposed but doesn't change who understands the tool.
-
-The platform can define which parts of MCP it supports, how servers are registered, how identity is passed, which evidence is recorded, which minimum isolation applies, and how compatibility is tested. The team that understands the tool's inputs, side effects, permissions, and failures should still own the tool and the system behind it.
-
-The same boundary should apply to an MCP tool and an ordinary API integration. Finding a tool through MCP does not grant access to it. The downstream system still needs to check the current identity, permission, approval, and state before performing an action.
-
-### Should the AI Platform Own the Agent Catalogue?
-
-I do not see a reason to build a separate AI catalogue yet. The AI platform can define and validate agent-specific metadata, then publish it into the existing developer platform such as Backstage.
-
-I would try to extend the developer platform people already use and measure what remains missing. A separate AI catalogue may become useful if the existing platform cannot represent the agent lifecycle or the evidence people need.
-
-### Chapter 5: How Can the Platform Preserve Freedom?
-
-A useful platform give teams an easier way to work. It becomes a problem for them when that way is the only way they can use. If teams cannot change the platform and use a different way to do their work, for whatever reason that might be important for them, it may remove repeated work, yes, but only by limiting their choices.
-
-I thought first that teams could use standard options first, configuration over convention, then eventually leave the platform and build something else later if necessary.
-
-But being free to leave may not be enough. A team may depend on the platform for model access, deployment, observability, support, and cost attribution. If the team loses these when it chooses something else, it must rebuild the surrounding work first. The freedom exists, but it is not very practical.
+A team may depend on the platform for model access, deployment, observability, support, and cost attribution. If the team loses these when it chooses something else, it must rebuild the surrounding work first. The freedom to leave exists, but the path may be too expensive to use.
 
 Freedom needs a usable path forward.
 
-### How Can Teams Stop Using the Platform?
+### How Can Teams Change or Extend the Platform?
 
-The platform team should make the standard way of working easier without leaving teams unsupported when they need something different. A team with different needs should be able to provide the same required outcomes through another implementation. This means separating the description of the workflow from the platform.
-
-However, leaving a platform still creates a lot of work. Prompts, tool schemas, evaluations, configuration, state, logs, and retained evidence may need to move or be recreated. Old access needs to be revoked, etc. The team may need to run both options during migration and a little while later.
-
-The platform has not preserved freedom by hiding this work. It preserves freedom by making the work visible, supported, and possible.
-
-A practical alternative path would therefore need:
-
-- the same access to existing identity, deployment, observability, incident response, and cost systems
-- a way to show that required controls still work
-- an export or reconstruction plan for the state and evidence the workflow depends on
-- a named owner and budget for migration and temporary parallel operation
-- a way to revoke the old path and return if the replacement fails
-
-An exception should not mean that a team is left alone. If only the standard platform receives normal support and audit recognition, using another implementation is not a real choice.
-
-### Can Teams Change or Extend the Platform?
-
-I would want three paths for a need the platform does not yet support:
+I would want three paths for a need the platform doesn't yet support:
 
 | Path | When it fits |
 | --- | --- |
-| Local extension | One workflow needs a provider-specific field, adapter, or check that does not change the shared contract |
+| Local extension | One workflow needs a provider-specific field, adapter, or check that doesn't change the shared contract |
 | Shared contribution | Several teams need the same capability and someone can maintain it as part of the platform |
-| Alternative implementation | The need does not fit the platform's direction, but the workflow can still provide the required outcomes |
+| Alternative implementation | The need doesn't fit the platform's direction, but the workflow can still provide the required outcomes |
 
-The shared contract needs versioning and compatibility rules so that one contribution does not break every consumer. Local extensions should be visible and namespaced so they do not pretend to be portable. A shared contribution needs an owner, support expectations, tests, and a way to remove it later.
+The shared contract needs versioning and compatibility rules so that one contribution doesn't break every consumer. Local extensions should be visible and namespaced. A shared contribution needs an owner, support expectations, tests, and a way to remove it later.
 
-The platform team may still reject a contribution. It may create too much support work, weaken a boundary, or serve only one workflow. That can be a reasonable decision. The team proposing it should still have a supported way forward when the required controls can be met another way.
+The platform team may still reject a contribution because it creates too much support work, weakens a boundary, or serves only one workflow. The team proposing it should still have a supported way forward when the required controls can be met another way.
 
 Freedom includes the ability to leave. It also includes the ability to improve the system people still choose to use.
 
-### Who Decides What Is Mandatory?
+### How Can Teams Stop Using the Platform?
 
-The word "mandatory" can mean different kinds of decisions. The platform team can explain what its standard path supports. The person accountable for the harm or obligation should decide which outcome is required. The team that understands the workflow should help define the evidence. An exception should have a named decision maker, a reason, and an expiry.
+Leaving still creates work. Prompts, tool schemas, evaluations, configuration, state, logs, and retained evidence may need to move or be recreated. Old access needs to be revoked. The team may need to run both options during migration.
 
-This makes the source visible. It also gives the organization a way to review risk, workflow, or available technology changes.
+The platform preserves freedom by making this work visible, supported, and possible. A practical alternative path needs:
 
-### How Can Mandatory Controls Leave Room for Another Path?
+- access to the existing identity, deployment, observability, incident response, and cost systems
+- a way to show that required controls still work
+- an export or reconstruction plan for state and evidence
+- a named owner and budget for migration and temporary parallel operation
+- a way to revoke the old path and return if the replacement fails
 
-Engineering freedom does not make every choice optional. One team's local choice can create incident, security, privacy, audit, and support work for everyone else.
+An exception shouldn't mean that a team is left alone. If only the standard platform receives normal support and audit recognition, using another implementation is not a real choice.
 
-The platform should describe what each control must achieve. For each mandatory control, I would want to know:
+### When Should a Capability Be Removed?
 
-- which harm or accepted risk requires it
-- who owns the decision
-- which action or data it protects
-- what evidence shows that it worked
-- where it can still prevent the harm
-- when it must be reviewed or removed
-- how another implementation can provide equivalent evidence
-- how an exception is requested, decided, recorded, and expired
+I would reduce a capability when a simpler option achieves the same outcome and risk result. I would replace it when another option provides the capability at lower total cost and preserves the information needed to move. I would remove it when the original constraint has disappeared and every remaining user has a tested alternative or intentionally needs no replacement.
 
-An alternative implementation should pass the same outcome and evidence checks.
+Removal is still a product change. It needs retention decisions, migration support, rollback, communication, and a budget. The cost of leaving is part of the cost of the platform.
 
-## Chapter 6: Can a Prototype Show Whether the Smallest Platform Works?
+## Chapter 5: Can a Prototype Show Whether the Candidate Works?
 
-### Can a Contract Be Enough?
-
-My current hypothesis is a versioned agent contract stored with the code, validated in CI and displayed through systems the organization already operates. It should not require a new portal or a shared agent runtime.
-
-I will test this with one internal, read-only agent and one end-to-end workflow:
+My current candidate is a versioned agent contract stored with the code, validated in CI, connected to the systems that own operational facts, and displayed through the existing developer portal. I want to test it with one internal, read-only agent and one end-to-end workflow:
 
 1. An engineer creates or changes the agent from a repository.
-2. CI validates its identity, owner, purpose, lifecycle, risk class, model access, evaluation reference, runtime reference, cost identifier, trace identifier, incident response instructions, and a way to disable it.
-3. The existing developer portal displays the contract and links to the systems that contain the runtime, evaluation, cost, trace, and incident information.
-4. The agent continues to run on the existing application platform.
+2. CI validates its declared identity, owner, purpose, lifecycle, risk class, data class, model-access reference, runtime reference, cost identifier, trace identifier, evaluation reference, incident contact, and disable instructions.
+3. Delivery, evaluation, observability, and billing systems provide the facts they observe.
+4. The existing developer portal combines the declarations, current facts, and links to their sources.
+5. The agent continues to run on the existing application platform.
 
-The prototype succeeds only if the engineer can complete the standard workflow without repeated platform-team help, finance can attribute the cost, and an incident responder can find the owner, running revision, traces, incident response instructions, and a way to disable the agent without reconstructing them by hand.
+The candidate succeeds only if the engineer can complete the standard workflow without repeated platform-team help, finance can attribute the cost, and an incident responder can find the owner, running revision, traces, incident instructions, and a way to disable the agent without reconstructing them by hand.
 
-Before building it, I need a baseline:
+Before building it, I need a baseline for the work it is meant to remove:
 
 - time from repository creation to a registered and observable deployment
-- number of manual platform-team interactions
+- waiting time and number of manual platform-team interactions
 - time needed to attribute the agent's model cost
 - time needed to identify the running revision, owner, and incident procedure
 
-The contract is not the answer just because it is small. It fails if its data becomes outdated, every consumer needs a custom adapter, teams still need repeated help, or controls for high-impact actions can only be enforced at runtime. In those cases, the next simplest answer may be a generator, an ai gateway, or an evaluation service.
+I also need to measure the work the candidate creates:
+
+- time spent building, maintaining, supporting, and operating the shared capability
+- local integration, adapter, evidence, and exception work for each team
+- number of stale or conflicting facts and the time needed to correct them
+- ongoing infrastructure and supplier cost per registered agent
+- number of bypasses, forks, and unsupported workflows
+- estimated work required to export, replace, or remove the capability
+
+The candidate fails if documentation or a template would remove the same work, if its data becomes unreliable, if every consumer needs a custom adapter, if teams still need repeated help, or if it creates more total work than it removes. It also fails for a workflow whose required controls can only be enforced while the agent is running.
+
+The result may show that the candidate is too broad. It may also show that a contract isn't enough and that the next useful capability is a generator, AI gateway, authorization service, or evaluation service.
 
 ## Conclusion
 
-My answer is not final until I test the prototype with an actual workflow.
+I don't know the answer until I test the candidate with an actual workflow.
 
-For now, the smallest AI platform that could possibly work is not a smaller copy of a broad platform. It is a versioned contract for one repeated and valuable workflow, connected to systems the organization already operates, with only the controls that the workflow requires.
+My current candidate is not a smaller copy of a broad AI platform. It is a narrow shared capability built around a versioned contract, connected to systems the organization already operates, with only the controls required by the first workflow.
+
+The prototype should be able to prove this candidate wrong. That is how I can learn whether it is a platform that removes repeated work, a contract that only describes the work, or more capability than the workflow needs.
 
 ## Emerging Principle
 
