@@ -394,8 +394,6 @@ An alternative implementation should pass the same outcome and evidence checks.
 
 ### Can a Contract Be Enough?
 
-A definition is useful, but it does not show whether the platform really removes work. I need to build the smallest version and measure the work it removes and creates.
-
 My current hypothesis is a versioned agent contract stored with the code, validated in CI and displayed through systems the organization already operates. It should not require a new portal or a shared agent runtime.
 
 I will test this with one internal, read-only agent and one end-to-end workflow:
@@ -413,23 +411,14 @@ Before building it, I need a baseline:
 - number of manual platform-team interactions
 - time needed to attribute the agent's model cost
 - time needed to identify the running revision, owner, and incident procedure
-- local adapters or duplicate records required outside the contract
 
-The contract is not the answer merely because it is small. It fails if its data becomes outdated, every consumer needs a custom adapter, teams still need repeated help, or controls for high-impact actions can only be enforced at runtime. In those cases, the next simplest answer may be a generator, a narrow authorization service, a gateway, or an evaluation service.
-
-I should also be able to delete the contract without stopping the agent. If I cannot, it is a runtime dependency rather than only metadata.
+The contract is not the answer just because it is small. It fails if its data becomes outdated, every consumer needs a custom adapter, teams still need repeated help, or controls for high-impact actions can only be enforced at runtime. In those cases, the next simplest answer may be a generator, an ai gateway, or an evaluation service.
 
 ## Conclusion
 
 My answer is not final until I test the prototype with an actual workflow.
 
 For now, the smallest AI platform that could possibly work is not a smaller copy of a broad platform. It is a versioned contract for one repeated and valuable workflow, connected to systems the organization already operates, with only the controls that the workflow requires.
-
-The smallest platform is not the one with the fewest features. It is the shared capability that removes more total work than it creates and remains affordable to change or leave.
-
-A contract may satisfy that definition. Building it may prove that it does not.
-
-The AI-specific parts of this answer will change. Four questions are likely to remain useful for longer: Does the platform produce the outcome? Does it meet the minimum required controls? Does it reduce total work? Can people still change it or leave?
 
 ## Emerging Principle
 
