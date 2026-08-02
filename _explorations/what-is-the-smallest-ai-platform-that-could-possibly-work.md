@@ -5,7 +5,11 @@ excerpt: When does repeated work justify an AI platform? I explore the smallest 
 published: true
 ---
 
-# What Is the Smallest (AI) Platform That Could Possibly Work?
+<article class="exploration-article" markdown="1">
+
+<header class="exploration-hero">
+  <h1>What Is the Smallest (AI) Platform That Could Possibly Work?</h1>
+</header>
 
 At Vipps, one of the most common requests I see is access to LLMs. Giving an engineer an API key is easy. It solves the immediate access problem. However, it doesn't show finance which team created the cost, help compliance understand where the data goes, or give incident response a way to observe the system.
 
@@ -13,7 +17,12 @@ There is always additional work that often comes later, sometimes weeks after th
 
 I am using AI agents as the current case. By agents, I mean software built with LLMs, skills, and integrations with internal or external tools.
 
-## Chapter 1: What Problem Would a Platform Solve?
+<div class="chapter-heading">
+  <span class="chapter-heading__number" aria-hidden="true">01</span>
+  <div>
+    <h2 id="what-problem-would-a-platform-solve">What Problem Would a Platform Solve?</h2>
+  </div>
+</div>
 
 Organizations want engineers and non-engineers to build useful agents to become either more productive or to create new products. As more people build such agents in whatever form, the same needs and demands appear. Developers need model access and evaluation tools. Finance wants to know which team created what cost. Compliance wants control over data flows and audit evidence. Incident response wants a system it can observe, and the list goes on.
 
@@ -30,9 +39,22 @@ Even then, the answer may be to extend an existing platform. I would consider a 
 
 Repeating work doesn't always look the same. I have seen two examples often enough to be mentioned here.
 
-Non-engineers such as analysts and product managers use Claude Code or Codex to build "something", perhaps a dashboard. It works on their machine, fantastic. Making it available to others means deploying it to the company runtime environment. At Vipps, services follow a contract that engineers receive through the internal developer portal. Using that contract still requires engineering experience which most non-engineers not have. Those people need the platform team to do lots of manual work. Even though I'm only mentioning the deployment part here, there are many other challenges such as the quality of the solution, etc.
-
-The second example is simpler. Engineers build AI-powered Slack apps and ask for an API key to an LLM. The request takes little time, but handing out a key doesn't show which team created each cost or provide data controls, evaluation, or useful observability.
+<div class="scenario-grid">
+  <div class="scenario-card">
+    <p class="scenario-card__number">Pattern 01</p>
+    <h4>Deployment support repeats</h4>
+    <p>Analysts and product managers use Claude Code or Codex to build something—perhaps a dashboard. It works on their machine. Making it available to others means deploying it to the company runtime environment.</p>
+    <p>At Vipps, services follow a contract available through the internal developer portal. Using it still requires engineering experience, so the platform team repeatedly provides manual help.</p>
+    <p class="scenario-card__signal"><strong>Signal:</strong> the same setup and translation work returns with every new builder.</p>
+  </div>
+  <div class="scenario-card">
+    <p class="scenario-card__number">Pattern 02</p>
+    <h4>Access without controls repeats</h4>
+    <p>Engineers build AI-powered Slack apps and ask for an API key to an LLM. The request itself takes little time.</p>
+    <p>But handing out a key doesn't show which team created each cost or provide data controls, evaluation, or useful observability.</p>
+    <p class="scenario-card__signal"><strong>Signal:</strong> easy access creates the same unanswered operational questions.</p>
+  </div>
+</div>
 
 The first example repeats deployment support. The second repeats access without the controls other stakeholders need. Both are problems a platform might solve.
 
@@ -46,11 +68,16 @@ Before I build a shared service for several teams, I should also ask whether the
 
 My next test is important for me:
 
-> I ask myself whether a simpler solution solves the problem. The order is important: documentation, a convention, a template, a library, a CLI, and only then a concrete managed service.
+> **The order matters.** Start with documentation. If that isn't enough, establish a convention, then consider a template, a library, or a CLI. Build a managed service only when the simpler interventions cannot remove the repeated work.
 
 A service starts to act like a platform when several teams choose it because it is easier and safer than solving the problem on their own.
 
-## Chapter 2: What Is the Smallest Platform, and Where Should It End?
+<div class="chapter-heading">
+  <span class="chapter-heading__number" aria-hidden="true">02</span>
+  <div>
+    <h2 id="what-is-the-smallest-platform">What Is the Smallest Platform, and Where Should It End?</h2>
+  </div>
+</div>
 
 It is simple to measure the size of a platform by counting its features, services, or lines of configuration. By that measure, a versioned configuration file looks smaller than a feature, or a service like a gateway.
 
@@ -60,12 +87,28 @@ Here is a possible definition for a smallest useful AI platform:
 
 This gives "smallest" four tests:
 
-| Test | Question |
-| --- | --- |
-| Outcome | Does it solve the measured problem and let the intended user complete the job? |
-| Risk | Does it provide the minimum controls required by the data, authority, reversibility, and possible impact? |
-| Total work | Does it reduce central and local integration, support, audit, incident, migration, and exception work? |
-| Change and removal | Can its contracts, state, evidence, and users be changed or retired at an acceptable cost? |
+<div class="test-grid">
+  <div class="test-card">
+    <p class="test-card__number">01</p>
+    <h4>Outcome</h4>
+    <p>Does it solve the measured problem and let the intended user complete the job?</p>
+  </div>
+  <div class="test-card">
+    <p class="test-card__number">02</p>
+    <h4>Risk</h4>
+    <p>Does it provide the minimum controls required by the data, authority, reversibility, and possible impact?</p>
+  </div>
+  <div class="test-card">
+    <p class="test-card__number">03</p>
+    <h4>Total work</h4>
+    <p>Does it reduce central and local integration, support, audit, incident, migration, and exception work?</p>
+  </div>
+  <div class="test-card">
+    <p class="test-card__number">04</p>
+    <h4>Change and removal</h4>
+    <p>Can its contracts, state, evidence, and users be changed or retired at an acceptable cost?</p>
+  </div>
+</div>
 
 "Smallest" in that sense is the simplest solution that passes all four tests for a particular workflow.
 
@@ -86,6 +129,29 @@ I use a simple, internal, and read-only agent to define the initial scope. Its c
 
 This is smaller than a general contract for every kind of agent. High-impact actions, tool approvals, accepted exceptions, and retained evidence can be added when a workflow requires them. They don't need to be part of the initial scope.
 
+<div class="prototype" markdown="1">
+<p class="prototype__label">Prototype 0.1 · agent.yaml</p>
+
+```yaml
+agent:
+  name: settlement-explainer
+  owner: payments
+  purpose: explain settlement deviations
+  lifecycle: experimental
+  risk: internal-read-only
+  allowed_data: internal
+  model_access: approved-eu-provider
+  runtime: application-platform
+  cost_id: payments-settlement
+  trace_id: settlement-explainer
+  evaluation: evals/settlement.yaml
+  incident_contact: payments-on-call
+  disable: runbooks/disable-agent.md
+```
+
+<p class="prototype__caption">The contract declares only what is needed to make one internal, read-only workflow accountable and observable.</p>
+</div>
+
 ### Which System Owns Each Fact?
 
 The contract shouldn't become a second source for facts that another system already knows. It should declare stable information and point to operational facts where they are produced.
@@ -100,11 +166,13 @@ A developer portal can combine these facts into one view without copying all of 
 
 ### How Would This Platform Work?
 
-1. An engineer creates or changes the agent and its contract in a repository.
-2. CI validates its identity, owner, purpose, lifecycle, risk class, data class, model-access reference, runtime reference, cost and trace identifiers, evaluation reference, incident contact, and disable instructions.
-3. Delivery, evaluation, observability, and billing systems provide the facts they observe.
-4. The existing developer portal combines the declarations, current facts, and links to their sources.
-5. The agent continues to run on the existing runtime environment.
+1. An engineer creates or changes the agent and its contract in the same repository.
+2. CI validates the declared identity, ownership, risk, data class, operational references, incident contact, and disable instructions.
+3. Delivery, evaluation, observability, and billing systems continue to produce and own their operational facts.
+4. The developer portal brings the declarations, current facts, and links to their sources into one view.
+5. The agent continues to run on the existing application runtime; the AI platform does not introduce a new runtime.
+
+The platform connects information that already exists. It doesn't take ownership away from the systems that produce it.
 
 ### How Should the Minimum Change With Risk?
 
@@ -146,7 +214,12 @@ An AI gateway or shared evaluation service doesn't become necessary because the 
 
 The contract is no longer enough when teams still need the same help, its information becomes unreliable, or every system needs a custom adapter. The next addition could then be a generator, AI gateway, authorization service, evaluation service, or dedicated runtime.
 
-## Chapter 3: How Can the Platform Preserve Freedom?
+<div class="chapter-heading">
+  <span class="chapter-heading__number" aria-hidden="true">03</span>
+  <div>
+    <h2 id="how-can-the-platform-preserve-freedom">How Can the Platform Preserve Freedom?</h2>
+  </div>
+</div>
 
 A useful platform gives teams an easier way to work. It becomes a problem when that way is the only practical way or option.
 
@@ -183,7 +256,4 @@ This platform doesn't need its own agent runtime, AI gateway, evaluation service
 Its leverage comes from removing repeated setup, coordination, and evidence work. It preserves engineering freedom by leaving product decisions with the teams that understand the workflow and by allowing another implementation to provide the same required outcomes.
 
 The smallest platform is therefore the one that removes the most repeated work while creating the least new ownership and remaining possible to change, replace, or remove.
-
-## Emerging Principle
-
-> Build a platform only when it removes more total work than it creates.
+</article>
