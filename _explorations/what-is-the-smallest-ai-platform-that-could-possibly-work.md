@@ -9,7 +9,7 @@ published: false
 
 At Vipps, one of the most common requests I see is access to LLMs. Giving an engineer an API key is easy. It solves the immediate access problem. However, it doesn't show finance which team created the cost, help compliance understand where the data goes, or give incident response a way to observe the system.
 
-The difference between giving someone access and handling everything around it made me ask two questions. When does recurring work justify a shared platform? And if it does, what is the smallest platform that could possibly work?
+The difference between giving someone access and handling everything around it made me ask two questions. When does recurring work justify a platform used by several teams? And if it does, what is the smallest platform that could possibly work?
 
 I am using AI agents as the current case. By agents, I mean software built with LLMs, skills, and integrations with internal or external tools.
 
@@ -21,7 +21,7 @@ None of these requests alone justifies an AI platform. One team asking for model
 
 I start seeing a platform problem when teams repeatedly need the same access controls, a way to connect costs to the teams that created them, evaluation, observability, or audit evidence. At that point, solving every use case separately creates more work, inconsistent controls, or unnecessary risk.
 
-A company may have many experiments and no platform problem. The same company may have only two agents in production that handle sensitive data and already need strict controls. The difference is whether the same problem keeps appearing, what happens when it is ignored, and whether a shared solution would remove more work than it creates.
+A company may have many experiments and no platform problem. The same company may have only two agents in production that handle sensitive data and already need strict controls. The difference is whether the same problem keeps appearing, what happens when it is ignored, and whether solving it once for several teams would remove more work than it creates.
 
 Even then, the answer may be to extend a platform that already exists. I would consider a dedicated AI platform only when existing systems can't solve the repeated problem without every team rebuilding the same AI-specific components.
 
@@ -37,23 +37,23 @@ The work is not identical. The first example repeats deployment support. The sec
 
 AI Playground removes part of the first problem. A (non-)engineer visits our internal developer portal, gives an agent a name, and receives a repository with a working agent deployed to the test environment. The (non-)engineer also receives a starter prompt for a coding agent. The value is the repeated setup that the template removes.
 
-### When Does Repeated Work Justify a Shared Solution?
+### When Should Several Teams Use the Same Service?
 
-Teams may repeat work because they are still learning. Centralizing it too early can turn useful experiments into a shared solution nobody needs. I would consider repeated work a problem only when it blocks a valuable workflow and produces a visible consequence:
+Teams may repeat work because they are still learning. Centralizing some work too early can transform experiments into solutions nobody has asked for and needs. I would consider repeated work as a problem when the work  blocks a workflow and produces a visible consequence. Here are a few ideas of such works:
 
-- **Incidents and recovery:** Does the repeated work cause preventable incidents, or make incidents harder to detect, contain, and recover from?
-- **Audit effort:** Does every team have to reconstruct the same evidence differently, and how much effort does that require?
+- **Incidents and recovery:** Does the repeated work cause incidents that could have been prevented, or make them harder to find, stop, and recover from?
+- **Audit effort:** Does every team have to gather the same information for an audit, and how much work does that create?
 - **Cost:** How much does the repeated work cost through duplicated implementation, infrastructure use, waiting, support, and rework?
-- **Reliability:** Do local solutions fail inconsistently, make failures difficult to observe, or make dependable recovery difficult?
-- **Risk:** What are the consequences of getting this work wrong, and how widely could those consequences spread?
+- **Reliability:** Do teams' own solutions fail in different ways or make it hard to recover from?
+- **Risk:** If this work goes wrong, what could happen, and how many people or systems could be affected?
 
-Before I build a shared solution, I should also ask whether the workflow is needed or whether the repeated work can be removed. The apparent platform problem may be unclear ownership, missing training, unnecessary variation, a poor procurement choice, or a workflow that should simply be removed. Platforms can standardize work that nobody needed.
+Before I build a service for several teams, I should also ask whether the workflow is needed or whether the repeated work can be removed. The apparent platform problem may be unclear ownership, missing training, or a workflow that should simply be removed. Platform teams can standardize work that nobody needed.
 
-My next test is whether a simpler solution solves the problem. The order is important: documentation, a convention, a template, a library, a CLI, and only then a narrow managed service.
+My next test is whether a simpler solution solves the problem. The order is important: documentation, a convention, a template, a library, a CLI, and only then a concrete managed service.
 
-A shared solution becomes platform-like when teams choose it as the standard option because it is easier and safer than solving the problem locally. Adoption by mandate can make a platform common without making it useful.
+A service starts to act like a platform when several teams choose it because it is easier and safer than solving the problem on their own. Adoption by mandate can make a platform common without making it useful.
 
-Someone still has to own and maintain the shared solution. If that costs more than the coordination and risk it removes, the platform has moved the work instead of creating leverage.
+Someone still has to own and maintain that service. If that costs more than the coordination and risk it removes, the platform has moved the work instead of creating leverage.
 
 ## Chapter 2: What Does "Smallest" Mean?
 
@@ -63,7 +63,7 @@ A small central contract can still force every team to build adapters, reconstru
 
 I need a definition that counts the work done by the platform team and the teams using the platform:
 
-> The smallest useful AI platform is the shared solution that creates the least total work, lets a defined group complete one valuable workflow, meets the minimum required controls, and remains cheaper to change or remove than the repeated work it removes.
+> The smallest useful AI platform is the system that creates the least total work, lets a defined group complete one valuable workflow, meets the minimum required controls, and remains cheaper to change or remove than the repeated work it removes.
 
 This gives "smallest" four tests:
 
@@ -111,7 +111,7 @@ The controls an agent needs should depend on the consequences of getting it wron
 
 I find four working classes useful. The controls are cumulative. Each class adds to the controls required by the classes above it.
 
-| Class | Example | Additional shared controls |
+| Class | Example | Additional controls |
 | --- | --- | --- |
 | Experiment | Local prototype using synthetic or public data | Owner, purpose, lifecycle, access guidance, and deletion date |
 | Internal read-only | Search, summarization, or drafting with internal data | Data class, provider and region, evaluation reference, a way to connect each run to its traces and cost, and an incident contact |
@@ -122,13 +122,13 @@ Reversibility is a separate property. An action can require review and still be 
 
 ### Who Defines and Enforces a Control?
 
-A shared control has four different responsibilities:
+A control used by several teams has four different responsibilities:
 
 | Responsibility | Owner |
 | --- | --- |
 | Decide which outcome is required | The person accountable for the harm or obligation |
 | Define representative cases and evidence | The team that understands the workflow |
-| Encode and validate the shared rule | The platform |
+| Encode and validate the rule | The platform |
 | Prevent a disallowed action | A system that has the context and authority to stop it |
 
 The enforcement point must be one the workflow cannot bypass and must have enough context and authority to prevent the harm. A gateway can enforce allowed model providers and processing regions if direct provider access is unavailable. A deployment system can require evaluation evidence before releasing an agent. A downstream service must authorize a business action using the identity and authority of that run.
@@ -155,13 +155,13 @@ The interface depends on the user and the job. Giving finance or incident respon
 
 The contract gives the candidate a possible beginning. It doesn't decide which parts the platform team should own.
 
-| Area | What could be shared | What should remain elsewhere |
+| Area | What the platform could provide | What should remain elsewhere |
 | --- | --- | --- |
 | Model access | Credentials, quotas, a way to connect model usage, costs, and traces to each team, and a common interface | Existing identity and secret systems; the workflow team's model choice, prompts, fallback behavior, and product outcome |
 | Tools | Common rules for exposing tools, origin and ownership information, authentication patterns, and audit fields | Business rules, data access, side effects, authorization, support, and repair |
 | Identity | Agent identity metadata, delegated-user context, requested permissions, and a way to revoke access | The existing identity platform issues identities and credentials; the resource owner decides whether a business action is allowed |
 | Evaluation | A common runner, formats, scheduling, history, and reusable evidence | The domain team defines representative cases, possible harm, acceptance levels, and whether a release is good enough |
-| Observability | Shared trace fields that connect models, tools, evaluations, cost, and workflows | The existing observability platform handles the data; the product team defines service levels, alerts, and the meaning of a failure |
+| Observability | Standard trace fields that connect models, tools, evaluations, cost, and workflows | The existing observability platform handles the data; the product team defines service levels, alerts, and the meaning of a failure |
 | Deployment | A common description of the agent, its dependencies, evaluation evidence, and rollback reference | The existing delivery platform deploys and runs it; the product team decides when to release and whether a rollback is safe |
 
 The AI platform can define common parts and connect them to systems the organization already uses. Decisions that depend on the workflow should stay with the team that understands it.
@@ -207,11 +207,11 @@ I would want three paths for a need the platform doesn't yet support:
 
 | Path | When it fits |
 | --- | --- |
-| Local extension | One workflow needs a provider-specific field, adapter, or check that doesn't change the shared contract |
-| Shared contribution | Several teams need the same addition and someone can maintain it as part of the platform |
+| Local extension | One workflow needs a provider-specific field, adapter, or check that doesn't change the main contract |
+| Platform contribution | Several teams need the same addition and someone can maintain it as part of the platform |
 | Alternative implementation | The need doesn't fit the platform's direction, but the workflow can still provide the required outcomes |
 
-The shared contract needs versioning and compatibility rules so that one contribution doesn't break every consumer. Local extensions should be visible and namespaced. A shared contribution needs an owner, support expectations, tests, and a way to remove it later.
+The contract used by every team needs versioning and compatibility rules so that one contribution doesn't break every consumer. Local extensions should be visible and namespaced. A platform contribution needs an owner, support expectations, tests, and a way to remove it later.
 
 The platform team may still reject a contribution because it creates too much support work, weakens a boundary, or serves only one workflow. The team proposing it should still have a supported way forward when the required controls can be met another way.
 
@@ -258,12 +258,12 @@ Before building it, I need a baseline for the work it is meant to remove:
 
 I also need to measure the work the candidate creates:
 
-- time spent building, maintaining, supporting, and operating the shared solution
+- time spent building, maintaining, supporting, and operating the service
 - local integration, adapter, evidence, and exception work for each team
 - number of stale or conflicting facts and the time needed to correct them
 - ongoing infrastructure and supplier cost per registered agent
 - number of bypasses, forks, and unsupported workflows
-- estimated work required to export, replace, or remove the solution
+- estimated work required to export, replace, or remove the service
 
 The candidate fails if documentation or a template would remove the same work, if its data becomes unreliable, if every consumer needs a custom adapter, if teams still need repeated help, or if it creates more total work than it removes. It also fails for a workflow whose required controls can only be enforced while the agent is running.
 
@@ -273,7 +273,7 @@ The result may show that the candidate is too broad. It may also show that a con
 
 I don't know the answer until I test the candidate with an actual workflow.
 
-My current candidate is not a smaller copy of a broad AI platform. It is a narrow shared solution built around a versioned contract, connected to systems the organization already operates, with only the controls required by the first workflow.
+My current candidate is not a smaller copy of a broad AI platform. It is a narrow service built around a versioned contract, connected to systems the organization already operates, with only the controls required by the first workflow.
 
 The prototype should be able to prove this candidate wrong. That is how I can learn whether it is a platform that removes repeated work, a contract that only describes the work, or more than the workflow needs.
 
