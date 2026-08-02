@@ -395,6 +395,19 @@ section #title p {
   text-shadow: none;
 }
 
+.chapter-heading--compact {
+  grid-template-columns: clamp(52px, 9vw, 76px) 1fr;
+  gap: 16px;
+}
+
+.chapter-heading--compact .chapter-heading__number {
+  font-size: clamp(3rem, 8vw, 4.75rem);
+}
+
+.chapter-heading--compact h2 {
+  font-size: clamp(1.45rem, 3.5vw, 2.1rem);
+}
+
 .exploration-article h3 {
   margin-top: 48px;
 }

@@ -1,6 +1,6 @@
 ---
 title: What Is the Smallest (AI) Platform That Could Possibly Work?
-date: 2026-07-27
+date: 2026-08-03
 excerpt: When does repeated work justify an AI platform? I explore the smallest platform that could remove that work without creating more ownership or limiting teams' freedom to change direction.
 published: true
 ---
@@ -17,7 +17,7 @@ There is always additional work that often comes later, sometimes weeks after th
 
 I am using AI agents as the current case. By agents, I mean software built with LLMs, skills, and integrations with internal or external tools.
 
-<div class="chapter-heading">
+<div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">01</span>
   <div>
     <h2 id="what-problem-would-a-platform-solve">What Problem Would a Platform Solve?</h2>
@@ -72,7 +72,7 @@ My next test is important for me:
 
 A service starts to act like a platform when several teams choose it because it is easier and safer than solving the problem on their own.
 
-<div class="chapter-heading">
+<div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">02</span>
   <div>
     <h2 id="what-is-the-smallest-platform">What Is the Smallest Platform, and Where Should It End?</h2>
@@ -214,7 +214,7 @@ An AI gateway or shared evaluation service doesn't become necessary because the 
 
 The contract is no longer enough when teams still need the same help, its information becomes unreliable, or every system needs a custom adapter. The next addition could then be a generator, AI gateway, authorization service, evaluation service, or dedicated runtime.
 
-<div class="chapter-heading">
+<div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">03</span>
   <div>
     <h2 id="how-can-the-platform-preserve-freedom">How Can the Platform Preserve Freedom?</h2>
