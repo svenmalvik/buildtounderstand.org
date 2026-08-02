@@ -1,8 +1,8 @@
 ---
 title: What Is the Smallest (AI) Platform That Could Possibly Work?
 date: 2026-07-27
-excerpt: Under exploration.
-published: false
+excerpt: When does repeated work justify an AI platform? I explore the smallest platform that could remove that work without creating more ownership or limiting teams' freedom to change direction.
+published: true
 ---
 
 # What Is the Smallest (AI) Platform That Could Possibly Work?

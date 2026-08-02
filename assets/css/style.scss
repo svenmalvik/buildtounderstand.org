@@ -82,6 +82,11 @@ a small {
   color: var(--text-muted);
 }
 
+.exploration-date {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 ul {
   list-style-image: none;
 }
