@@ -41,14 +41,12 @@ Repeating work doesn't always look the same. I have seen two examples often enou
 
 <div class="scenario-grid">
   <div class="scenario-card">
-    <p class="scenario-card__number">Pattern 01</p>
     <h4>Deployment support repeats</h4>
     <p>Analysts and product managers use Claude Code or Codex to build something—perhaps a dashboard. It works on their machine. Making it available to others means deploying it to the company runtime environment.</p>
     <p>At Vipps, services follow a contract available through the internal developer portal. Using it still requires engineering experience, so the platform team repeatedly provides manual help.</p>
     <p class="scenario-card__signal"><strong>Signal:</strong> the same setup and translation work returns with every new builder.</p>
   </div>
   <div class="scenario-card">
-    <p class="scenario-card__number">Pattern 02</p>
     <h4>Access without controls repeats</h4>
     <p>Engineers build AI-powered Slack apps and ask for an API key to an LLM. The request itself takes little time.</p>
     <p>But handing out a key doesn't show which team created each cost or provide data controls, evaluation, or useful observability.</p>
@@ -89,22 +87,18 @@ This gives "smallest" four tests:
 
 <div class="test-grid">
   <div class="test-card">
-    <p class="test-card__number">01</p>
     <h4>Outcome</h4>
     <p>Does it solve the measured problem and let the intended user complete the job?</p>
   </div>
   <div class="test-card">
-    <p class="test-card__number">02</p>
     <h4>Risk</h4>
     <p>Does it provide the minimum controls required by the data, authority, reversibility, and possible impact?</p>
   </div>
   <div class="test-card">
-    <p class="test-card__number">03</p>
     <h4>Total work</h4>
     <p>Does it reduce central and local integration, support, audit, incident, migration, and exception work?</p>
   </div>
   <div class="test-card">
-    <p class="test-card__number">04</p>
     <h4>Change and removal</h4>
     <p>Can its contracts, state, evidence, and users be changed or retired at an acceptable cost?</p>
   </div>
