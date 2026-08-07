@@ -269,5 +269,5 @@ The first option is the one I want to pick, and wanting it is the reason I haven
 
 If you have been handed this mandate and are further along than I am, I want to know which of the three you chose and what it cost. Especially if you put it in the template and teams actually used it. That would change my mind.
 
-You can find me on [LinkedIn](https://www.linkedin.com/in/svenmalvik/).
+You can write to me at [sven@malvik.de](mailto:sven@malvik.de) or find me on [LinkedIn](https://www.linkedin.com/in/svenmalvik/).
 </article>
