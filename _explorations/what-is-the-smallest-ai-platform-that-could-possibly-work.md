@@ -62,6 +62,10 @@ Our AI Playground removes part of the first problem. A (non-)engineer visits our
 
 Teams may repeat work because they are still learning. Centralizing it too early can turn experiments into a service nobody wants and needs. I would consider building a shared service only when repeated work blocks a useful workflow or creates visible cost, risk, incidents, or audit work.
 
+I have already paid for this mistake. I spent six months building Manifold because I was convinced someone needed it, and nobody did. The software was not the problem. The problem was that I treated my own conviction as evidence that the demand existed.
+
+An internal platform can fail the same way, and more quietly. A team that stops using a platform rarely says so. It routes around the platform and keeps working. The platform keeps its mandate while losing its users, so the mandate stops being evidence that anyone needs it. That is why I no longer trust the sentence "teams need this" when I am the one saying it, and why everything below argues for building less than I think is necessary.
+
 Before I build a shared service for several teams, I should also ask whether the workflow is needed or whether the repeated work can be removed. The apparent platform problem may be unclear ownership, missing training, or a workflow that should simply be removed.
 
 My next test is important for me:
@@ -243,11 +247,27 @@ Removal is still a product change. It needs retention decisions, migration suppo
 
 > For the scope explored here, the smallest AI platform I can justify is a narrow service built around a versioned agent contract.
 
-The contract lives with the code and describes the agent's purpose, owner, risk, allowed data, model access, incident response, and how its runs connect to evaluation, traces, and cost. CI validates what the team declares. Delivery, evaluation, observability, and billing systems remain responsible for the facts they already know. The existing developer portal brings those facts together.
+The contract lives with the code and describes the agent's purpose, owner, risk, allowed data, model access, incident response, and how its runs connect to evaluation, traces, and cost. CI validates what the team declares. Delivery, evaluation, observability, and billing systems remain responsible for the facts they already know. The existing developer portal brings those facts together. This platform doesn't need its own agent runtime, AI gateway, evaluation service, or GUI from the beginning.
 
-This platform doesn't need its own agent runtime, AI gateway, evaluation service, or GUI from the beginning. Those parts should be added only when several teams would otherwise repeat the same work or when an important control can't be provided by an existing system.
+That answers the question in the title. I still don't know how to start.
 
-Its leverage comes from removing repeated setup, coordination, and evidence work. It preserves engineering freedom by leaving product decisions with the teams that understand the workflow and by allowing another implementation to provide the same required outcomes.
+### What I Don't Know Yet
 
-The smallest platform is therefore the one that removes the most repeated work while creating the least new ownership and remaining possible to change, replace, or remove.
+Prototype 0.1 has one problem I should state directly: no team has used it. It is a file I wrote to find out whether the idea holds together, which is the same kind of evidence I said above that I no longer trust. The open question I have now is how a contract that nobody asked for reaches its first team.
+
+I see three ways, and I don't know which one is right.
+
+**Put it in the template.** Every agent generated through the internal template gets a contract by default. Teams receive it without asking. This is the fastest path to adoption, and it is the failure mode I described earlier. The numbers would look good and would mean nothing, because nobody chose it.
+
+**Wait for the pull.** Build it when a team asks for something it enables: a way to know which team created a cost, audit evidence, or a way to disable an agent during an incident. The demand would then be real. The risk is that the request arrives after the agents are already in production. That is the most expensive moment to introduce a contract, and the least likely one to get engineering time.
+
+**Don't build it.** Add the fields to the service contract the developer portal already uses. This is the cheapest option, and it creates no new system to own and nothing to leave. But it puts AI-specific facts into a system that wasn't designed for them, and I can't yet tell whether that is reuse or a problem that grows slowly.
+
+The first option is the one I want to pick, and wanting it is the reason I haven't.
+
+---
+
+If you have been handed this mandate and are further along than I am, I want to know which of the three you chose and what it cost. Especially if you put it in the template and teams actually used it. That would change my mind.
+
+You can find me on [LinkedIn](https://www.linkedin.com/in/svenmalvik/).
 </article>
