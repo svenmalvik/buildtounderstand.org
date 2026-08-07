@@ -31,5 +31,6 @@ defaults:
 
 exclude:
   - AGENTS.md
+  - CLAUDE.md
   - README.md
   - _templates
