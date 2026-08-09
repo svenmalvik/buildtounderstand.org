@@ -62,7 +62,7 @@ Our AI Playground removes part of the first problem. A (non-)engineer visits our
 
 Teams may repeat work because they are still learning. Centralizing it too early can turn experiments into a service nobody wants and needs. I would consider building a shared service only when repeated work blocks a useful workflow or creates visible cost, risk, incidents, or audit work.
 
-I have already paid for this mistake. I spent six months building Manifold because I was convinced someone needed it, and nobody did. The software was not the problem. The problem was that I treated my own conviction as evidence that the demand existed.
+I have already paid for this mistake, but not with a platform. Manifold was an AI coding IDE for individual developers. I spent six months building it in my spare time, in the evenings. I was convinced someone needed it, and nobody did. The software was not the problem. The problem was that I treated my own conviction as evidence that the demand existed.
 
 An internal platform can fail the same way, and more quietly. A team that stops using a platform rarely says so. It routes around the platform and keeps working. The platform keeps its mandate while losing its users, so the mandate stops being evidence that anyone needs it. That is why I no longer trust the sentence "teams need this" when I am the one saying it, and why everything below argues for building less than I think is necessary.
 
