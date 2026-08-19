@@ -4,22 +4,31 @@ Presentation content derived from
 [`_explorations/what-is-the-smallest-ai-platform-that-could-possibly-work.md`](../_explorations/what-is-the-smallest-ai-platform-that-could-possibly-work.md).
 
 - **Audience:** internal platform team and engineering leadership
-- **Purpose:** agree on whether the repeated AI work justifies a platform, agree
-  on the smallest version of it, and decide how it reaches its first team
-- **Length:** ~25 minutes, plus discussion on the last slide
-- **Slides:** 10
-- **What the audience should leave with:** a decision on one of three adoption
-  paths, and a named owner for it
-- **Rendering format:** not chosen yet.
+- **Purpose:** introduce the question and the smallest answer I can currently
+  justify, then collect reactions — especially disagreement. **This is not a
+  decision meeting.** Nobody is being asked to approve or fund anything.
+- **Length:** ~16 minutes, leaving most of the slot for discussion
+- **Slides:** 10, plus a 4-slide appendix held in reserve
+- **What the audience should leave with:** the proposal in one picture, and three
+  named options they can argue with — plus a clear sense of where the reasoning is
+  thin
+- **Rendering format:** two PowerPoint builds of this same content —
+  `…-possibly-work.pptx` (neutral dark theme, matched to the diagram) and
+  `…-possibly-work-vippsmobilepay.pptx` (Vipps MobilePay corporate design:
+  Off White / Dark Blue surfaces, VM Orange and VM Blue balanced, Arial as the
+  sanctioned substitute for the brand fonts)
 
 Each slide is written to stand on its own — readable without a presenter, and
-usable as a document after the meeting. Content is denser than a talk-only deck
-for that reason. The *Visual* line under each slide is guidance for generation,
-not slide text.
+usable as a document after the meeting. The *Visual* line under each slide is
+guidance for generation, not slide text.
 
 **Image asset:** `assets/images/ai_platform.png` — the full AI platform
 reference architecture. It appears twice: complete on slide 5, and marked up on
 slide 8. Both uses are load-bearing; see the generation notes at the end.
+
+**The appendix exists because four slides were cut from the main line.** They
+answer likely objections in more detail than the room needs unless someone
+pushes. Jump to them; don't present them.
 
 ---
 
@@ -28,9 +37,7 @@ slide 8. Both uses are load-bearing; see the generation notes at the end.
 **What is the smallest (AI) platform that could possibly work?**
 
 The most common AI request I see is access to an LLM. Giving an engineer an API
-key takes minutes and solves exactly one problem.
-
-What the key does not do:
+key takes minutes and solves exactly one problem. What the key does **not** do:
 
 - show finance which team created which cost
 - help compliance understand where the data goes
@@ -45,11 +52,16 @@ Two questions for today:
 1. Does that repeated work justify a platform used by several teams?
 2. If it does, what is the smallest platform that could possibly work?
 
+This is an introduction to how far I got. I am looking for reactions and
+disagreement, not a decision.
+
 *Agent, throughout: software built with LLMs, skills, and integrations with
 internal or external tools.*
 
-**Visual:** title slide. "API key: 5 minutes" set against the four unanswered
-items.
+**Visual:** title slide. The four unanswered items as four cards, so the opening
+is the contrast rather than a separate build. The register line matters — it sets
+the expectation before anyone starts wondering what they are being asked to
+approve.
 
 ---
 
@@ -58,31 +70,24 @@ items.
 A collection of experiments does not become a platform problem just because the
 experiments use AI.
 
-- A team asking for model access has an **access problem**
-- Finance asking about a bill has an **accounting problem**
-- Neither one, on its own, justifies a platform
-
 It becomes a platform problem when several teams repeatedly need the **same**
 access controls, cost attribution, evaluation, observability, or audit evidence —
 and solving each case separately creates more work, inconsistent controls, or
 unnecessary risk.
 
-The test is not how much AI activity we have. It is:
+**The test is not how much AI activity we have:**
 
 - Does the same problem keep appearing?
 - What happens if we ignore it?
 - Would solving it once for several teams remove more work than it creates?
 
-One company can run many experiments and have no platform problem. Another can
-have two production agents on sensitive data and already need strict controls.
+> Even when the answer is yes, the answer may be to extend a platform we already
+> own. A dedicated AI platform is justified only when our existing systems cannot
+> solve the repeated problem without every team rebuilding the same AI-specific
+> parts.
 
-And even when the answer is yes, the answer may be to **extend a platform we
-already own**. A dedicated AI platform is justified only when our existing
-systems cannot solve the repeated problem without every team rebuilding the same
-AI-specific parts.
-
-**Visual:** individual requests on the left (access, cost, data flow,
-observability, audit) collapsing into one repeated shape on the right.
+**Visual:** the three questions as three cards, given the space the removed
+bullets freed. Nothing else competes on this slide.
 
 ---
 
@@ -152,9 +157,6 @@ evidence that anyone needs the thing.
 > saying it. Everything after this slide argues for building less than I think is
 > necessary.
 
-A service starts to behave like a platform when several teams choose it because
-it is easier and safer than solving the problem themselves.
-
 **Visual:** the four-step escalation as a staircase, managed service at the top
 and marked expensive. The Manifold block set apart as a first-person aside.
 
@@ -165,36 +167,15 @@ and marked expensive. The Manifold block set apart as a first-person aside.
 ![Full AI platform reference architecture: nine horizontal layers between users and a trust column](../assets/images/ai_platform.png)
 
 This is the picture most of us have in mind when someone says "AI platform."
-**Build · Run · Govern · Trust.**
+**Build · Run · Govern · Trust.** Nine layers, from experience down to
+infrastructure, serving employees, developer tools, AI agents, business
+applications and external partners — with the trust layer running down the right
+side.
 
-Nine layers, serving employees, developer tools, AI agents, business
-applications, and external partners:
-
-| Layer | What it provides |
-| --- | --- |
-| **Experience** | Chat/UI, playground, workflows, SDKs and APIs |
-| **Agent** | Agent framework, tool use, multi-agent collaboration, task orchestration |
-| **Context** | RAG/retrieval, vector DB, data connections, MCP and tool servers |
-| **Model & inference** | Model gateway and routing, model selection and fallback, caching, cost and latency optimization |
-| **Models** | OpenAI, Anthropic, Google, Meta, our own hosted or fine-tuned models |
-| **Evaluation** | Quality metrics, automated evaluations, human feedback, experiments and A/B testing |
-| **Governance & security** | Identity and access management, policies and guardrails, data privacy, audit logs and compliance |
-| **Observability & operations** | Monitoring and alerting, tracing and logging, usage/quotas/billing, reliability and SLOs |
-| **Infrastructure** | Cloud, Kubernetes, GPU/CPU compute, networking, storage |
-
-And running down the right side, the reason any of it matters — the **trust
-layer**: transparency (what happened and why), explainability (why this answer),
-verifiability (is it correct), accountability (who did what), safety and control
-(is it safe and compliant), reliability (can we depend on it).
-
-> A trustworthy AI platform gives humans confidence to delegate work to AI: the
-> right result, for the right reason, in a safe and reliable way, with full
-> visibility and control.
-
-**Nothing on this diagram is wrong.** Every box is a real capability that someone
-has to provide. That is exactly what makes it dangerous as a plan: it is roughly
-forty capabilities, it reads as a roadmap, and a roadmap is not evidence that we
-should own any particular box.
+**Nothing here is wrong.** Every box is a real capability that someone has to
+provide. That is exactly what makes it dangerous as a plan: it is roughly forty
+capabilities, it reads as a roadmap, and a roadmap is not evidence that we should
+own any particular box.
 
 So the question is not *which layers exist*. It is:
 
@@ -204,42 +185,35 @@ So the question is not *which layers exist*. It is:
 - And what is the cheapest thing that makes the trust column answerable **per
   agent**, starting today?
 
-**Visual:** the diagram full-bleed, as large as the format allows. This is the
-one slide where the image is the content — put the layer table on a second panel
-or a build step if it does not fit alongside. Keep the trust column readable; it
-sets up slide 8.
+**Visual:** the diagram as large as the format allows, with the four questions in
+a panel beside it. The per-layer capability names stay in the image — the
+appendix carries them as text if anyone needs to read them out.
 
 ---
 
 ## Slide 6 — What "smallest" has to mean
 
-After a diagram with forty boxes, the tempting measure is subtraction: fewer
-features, fewer services, fewer lines of configuration. By that measure a config
-file looks smaller than a gateway. Convenient, but not the measure that matters.
+Counting features, services, or lines of configuration makes a config file look
+smaller than a gateway. Convenient, but not the measure that matters.
 
 > The smallest useful AI platform is the system that creates the least total
 > work, lets a defined group complete one valuable workflow, meets the minimum
 > required controls, and remains cheaper to change or remove than the repeated
 > work it removes.
 
-That gives "smallest" four tests:
+Four tests:
 
-| Test | Question |
-| --- | --- |
-| **Outcome** | Does it solve the measured problem and let the intended user finish the job? |
-| **Risk** | Does it provide the minimum controls required by the data, authority, reversibility, and possible impact? |
-| **Total work** | Does it reduce central *and* local integration, support, audit, incident, migration, and exception work? |
-| **Change and removal** | Can its contracts, state, evidence, and users be changed or retired at an acceptable cost? |
+- **Outcome** — can the intended user finish the job?
+- **Risk** — are the minimum controls there for the possible harm?
+- **Total work** — is central *and* local work reduced?
+- **Change and removal** — can it be retired at an acceptable cost?
 
-Two consequences worth stating:
+"Smallest" is the simplest thing that passes all four — for one particular
+workflow.
 
-- Total work includes the work we push onto the teams using the platform, not
-  just the work we do ourselves
-- "Smallest" is the simplest thing that passes all four tests **for one
-  particular workflow** — so it changes when the workflow changes
-
-**Visual:** the definition as a pull quote; the four tests as a 2×2 grid.
-Optionally the previous slide's diagram greyed out behind it.
+**Visual:** the definition as a pull quote and the four tests as four short
+cards. Deliberately the least crowded slide in the deck; it is the pivot from the
+full picture to the proposal.
 
 ---
 
@@ -279,15 +253,6 @@ where its runs connect to cost and traces, how it is evaluated, who to call, and
 how to switch it off. If a field cannot be justified for *this* workflow, it does
 not go in yet.
 
-**It must not become a second source of truth.** It declares stable information
-and points to operational facts where they are produced:
-
-| Kind of fact | Examples | Source |
-| --- | --- | --- |
-| Declared with the code | Purpose, owner, lifecycle, risk class, allowed data, model-access reference, incident contact | Agent contract |
-| Observed while building or running | Deployed revision, evaluation result, traces, cost | CI, delivery, evaluation, observability, billing |
-| Confirmed by an accountable owner | Approval, accepted exception, review decision, expiry | The system where that decision is made |
-
 How it works:
 
 1. An engineer creates or changes the agent and its contract in the same repository
@@ -303,8 +268,8 @@ How it works:
 High-impact actions, tool approvals, accepted exceptions, and retained evidence
 get added when a workflow requires them.
 
-**Visual:** YAML as the centrepiece; the five steps as a left-to-right flow
-beneath it; the fact-ownership table as a second panel or build step.
+**Visual:** YAML as the centrepiece; the five steps as a numbered column beside
+it.
 
 ---
 
@@ -313,23 +278,30 @@ beneath it; the fact-ownership table as a second panel or build step.
 Same diagram as slide 5. Four colors, one question per layer: **who owns this,
 and do we need it yet?**
 
-| Layer in the diagram | Status for version 0.1 |
-| --- | --- |
-| **Experience** | *Already have it.* The Playground covers the entry point; the product surface belongs to the team |
-| **Agent** | *Team owns it.* Framework, tool use, orchestration. The contract only declares identity, purpose, owner, and lifecycle |
-| **Context** | *Team owns it.* Retrieval, vector stores, data connections. The contract declares the allowed data class, not the wiring |
-| **Model & inference** | *Declared reference + deferred.* The contract points at approved model access. Gateway, routing, fallback, and caching wait for a signal — model choice, prompts, and fallback behavior stay with the team |
-| **Models** | *External.* Approved provider and region are a declared reference, not something we build |
-| **Evaluation** | *Reference now, runner later.* The contract carries an evaluation reference; the domain team defines the cases, the possible harm, and what is good enough to release |
-| **Governance & security** | *Existing systems + contract.* Our identity platform issues identities; the resource owner authorizes business actions. The contract declares risk class, allowed data, incident contact, and how to disable. CI validates that they are there |
-| **Observability & operations** | *Existing systems + identifiers.* Observability and billing own the data. The contract carries the trace and cost identifiers that connect a run to it |
-| **Infrastructure** | *Untouched.* The existing application runtime and cloud. We introduce no new runtime |
+- **Contract declares it; existing systems own the facts** — governance and
+  security, observability and operations
+- **Declared reference; the rest waits for a signal** — model and inference,
+  evaluation
+- **Already have it, the team owns it, or untouched** — experience, agent,
+  context, models, infrastructure
 
-That is the whole boundary: **one file, CI validation, and a portal view.** The
-other eight layers are already owned, belong to the team, or are waiting.
+> That is the whole boundary: **one file, CI validation, and a portal view** —
+> the cheapest thing on this diagram to walk away from. The other eight layers are
+> already owned, belong to the team, or are waiting.
 
-**The contract connects decisions. It does not enforce them.** Every shared
-control splits into four responsibilities:
+And it is what makes the trust column answerable per agent rather than in
+general: transparency, accountability, verifiability and safety and control all
+trace back to a declared field plus the system that owns the fact.
+
+**Visual:** the diagram again, each layer tinted by status, everything the
+contract does not touch dimmed so the lit area reads as small. The three status
+lines become the legend. The per-layer detail is in the appendix.
+
+---
+
+## Slide 9 — The contract connects decisions. It does not enforce them.
+
+Every shared control splits into four responsibilities:
 
 | Responsibility | Owner |
 | --- | --- |
@@ -340,83 +312,30 @@ control splits into four responsibilities:
 
 A gateway can enforce allowed models. A deployment system can require evaluation
 evidence before release. A downstream service must authorize the business action.
-A YAML file cannot stop an agent from using a credential with too much access.
 
-**It also gives the trust column an answer per agent** — which is what the
-diagram promises and a key alone never delivers:
+> A YAML file cannot stop an agent from using a credential with too much access.
 
-| Trust property | What makes it answerable | Who answers it |
-| --- | --- | --- |
-| Transparency | Declared purpose, model access, data class, runtime | Contract |
-| Accountability | Declared owner and lifecycle; approvals and exceptions | Contract + the deciding system |
-| Verifiability | Evaluation reference | Contract + evaluation system |
-| Safety & control | Risk class, allowed data, incident contact, disable instructions | Contract + enforcing systems |
-| Reliability | Trace and cost identifiers | Contract + observability and billing |
-| Explainability | Sources and reasoning steps | The team's product, not the platform |
+Workflow-specific decisions stay with the team: model choice, prompts, business
+rules, authorization, acceptance levels, alerts, and when to release or roll back.
 
-**When the contract stops being enough:** teams still need the same manual help;
-the declared information becomes unreliable; every system needs a custom adapter.
-Then the next box we light up — generator, gateway, authorization service,
-evaluation service, or dedicated runtime — is a response to a signal, not a
-roadmap item. An AI gateway does not become necessary because a workflow uses an
-LLM.
+When teams still need the same manual help, the declared information becomes
+unreliable, or every system needs a custom adapter — the next addition
+(generator, gateway, authorization service, evaluation service, runtime) is a
+response to that signal, not a roadmap item. An AI gateway does not become
+necessary because a workflow uses an LLM.
 
-**Visual:** the diagram again, with each layer tinted by status — *already have
-it* / *team owns it* / *deferred* / *contract declares it*. Dim everything the
-contract does not touch so the lit area reads as small. The three tables follow
-as build steps; do not show all four elements at once.
+> **The condition on anything we add after the contract: it states its exit cost
+> before we build it.** The same standard applies to this platform — reduce,
+> replace or remove it when something simpler achieves the same result.
+
+**Visual:** the responsibility table full width, then the YAML line as the
+largest text on the slide. It is the sentence that stops the contract from being
+mistaken for a control. The exit-cost condition closes the slide, because this is
+where the next addition gets proposed.
 
 ---
 
-## Slide 9 — Teams have to be able to leave
-
-A useful platform gives teams an easier way to work. It becomes a problem when
-that is the only practical way.
-
-If a team loses model access, deployment, observability, support, and cost
-attribution the moment it chooses something else, it has to rebuild what already
-exists — and we made that choice for it.
-
-> Freedom needs a usable path forward.
-
-If only the standard path receives normal support and audit recognition, an
-alternative implementation is not a real option.
-
-Leaving always creates work: prompts, tool schemas, evaluations, configuration,
-state, logs, and retained evidence may need to move or be recreated; old access
-must be revoked; both paths may run in parallel during migration. The point is
-not that leaving should be free. The point is that it should be **visible,
-supported, and possible**.
-
-A practical alternative path needs:
-
-- access to the existing identity, deployment, observability, incident response,
-  and cost systems
-- a way to show that required controls still work
-- an export or reconstruction plan for state and evidence
-- a named owner and budget for migration and temporary parallel operation
-- a way to revoke the old path and return if the replacement fails
-
-**The same standard applies to this platform.** Reduce it when something simpler
-achieves the same outcome and risk result. Replace it when something cheaper does
-the same work and preserves the information needed to move. Remove it when the
-original problem is gone and every remaining user has a tested alternative.
-
-Removal is a product change: retention decisions, migration support, rollback,
-communication, budget. The cost of leaving is part of the cost of the platform.
-
-> If we cannot describe the exit, we have not finished designing the platform.
-
-Worth noticing against slide 5: a one-file contract on the existing runtime is
-close to the cheapest thing on that diagram to walk away from. Most of the boxes
-are not.
-
-**Visual:** the five exit requirements as a checklist, each with the owning
-system named.
-
----
-
-## Slide 10 — The decision I need from this room
+## Slide 10 — What I don't know yet
 
 Prototype 0.1 has one problem worth stating directly: **no team has used it.**
 It is a file I wrote to find out whether the idea holds together — which is the
@@ -428,22 +347,103 @@ know which is right.
 
 | Path | What it buys | What it costs |
 | --- | --- | --- |
-| **Put it in the template** | Fastest adoption. Every agent generated through the internal template gets a contract by default; teams receive it without asking | Nobody chose it. The adoption numbers would look good and mean nothing — the exact failure mode from slide 4 |
+| **Put it in the template** | Fastest adoption. Every agent generated through the internal template gets a contract by default; teams receive it without asking | Nobody chose it. The adoption numbers would look good and mean nothing — the exact failure mode from slide 4. And if CI validates it and audit recognition depends on it, no team can ship without one |
 | **Wait for the pull** | Real demand. We build when a team asks for something it enables: cost attribution, audit evidence, or a way to disable an agent during an incident | The request arrives after agents are already in production — the most expensive moment to introduce a contract, and the least likely to get engineering time |
 | **Don't build it** | Cheapest. Add the fields to the service contract the developer portal already uses. No new system to own, nothing to leave | Puts AI-specific facts into a system that was not designed for them. Unclear whether that is reuse or a problem that grows slowly |
 
 > The first option is the one I want to pick, and wanting it is the reason I have
 > not.
 
-**What I am asking for:** pick one path, name the owner, and state what evidence
-would make us switch.
+**What would help me most:** which of the three would you pick — and where does
+it break in your team's context? A concrete objection is worth more to me than
+agreement.
 
 **What would change my mind:** a team that was handed a contract by default and
 actually used it. If anyone here has been further along on this before — which
 path did you choose, and what did it cost?
 
 **Visual:** three columns with the cost line emphasized over the benefit line.
-Do not visually rank them.
+Do not visually rank them. Nothing on this slide should look like a
+recommendation waiting for approval.
+
+**Missing on purpose:** none of the three paths carries an effort estimate. If
+someone asks what each one costs in engineering time, the honest answer today is
+that I don't know yet.
+
+---
+
+# Appendix
+
+Not presented. Each of these answers one likely objection in more detail than the
+main line needs.
+
+## A1 — Nine layers, capability by capability
+
+*Use when someone wants the full picture read out rather than shown.*
+
+| Layer | What it provides |
+| --- | --- |
+| **Experience** | Chat/UI, playground, workflows, SDKs and APIs |
+| **Agent** | Agent framework, tool use, multi-agent collaboration, task orchestration |
+| **Context** | RAG/retrieval, vector DB, data connections, MCP and tool servers |
+| **Model & inference** | Model gateway and routing, model selection and fallback, caching, cost and latency optimization |
+| **Models** | OpenAI, Anthropic, Google, Meta, our own hosted or fine-tuned models |
+| **Evaluation** | Quality metrics, automated evaluations, human feedback, experiments and A/B testing |
+| **Governance & security** | Identity and access management, policies and guardrails, data privacy, audit logs and compliance |
+| **Observability & operations** | Monitoring and alerting, tracing and logging, usage/quotas/billing, reliability and SLOs |
+| **Infrastructure** | Cloud, Kubernetes, GPU/CPU compute, networking, storage |
+
+The trust layer spans all of them: transparency (what happened and why),
+explainability (why this answer), verifiability (is it correct), accountability
+(who did what), safety and control (is it safe and compliant), reliability (can
+we depend on it).
+
+> A trustworthy AI platform gives humans confidence to delegate work to AI: the
+> right result, for the right reason, in a safe and reliable way, with full
+> visibility and control.
+
+## A2 — Which system owns each fact
+
+*Use when asked whether the contract becomes a second source of truth.*
+
+| Kind of fact | Examples | Source |
+| --- | --- | --- |
+| Declared with the code | Purpose, owner, lifecycle, risk class, allowed data, model-access reference, incident contact | Agent contract |
+| Observed while building or running | Deployed revision, evaluation result, traces, cost | CI, delivery, evaluation, observability, billing |
+| Confirmed by an accountable owner | Approval, accepted exception, review decision, expiry | The system where that decision is made |
+
+A developer portal can combine these facts into one view without copying all of
+them into the repository. The contract carries identifiers and requirements; the
+original systems remain responsible for the current state.
+
+## A3 — Status of every layer for version 0.1
+
+*Use when asked to justify the boundary layer by layer.*
+
+| Layer | Status for version 0.1 |
+| --- | --- |
+| **Experience** | Already have it. The Playground covers the entry point; the product surface belongs to the team |
+| **Agent** | Team owns it. Framework, tool use, orchestration. The contract only declares identity, purpose, owner and lifecycle |
+| **Context** | Team owns it. Retrieval, vector stores, data connections. The contract declares the allowed data class, not the wiring |
+| **Model & inference** | Declared reference + deferred. The contract points at approved model access. Gateway, routing, fallback and caching wait for a signal |
+| **Models** | External. Approved provider and region are a declared reference, not something we build |
+| **Evaluation** | Reference now, runner later. The domain team defines the cases, the possible harm, and what is good enough to release |
+| **Governance & security** | Existing systems + contract. Our identity platform issues identities; the resource owner authorizes business actions. CI validates the declarations |
+| **Observability & operations** | Existing systems + identifiers. Observability and billing own the data; the contract carries the trace and cost identifiers |
+| **Infrastructure** | Untouched. The existing application runtime and cloud. We introduce no new runtime |
+
+## A4 — The trust column, answered per agent
+
+*Use when asked what the contract actually buys.*
+
+| Trust property | What makes it answerable | Who answers it |
+| --- | --- | --- |
+| Transparency | Declared purpose, model access, data class, runtime | Contract |
+| Accountability | Declared owner and lifecycle; approvals and exceptions | Contract + the deciding system |
+| Verifiability | Evaluation reference | Contract + evaluation system |
+| Safety & control | Risk class, allowed data, incident contact, disable instructions | Contract + enforcing systems |
+| Reliability | Trace and cost identifiers | Contract + observability and billing |
+| Explainability | Sources and reasoning steps | The team's product, not the platform |
 
 ---
 
@@ -459,27 +459,35 @@ Do not visually rank them.
 - Alt text: "AI platform reference architecture. Nine layers from experience down
   to infrastructure, between a column of users and applications on the left and a
   trust layer on the right."
-- The diagram is dense. If it cannot be rendered legibly at slide size, crop to
-  the nine layer bands and their headers rather than scaling the whole thing down;
-  the per-layer capability names are already written out in the slide 5 table.
 - The diagram is dark-background. Match the deck to it rather than placing it on
   white.
 
 **Structure**
 
+- **The register is introduction, not proposal.** The room is not approving,
+  funding, or choosing anything. Every ask is for a reaction: which option, what
+  breaks, what it cost you. Nothing should read as a recommendation awaiting sign-
+  off — if a slide starts to, the deck has drifted.
 - Slide 4 and slide 10 carry the argument. The Manifold mistake is the reason the
-  proposal is small, and slide 10 is the reason the meeting exists. Do not
-  compress either to make room for the diagram.
+  proposal is small, and slide 10 is what the meeting is *for* — the three open
+  options are the thing being handed to the room. Protect both.
 - Slide 5 → 6 → 7 → 8 is one movement: the full picture, the measure, the
   proposal, the marked-up picture. Keep them adjacent and in that order.
-- Slides 5, 7, and 8 are heavy. Use build steps rather than cutting reasoning —
-  the reasoning is the content. Slide 8 has four elements; reveal them one at a
-  time.
-- Several slides use tables. If tables render badly, split slide 8 first — the
-  four tests on slide 6 and the three paths on slide 10 must each stay together
-  to be comparable.
-- Do not add a summary slide after slide 10. Ending on the open decision is the
-  point; restating the conclusion turns it back into an essay.
+- The boundary argument is made **once**, visually, on slide 8. Earlier drafts
+  made it four times — diagram, layer table, enforcement, trust mapping. Three of
+  those are now A3, A4 and a compressed slide 9. Do not promote them back.
+- **Freedom is not its own slide, on purpose.** An earlier draft had one, with an
+  exit checklist, a migration budget and a parallel-run plan. All of that is
+  written for the platform on slide 5, not for a YAML file in the team's own
+  repository — leaving version 0.1 is deleting a file and turning off a CI check.
+  The slide argued against itself. What survives is the part that is not about
+  size: the contract is the cheapest thing on the diagram to leave (slide 8), any
+  later addition states its exit cost first (slide 9), and a default that CI
+  enforces is still a mandate (slide 10). Do not rebuild the slide.
+- Do not add a summary slide after slide 10, and do not add a "next steps" or
+  "recommendation" slide. Ending on the three open options is the point — it is
+  what makes the room able to answer. A closing conclusion turns an introduction
+  into a pitch.
 - The tone is first person and provisional: "the smallest platform I can
   justify," not "the recommended architecture." Keep the hedges — they are the
   argument, not padding.
