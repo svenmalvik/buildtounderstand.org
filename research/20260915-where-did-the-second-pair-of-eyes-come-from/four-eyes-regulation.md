@@ -74,6 +74,16 @@ The following were read from the official Official Journal text, not from second
 
 **Article 17(2)** applies only to market infrastructure (central counterparties and central securities depositories) and requires stringent testing under simulated stressed conditions after significant changes. There are no paragraphs beyond 17(2).
 
+### Does "effectively direct the business" reach IT?
+
+Asked because an early draft claimed the two-director rule has "nothing to do with software". That is slightly too strong.
+
+CRD IV Article 13 is titled "Effective direction of the business and place of the head office", and Article 3(1)(7) defines the management body as the body "empowered to set the institution's strategy, objectives and overall direction, and which oversee and monitor management decision-making, and include the persons who effectively direct the business of the institution". So the rule concerns governance of the whole institution, which includes IT, but at the level of running the company.
+
+DORA Article 5(2) supplies the explicit link to IT: "The management body of the financial entity shall define, approve, oversee and be responsible for the implementation of all arrangements related to the ICT risk management framework referred to in Article 6(1)", and under point (a) it shall "bear the ultimate responsibility for managing the financial entity's ICT risk". Point (c) requires it to "set clear roles and responsibilities for all ICT-related functions".
+
+The accurate statement is therefore: the two persons who direct the business are accountable for the institution's ICT risk framework and strategy, and they approve no individual change. The per-change approval requirement lives in Article 9(4)(e) and RTS Article 17(1)(b), which speak of functions.
+
 ### Norwegian and Basel verification, 15 September 2026
 
 Read from the document text, not from search snippets.
