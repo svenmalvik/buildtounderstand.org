@@ -139,6 +139,25 @@ This is also where the four-eyes principle in banking regulation and the four-ey
      functions that request and implement. Functions, not persons.
      Risk-based. Research: research/20260915-where-did-the-second-pair-of-eyes-come-from/ -->
 
+For a company that moves money, there is a third root, and it is the one compliance will cite. It is older than code review, and it was never about finding bugs.
+
+"Four eyes" in banking means two different things, and neither of them is code review. The first is a rule about who runs the company. European banking law grants a licence only where "at least two persons effectively direct the business", which is where the German term Vier-Augen-Prinzip comes from. The second is a control on single sensitive actions. When the Norwegian supervisor fined a savings bank in 2023, one finding was that no «fire øyne»-kontroll existed when an employee manually lowered a customer's money-laundering risk level. One person could do it alone. That was the problem.
+
+Both are about authority. The second person exists so that nobody acts alone, whether the first person is mistaken or dishonest. Neither rule asks whether anyone understood anything.
+
+Code review inherits the second meaning through change management. The Norwegian ICT rule was brief until June 2025. A firm needed written procedures for development and testing, and a system could not enter ordinary operation before «ansvarlig», the responsible one, had approved it. Singular, and clearly a person. Since July 2025, payment and e-money institutions fall under DORA instead, and the standard under it is more specific. For every change to software, a firm needs "mechanisms to ensure the independence of the functions that approve changes and the functions responsible for requesting and implementing those changes."
+
+The word changed. The old Norwegian rule named a responsible person. This one says functions, twice, in one sentence. European banking law still says persons when it means persons, in the licensing rule above. Basel is just as loose where it defines dual control, calling it two or more separate "entities (usually persons)" acting in concert. Usually.
+
+The rule also doesn't ask for what a developer wants. It requires that every change is recorded, tested, assessed, approved, implemented and verified in a controlled manner, and that the approving function is independent from the one that asked for the change. It never asks whether the approver understood the change. And where the same regulation does require "source code reviews", it defines them as static and dynamic testing, which is a scanner rather than a person reading a diff.
+
+Depth may also follow risk. The policy has to be "based on a risk assessment approach", and the regulation asks firms to account for their size, risk profile, and complexity, naming change management directly. A reversible configuration change and a change to how money moves don't have to receive the same scrutiny.
+
+I went looking for the rule that says a human must approve, and I didn't find it. When the European supervisors wrote about the risks of frontier AI models in July 2026, the statement never used the words approval, human, segregation, or four eyes. What it asked for was more automation in development and deployment. That is not permission to let a machine approve its own work. It is the absence of a rule, which is a different and less comfortable thing.
+
+So chapter one ends with three separate roots. Fagan's inspections wanted defects found early. The maintainer wanted to decide what entered code he would live with. The regulator wants an independent function to approve, a record of what changed, and depth that follows risk. None of the three is the same requirement. Teams today satisfy all three with one pull request and one approval, and none of the three was written with a machine in mind.
+
+
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">02</span>
   <div>
