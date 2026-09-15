@@ -118,6 +118,16 @@ The pull request never required a second pair of eyes. Linus as the maintainer w
 
 ### Why People Wanted Another Person
 
+When asking developers why review exists, the answers are almost always the same: to catch mistakes before they are shiped. Michael Fagan's 1976 paper on formal inspections was built around this, and one of his case studies found that inspection caught 82% of the errors eventually found in a program. Eric Raymond's 1997 line about open source, "given enough eyeballs, all bugs are shallow", says the same in one sentence.
+
+But that is not what a second person mostly does once you look at what they write during a review. At Microsoft, developers ranked finding defects as their top reason for reviewing code. When researchers then read the comments those same developers actually left, only 14% were about a defect. The largest category, at 29%, was suggestions to improve the code that already worked. The developers said one thing about why they reviewed and did something else once they were reviewing.
+
+At Google, the person credited with introducing code review gave a different reason from the start. Review existed "to force developers to write code that other developers could understand." Catching bugs was welcome, but it was not why the practice began. This changes of course what the second person is checking. A reviewer looking for a bug reads the code once and asks whether it works. A reviewer checking for understanding reads the code the way the next engineer will, months later.
+
+So a review can answer two different questions. Does this code work? And will the next person understand why it's written this way? A one-line configuration fix mostly needs someone to answer whether it works. A change to how payments get calculated needs someone to check that it works, and someone who understands payments to check that it will still make sense later. Both changes go through the same pull request, and get the same single approval.
+
+This is also where the four-eyes principle in banking regulation and the four-eyes principle in software have grown apart. A financial regulator asks whether the function approving a change is independent from the function that requested it. But it does not ask whether the code works or whether anyone will understand it later. Those are exactly the two things developers want from a second pair of eyes. A passing check and a signed-off approval can satisfy the regulator. However, they do not answer whether the code worksor whether anyone will understand it.
+
 ### The Regulator's Pair of Eyes
 <!-- Third root, for a regulated fintech. Two meanings of "four eyes" in
      finance: two directors (CRD art. 13, Vier-Augen-Prinzip) and dual
