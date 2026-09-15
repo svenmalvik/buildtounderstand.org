@@ -157,6 +157,16 @@ How carefully a change is checked can also depend on its risk. The policy has to
 
 When the European supervisors wrote about the risks of frontier AI models in July 2026, the statement never used the words approval, human, segregation, or four eyes. What it asked for was more automation in development and deployment. Nobody has written that a machine may or may not approve a change.
 
+So three different rules are called four eyes, and each one separates something different.
+
+| Four eyes in | What must be separate |
+| --- | --- |
+| Running a bank | Two persons who direct the business |
+| A sensitive action | A second person, for one decision |
+| A software change | The function that approves from the one that implements |
+
+Only the third one reaches a pull request, and it is the only one of the three that is new.
+
 So the second pair of eyes came from three places. Fagan wanted defects found early. Linus wanted to choose what went into his own code. The regulator wants an independent function to approve the change, a record of it, and more care when the risk is higher.
 
 Today one pull request does all three jobs.
