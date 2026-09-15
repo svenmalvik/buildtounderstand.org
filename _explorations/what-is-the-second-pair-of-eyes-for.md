@@ -157,7 +157,15 @@ How carefully a change is checked can also depend on its risk. The policy has to
 
 When the European supervisors wrote about the risks of frontier AI models in July 2026, the statement never used the words approval, human, segregation, or four eyes. What it asked for was more automation in development and deployment. Nobody has written that a machine may or may not approve a change.
 
-So the second pair of eyes came from three places. Fagan wanted defects found early. Linus wanted to choose what entered his own code. The regulator wants an independent function to approve, a record of the change, and more checking when the risk is higher. Today one pull request does all three jobs. The reviewer's comments are the inspection, the approval is the gate, and the pull request itself is the record. The third job fits worst. The rule asks for independence between functions, and the approver is usually another developer on the same team, with the same manager and the same interest in shipping today. That is a second person, but both developers sit in the same part of the organisation. Elsewhere in the same rulebook, an independent function means one whose staff don't perform the work they review, and who sit outside the unit that does it. A teammate fails both tests. The change rule never says the approver has to be that kind of function, so the question stays open. None of the three was written with a machine in mind.
+So the second pair of eyes came from three places. Fagan wanted defects found early. Linus wanted to choose what went into his own code. The regulator wants an independent function to approve the change, a record of it, and more care when the risk is higher.
+
+Today one pull request does all three jobs.
+
+- The comments are the inspection.
+- The approval is the gate.
+- The pull request is the record.
+
+The problem is the approval. The rule does ask for two separate functions, one that implements and one that approves, and for independence between them. It never says what makes two people two functions, or what independence between them means. The approver is usually another developer on the same team, with the same manager. It's a second person, but within the same part of the company. In other rules for banks, a function is independent only if its people don't do the work they check, and if they sit outside the team that does it. But those rules are written for risk management and internal audit, whose job is to watch the business. The change rule never says the approver has to be one of those. So the question stays open: is it enough that the approver didn't write this change, or must they sit outside the team that did?
 
 
 <div class="chapter-heading chapter-heading--compact">
