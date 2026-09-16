@@ -28,7 +28,9 @@ Scope: measurements only, with effort, elapsed time, and outcome kept strictly a
 
 ## Effort against change size
 
-**The widely repeated figures are vendor guidance, not primary research.** SmartBear's account of a Cisco study states that "developers should review no more than 200 to 400 lines of code (LOC) at a time", that "a review of 200-400 LOC over 60 to 90 minutes should yield 70-90% defect discovery", and that there is "a significant drop in defect density at rates faster than 500 LOC per hour". Attribute these as vendor guidance if used at all. They are the source of most secondhand claims about review limits.
+**The widely repeated figures are vendor guidance, not primary research, and their provenance does not survive checking.** They come from a SmartBear marketing page describing the company's own unpublished study: "developers should review no more than 200 to 400 lines of code (LOC) at a time"; "a review of 200-400 LOC over 60 to 90 minutes should yield 70-90% defect discovery"; "SmartBear research shows a significant drop in defect density at rates faster than 500 LOC per hour"; "performance starts dropping off after about 60 minutes". The page credits only "a SmartBear study of a Cisco Systems programming team" and gives no sample size. The figures usually quoted alongside it, 2,500 reviews and 3.2 million lines, appear only in the company's gated ebook, which could not be reached. Attribute as vendor guidance if used at all.
+
+**One unverified peer-reviewed candidate, worth a manual download.** Kemerer and Paulk 2009, IEEE Transactions on Software Engineering, DOI 10.1109/tse.2009.27, is the strongest candidate for a research-grade figure on review rate and defect detection. The open access copy sits behind a bot challenge and could not be fetched, and Fagan 1976 failed at three mirrors during the same pass. If the chapter wants a citable rate claim rather than vendor guidance, this is the paper to retrieve by hand.
 
 **One real measurement from Microsoft data,** in the same Czerwonka paper: "the more files there are in a single review, the lower the overall rate of useful feedback. The decrease however only starts to be noticeable for reviews with 20 or more changed files." This is a usable substitute for the vendor figures and has actual telemetry behind it.
 
@@ -72,10 +74,15 @@ This is the section earlier research treated as empty. It is not empty any more.
 
 ## What nobody appears to have measured
 
-- Minutes of human attention per review, under any conditions.
-- Reviewer effort specifically under AI-assisted development, as opposed to volume, latency, or comment counts.
-- Whether an automated approval that satisfies a merge rule produces different outcomes than a human approval, which is now a live configuration option and has no evidence either way.
-- Escaped defect rates as an outcome of removing a review requirement, prospectively. The Xia and Miller finding is observational and retrospective.
+**Human attention per review, in minutes, at any company, in any decade.** The entire effort literature reduces to two self-reported weekly averages: 6.4 hours in open source and 3.2 hours at Google. Neither divides by the number of reviews.
+
+**Effort per review under AI.** Meta shows supply roughly doubling and timely review falling, but publishes no denominator in reviewer time. Every 2026 figure available is volume, latency, comment count, or perception.
+
+**A skipped review causally linked to a production incident.** The post-merge study comes closest, and only as a correlation, in open-source repositories.
+
+**One organisation answering both halves of the question.** This is the sharpest way to state the gap. Google measured reverts segmented by AI authorship but not incidents. Meta measured incidents but only for the gated low-risk diffs it had chosen to automate. The two companies with the telemetry to settle this each answered half, and neither segmented outcomes by how much review a change actually received.
+
+**Whether an automated approval that satisfies a merge rule produces different outcomes than a human one.** This became a configuration option on 1 September 2026 and has no evidence either way.
 
 ## Confidence and gaps
 
@@ -91,6 +98,8 @@ This is the section earlier research treated as empty. It is not empty any more.
 | AI-generated code is reverted more often | Contradicted at Google scale, where revert rate was lower at about 0.9x. |
 | Review escapes are measurable and large for secrets | Medium. 81.1 per cent undetected pre-integration, single preprint, and most genuine leaks were attributed to humans. |
 | AI adoption harms delivery stability | Medium. Two survey waves agree on instability while reversing on throughput. Self-reported. |
+| The 2,500 reviews and 3.2 million lines behind the vendor figures | Unverifiable. Gated ebook, not reachable. |
+| Kemerer & Paulk 2009 supports a review-rate claim | Unknown. Not retrieved; behind a bot challenge. Worth one manual download. |
 
 ## Related documents
 
