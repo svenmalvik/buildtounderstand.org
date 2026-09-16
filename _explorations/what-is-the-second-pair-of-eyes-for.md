@@ -189,9 +189,33 @@ The problem is the approval. The approver is usually another developer on the sa
 
 ### Three Failures That Look Like One
 
-### What the Maintainers Did
+### Restrict the Input, or Relax the Gate
+<!-- The contrast, not just the maintainers. Open source regulated the
+     input and kept human approval: Godot 30 Jun 2026 (restricted AI
+     contributions, reviewer shortage predated AI), Rust Forge (circuit
+     breaker at half of merges in six weeks), GitHub per-contributor PR
+     limits Jun 2026. Companies relaxed the gate instead: r/TechLeader
+     12 Sep 2026 (two reviews to one, none for some PRs). Shopify
+     2 Sep 2026 got throughput from preparation and a freshness-gated
+     merge queue while keeping the approver, backlog down ~70% in 11
+     days, security merges ~10% to 80%. Monzo 13 Aug 2026 kept the
+     approver: "An engineer still reviews and merges, but the bottleneck
+     moves from 'find an engineer with capacity' to 'find a reviewer'."
+     Research: research/20260916-what-changed-when-writing-became-cheap/ -->
 
 ### The Arithmetic Nobody Escapes
+
+### The Approval Became a Setting
+<!-- New section. On 1 September 2026 GitHub shipped machine approval
+     that satisfies the rule: "Copilot can submit an approval that counts
+     toward the repository's required-approvals rule." Two toggles,
+     enterprise default disabled, public preview. Verified directly
+     against the changelog and docs on 16 Sep 2026.
+     Ties to chapter 01: the regulation says functions, not persons, and
+     no rule found requires a human approver. The precedent already
+     existed in dependency auto-merge, where the substitute control is
+     the test suite. Nobody found using the toggles yet; adoption
+     unverified, so do not claim it. -->
 
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">03</span>
