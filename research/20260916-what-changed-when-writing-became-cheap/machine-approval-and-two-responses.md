@@ -10,7 +10,9 @@ Scope: what the record shows about removing or keeping human approval. This comp
 
 ## Main findings
 
-**Nobody found has publicly removed a mandatory human approval, but the platform removed the requirement that the approver be human.** On 1 September 2026, GitHub shipped a setting under which an automated reviewer's approval satisfies a repository's required-approvals rule. The question chapter 01 leaves open, whether the approving function must be a person, was answered in practice by a configuration toggle rather than by a policy decision.
+**CORRECTION, 16 September 2026: one named organisation has removed human approval at scale, and it is Meta.** Its RADAR system lands qualifying low-risk changes after automated review, with no human approver. The paper reports it "has reviewed 535K+ diffs and landed 331K+". This was missed in the first pass because two research agents each held half of the evidence: one searched for organisations removing approval, the other found the Meta paper while measuring review effort, and neither noticed that the system lands changes rather than only commenting. The original finding below, that nobody was found doing this, is wrong and is kept visible rather than deleted.
+
+**The platform separately removed the requirement that the approver be human.** On 1 September 2026, GitHub shipped a setting under which an automated reviewer's approval satisfies a repository's required-approvals rule. The question chapter 01 leaves open, whether the approving function must be a person, was answered in practice by a configuration toggle rather than by a policy decision.
 
 **Every named organisation in the record kept the human approver.** Including one licensed bank. Where throughput improved, the published explanation is better preparation and queueing, not a removed approver.
 
@@ -43,6 +45,24 @@ Two things neither page says. Neither states that human review is still required
 One line in the changelog needs care before quoting: "An approval assessment alone does not count toward merge requirements." Read in context this appears to distinguish an assessment of whether Copilot would approve from an actual submitted approval, but the pages do not define the distinction. Do not quote that sentence without resolving what "approval assessment" means, because it reads as a contradiction of the headline quote.
 
 `GitLab` is unclear by comparison. Its approval rules documentation says nothing about bots or service accounts approving. It does say that "Merge request authors do not count as eligible approvers on their own merge requests by default".
+
+## The organisation that did remove it
+
+Meta, "Automating Low-Risk Code Review at Meta: RADAR, Risk Calibration, and Review Efficiency", arXiv 2605.30208, submitted 28 May 2026, revised 12 June 2026, 31 authors. Abstract read directly on 16 September 2026.
+
+**The pressure, in Meta's own numbers.** "At Meta, significant lines of code per human-landed diff grew by 105.9% year over year and per-developer diff volume rose 51%, with agentic AI responsible for over 80% of that growth." And the consequence: "the share of diffs receiving timely review has declined, exposing a widening gap between code supply and reviewer bandwidth."
+
+**What they built.** A "multi-stage funnel that classifies each diff by authorship and source type, applies eligibility gates, static heuristics, a machine-learned Diff Risk Score, LLM-based Automated Code Review, and deterministic validation before landing qualifying changes." Note the last clause. It lands them.
+
+**The scale.** "RADAR has reviewed 535K+ diffs and landed 331K+."
+
+**The tuning knob, stated plainly.** "Relaxing the Diff Risk Score threshold from the 25th to the 50th percentile increased the approve rate to 60.31%." The assurance standard is a percentile, and moving it is a business decision.
+
+**The outcomes they report.** "The revert rate for RADAR-reviewed diffs is 1/3 that of non-RADAR diffs, and the Production Incident rate is 1/50 that of non-RADAR diffs." And "RADAR reduces median time to close by over 330% and median diff review wall time by 35%."
+
+**Why those outcome figures cannot be read as vindication.** The compared population is diffs selected as low-risk by the funnel, measured against everything else, so it is chosen for safety before it is measured. The authors say so: "this is not a causal estimate." They also name the unanswered question themselves: "Future work should study longer-term effects on review backlogs, defect escape rates".
+
+This is the most important single source for chapter 02. It supplies the volume evidence, the attribution to agents, the capacity consequence, a named organisation removing human approval for a defined class of change, the substitute controls, the scale, the tuning knob, and an honest statement of what remains unmeasured.
 
 ## Who kept the human approver
 
@@ -95,7 +115,8 @@ A Hacker News submission dated 7 April 2026, titled "58% of PRs in our largest m
 | The feature defaults to off and is in public preview | High. Quoted from the documentation. |
 | Anyone is actually using it | Unknown. No published account found. |
 | Every named organisation in the record retained human approval | High for the organisations listed, which is not a sample of the industry. |
-| No organisation has removed mandatory human approval | Weak as a negative. Direct-fetch method with no search budget; absence of evidence. |
+| No organisation has removed mandatory human approval | FALSE. Meta's RADAR lands 331K+ diffs after automated review. Corrected 16 Sep 2026. |
+| Meta's revert and incident figures show automation is safe | No. The compared population is pre-selected as low risk, and the authors state it is not a causal estimate. |
 | Dependency auto-merge is an accepted practice without human review | High. Vendor and platform documentation describe and support it. |
 | The "58%" monorepo claim | Unusable. Target URL returns 404. |
 | What "approval assessment" means in the changelog | Unresolved. Resolve before quoting that sentence. |
