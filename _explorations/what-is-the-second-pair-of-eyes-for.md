@@ -195,6 +195,23 @@ The problem is the approval. The approver is usually another developer on the sa
      reviews". Research:
      research/20260916-what-changed-when-writing-became-cheap/ -->
 
+Does the queue actually exist, or does it only feel that way? I wanted numbers before I believed it.
+
+Meta published theirs in May 2026. The lines of code in a change landed by a human grew by 105.9% in a year. Diff volume per developer rose 51%. Agents were responsible for more than 80% of that growth. Then the sentence that carries it: "the share of diffs receiving timely review has declined, exposing a widening gap between code supply and reviewer bandwidth."
+
+That is one company, and an unusual one. But the shape repeats elsewhere. A study of 802 developers at one AI-forward company found throughput at about twice the baseline, with reviewer load roughly doubling alongside it. Monzo, a UK bank, said the same thing in plainer words: an engineer still reviews and merges, but the bottleneck moved from finding an engineer with capacity to finding a reviewer.
+
+The strongest evidence isn't a percentage, though. It is what Meta built next. They now run a funnel that scores each change for risk, checks it automatically, and lands the ones that qualify. No human approves those. By the time they published, it had reviewed more than 535,000 changes and landed more than 331,000 of them. A company doesn't build that to solve a problem it doesn't have.
+
+So the queue is real. What I can't tell you is how big it is.
+
+Nobody has measured how many minutes a review takes. Not at any company, in any decade. The whole literature on review effort comes down to two self-reported weekly averages, about six hours a week in open source and about three at Google, and neither divides by the number of reviews. So when someone says review capacity is exceeded, they are talking about a quantity nobody has counted.
+
+The counts we do have are easy to misread. One study found that 61% of agent-authored pull requests had no recorded review, which sounds like oversight collapsing. Read further and inside the same repositories human participation was almost identical for agent and human changes, 30.1% against 30.8%. The gap was in the record, not in the oversight. A maintainer who reads a change and merges it leaves no trace.
+
+That leaves something weaker than a crisis and stronger than a feeling. Generating code got cheaper and reviewing it didn't. The companies with the most data responded by building machines to bypass their own queues. And the one number that would tell us how much review we can actually afford has never been collected.
+
+
 ### Three Failures That Look Like One
 <!-- Capacity, ownership, assurance. The ownership failure now has data,
      not just the Reddit anecdote: arXiv 2602.23905v1 (27 Feb 2026),
