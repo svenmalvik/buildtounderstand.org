@@ -186,8 +186,23 @@ The problem is the approval. The approver is usually another developer on the sa
 </div>
 
 ### The Queue Is Real
+<!-- Better than the platform-wide merged-PR count: Meta RADAR
+     (arXiv 2605.30208v2, 28 May 2026) attributes the growth to agents.
+     Lines per human-landed diff +105.9% YoY, per-developer diff volume
+     +51%, "with agentic AI responsible for over 80% of that growth".
+     Also "the percentage of diffs reviewed within 24 hours is dropping"
+     and "In some large groups, we observed thousands of pending diff
+     reviews". Research:
+     research/20260916-what-changed-when-writing-became-cheap/ -->
 
 ### Three Failures That Look Like One
+<!-- Capacity, ownership, assurance. The ownership failure now has data,
+     not just the Reddit anecdote: arXiv 2602.23905v1 (27 Feb 2026),
+     22,953 PRs from 1,719 heavy AI users, lower-experience authors'
+     PRs get 4.52x more review comments, 31% lower acceptance, open
+     5.16x longer.
+     The mistake slot (CLAUDE.md, open item 1) belongs here, in the
+     ownership failure. Nothing written until the record supports one. -->
 
 ### Restrict the Input, or Relax the Gate
 <!-- The contrast, not just the maintainers. Open source regulated the
@@ -204,6 +219,21 @@ The problem is the approval. The approver is usually another developer on the sa
      Research: research/20260916-what-changed-when-writing-became-cheap/ -->
 
 ### The Arithmetic Nobody Escapes
+<!-- The honest version: nobody has measured minutes per review, so the
+     arithmetic rests on a stated assumption, not a constant. Say so.
+     Only effort figure available is ~6.4 h/week self-reported (Bosu &
+     Carver 2013, 287 responses). The Microsoft 2015 paper's "six hours
+     a week" cites that same OSS survey, so do NOT call it Microsoft
+     telemetry. Bacchelli & Bird has no per-review figure.
+     The 200-400 lines / 60-90 minutes limits are vendor guidance, not
+     research. Usable substitute with real telemetry (Czerwonka 2015):
+     useful feedback declines with more files, noticeable past 20.
+     Outcome evidence now exists, both ways. Xia & Miller
+     (arXiv 2607.09902v1, 10 Jul 2026, 182 repos): each 10pp increase in
+     a project's no-review rate is associated with ~6% more agentic
+     maintenance burden. Association, not causation. Counter-finding at
+     Google scale (arXiv 2608.06640v1, 3.52m changes): AI code reverted
+     LESS, ~0.9x, while build failures ran ~1.3x. Carry both. -->
 
 ### The Approval Became a Setting
 <!-- New section. On 1 September 2026 GitHub shipped machine approval
