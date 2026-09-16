@@ -92,6 +92,43 @@ Three problems:
 
 Decision recorded: do not cite this vendor in the prose. The numbers are attackable on provenance even where they are accurate, and better-sourced figures exist for every point they support.
 
+## The strongest case that the queue is not real
+
+Stated fairly, because the section has to answer it rather than ignore it.
+
+**Merging is the end of a review, not a backlog.** Merged pull request volume rose about 3.6 times, but a merge is what happens when review completes. A number that grows while still clearing describes throughput, not blockage. If review were truly binding, those changes would not be merging.
+
+**The growth is concentrated, not general.** The doubling belongs to the heaviest users of these tools, while non-users are flat. So the aggregate is not a description of everyone's condition.
+
+**Reviewing itself did not get slower.** Once a reviewer starts, AI-assisted changes clear faster than unassisted ones.
+
+**Where teams actually hold work may be downstream.** Steve Fenton argued in The New Stack on 16 July 2026 that if review were the binding constraint, deployment batches would not be where most teams accumulate work.
+
+**What survives the objection.** Two things. Pickup delay, and the rise in merges with no review at all. Both support the narrower claim: the queue is real for the people standing in it, even where the totals clear. That formulation is the honest version and is what the prose now says.
+
+## Pickup versus reviewing
+
+LinearB, 4 May 2026, 8.1 million pull requests across 4,800 teams in 42 countries. Both **ELAPSED TIME**.
+
+| Stage | AI-assisted | Unassisted |
+| --- | --- | --- |
+| Wait before pickup | about 16 hours | about 200 minutes |
+| Review once started | about 194 minutes | about 252 minutes |
+
+The contrast is the useful part. The wait before anyone starts is roughly five times longer for AI-assisted changes, while the reviewing itself is faster. This is the clearest available evidence that the scarce resource is reviewer attention rather than reading speed.
+
+## Was the volume rise an artifact of splitting work?
+
+No, and this closes an obvious objection. At the 75th percentile, "AI-assisted pull requests contain over 400 lines of code compared to 157 lines for unassisted work", with agentic pull requests near 290 lines. **VOLUME.** Changes got bigger, so the rise in count is not an accounting effect of dividing the same work into smaller pieces.
+
+Caveat: this is vendor data, and its corroborating source was dropped for the provenance problems recorded above, so it now stands alone. No source measures what share of the rise is genuinely new work.
+
+## Reviewer concentration: a metric, not a measurement
+
+LinearB, 9 September 2026, over 8.1 million pull requests, defines the idea but never publishes a value: "An average review count across your organization can look healthy while most of the reviewing sits with a handful of people." Its reviewer-imbalance metric "reports how many more reviews your top 20% of reviewers complete than everyone else".
+
+This supports a claim about missing measurement, not a claim that concentration worsened. Do not write that reviewing became more concentrated. Nobody published the number.
+
 ## What nobody appears to have measured
 
 **Human attention per review, in minutes, at any company, in any decade.** The entire effort literature reduces to two self-reported weekly averages: 6.4 hours in open source and 3.2 hours at Google. Neither divides by the number of reviews.
@@ -120,6 +157,13 @@ Decision recorded: do not cite this vendor in the prose. The numbers are attacka
 | AI adoption harms delivery stability | Medium. Two survey waves agree on instability while reversing on throughput. Self-reported. |
 | The 2,500 reviews and 3.2 million lines behind the vendor figures | Unverifiable. Gated ebook, not reachable. |
 | Kemerer & Paulk 2009 supports a review-rate claim | Unknown. Not retrieved; behind a bot challenge. Worth one manual download. |
+| The queue is a general condition across the industry | No. The growth is concentrated among the heaviest tool users; non-users are flat. |
+| Reviewing got slower | No. Once started, AI-assisted changes clear faster, about 194 against 252 minutes. |
+| The volume rise is an artifact of splitting work smaller | No. Changes got bigger, over 400 lines against 157 at the 75th percentile. Vendor data, now uncorroborated. |
+| Reviewing became more concentrated among fewer people | Not established. The metric is defined but no value was published. |
+| METR revised its productivity findings in 2026 | Not found. Eight 2026 posts, none on that trial. |
+| Cursor's 39 per cent merged-pull-request figure | Unusable. Cited secondhand; the primary URL returns 404. |
+| GitHub's 90 million excludes bot pull requests | Unknown. Not stated in the source. |
 
 ## Related documents
 
