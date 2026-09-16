@@ -72,6 +72,26 @@ This is the section earlier research treated as empty. It is not empty any more.
 
 **Survey-level delivery outcomes.** The DevOps Research and Assessment program, 2024 report, nearly 3,000 respondents: a 25 per cent increase in AI adoption was associated with delivery throughput down 1.5 per cent and delivery stability down 7.2 per cent. Its 2025 report, 4,867 respondents: "AI adoption now improves software delivery throughput, a key shift from last year. However, it still increases delivery instability." Instability combines change fail rate and rework, rework being unplanned deployments caused by a production incident. Self-reported survey data, and no 2026 report was listed at the time of checking. Note the name collision: this is the DevOps program, not the EU regulation discussed in chapter 01.
 
+## Verified platform figures, and one vendor to avoid
+
+**GitHub's volume figure, confirmed.** "How pull request limits are cutting down the noise", GitHub Blog, 18 June 2026: "In January 2023, developers merged about 25 million pull requests a month across GitHub. Today that number tops 90 million—a roughly 3.6x increase." **VOLUME.** The metric is merged pull requests per month. GitHub does not attribute the growth to AI in that passage, and the post is about maintainer-facing rate limits.
+
+The same post makes an effort claim with no measurement behind it: "Reviewing one still takes a human about as long as it ever did." **EFFORT, unmeasured.** Usable in the prose precisely because it is an assertion rather than a finding, and it can be quoted alongside the observation that nobody has counted.
+
+Related, from "Agent pull requests are everywhere. Here's how to review them", 7 May 2026: "GitHub Copilot code review has processed over 60 million reviews, growing 10x in less than a year" and "More than one in five code reviews on GitHub now involve an agent." Both **VOLUME.**
+
+**The strain sits in pickup, not in reviewing.** LinearB data shows that once review begins, AI-assisted pull requests are reviewed faster than unassisted ones, about 194 minutes against 252 at the median. **ELAPSED TIME.** This refines the capacity argument: the scarce resource is reviewer attention and scheduling, not reading speed. Sample size and article date still to be confirmed.
+
+**Faros AI: verified, corrected, and best left out.** Its figures are real and the report exists, "The AI Engineering Report 2026: The Acceleration Whiplash", covering "two years of telemetry data from 22,000 developers and more than 4,000 teams", comparing each organisation's lowest and highest AI-adoption periods. Quotes: "Median time to first PR review is up 156.6%", "Median time in review is up 441.5%", "Pull requests merged without any review, human or agentic, are up 31.3%".
+
+Three problems:
+
+1. **The 31.3% is a relative increase, not a share.** It does not mean 31.3 per cent of pull requests merge unreviewed. The baseline rate is unpublished, so it cannot be converted into a share. Writing "31% of pull requests merge without review" would be simply wrong.
+2. **Three different review-time figures circulate from one dataset.** A November 2025 post gives a 91 per cent increase in review time, a May 2026 post gives 199.6 per cent for the average, and the report gives 441.5 per cent for the median. Any use has to name which cut it is.
+3. **The design confounds adoption with calendar time,** because a given organisation's high-adoption periods are also its later periods. Faros claims statistical association, not causation.
+
+Decision recorded: do not cite this vendor in the prose. The numbers are attackable on provenance even where they are accurate, and better-sourced figures exist for every point they support.
+
 ## What nobody appears to have measured
 
 **Human attention per review, in minutes, at any company, in any decade.** The entire effort literature reduces to two self-reported weekly averages: 6.4 hours in open source and 3.2 hours at Google. Neither divides by the number of reviews.
