@@ -203,14 +203,14 @@ We create more code than ever before. Meta reports 51% more changes per develope
 
 But once someone starts, the AI-written PR takes about 194 minutes against 252 to review. Sounds like reviewing got faster. But those PRs are a lot bigger, over 400 lines against 157. A bigger PR reviewed in less time is probably not really reviewed.
 
-Someone measured this directly. Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more of it, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The easy explanations don't fit. The changes stayed the same size, the waiting got longer rather than shorter, and approval of human-written code fell in the same months. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
+Someone measured this directly. Researchers followed 400 reviewers through 11429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The easy explanations don't fit. The changes stayed the same size, the waiting got longer rather than shorter, and approval of human-written code fell in the same months. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
 
-Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
+Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331,000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
 
 There are three problems:
 
 - More code arrives than people can read.
-- Developers submit code they don't understand themselves. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
+- Developers submit code they don't understand themselves. Sonar asked 1,149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
 - An approval gets recorded with no real check. I've done this myself. I approved a change because I know the developer who wrote it.
 
 ### Restrict the Input, or Relax the Gate
