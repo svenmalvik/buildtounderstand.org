@@ -215,17 +215,15 @@ Meta now scores each PR for risk and merges the low-risk ones automatically. No 
      The mistake slot (CLAUDE.md, open item 1) belongs here, in the
      ownership failure. Nothing written until the record supports one. -->
 
-People write more changes than other people can read. That is the one everyone talks about, and the one the machines are built for.
+The queue is one problem. It gets treated as the whole problem, and there are three.
 
-The second is ownership. The author sends on a change they don't understand themselves. Sonar asked 1,149 developers. 96% said they don't fully trust that AI output is correct. Only 48% said they always verify it before committing. So people doubt the code and submit it anyway.
+The first is capacity, which is what the numbers above describe. More code arrives than people can read.
 
-It isn't only laziness. In a controlled study, people given an AI assistant were more likely to believe they had written secure code. The tool raises confidence faster than it raises correctness.
-
-When that happens, the reviewer isn't the second pair of eyes. They are the first. Some projects now write the test down. PostHog asks contributors to understand their code and "be ready to explain why it's correct", then adds the condition that decides it: without re-prompting a model. Rust says it shorter. "A review from a project member does not substitute for self-review."
+The second is ownership. Developers submit code they don't understand themselves. Sonar asked 1,149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway. When that happens, the reviewer isn't the second pair of eyes. They are the first.
 
 The third is assurance. An approval gets recorded where no real check happened.
 
-Someone has now measured this. Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more of it, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes didn't get smaller, the waiting got longer, and approval of human-written code moved the other way in the same period. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
+Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes stayed the same size. The waiting got longer, not shorter. And approval of human-written code fell in the same months. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
 
 I have done the same thing in a smaller way. I approved a change because the checks were green and I knew the person who wrote it. I didn't read it. The approval was recorded. What it recorded was my confidence in the tests, not my reading of the change.
 
