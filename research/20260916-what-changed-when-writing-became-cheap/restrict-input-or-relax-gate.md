@@ -142,6 +142,61 @@ Covered in detail in [`machine-approval-and-two-responses.md`](./machine-approva
 - **GitHub** made machine approval able to satisfy a required-approvals rule on 1 September 2026, defaulting to off and marked public preview.
 - **Dependency auto-merge** has been the accepted precedent for years, with the test suite as the substitute control.
 
+## The third answer: move the review earlier
+
+Added after a reader pointed out that the restrict-or-relax framing missed an option. It is the strongest finding of that follow-up.
+
+### The same tool runs on both sides of the submission line
+
+Timing verified from vendor documentation on 17 September 2026, not inferred.
+
+| Tool | Side of the line | Evidence |
+| --- | --- | --- |
+| Codex CLI `/review` | Pre-submission | "Run a dedicated review against uncommitted changes, a commit, or a base branch." |
+| Claude Code `/code-review` | Pre-submission | "reviews your branch's commits ahead of its upstream plus any uncommitted changes" |
+| CodeRabbit CLI | Pre-submission | "Get AI code reviews directly in your CLI before you commit." |
+| Cursor Bugbot `/review-bugbot` | Pre-submission | "reviews your branch changes: every change relative to the base branch" |
+| Cursor Bugbot, default | Post-submission | "Runs automatic reviews on every PR update" |
+| Anthropic Code Review | Post-submission | "reviews trigger when a PR opens, on every push, or when manually requested" |
+| Claude Code GitHub Action | Post-submission | triggers on `pull_request` events |
+| Gemini Code Assist on GitHub | Post-submission | "invoke Gemini Code Assist at any stage of the pull request to review the code" |
+
+**The structural fact that matters.** Anthropic ships one review skill with two delivery paths, and its documentation points from the post-submission product to the pre-submission one, describing the latter as a way to "run `/code-review` in a local Claude Code session to check a diff before pushing". Cursor does the same. So pre-submission review is not a separate category of tool. It is a placement choice, and the vendors present it as the author's convenience rather than as a change to the review model.
+
+**Why that is worth saying in the prose.** Where the reviewer runs decides whether anyone independent has seen the change. Chapter 01 establishes that the regulation asks for independence between the function that approves and the functions that request and implement. A reviewer the author runs on their own branch is the same function. So the earlier placement may be the better engineering practice and the weaker independence claim, and nobody in the tooling treats that as a governance question.
+
+### The one team account
+
+Anthropic, "How Anthropic secures its AI-native software development lifecycle", 21 July 2026. **MOVES REVIEW EARLIER, human reviewer retained only by risk tier.**
+
+> "Our team started with a CLAUDE.md file that instructs the agent to run /security-review as a final step before opening a PR."
+
+> "Some of our customers choose to integrate /security-review with a PreToolUse hook, which makes this step a harder gate."
+
+Human review is retained selectively rather than per change: the post describes "reserving human review for regulated or truly critical code" and states that "Human accountability is still central for code that is reviewed and merged by Claude", with humans sampling automated approvals.
+
+So in practice the third answer combines with the second. Moving the check earlier is what makes relaxing the gate defensible for lower tiers.
+
+### Nobody has measured it
+
+Essentially no data. No vendor publishes review-time, rework, or acceptance-rate effects. CodeRabbit's CLI documentation makes no quantified claim of any kind. Cursor's Bugbot documentation has no effectiveness metrics, only per-review pricing. Gemini Code Assist claims "speeding up reviews" with nothing behind it.
+
+## The option nobody took
+
+Worth reporting as an absence, because it makes the three-way choice honest.
+
+**Dropping the pull request.** The mechanism exists and is well described, but from 2021 and not AI-motivated: Rouan Wilsenach, "Ship/Show/Ask", 8 September 2021, "You make your change on a branch, you open a Pull Request, then you merge it without waiting for anyone". Nobody found has revived it citing AI volume. **MOVES REVIEW LATER.**
+
+**Trunk-based development does not support the claim either.** Its community site puts review before the merge: "the PR should be on a short-lived feature branch and processed very quickly by reviews towards merging back to trunk/main." Committing straight to trunk is framed as a small-team choice with no AI rationale, and it recommends self-verification "optimally with a pair-programming partner".
+
+**Pair programming: no adopters found.** No 2025-2026 account of a team adopting or expanding human pairing because AI made review the bottleneck. The nearest Thoughtworks source argues the opposite and predates the question, Birgitta Böckeler, "Coding assistants do not replace pair programming", 10 August 2023. Notably, the one 2026 memo in that series about human-agent working arrangements does not discuss pull requests or review at all.
+
+**And the counter-evidence is sharp.** "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding", arXiv 2607.26375, 29 July 2026, finds agents "boost task completion but reduce code comprehension". The Extreme Programming argument for pairing instead of review depends on the human understanding what was written, so this turns the proposed remedy into another instance of the ownership failure.
+
+Note also that in the current literature "pair programming" increasingly means two agents rather than a human avoiding review.
+
+**Post-merge measurement is active; post-merge review is not.** Three 2026 papers argue merge success is the wrong endpoint, including Xia and Miller on 182 repositories, one on 1,210 merged agent pull requests, and one on 37,623 pull requests. None proposes that review should move after the merge.
+
 ## The counter-pattern: same pressure, kept the gate
 
 This complicates any neat open-source-versus-companies story, and the section should say so.

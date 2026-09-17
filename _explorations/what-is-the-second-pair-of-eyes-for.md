@@ -217,7 +217,7 @@ In short, there are three problems:
 
 I've done this myself. I approved a change because the checks were green and I knew the developer who wrote it. I didn't read it. What the approval recorded was my confidence in the tests, not my reading of the change.
 
-### Restrict the Input, or Relax the Gate
+### Restrict, Relax, or Move It Earlier
 <!-- The contrast, not just the maintainers. Open source regulated the
      input and kept human approval: Godot 30 Jun 2026 (restricted AI
      contributions, reviewer shortage predated AI), Rust Forge (circuit
@@ -235,7 +235,7 @@ Before anything else, one correction. AI didn't create this shortage.
 
 The Godot Foundation said so when it changed its contribution rules in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said the same in different words. They had the problem for a while, and AI accelerated it. So the queue is not a new problem. It is an old problem that stopped being optional.
 
-From there, two answers. You can restrict what comes in, or you can relax the gate on the way out.
+From there, three answers. You can restrict what comes in, relax the gate on the way out, or move the check earlier so the queue never sees the work in that state.
 
 Open source restricted the input. Godot now bans autonomous agents and generated code of any size, requires disclosure of AI use, and keeps the gate: "All PRs must be reviewed and approved by a human before merging." Rust wrote a number into its policy. If more than half the changes merged in six weeks were written by a model, new ones stop being merged until the share falls back, for at least ten days. GitHub started capping how many open pull requests a contributor without write access may have.
 
@@ -250,6 +250,12 @@ Adyen did both at once. The Dutch payment company runs more than 4,000 automated
 One project tried a ban and undid it two days later. Netbox prohibited AI-generated contributions on 5 May 2026 and removed the prohibition on 7 May, replacing it with a rule a bot can check: open an issue and assign it to yourself before you open a pull request. The ban didn't fail because restriction was wrong. It failed because nobody could enforce it.
 
 That is the useful part. Of 92 policies tracked over time, netbox is the only one that loosened. Everything else got tighter. And the restrictions that survived are the ones a machine can verify: a count of open pull requests, a required issue, a percentage in a six-week window.
+
+The third answer is the quiet one, and it is already in the tools. The same reviewer that comments on your pull request will also run on your branch before you open one. Anthropic ships one review skill and two ways to deliver it, and so does Cursor. Their own team wrote the earlier placement into a config file, telling the agent to run a security review "as a final step before opening a PR", and some of their customers turned that into a hook so it can't be skipped. Human review stays, but only for "regulated or truly critical code".
+
+Nobody has published what that does. No review time, no rework, no acceptance rate. The vendors describe the choice of when to run the reviewer as a convenience, not as a decision about who checks the work first.
+
+It is worth noticing what nobody chose. You could drop the pull request altogether. That mechanism was written up in 2021 as Ship/Show/Ask, where you open a change and merge it without waiting for anyone, and nobody has revived it because of AI. You could pair instead, so two people see the code as it is written, which was the original argument for skipping review. I found no team that started pairing because review became the bottleneck. And one 2026 study of pairing with an agent found it improved task completion while reducing the human's comprehension of the result, which turns the cure into another case of the second problem.
 
 One thing is missing from all of this. Almost nobody in European finance has published anything. I looked for banks and payment companies and found Adyen, Monzo, and then silence from more than twenty others. The clearest accounts of both strategies come from a German retailer and a Swedish music company, not from anyone under DORA. Spotify is also the only European company I found that checked whether any of this hurt: it "did not identify AI-authored code as a material direct contributor" to its incidents, but found that "the volume of change increased faster than some of our verification controls could adapt." Which is the whole problem in one sentence, and it came from outside my own industry.
 
