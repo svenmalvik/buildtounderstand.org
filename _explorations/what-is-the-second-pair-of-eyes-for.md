@@ -205,17 +205,13 @@ But once someone starts, the AI-written PR takes about 194 minutes against 252 t
 
 Someone measured this directly. Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more of it, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The easy explanations don't fit. The changes stayed the same size, the waiting got longer rather than shorter, and approval of human-written code fell in the same months. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
 
-Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331,000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
+Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
 
-All of this looks like one problem. It is three, and they need different answers.
+There are three problems:
 
-The first is capacity. More code arrives than people can read. That is the one everyone talks about, and the one the machines are built for.
-
-The second is ownership. Developers submit code they don't understand themselves. Sonar asked 1,149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway. When that happens, the reviewer isn't the second pair of eyes. They are the first.
-
-The third is assurance. An approval gets recorded where no real check happened. I have done this myself. I approved a change because the checks were green and I knew the person who wrote it. I didn't read it. The approval was recorded. What it recorded was my confidence in the tests, not my reading of the change.
-
-This is why the three need separating. More reviewers help the first and do nothing for the second. Teaching authors to understand their own work helps the second and leaves the queue as long as it was. And a new approval rule can leave all three untouched while producing a record that says otherwise.
+- More code arrives than people can read.
+- Developers submit code they don't understand themselves. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
+- An approval gets recorded with no real check. I've done this myself. I approved a change because I know the developer who wrote it.
 
 ### Restrict the Input, or Relax the Gate
 <!-- The contrast, not just the maintainers. Open source regulated the
