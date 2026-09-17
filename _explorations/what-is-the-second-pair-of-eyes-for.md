@@ -210,7 +210,7 @@ Meta now scores each PR for risk and merges the low-risk ones automatically. No 
 In short, there are three problems:
 
 - More code arrives than people can read.
-- Developers submit code they don't understand themselves. Sonar asked 1,149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
+- Developers submit code they don't understand themselves. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
 - An approval gets recorded with no real check. I've done this myself. I approved a change because I know the developer who wrote it.
 
 ### Restrict the Input, or Relax the Gate
