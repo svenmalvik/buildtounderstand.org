@@ -13,13 +13,14 @@ Built from the research in vce-context/research/pull-request-origins/
 what-is-the-smallest-ai-platform-that-could-possibly-work.md.
 
 Open items before publishing:
-1. The mistake. CLAUDE.md asks for a mistake from the same domain, placed
-   where it carries the argument. Chapter 02 has a marked slot for it. The
-   record doesn't establish one about review, so nothing is written there.
-   Candidates to confirm or reject: a change I approved without reading
-   because the tests were green; a PR I opened from agent output I couldn't
-   explain; a review rule I introduced that people bypassed. If none is
-   true, the section stands on the Rust and Reddit evidence and says so.
+1. The mistake. RESOLVED 17 Sep 2026, confirmed by Sven: he approved a
+   change because the tests were green, without reading it. Placed with
+   the assurance failure in "Three Failures That Look Like One", because
+   the green check stood in for a judgement and the recorded approval
+   recorded confidence in the tests rather than a reading of the change.
+   The other two candidates (a PR opened from agent output he couldn't
+   explain; a review rule people bypassed) are NOT his experience and
+   must not be written.
 2. The centralized AI review wish at work (chapter 03). Written to the same
    limit as the adoption draft: a wish exists, ownership is unclear, the
    decision isn't mine, I built the tool someone would centralize with.
