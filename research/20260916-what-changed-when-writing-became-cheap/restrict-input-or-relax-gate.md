@@ -153,11 +153,49 @@ So large throughput gains are available without touching the approver, which wea
 
 ## European fintech evidence
 
-Tracked separately, because the piece is written for engineering leaders in regulated European companies and that is where the evidence is thinnest. An earlier direct-fetch pass found nothing published by DNB, Nordea, Klarna, Revolut or Wise. Monzo is the only European financial institution found with a published position, and it retained the approver.
+The headline result is an absence. European banks and fintechs have published essentially nothing on reviewing AI-generated code. That is worth reporting to this audience rather than hiding.
 
-A dedicated search is in progress. If it confirms the gap, the section should say plainly that European financial firms have published almost nothing, which is itself worth reporting to that audience.
+**Checked individually and found nothing:** ING, Klarna, Wise, N26, Checkout.com, Starling, SumUp, Mollie, Revolut, bunq, Danske Bank, Nordea, SEB, Swedbank, DNB, Santander, BBVA, Deutsche Bank, Nexi, Worldline, Trustly, Tink, Zettle, Schibsted, Adevinta. Qonto publishes heavily on AI, but about product agents and customer-facing review, not code review.
 
-**Note on the author's employer.** Anything found about Vipps MobilePay is to be reported separately and cleared by the author before use, per the confidentiality constraint in his strategy document.
+**Vipps MobilePay has published nothing.** The developer portal is API documentation only. No engineering blog, no AI development post, no AI language in public contribution guidelines. So there is nothing to clear and no confidentiality exposure from this direction.
+
+### Adyen, the only European payment company on the record
+
+Stefano Dalla Palma, Development Tooling Engineer, Adyen tech blog, 22 August 2026. **RETAINED, and it restricts input at the same time.**
+
+> "Every automated change is reviewed and approved by a human before it merges"
+
+Scale and load: "over 4,000 automated MRs across the codebase, with a steady 70% merge rate, a median review turnaround under two hours", spread across "more than 400 unique reviewers".
+
+The input constraint, which is the interesting half: "It produces small MRs touching fewer than five files on average. These are fast to review, easy to approve".
+
+And they named habituation from experience, independently of the study that measured it:
+
+> "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize."
+
+Their countermeasure was temporary: "a designated person walked through approved MRs before merging to double-check the changes".
+
+**Caveat that must travel with this.** These are deterministic OpenRewrite recipes orchestrated by an agent, not model-generated code. The review-capacity shape is the same; the provenance is not. Do not present Adyen as an example of reviewing AI-written code.
+
+### The clearest European accounts are not financial firms
+
+**Zalando**, Germany, e-commerce. Bartosz Ocytko, Executive Principal Engineer, 14 August 2026. **REMOVED for a defined subset.** "33% of our PRs are low-risk and are auto-approved by the bot." A risk classifier runs at pull request creation and scores rollout risk low, medium or high; the author may then merge their own low-risk change, cutting lead time 20 to 40 per cent. Medium and high still require a human. On size: "Teams who found large PRs to be a problem, have reached internal agreements that they will limit PR sizes to a fixed size", with enforcement social rather than mechanical, since "Hard enforcement through pre-commit hooks is less popular."
+
+**Spotify**, Sweden. Tyson Singer, SVP, 16 September 2026. **REDUCED.** The only European source found that segments incident data by AI authorship:
+
+> "we did not identify AI-authored code as a material direct contributor"
+
+> "the volume of change increased faster than some of our verification controls could adapt"
+
+It is watching two signals: "code complexity and PR size are both creeping up". Separately, Niklas Gustavsson, Chief Architect and VP of Engineering, 3 June 2026: "we now have 76% more PRs to review", with the response being "auto-merging what's safe, focusing review where it matters most". Attribution caution: those words are Spotify Engineering's write-up of his talk, not quoted directly as his.
+
+**Booking.com**, Netherlands, 3 July 2025. **RETAINED**, but one engineer's post rather than policy: "You must be the ultimate gatekeeper, reviewing every line before it enters your codebase."
+
+### No European financial institution restricting input, and no regulator statement
+
+Not found for either. A GitHub search for AI-disclosure language in contribution guidelines across nine European fintech organisations returned zero hits. No European regulator or industry body statement beyond DORA and its technical standards was found, though that absence is weaker than the others: the European Banking Authority's search interface is JavaScript-rendered and returned nothing extractable.
+
+**Method limits to carry into the piece.** This pass ran without web search, using direct blog fetches, RSS feeds and the GitHub API. Medium feeds expose only ten recent posts, so older posts from Klarna, Wise or N26 could exist unseen. Conference talks and podcasts were not searchable, which is precisely where European fintech engineers are most likely to have spoken without publishing. So the honest claim is that this sector has published little, not that it has said nothing.
 
 ## Confidence and gaps
 

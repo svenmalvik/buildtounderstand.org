@@ -241,13 +241,17 @@ Open source restricted the input. Godot now bans autonomous agents and generated
 
 curl did something different. It removed the reward. About 20% of its security submissions were slop, and the share that turned out to be real fell below one in twenty. In January 2026 the project ended its bug bounty after paying out more than 100,000 dollars over its life. Reports are still welcome. They are just not worth money anymore.
 
-Companies went the other way. Meta relaxed the gate, as we saw. A team lead described going from 40 to 110 pull requests a week with the same four approvers, then cutting two required reviews to one and testing none at all for some changes.
+Companies went the other way. Meta relaxed the gate, as we saw. Zalando was more specific about how much: a classifier scores every pull request at the moment it opens, and "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk still need a person.
 
-But not everyone did. Shopify cut its security backlog by about 70% in eleven days and kept the approver, because the gain came from preparing changes better and queueing them, not from removing the person. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer. So the throughput was available without touching the gate.
+But not everyone relaxed it. Shopify cut its security backlog by about 70% in eleven days and kept the approver, because the gain came from preparing changes better and queueing them. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer.
+
+Adyen did both at once. The Dutch payment company runs more than 4,000 automated merge requests across its codebase, keeps a human approving every one, and protects that human by shrinking the work: each change touches fewer than five files on average, which makes it "fast to review, easy to approve". They also wrote down the thing the habituation study measured. "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize." Their answer was a second layer, a designated person walking through approved changes before they merged.
 
 One project tried a ban and undid it two days later. Netbox prohibited AI-generated contributions on 5 May 2026 and removed the prohibition on 7 May, replacing it with a rule a bot can check: open an issue and assign it to yourself before you open a pull request. The ban didn't fail because restriction was wrong. It failed because nobody could enforce it.
 
 That is the useful part. Of 92 policies tracked over time, netbox is the only one that loosened. Everything else got tighter. And the restrictions that survived are the ones a machine can verify: a count of open pull requests, a required issue, a percentage in a six-week window.
+
+One thing is missing from all of this. Almost nobody in European finance has published anything. I looked for banks and payment companies and found Adyen, Monzo, and then silence from more than twenty others. The clearest accounts of both strategies come from a German retailer and a Swedish music company, not from anyone under DORA. Spotify is also the only European company I found that checked whether any of this hurt: it "did not identify AI-authored code as a material direct contributor" to its incidents, but found that "the volume of change increased faster than some of our verification controls could adapt." Which is the whole problem in one sentence, and it came from outside my own industry.
 
 
 ### The Arithmetic Nobody Escapes
