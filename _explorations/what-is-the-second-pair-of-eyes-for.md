@@ -195,22 +195,9 @@ The problem is the approval. The approver is usually another developer on the sa
      reviews". Research:
      research/20260916-what-changed-when-writing-became-cheap/ -->
 
-Three sources measured it.
+We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged pull requests went from about 25 million a month in January 2023 to over 90 million by June 2026. And reviewing a PR, in GitHub's words, "still takes a human about as long as it ever did."
 
-| Source | What grew | How much |
-| --- | --- | --- |
-| Meta, May 2026 | Lines of code per change a human merged | 105.9% in one year |
-| Meta, May 2026 | Changes per developer | 51%, and agents caused over 80% of that |
-| 802 developers at one company | Output per developer, and review work | Both roughly doubled |
-| GitHub, June 2026 | Merged pull requests per month | About 25 million in January 2023, over 90 million by June 2026 |
-
-Meta's own conclusion: "the share of diffs receiving timely review has declined, exposing a widening gap between code supply and reviewer bandwidth." Monzo, a UK bank, said it more simply. An engineer still reviews and merges, but the hard part moved from finding an engineer with time to finding a reviewer.
-
-GitHub doesn't say AI caused its growth, and it shouldn't, because the platform grew too. But it adds one sentence I keep thinking about: "Reviewing one still takes a human about as long as it ever did."
-
-There is a good objection to all of this. A change is merged when its review is finished. So 90 million merges a month are 90 million reviews that ended. If the work were really stuck, it wouldn't merge. The growth isn't everywhere either. It sits with the heaviest users of these tools, while people who don't use them see no change. And it isn't the same work cut into smaller pieces, because the changes got bigger, not smaller.
-
-What the objection doesn't explain is the waiting. A change written with AI waits about 16 hours before anyone picks it up. A change written without it waits about three. Once a reviewer starts, the AI-written change is done faster, about 194 minutes against 252. So the scarce thing is attention, not reading speed. The queue is real for the people standing in it, even when the totals look fine.
+A change written with AI waits about 16 hours before anyone picks it up. A change written without it waits about three. Once a reviewer starts, the AI-written change is done faster, about 194 minutes against 252. So the scarce thing is attention, not reading speed. The queue is real for the people standing in it, even when the totals look fine.
 
 The strongest evidence isn't a percentage, though. It is what Meta built next. They now run a funnel that scores each change for risk, checks it automatically, and merges the ones that qualify. No human approves those. By the time they published, it had reviewed more than 535,000 changes and merged more than 331,000 of them. A company doesn't build that to solve a problem it doesn't have.
 

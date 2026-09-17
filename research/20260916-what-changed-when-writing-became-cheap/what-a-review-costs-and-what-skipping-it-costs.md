@@ -115,7 +115,13 @@ LinearB, 4 May 2026, 8.1 million pull requests across 4,800 teams in 42 countrie
 | Wait before pickup | about 16 hours | about 200 minutes |
 | Review once started | about 194 minutes | about 252 minutes |
 
-The contrast is the useful part. The wait before anyone starts is roughly five times longer for AI-assisted changes, while the reviewing itself is faster. This is the clearest available evidence that the scarce resource is reviewer attention rather than reading speed.
+Verified directly against the primary page on 17 September 2026. Exact wording: "AI-generated pull requests wait more than 16 hours on average before a reviewer picks them up, compared to approximately 200 minutes for unassisted work", which the article calls "a delay more than five times longer". And: "AI-generated pull requests move through the review cycle faster, approximately 194 minutes compared to 252 minutes for manual work." The page does not claim causation.
+
+**Correction to an earlier interpretation.** The faster review cycle was first read here as reassurance, meaning reviewing itself had not become harder, so the constraint was attention rather than reading speed. LinearB reads the same number the opposite way, saying the faster cycle "likely reflects superficial validation rather than thorough scrutiny". Their reading is better supported, because the same source reports AI-assisted changes are larger, over 400 lines against 157 at the 75th percentile. A larger change completed in less time indicates less scrutiny per line, not efficiency. The prose was corrected accordingly.
+
+So the two figures point the same way rather than in opposite directions: changes wait longer to be started, and then receive less time relative to their size.
+
+**Provenance note.** LinearB is a vendor selling engineering metrics, the same category as the vendor excluded above for publishing non-reconciled figures. That exclusion test was not initially applied here, which was inconsistent. These specific figures are retained because they were verified against the primary page, the article states its sample (8.1 million pull requests, 4,800 teams, 42 countries, 4 May 2026), and it declines to claim causation. No independent corroboration exists now that the other vendor is excluded.
 
 ## Was the volume rise an artifact of splitting work?
 
