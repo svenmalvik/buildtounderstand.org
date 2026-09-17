@@ -177,6 +177,42 @@ Human review is retained selectively rather than per change: the post describes 
 
 So in practice the third answer combines with the second. Moving the check earlier is what makes relaxing the gate defensible for lower tiers.
 
+### Does the author's own machine review count as self-review? One project says no
+
+This is the direct answer to whether moving the check earlier discharges the author's duty, and it comes from the Rust policy file announced 5 August 2026:
+
+> "An LLM review does not substitute for self-review. Authors are expected to review their own code before posting and after each change."
+
+The same file permits private pre-submission review, keeps bots non-blocking, and forbids substitution on the other side too: teams "may not have a policy that an LLM review substitutes for a human review."
+
+No counter-example was found anywhere. No policy or engineering account treats a machine review the author ran as meeting a self-review obligation.
+
+### Progressive delivery adds a control, it does not replace review
+
+Scarlett Attensil, LaunchDarkly, 15 September 2026, argues runtime controls are a missing addition rather than a replacement, and that build-side gates including review remain necessary. Its framing line is the sharpest sentence found in this entire research:
+
+> "Reviewers like AI code more than production does."
+
+The data behind it is the New Relic 2026 report, 200 US technology decision-makers, **SELF-REPORTED**: 94 per cent rate AI-written code as higher quality at review, 78 per cent report more production incidents, and 82 per cent hit an AI-attributable failure within six months.
+
+Carry the caveats: 200 respondents, decision-makers rather than reviewers, United States, self-reported, and the report is vendor-published. But the contrast between 94 and 78 is the cleanest available statement of the assurance failure, and it belongs in the chapter wherever outcomes are discussed.
+
+### Stacked diffs: no AI claim
+
+Graphite makes no AI-volume claim. Its one figure is a vendor-published customer result, Asana "saving up to 7 hours per week on code reviews", one company, with AI unmentioned. Meta's RADAR is the real result in this space, and it kept the diff while changing the approver.
+
+### Is the pull request the wrong unit?
+
+The strongest formulation is a vision paper with no data, arXiv 2605.17548, 17 May 2026, in which "reviewers transition from manual inspectors into supervisory operators of agents". Against it, the synthesis of 3,100 coded documents surfaces no practitioner proposal to abandon the pull request and concludes that "review is the control point through which a coding agent's effect on software is decided."
+
+### Pairing and segregation of duties
+
+**Not found** in any audit, banking, or ISO source. The DevOps Research and Assessment program's capability page of 30 October 2025 settles it by implication: segregation of duties "states that changes must be approved by someone other than the author". Two people co-writing a change produce no such approver and no captured record. Name which DORA when using this: the DevOps programme, not the EU regulation of chapter 01.
+
+### The verdict on the third option
+
+Mostly advocacy. Everyone found with real systems and real numbers kept the pull request and changed who approves it.
+
 ### Nobody has measured it
 
 Essentially no data. No vendor publishes review-time, rework, or acceptance-rate effects. CodeRabbit's CLI documentation makes no quantified claim of any kind. Cursor's Bugbot documentation has no effectiveness metrics, only per-review pricing. Gemini Code Assist claims "speeding up reviews" with nothing behind it.

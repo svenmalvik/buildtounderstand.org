@@ -255,7 +255,11 @@ The third answer is the quiet one, and it is already in the tools. The same revi
 
 Nobody has published what that does. No review time, no rework, no acceptance rate. The vendors describe the choice of when to run the reviewer as a convenience, not as a decision about who checks the work first.
 
+Rust drew the line the tools don't. Its policy says an LLM review "does not substitute for self-review", and that authors are "expected to review their own code before posting and after each change". Running a machine over your own branch is not the same as having understood it.
+
 It is worth noticing what nobody chose. You could drop the pull request altogether. That mechanism was written up in 2021 as Ship/Show/Ask, where you open a change and merge it without waiting for anyone, and nobody has revived it because of AI. You could pair instead, so two people see the code as it is written, which was the original argument for skipping review. I found no team that started pairing because review became the bottleneck. And one 2026 study of pairing with an agent found it improved task completion while reducing the human's comprehension of the result, which turns the cure into another case of the second problem.
+
+So the pattern is the same everywhere there are real systems and real numbers. Nobody abandoned the pull request. They kept it and changed who approves it.
 
 One thing is missing from all of this. Almost nobody in European finance has published anything. I looked for banks and payment companies and found Adyen, Monzo, and then silence from more than twenty others. The clearest accounts of both strategies come from a German retailer and a Swedish music company, not from anyone under DORA. Spotify is also the only European company I found that checked whether any of this hurt: it "did not identify AI-authored code as a material direct contributor" to its incidents, but found that "the volume of change increased faster than some of our verification controls could adapt." Which is the whole problem in one sentence, and it came from outside my own industry.
 
