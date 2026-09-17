@@ -102,6 +102,38 @@ And it **extends an earlier paper by the same authors**, described in the paper 
 
 The defensible summary is conditional acceptance: most projects permit machine-written contributions, and most of those attach conditions.
 
+### curl: restrict by removing the incentive
+
+The strongest restriction story in this research, and a different strategy from the others. curl did not add a rule. It removed a reward.
+
+Daniel Stenberg, "Death by a thousand slops", 14 July 2025, gives the volume: "about 20% of all submissions" were AI slop, against "about 5% of the submissions in 2025 had turned out to be genuine vulnerabilities". At that point nothing had changed: "we are not going to do anything rushed or in panic immediately".
+
+Then, "The end of the curl bug-bounty", 26 January 2026. The programme stopped on 31 January 2026. The stated cause was an "explosion in AI slop reports combined with a lower quality even in the reports that were not obvious slop". The confirmation rate "plummeted to below 5%. Not even one in twenty was real". Lifetime totals were 87 confirmed vulnerabilities and over 100,000 US dollars paid. Reports are still accepted, without payment.
+
+**RESTRICTS INPUT**, by removing an incentive rather than adding a prohibition. Useful for the section because it shows a third option beyond restricting and relaxing: change what the submission is worth.
+
+### Outright bans, including one that predates the wave
+
+QEMU declines contributions that "include or derive from AI generated content. This includes ChatGPT, Claude, Copilot, Llama and similar tools." It permits "other uses of AI, such as researching APIs or algorithms, static analysis, or debugging, provided their output is not included in contributions." So the line is drawn at output entering the contribution, not at tool use.
+
+Gentoo, adopted 14 April 2024: "It is expressly forbidden to contribute to Gentoo any content that has been created with the assistance of Natural Language Processing artificial intelligence tools." Still in force, and it predates the 2026 wave by over a year, which supports the point that this concern is older than the current volume problem.
+
+Both **RESTRICT INPUT.**
+
+### The one reversal, and what it actually means
+
+Found, and the turnaround was two days. Verified from raw commit data rather than a page summary.
+
+netbox-community/netbox prohibited AI-generated issues on 5 May 2026, then on 7 May 2026 committed "Remove prohibition on AI-generated PRs and add guidance to AGENTS.md". The deleted text was:
+
+> "Any contributions which include solely AI-generated content will be rejected. All PRs must be submitted by a human."
+
+**Read carefully before using.** This is not a retreat from restriction. They replaced a ban they could not enforce with a gate a machine can verify: an open, self-assigned issue is now required before any pull request, waived only for maintainers. The issue-side restriction survived, and the guide still says AI-generated issues "may be rejected without further discussion".
+
+So the lesson is about enforceability, not about restriction failing. The restriction that survived is the one a bot can check.
+
+**Rarity is corroborated.** Across 92 tracked policy files in the policy study, revisions overwhelmingly tightened, and netbox is identified as the lone loosening case.
+
 ## Relaxing the gate
 
 Covered in detail in [`machine-approval-and-two-responses.md`](./machine-approval-and-two-responses.md). In brief:
@@ -139,5 +171,9 @@ A dedicated search is in progress. If it confirms the gap, the section should sa
 | The policy study covers 281 repositories | Wrong. 281 policies, from 2,000 top-starred projects plus 36 named organisations. |
 | The policy study independently confirms an earlier one | No. It extends the authors' own earlier study. |
 | Pull request limits are on by default | Unverified. Not stated in the source. |
-| Any project reversed an input restriction | Not found. Weak as a negative, since the policies are recent. |
+| Any project reversed an input restriction | One found, netbox, two days after adopting it. But it swapped an unenforceable ban for a machine-checkable gate, so it is not evidence that restriction failed. |
+| Policy revisions generally loosen over time | No. Across 92 tracked policy files, revisions overwhelmingly tightened; netbox is the lone loosening case. |
+| curl's bug bounty ended because of AI submissions | High. The maintainer states the cause and the confirmation rate falling below 5 per cent. |
+| Concern about machine-written contributions began in 2026 | No. Gentoo's ban was adopted 14 April 2024. |
+| The Godot quotes are exact | Verified directly on 17 September 2026, including the framing line about the shortage being successfully ignored. |
 | European financial firms have published on this | Almost nothing found so far, beyond Monzo. |
