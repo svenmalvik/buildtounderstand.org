@@ -231,6 +231,25 @@ I've done this myself. I approved a change because the checks were green and I k
      moves from 'find an engineer with capacity' to 'find a reviewer'."
      Research: research/20260916-what-changed-when-writing-became-cheap/ -->
 
+Before anything else, one correction. AI didn't create this shortage.
+
+The Godot Foundation said so when it changed its contribution rules in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said the same in different words. They had the problem for a while, and AI accelerated it. So the queue is not a new problem. It is an old problem that stopped being optional.
+
+From there, two answers. You can restrict what comes in, or you can relax the gate on the way out.
+
+Open source restricted the input. Godot now bans autonomous agents and generated code of any size, requires disclosure of AI use, and keeps the gate: "All PRs must be reviewed and approved by a human before merging." Rust wrote a number into its policy. If more than half the changes merged in six weeks were written by a model, new ones stop being merged until the share falls back, for at least ten days. GitHub started capping how many open pull requests a contributor without write access may have.
+
+curl did something different. It removed the reward. About 20% of its security submissions were slop, and the share that turned out to be real fell below one in twenty. In January 2026 the project ended its bug bounty after paying out more than 100,000 dollars over its life. Reports are still welcome. They are just not worth money anymore.
+
+Companies went the other way. Meta relaxed the gate, as we saw. A team lead described going from 40 to 110 pull requests a week with the same four approvers, then cutting two required reviews to one and testing none at all for some changes.
+
+But not everyone did. Shopify cut its security backlog by about 70% in eleven days and kept the approver, because the gain came from preparing changes better and queueing them, not from removing the person. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer. So the throughput was available without touching the gate.
+
+One project tried a ban and undid it two days later. Netbox prohibited AI-generated contributions on 5 May 2026 and removed the prohibition on 7 May, replacing it with a rule a bot can check: open an issue and assign it to yourself before you open a pull request. The ban didn't fail because restriction was wrong. It failed because nobody could enforce it.
+
+That is the useful part. Of 92 policies tracked over time, netbox is the only one that loosened. Everything else got tighter. And the restrictions that survived are the ones a machine can verify: a count of open pull requests, a required issue, a percentage in a six-week window.
+
+
 ### The Arithmetic Nobody Escapes
 <!-- The honest version: nobody has measured minutes per review, so the
      arithmetic rests on a stated assumption, not a constant. Say so.
