@@ -195,13 +195,18 @@ The problem is the approval. The approver is usually another developer on the sa
      reviews". Research:
      research/20260916-what-changed-when-writing-became-cheap/ -->
 
-Writing code got cheaper. Reading it didn't. So changes pile up waiting for someone to look at them, and that pile is what I mean by the queue. Does it really exist, or does it only feel that way? I wanted numbers before I believed it.
+Three sources measured it.
 
-Meta published theirs in May 2026. The lines of code in a change landed by a human grew by 105.9% in one year. The number of changes per developer rose 51%. Agents caused more than 80% of that growth. Then their own conclusion: "the share of diffs receiving timely review has declined, exposing a widening gap between code supply and reviewer bandwidth."
+| Source | What grew | How much |
+| --- | --- | --- |
+| Meta, May 2026 | Lines of code per change a human merged | 105.9% in one year |
+| Meta, May 2026 | Changes per developer | 51%, and agents caused over 80% of that |
+| 802 developers at one company | Output per developer, and review work | Both roughly doubled |
+| GitHub, June 2026 | Merged pull requests per month | About 25 million in January 2023, over 90 million by June 2026 |
 
-That is one company, and not a normal one. But others report the same. A study of 802 developers at one company found they produced about twice as much, and that the review work doubled with it. Monzo, a UK bank, said it more simply. An engineer still reviews and merges, but the hard part moved from finding an engineer with time to finding a reviewer.
+Meta's own conclusion: "the share of diffs receiving timely review has declined, exposing a widening gap between code supply and reviewer bandwidth." Monzo, a UK bank, said it more simply. An engineer still reviews and merges, but the hard part moved from finding an engineer with time to finding a reviewer.
 
-GitHub's numbers are bigger and less precise. In January 2023, developers merged about 25 million pull requests a month. By June 2026 it was over 90 million. GitHub doesn't say AI caused this, and it shouldn't, because the platform grew too. But it adds one sentence I keep thinking about: "Reviewing one still takes a human about as long as it ever did."
+GitHub doesn't say AI caused its growth, and it shouldn't, because the platform grew too. But it adds one sentence I keep thinking about: "Reviewing one still takes a human about as long as it ever did."
 
 There is a good objection to all of this. A change is merged when its review is finished. So 90 million merges a month are 90 million reviews that ended. If the work were really stuck, it wouldn't merge. The growth isn't everywhere either. It sits with the heaviest users of these tools, while people who don't use them see no change. And it isn't the same work cut into smaller pieces, because the changes got bigger, not smaller.
 
