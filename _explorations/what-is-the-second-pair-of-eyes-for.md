@@ -215,13 +215,13 @@ Meta now scores each PR for risk and merges the low-risk ones automatically. No 
      The mistake slot (CLAUDE.md, open item 1) belongs here, in the
      ownership failure. Nothing written until the record supports one. -->
 
-This looks like one problem. It is three, and they need different answers.
+People write more changes than other people can read. That is the one everyone talks about, and the one the machines are built for.
 
-The first is capacity. People write more changes than other people can read. That is the one everyone talks about, and the one the machines are built for.
+The second is ownership. The author sends on a change they don't understand themselves. Sonar asked 1,149 developers. 96% said they don't fully trust that AI output is correct. Only 48% said they always verify it before committing. So people doubt the code and submit it anyway.
 
-The second is ownership. The author sends on a change they don't understand themselves. Sonar asked 1,149 developers about this. 96% said they don't fully trust that AI output is correct. Only 48% said they always verify it before committing. So people doubt the code and submit it anyway. When that happens, the reviewer isn't the second pair of eyes. They are the first.
+It isn't only laziness. In a controlled study, people given an AI assistant were more likely to believe they had written secure code. The tool raises confidence faster than it raises correctness.
 
-The Rust project wrote the rule that follows: "A review from a project member does not substitute for self-review." A developer on Reddit said it more simply. Nobody should open a pull request they don't understand, whether AI wrote it or not.
+When that happens, the reviewer isn't the second pair of eyes. They are the first. Some projects now write the test down. PostHog asks contributors to understand their code and "be ready to explain why it's correct", then adds the condition that decides it: without re-prompting a model. Rust says it shorter. "A review from a project member does not substitute for self-review."
 
 The third is assurance. An approval gets recorded where no real check happened.
 
