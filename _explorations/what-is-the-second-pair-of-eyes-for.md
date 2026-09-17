@@ -195,19 +195,15 @@ The problem is the approval. The approver is usually another developer on the sa
      reviews". Research:
      research/20260916-what-changed-when-writing-became-cheap/ -->
 
-We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. A PR written with AI waits more than 16 hours before anyone picks it up. One written without it waits about three. That is more than five times longer.
+We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. A PR written with AI waits more than 16 hours before anyone picks it up. A PR written without Ai waits about 3 hours.
 
-Once a reviewer starts, the AI-written PR is finished faster, about 194 minutes against 252. I first read that as good news, that the reviewing itself hadn't got harder. But those PRs are also bigger, over 400 lines against 157. A bigger change read in less time is probably a change that was skimmed. LinearB, whose numbers these are, reads it that way too.
+But once someone starts, the AI-written PR takes about 194 minutes against 252 to review. Sounds like the reviewing got faster. But those PRs are a lot bigger, over 400 lines against 157. A bigger PR-review done in less time is probably a PR that was only skimmed.
 
 So two things happen at once. PRs wait longer before anyone starts, and then get less time than their size deserves.
 
-The strongest evidence isn't a percentage, though. It is what Meta built next. They now run a funnel that scores each change for risk, checks it automatically, and merges the ones that qualify. No human approves those. By the time they published, it had reviewed more than 535,000 changes and merged more than 331,000 of them. A company doesn't build that to solve a problem it doesn't have.
+Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331000 PRs reached production. A company like Meta wouldn't have build this if it wasn't a major issue for them.
 
-What I still can't tell you is how big the queue is. Nobody has measured how many minutes a review takes, at any company, in any decade. GitHub says the cost hasn't changed, but gives no number for it. The whole research on review effort comes down to two self-reported weekly averages, about six hours a week in open source and about three at Google, and neither divides by the number of reviews. So when someone says we are out of review capacity, they are talking about an amount nobody has counted.
-
-The numbers we do have are easy to misread. One study found that 61% of pull requests written by agents had no recorded review. That sounds like nobody is checking anymore. But in the same repositories, human participation was almost the same for agent and human changes, 30.1% against 30.8%. The difference was in the record, not in the checking. A maintainer who reads a change and merges it leaves no trace.
-
-So this is weaker than a crisis and stronger than a feeling. Writing got cheaper and reading didn't. The companies with the most data answered by building machines to get around their own queues. And the one number that would tell us how much review we can afford has never been collected.
+One study found that 61% of PRs written by agents had no recorded review. Sounds like nobody checks anymore. However, that's probably not true. In the same repositories, human involvement was almost identical for agent and human changes, 30.1% against 30.8%. A maintainer who reviews a PR and merges it leaves no trace. The record shows what was logged, not what was understood.
 
 ### Three Failures That Look Like One
 <!-- Capacity, ownership, assurance. The ownership failure now has data,
