@@ -14,7 +14,7 @@ Scope: published responses only, verified at source. The European fintech eviden
 
 **The most important finding is that the shortage predated AI.** Two maintainers say so independently, in their own words. AI did not create the capacity problem. It removed the option of ignoring it.
 
-**Nobody restricting input has reported reversing it.** That absence is weak evidence, since the policies are recent.
+**One project reversed its restriction, and the reason is instructive.** netbox banned machine-written contributions and undid it two days later, replacing a ban it could not enforce with a gate a bot can check. Across 92 tracked policy files it is the only loosening case; the rest tightened.
 
 ## The shortage was already there
 
