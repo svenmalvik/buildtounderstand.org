@@ -205,13 +205,17 @@ But once someone starts, the AI-written PR takes about 194 minutes against 252 t
 
 Someone measured this directly. Researchers followed 400 reviewers through 11429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes stayed the same size, the waiting time got longer rather than shorter, and approval of human-written code fell in the same months. Developers approved more because agent-written code had become familiar, not because they had learned it was safe.
 
+Authors are no more careful with their own work. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
+
 Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
 
 In short, there are three problems:
 
 - More code arrives than people can read.
-- Developers submit code they don't understand themselves. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
-- An approval gets recorded with no real check. I've done this myself. I approved a change because I know the developer who wrote it.
+- Developers submit code they don't understand themselves.
+- An approval gets recorded with no real check.
+
+I've done this myself. I approved a change because the checks were green and I knew the developer who wrote it. I didn't read it. What the approval recorded was my confidence in the tests, not my reading of the change.
 
 ### Restrict the Input, or Relax the Gate
 <!-- The contrast, not just the maintainers. Open source regulated the
