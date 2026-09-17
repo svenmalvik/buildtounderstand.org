@@ -196,15 +196,18 @@ The problem is the approval. The approver is usually another developer on the sa
      reviews". Research:
      research/20260916-what-changed-when-writing-became-cheap/ -->
 
-We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. Also, a PR written with AI waits more than 16 hours before it gets picked up. A PR written without Ai waits about 3 hours.
+We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. Also, a PR written with AI waits more than 16 hours before it gets picked up. A PR written without AI waits about 3 hours.
 
 But once someone starts, the AI-written PR takes about 194 minutes against 252 to review. Sounds like reviewing got faster. But those PRs are a lot bigger, over 400 lines against 157. A bigger PR-review done in less time is probably not really reviewed.
 
-So two things happen: 
-- PRs wait longer before thet are reviewed,
-- and then we spend less time reviewing them in relation to their size.
+Someone measured this directly. Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more of it, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The easy explanations don't fit. The changes stayed the same size, the waiting got longer rather than shorter, and approval of human-written code fell in the same months. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
 
-Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331000 PRs reached production. A company like Meta wouldn't have build this if it wasn't a major issue for them.
+So three things happen:
+- PRs wait longer before they are reviewed,
+- we spend less time reviewing them in relation to their size,
+- and we approve more of them as we get used to them.
+
+Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331,000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
 
 ### Three Failures That Look Like One
 <!-- Capacity, ownership, assurance. The ownership failure now has data,
@@ -223,9 +226,7 @@ The second is ownership. Developers submit code they don't understand themselves
 
 The third is assurance. An approval gets recorded where no real check happened.
 
-Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes stayed the same size. The waiting got longer, not shorter. And approval of human-written code fell in the same months. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
-
-I have done the same thing in a smaller way. I approved a change because the checks were green and I knew the person who wrote it. I didn't read it. The approval was recorded. What it recorded was my confidence in the tests, not my reading of the change.
+I have done this myself. I approved a change because the checks were green and I knew the person who wrote it. I didn't read it. The approval was recorded. What it recorded was my confidence in the tests, not my reading of the change.
 
 This is why the three need separating. More reviewers help the first and do nothing for the second. Teaching authors to understand their own work helps the second and leaves the queue as long as it was. And a new approval rule can leave all three untouched while producing a record that says otherwise.
 
