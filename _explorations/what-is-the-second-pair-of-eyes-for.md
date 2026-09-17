@@ -186,50 +186,36 @@ The problem is the approval. The approver is usually another developer on the sa
   </div>
 </div>
 
-### More Code, Thinner Review
-<!-- Better than the platform-wide merged-PR count: Meta RADAR
-     (arXiv 2605.30208v2, 28 May 2026) attributes the growth to agents.
-     Lines per human-landed diff +105.9% YoY, per-developer diff volume
-     +51%, "with agentic AI responsible for over 80% of that growth".
-     Also "the percentage of diffs reviewed within 24 hours is dropping"
-     and "In some large groups, we observed thousands of pending diff
-     reviews". Research:
-     research/20260916-what-changed-when-writing-became-cheap/ -->
+### Three Failures That Look Like One
+<!-- Merged section: the volume and scrutiny evidence, then the taxonomy
+     it conceals. Research:
+     research/20260916-what-changed-when-writing-became-cheap/
+     Volume: Meta RADAR arXiv 2605.30208v2. Pickup and review times:
+     LinearB 4 May 2026, 8.1m PRs. Habituation: arXiv 2606.22721,
+     400 reviewers, 11,429 reviews, KDD 2026 workshop, three controls.
+     Ownership: Sonar 1,149 respondents; do NOT cite 68% or 60% from
+     that page, its counters render in JavaScript.
+     The mistake is confirmed by Sven and sits with assurance.
+     NOTE: this study's 30.1% is unrelated to the 30.1% in the May 2026
+     recorded-review paper. Never place them near each other. -->
 
-We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. Also, a PR written with AI waits more than 16 hours before it gets picked up. A PR written without AI waits about 3 hours.
+We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. A PR written with AI waits more than 16 hours before it gets picked up. A PR written without AI waits about 3 hours.
 
-But once someone starts, the AI-written PR takes about 194 minutes against 252 to review. Sounds like reviewing got faster. But those PRs are a lot bigger, over 400 lines against 157. A bigger PR-review done in less time is probably not really reviewed.
+But once someone starts, the AI-written PR takes about 194 minutes against 252 to review. Sounds like reviewing got faster. But those PRs are a lot bigger, over 400 lines against 157. A bigger PR reviewed in less time is probably not really reviewed.
 
 Someone measured this directly. Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more of it, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The easy explanations don't fit. The changes stayed the same size, the waiting got longer rather than shorter, and approval of human-written code fell in the same months. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
 
-So three things happen:
-- PRs wait longer before they are reviewed,
-- we spend less time reviewing them in relation to their size,
-- and we approve more of them as we get used to them.
-
 Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331,000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
 
-### Three Failures That Look Like One
-<!-- Capacity, ownership, assurance. The ownership failure now has data,
-     not just the Reddit anecdote: arXiv 2602.23905v1 (27 Feb 2026),
-     22,953 PRs from 1,719 heavy AI users, lower-experience authors'
-     PRs get 4.52x more review comments, 31% lower acceptance, open
-     5.16x longer.
-     The mistake slot (CLAUDE.md, open item 1) belongs here, in the
-     ownership failure. Nothing written until the record supports one. -->
+All of this looks like one problem. It is three, and they need different answers.
 
-The queue is one problem. It gets treated as the whole problem, and there are three.
-
-The first is capacity, which is what the numbers above describe. More code arrives than people can read.
+The first is capacity. More code arrives than people can read. That is the one everyone talks about, and the one the machines are built for.
 
 The second is ownership. Developers submit code they don't understand themselves. Sonar asked 1,149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway. When that happens, the reviewer isn't the second pair of eyes. They are the first.
 
-The third is assurance. An approval gets recorded where no real check happened.
-
-I have done this myself. I approved a change because the checks were green and I knew the person who wrote it. I didn't read it. The approval was recorded. What it recorded was my confidence in the tests, not my reading of the change.
+The third is assurance. An approval gets recorded where no real check happened. I have done this myself. I approved a change because the checks were green and I knew the person who wrote it. I didn't read it. The approval was recorded. What it recorded was my confidence in the tests, not my reading of the change.
 
 This is why the three need separating. More reviewers help the first and do nothing for the second. Teaching authors to understand their own work helps the second and leaves the queue as long as it was. And a new approval rule can leave all three untouched while producing a record that says otherwise.
-
 
 ### Restrict the Input, or Relax the Gate
 <!-- The contrast, not just the maintainers. Open source regulated the
