@@ -215,6 +215,23 @@ Meta now scores each PR for risk and merges the low-risk ones automatically. No 
      The mistake slot (CLAUDE.md, open item 1) belongs here, in the
      ownership failure. Nothing written until the record supports one. -->
 
+This looks like one problem. It is three, and they need different answers.
+
+The first is capacity. People write more changes than other people can read. That is the one everyone talks about, and the one the machines are built for.
+
+The second is ownership. The author sends on a change they don't understand themselves. Sonar asked 1,149 developers about this. 96% said they don't fully trust that AI output is correct. Only 48% said they always verify it before committing. So people doubt the code and submit it anyway. When that happens, the reviewer isn't the second pair of eyes. They are the first.
+
+The Rust project wrote the rule that follows: "A review from a project member does not substitute for self-review." A developer on Reddit said it more simply. Nobody should open a pull request they don't understand, whether AI wrote it or not.
+
+The third is assurance. An approval gets recorded where no real check happened.
+
+Someone has now measured this. Researchers followed 400 reviewers through 11,429 reviews of agent-written code over seven months. As each reviewer saw more of it, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes didn't get smaller, the waiting got longer, and approval of human-written code moved the other way in the same period. The authors call this habituation rather than trust. People approved more because they had seen it before, not because they had learned it was safe.
+
+I have done the same thing in a smaller way. I approved a change because the checks were green and I knew the person who wrote it. I didn't read it. The approval was recorded. What it recorded was my confidence in the tests, not my reading of the change.
+
+This is why the three need separating. More reviewers help the first and do nothing for the second. Teaching authors to understand their own work helps the second and leaves the queue as long as it was. And a new approval rule can leave all three untouched while producing a record that says otherwise.
+
+
 ### Restrict the Input, or Relax the Gate
 <!-- The contrast, not just the maintainers. Open source regulated the
      input and kept human approval: Godot 30 Jun 2026 (restricted AI
