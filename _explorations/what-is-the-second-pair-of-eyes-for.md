@@ -197,7 +197,11 @@ The problem is the approval. The approver is usually another developer on the sa
 
 We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged pull requests went from about 25 million a month in January 2023 to over 90 million by June 2026. And reviewing a PR, in GitHub's words, "still takes a human about as long as it ever did."
 
-A change written with AI waits about 16 hours before anyone picks it up. A change written without it waits about three. Once a reviewer starts, the AI-written change is done faster, about 194 minutes against 252. So the scarce thing is attention, not reading speed. The queue is real for the people standing in it, even when the totals look fine.
+A change written with AI waits more than 16 hours before anyone picks it up. A change written without it waits about three. That is five times longer.
+
+Once a reviewer starts, the AI-written change is finished faster, about 194 minutes against 252. I first read that as good news, that the reviewing itself hadn't got harder. But those changes are also bigger, over 400 lines against 157. A bigger change read in less time is probably a change that was skimmed. LinearB, whose numbers these are, reads it that way too.
+
+So two things happen at once. Changes wait longer before anyone starts, and then get less time than their size deserves.
 
 The strongest evidence isn't a percentage, though. It is what Meta built next. They now run a funnel that scores each change for risk, checks it automatically, and merges the ones that qualify. No human approves those. By the time they published, it had reviewed more than 535,000 changes and merged more than 331,000 of them. A company doesn't build that to solve a problem it doesn't have.
 
