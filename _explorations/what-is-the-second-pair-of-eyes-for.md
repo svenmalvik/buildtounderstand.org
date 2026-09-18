@@ -233,7 +233,11 @@ I've done this myself. I approved a change because the checks were green and I k
 
 On whether AI created this shortage of developers who can review PRs, the Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that has become more important to address than ever before.
 
-There are three ways out. Let in fewer PRs, approve them more easily, or check them before they reach the queue.
+There are three options:
+
+- Let in fewer PRs.
+- Approve PRs more easily.
+- Check PRs yourself before you open them.
 
 Open source chose the first one. Godot now bans agents and generated code, asks you to say when you used AI, and keeps the human: "All PRs must be reviewed and approved by a human before merging." Rust set a limit instead. If models wrote more than half the changes merged in six weeks, no more model changes get merged for at least ten days. GitHub now lets projects cap how many PRs one outside contributor can have open.
 
@@ -241,7 +245,7 @@ curl did something different. It removed the reward. About 20% of its security s
 
 Companies went the other way. Meta relaxed the gate, as we saw. Zalando was more specific about how much: a classifier scores every pull request at the moment it opens, and "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk still need a person.
 
-But not everyone relaxed it. Shopify cut its security backlog by about 70% in eleven days and kept the approver, because the gain came from preparing changes better and queueing them. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer.
+But not everyone relaxed it. Shopify cut its security backlog by about 70% in eleven days and kept the approver, because the gain came from preparing changes better and merging them in a set order. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer.
 
 Adyen did both at once. The Dutch payment company runs more than 4,000 automated merge requests across its codebase, keeps a human approving every one, and protects that human by shrinking the work: each change touches fewer than five files on average, which makes it "fast to review, easy to approve". They also wrote down the thing the habituation study measured. "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize." Their answer was a second layer, a designated person walking through approved changes before they merged.
 
