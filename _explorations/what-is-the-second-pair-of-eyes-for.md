@@ -253,6 +253,8 @@ One of these failed. Netbox banned AI-generated contributions on 5 May 2026 and 
 
 - Meta scores each change for risk and merges the low-risk ones automatically. No human approves them.
 - Zalando runs a classifier when the PR opens. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk PRs still need a human.
+- Spotify had 76% more PRs to review and started auto-merging the ones it judged safe.
+- Monzo, a licensed bank, went the other way within the same option. It automated the writing and kept a human approving every change, and found the hard part moved from finding an engineer to finding a reviewer.
 
 **Check it yourself first.** This one is already in the tools, and nobody presents it as a choice.
 
@@ -271,7 +273,7 @@ It is worth noticing what nobody chose. You could drop the pull request altogeth
 
 So the pattern is the same everywhere there are real systems and real numbers. Nobody abandoned the pull request. They kept it and changed who approves it.
 
-One thing is missing from all of this. Almost nobody in European finance has published anything. I looked for banks and payment companies and found Adyen, Monzo, and then silence from more than twenty others. The clearest accounts of both strategies come from a German retailer and a Swedish music company, not from anyone under DORA. Spotify is also the only European company I found that checked whether any of this hurt: it "did not identify AI-authored code as a material direct contributor" to its incidents, but found that "the volume of change increased faster than some of our verification controls could adapt." Which is the whole problem in one sentence, and it came from outside my own industry.
+One thing is missing from all of this. Almost nobody in European finance has published anything. I looked for banks and payment companies and found Adyen, Monzo, and silence from more than twenty others. The clearest accounts come from Zalando and Spotify, and neither is under DORA. Spotify is also the only European company I found that checked whether any of this hurt. It "did not identify AI-authored code as a material direct contributor" to its incidents, but found that "the volume of change increased faster than some of our verification controls could adapt." That is the whole problem in one sentence, and it came from outside my own industry.
 
 
 ### The Arithmetic Nobody Escapes
