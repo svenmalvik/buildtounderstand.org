@@ -245,7 +245,7 @@ Here is how others have decided:
 - Five teams inside the Rust project limited how much of their code models may write. If they write more than half the merged changes in six weeks, model changes stop being merged for at least ten days.
 - GitHub shipped a project setting that limits how many PRs one person can have open.
 
-curl let in fewer too, by a different route. It removed the payment. About 20% of its security submissions were slop, and the share that turned out to be real fell below one in twenty. In January 2026 the project ended its bug bounty after paying out more than 100,000 dollars over its life. Reports are still welcome. They are just not worth money anymore.
+curl let in fewer PRs too. About 20% of its security submissions were slop, and fewer than one in twenty reports turned out to be a real vulnerability. In January 2026 the project ended its bug bounty after paying out more than 100000 dollars over its life.
 
 Companies went the other way. Meta relaxed the gate, as we saw. Zalando was more specific about how much: a classifier scores every pull request at the moment it opens, and "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk still need a person.
 
