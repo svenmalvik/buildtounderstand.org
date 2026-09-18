@@ -239,15 +239,18 @@ There are three options:
 - Approve PRs more easily.
 - Check PRs yourself before you open them.
 
-Here is how others have decided:
+Here are a few examples from the open source community:
 
 - Godot banned AI-generated code and says: "All PRs must be reviewed and approved by a human before merging."
 - Five teams inside the Rust project limited how much of their code models may write. If they write more than half the merged changes in six weeks, model changes stop being merged for at least ten days.
 - GitHub shipped a project setting that limits how many PRs one person can have open.
+- curl let in fewer PRs too. About 20% of its security submissions were slop, and fewer than one in twenty reports was a real vulnerability. In January 2026 the project ended its bug bounty.
 
-curl let in fewer PRs too. About 20% of its security submissions were slop, and fewer than one in twenty reports turned out to be a real vulnerability. In January 2026 the project ended its bug bounty after paying out more than 100000 dollars over its life.
+Companies went the other way:
 
-Companies went the other way. Meta relaxed the gate, as we saw. Zalando was more specific about how much: a classifier scores every pull request at the moment it opens, and "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk still need a person.
+- Meta relaxed the gate. 
+- Zalando was more specific about how much: a classifier scores every PR. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change.
+- Medium and high risk PRs still need a person.
 
 But not everyone relaxed it. Shopify cut its security backlog by about 70% in eleven days and kept the approver, because the gain came from preparing changes better and merging them in a set order. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer.
 
