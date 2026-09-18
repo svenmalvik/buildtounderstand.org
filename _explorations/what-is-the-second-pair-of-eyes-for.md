@@ -233,39 +233,39 @@ I've done this myself. I approved a change because the checks were green and I k
 
 On whether AI created this shortage of developers who can review PRs, the Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that has become more important to address than ever before.
 
-There are three options:
+There are four options:
 
-- Let in fewer PRs. (open source's favorite)
+- Let in fewer PRs.
 - Approve PRs more easily.
 - Check PRs yourself before you open them.
-- Make each PR cheaper to approve.
+- Make each PR simpler to approve.
 
-Here are a few examples from the open source community:
+**Let in fewer.** This is where open source went.
 
-- Godot banned AI-generated code and says: "All PRs must be reviewed and approved by a human before merging."
-- Five teams inside the Rust project limited how much of their code models may write. If they write more than half the merged changes in six weeks, model changes stop being merged for at least ten days.
+- Godot banned AI-generated code and kept the human: "All PRs must be reviewed and approved by a human before merging."
+- Five teams inside the Rust project limited how much of their code models may write. If models write more than half the merged changes in six weeks, model changes stop being merged for at least ten days.
 - GitHub shipped a project setting that limits how many PRs one person can have open.
-- curl let in fewer PRs too. About 20% of its security submissions were slop, and fewer than one in twenty reports was a real vulnerability. In January 2026 the project ended its bug bounty.
+- curl removed the payment. About 20% of its security submissions were slop, fewer than one in twenty reports was a real vulnerability, and in January 2026 it ended its bug bounty.
 
-Companies went the other way:
+One of these failed. Netbox banned AI-generated contributions on 5 May 2026 and removed the ban on 7 May, replacing it with a rule a bot can check: open an issue and assign it to yourself first. The ban didn't fail because restriction was wrong. It failed because nobody could enforce it. Of 92 policies tracked over time, netbox is the only one that loosened. The restrictions that survived are the ones a machine can verify.
 
-- Meta relaxed the approver gate. 
-- Zalando was more specific about how much: a classifier scores every PR. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change.
-- Medium and high risk PRs still need a human in the loop.
+**Approve more easily.** This is where companies went.
 
-There is a fourth option nobody listed: make each PR cheaper to approve. Shopify cleared about 70% of its security backlog in eleven days without touching the approver. Their system writes the fix, explains why it is needed, and keeps it ready to merge. The owner is left with the decision and none of the work around it.
+- Meta scores each change for risk and merges the low-risk ones automatically. No human approves them.
+- Zalando runs a classifier when the PR opens. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk PRs still need a human.
 
-Adyen did both at once. The Dutch payment company runs more than 4,000 automated merge requests across its codebase, keeps a human approving every one, and protects that human by shrinking the work: each change touches fewer than five files on average, which makes it "fast to review, easy to approve". They also wrote down the thing the habituation study measured. "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize." Their answer was a second layer, a designated person walking through approved changes before they merged.
+**Check it yourself first.** This one is already in the tools, and nobody presents it as a choice.
 
-One project tried a ban and undid it two days later. Netbox prohibited AI-generated contributions on 5 May 2026 and removed the prohibition on 7 May, replacing it with a rule a bot can check: open an issue and assign it to yourself before you open a pull request. The ban didn't fail because restriction was wrong. It failed because nobody could enforce it.
+The same reviewer that comments on your PR will also run on your branch before you open one. Anthropic ships one review skill and two ways to deliver it, and so does Cursor. Anthropic's own team told the agent to run a security review "as a final step before opening a PR", and some customers turned that into a hook so it can't be skipped. Human review stays, but only for "regulated or truly critical code". Nobody has published what that does. No review time, no rework, no acceptance rate.
 
-That is the useful part. Of 92 policies tracked over time, netbox is the only one that loosened. Everything else got tighter. And the restrictions that survived are the ones a machine can verify: a count of open pull requests, a required issue, a percentage in a six-week window.
+Rust drew the line the tools don't. Its policy says an LLM review "does not substitute for self-review". Running a machine over your own branch is not the same as having understood it.
 
-The third answer is the quiet one, and it is already in the tools. The same reviewer that comments on your pull request will also run on your branch before you open one. Anthropic ships one review skill and two ways to deliver it, and so does Cursor. Their own team wrote the earlier placement into a config file, telling the agent to run a security review "as a final step before opening a PR", and some of their customers turned that into a hook so it can't be skipped. Human review stays, but only for "regulated or truly critical code".
+**Make each PR simpler to approve.** The quiet option, and the only one that changes nothing about who decides.
 
-Nobody has published what that does. No review time, no rework, no acceptance rate. The vendors describe the choice of when to run the reviewer as a convenience, not as a decision about who checks the work first.
+- Shopify cleared about 70% of its security backlog in eleven days without touching the approver. Their system writes the fix, explains why it is needed, and keeps it ready to merge.
+- Adyen runs more than 4,000 automated merge requests and keeps a human approving every one. Each change touches fewer than five files on average, which makes it "fast to review, easy to approve".
 
-Rust drew the line the tools don't. Its policy says an LLM review "does not substitute for self-review", and that authors are "expected to review their own code before posting and after each change". Running a machine over your own branch is not the same as having understood it.
+Adyen also wrote down the thing the habituation study measured. "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize." Their answer was a second layer, a designated person walking through approved changes before they merged.
 
 It is worth noticing what nobody chose. You could drop the pull request altogether. That mechanism was written up in 2021 as Ship/Show/Ask, where you open a change and merge it without waiting for anyone, and nobody has revived it because of AI. You could pair instead, so two people see the code as it is written, which was the original argument for skipping review. I found no team that started pairing because review became the bottleneck. And one 2026 study of pairing with an agent found it improved task completion while reducing the human's comprehension of the result, which turns the cure into another case of the second problem.
 
