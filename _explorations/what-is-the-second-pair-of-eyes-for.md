@@ -250,9 +250,9 @@ Companies went the other way:
 
 - Meta relaxed the gate. 
 - Zalando was more specific about how much: a classifier scores every PR. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change.
-- Medium and high risk PRs still need a person.
+- Medium and high risk PRs still need a human in the loop.
 
-But not everyone relaxed it. Shopify cut its security backlog by about 70% in eleven days and kept the approver, because the gain came from preparing changes better and merging them in a set order. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer.
+But not company relaxed the approve gates. Shopify cleared about 70% of its security backlog in eleven days without removing the human approver. The speed came from a system that writes each fix, explains why it is needed, and keeps it ready to merge while it waits. The engineer who owns the code is left with the decision, not the work around it. Monzo, a licensed bank, kept the approver too and reported only that the hard part moved from finding an engineer to finding a reviewer.
 
 Adyen did both at once. The Dutch payment company runs more than 4,000 automated merge requests across its codebase, keeps a human approving every one, and protects that human by shrinking the work: each change touches fewer than five files on average, which makes it "fast to review, easy to approve". They also wrote down the thing the habituation study measured. "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize." Their answer was a second layer, a designated person walking through approved changes before they merged.
 
