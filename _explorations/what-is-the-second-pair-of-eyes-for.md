@@ -247,7 +247,7 @@ There are four options:
 - GitHub shipped a project setting that limits how many PRs one person can have open.
 - curl removed the payment. About 20% of its security submissions were slop, fewer than one in twenty reports was a real vulnerability, and in January 2026 it ended its bug bounty.
 
-One of these failed. Netbox banned AI-generated contributions on 5 May 2026 and removed the ban on 7 May, replacing it with a rule a bot can check: open an issue and assign it to yourself first. The ban didn't fail because restriction was wrong. It failed because nobody could enforce it. Of 92 policies tracked over time, netbox is the only one that loosened. The restrictions that survived are the ones a machine can verify.
+Netbox banned AI-generated contributions on 5 May 2026 and dropped the ban two days later. The reason is simple. You can't tell from a diff whether AI wrote it. So they replaced it with a rule a bot can check: open an issue and assign it to yourself before you open a PR. That is the pattern in all of these. The rules that last are the ones a machine can check on its own.
 
 **Approve more easily.** This is where companies went.
 
