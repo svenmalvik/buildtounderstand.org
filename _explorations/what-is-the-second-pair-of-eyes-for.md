@@ -233,11 +233,9 @@ I've done this myself. I approved a change because the checks were green and I k
 
 On whether AI created this shortage of developers who can review PRs, the Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that has become more important to address than ever before.
 
-There are not enough people who can review code. That shortage is older than AI. The Godot Foundation said so when it changed its contribution rules in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said the same in different words. They had the problem for a while, and AI accelerated it. So the queue is not a new problem. It is an old problem that stopped being optional.
+There are three ways out. Let in fewer PRs, approve them more easily, or check them before they reach the queue.
 
-From there, three answers. You can restrict what comes in, relax the gate on the way out, or move the check earlier so the queue never sees the work in that state.
-
-Open source restricted the input. Godot now bans autonomous agents and generated code of any size, requires disclosure of AI use, and keeps the gate: "All PRs must be reviewed and approved by a human before merging." Rust wrote a number into its policy. If more than half the changes merged in six weeks were written by a model, new ones stop being merged until the share falls back, for at least ten days. GitHub started capping how many open pull requests a contributor without write access may have.
+Open source chose the first one. Godot now bans agents and generated code, asks you to say when you used AI, and keeps the human: "All PRs must be reviewed and approved by a human before merging." Rust set a limit instead. If models wrote more than half the changes merged in six weeks, no more model changes get merged for at least ten days. GitHub now lets projects cap how many PRs one outside contributor can have open.
 
 curl did something different. It removed the reward. About 20% of its security submissions were slop, and the share that turned out to be real fell below one in twenty. In January 2026 the project ended its bug bounty after paying out more than 100,000 dollars over its life. Reports are still welcome. They are just not worth money anymore.
 
