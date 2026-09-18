@@ -235,11 +235,11 @@ On whether AI created this shortage of developers who can review PRs, the Godot 
 
 There are three options:
 
-- Let in fewer PRs.
+- Let in fewer PRs. (open source's favorite)
 - Approve PRs more easily.
 - Check PRs yourself before you open them.
 
-Open source chose the first one. Godot banned AI-generated code and kept the human: "All PRs must be reviewed and approved by a human before merging." Rust set a cap. If models write more than half the merged changes in six weeks, model changes stop being merged for at least ten days. GitHub lets projects limit how many PRs one outside contributor can have open.
+Godot banned AI-generated code and says: "All PRs must be reviewed and approved by a human before merging." Rust limited how much of its code models may write. If they write more than half the merged changes in six weeks, model changes stop being merged for at least ten days. GitHub lets projects limit how many PRs one outside contributor can have open.
 
 curl did something different. It removed the reward. About 20% of its security submissions were slop, and the share that turned out to be real fell below one in twenty. In January 2026 the project ended its bug bounty after paying out more than 100,000 dollars over its life. Reports are still welcome. They are just not worth money anymore.
 
