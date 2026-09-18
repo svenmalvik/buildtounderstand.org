@@ -247,18 +247,15 @@ There are four options:
 - GitHub shipped a project setting that limits how many PRs one person can have open.
 - curl removed the payment. About 20% of its security submissions were slop, fewer than one in twenty reports was a real vulnerability, and in January 2026 it ended its bug bounty.
 
-Netbox banned AI-generated contributions on 5 May 2026 and dropped the ban two days later. The reason is simple. You can't tell from a diff whether AI wrote it. So they replaced it with a rule a bot can check: open an issue and assign it to yourself before you open a PR. That is the pattern in all of these. The rules that last are the ones a machine can check on its own.
-
 **Approve more easily.** This is where companies went.
 
 - Meta scores each change for risk and merges the low-risk ones automatically. No human approves them.
 - Zalando runs a classifier when the PR opens. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk PRs still need a human.
 - Spotify had 76% more PRs to review and started auto-merging the ones it judged safe.
-- Monzo, a licensed bank, went the other way within the same option. It automated the writing and kept a human approving every change, and found the hard part moved from finding an engineer to finding a reviewer.
 
-**Check it yourself first.** This one is already in the tools, and nobody presents it as a choice.
+**Check it yourself first.** This one is already in the tools.
 
-The same reviewer that comments on your PR will also run on your branch before you open one. Anthropic ships one review skill and two ways to deliver it, and so does Cursor. Anthropic's own team told the agent to run a security review "as a final step before opening a PR", and some customers turned that into a hook so it can't be skipped. Human review stays, but only for "regulated or truly critical code". Nobody has published what that does. No review time, no rework, no acceptance rate.
+The same reviewer that comments on your PR will also run on your branch before you open one. Anthropic ships one review skill as well as Codex and Cursor. Anthropic's own team told the agent to run a security review "as a final step before opening a PR", and some customers turned that into a hook so it can't be skipped. Human review is still important, but only for "regulated or truly critical code". They don't say what counts as regulated. At a payment company it could be most of the codebase.
 
 Rust drew the line the tools don't. Its policy says an LLM review "does not substitute for self-review". Running a machine over your own branch is not the same as having understood it.
 
