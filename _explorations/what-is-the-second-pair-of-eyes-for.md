@@ -231,6 +231,8 @@ I've done this myself. I approved a change because the checks were green and I k
      moves from 'find an engineer with capacity' to 'find a reviewer'."
      Research: research/20260916-what-changed-when-writing-became-cheap/ -->
 
+In June 2026, the Godot Foundation addressed whether AI had created the shortage of developers who can review PRs: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said something similar. They had had this problem for a while. AI only accelerated it. So having too many PRs to review is an old problem that has become more important to address than ever before.
+
 There are not enough people who can review code. That shortage is older than AI. The Godot Foundation said so when it changed its contribution rules in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said the same in different words. They had the problem for a while, and AI accelerated it. So the queue is not a new problem. It is an old problem that stopped being optional.
 
 From there, three answers. You can restrict what comes in, relax the gate on the way out, or move the check earlier so the queue never sees the work in that state.
