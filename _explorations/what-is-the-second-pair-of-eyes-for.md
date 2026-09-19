@@ -268,7 +268,7 @@ Rust's policy says an LLM review **does not substitute for self-review**. Runnin
 
 Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers may start to pattern-match and not scrutinize." Their answer was a designated person walking through approved changes before they merged. Well ;)
 
-### The Arithmetic Nobody Escapes
+### The Numbers Stopped Adding Up
 <!-- The honest version: nobody has measured minutes per review, so the
      arithmetic rests on a stated assumption, not a constant. Say so.
      Only effort figure available is ~6.4 h/week self-reported (Bosu &
