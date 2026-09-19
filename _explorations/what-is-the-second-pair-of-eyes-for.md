@@ -305,17 +305,17 @@ The point is that nobody can review everything properly anymore. Most teams have
      the test suite. Nobody found using the toggles yet; adoption
      unverified, so do not claim it. -->
 
-Every Copilot review tells you whether a PR looks ready or not. On 1 September 2026, GitHub added a new setting that let Copilot also approve the PR. Someone posted the announcement to Hacker News. Zero interest. I could not find anyone arguing about it anywhere. For as long as I have worked, an approval meant a person had to do this.
+Every Copilot review tells you whether a PR looks ready or not. On 1 September 2026, GitHub added a new setting that let Copilot also approve PRs.
 
-I wondered about that. The rule is that authors cannot approve their own PRs. But the rule works on identities, and Copilot has two. One that writes the code and one that reviews the code. The identity for writing is blocked while the reviewing one is not.
+I wondered about that. The rule is that authors cannot approve their own PRs. But the rule works on identities, and Copilot has two. One that writes the code and one that reviews the code. The identity for writing is blocked while the reviewing one is free to approve.
 
-It goes further. If I ask Copilot to make a change, GitHub will not let me approve it. It knows I am too close to it. Copilot's reviewing identity has no such limit.
+It goes further. If I ask Copilot to make a change, GitHub will not let me approve it. It knows I am too close to it. However, Copilot's reviewing identity has no such limit.
 
-GitHub's own documentation says that the agent "gets a second opinion on its code with Copilot code review", which is a second opinion from the same system, on its own work.
+GitHub's own documentation says that the agent "gets a second opinion on its code with Copilot code review", which is a second opinion from itself, on its own work.
 
-None of this is hidden. Nothing in the documentation mentions segregation of duties, conflicts of interest, or independence. There is one line saying human review should be added on top. But that is advice, not a control.
+Nothing in the documentation mentions segregation of duties, conflicts of interest, or independence. There is one line saying human review should be added on top. But that is an advice, not a control.
 
-For a European finance regulated company, this part is worrying. You can see the approval on the PR, under Copilot's name. But the audit log has no event for it. To find out what Copilot approved last quarter, you would have to walk every PR and collect it yourself.
+For a European finance regulated company, this part is worrying. You can see the approval on the PR, under Copilot's name. But the audit log has no event for it. To find out what Copilot approved last quarter, you would have to walk through every PR and collect it yourself.
 
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">03</span>
