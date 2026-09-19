@@ -105,17 +105,21 @@ Sources kept out of the prose to protect readability. All accessed
 
 ### The Pull Request Was a Request to Integrate
 
-Most code reviews today happen inside a pull request. Someone opens a change, someone else reads it and approves it, and then the branch is merged. The pull request has become the review tool, and the approval has become the second pair of eyes. But where did the pull request come from? And is it still worth having when the change was written by an AI?
+Most code reviews today happen in a pull request. A developer opens a PR, another developer reads it and approves it, and then the branch is merged. We use the pull request as a review tool, and the approval as the second pair of eyes. But where did the pull request come from? And is it still worth having when the change was written by an AI?
 
-In February 2002, the Linux kernel developer Jeff Garzik wrote a short guide for other developers who wanted their changes in the kernel. A change only became part of the kernel when Linus Torvalds pulled it into his repository. The guide said: publish your changes in a repository on the internet that Linus can pull from, write a summary, and also add a diffstat, which lists the files you changed and how much. These rules existed to save Linus work.
+In February 2002, the Linux kernel developer Jeff Garzik wrote a short guide for other developers who wanted their changes in the kernel. A change only became part of the kernel when Linus Torvalds pulled it into his repository. The guide said: publish your changes in a repository on the internet that Linus can pull from, write a summary, and also add a diffstat, which lists the files you changed and how much. These rules existed to save Linus a lot of work.
 
-The word "pull" describes what the maintainer does. The contributor pushes the change to a repository they own and then asks the maintainer to pull it. The contributor had no permission to write to the maintainer's repository. So from the beginning, writing a change and accepting it were two acts, done by two different people. It wasn't meant as a control; it was just how the work was split.
+The word "pull" is what the maintainer does. The contributor pushes the change to a repository they own and then asks the maintainer to pull it. The contributor had no permission to write to the maintainer's repository. So from the beginning, writing a change and accepting it were two seperate acts. It wasn't meant as a control; it was just how the work was split.
 
-GitHub made this a feature in 2008. Review, required approvals, and code owners were all added later, between 2010 and 2017. The pull request had worked as a request to integrate for years without any of them. They are rules placed on top of it.
+Notice what the guide asked of the contributor. Publish the change, write a summary, list the files that changed. The preparation is understanding by reading. So there were two readings, the contributor's first and the maintainer's second. GitHub made this a feature in 2008: Review. Required approvals, and code owners were all added later, between 2010 and 2017. The pull request had worked as a request to integrate for years without any of them. They are rules placed on top of it.
 
-In 2010, GitHub also allowed pull requests between branches of the same repository. That changed the reason for opening one. In the kernel, a developer opened a pull request because they couldn't write to Linus's repository. It was the only way to get a change in. Inside a company, everyone on the team can write to the shared repository. A team opens a pull request anyway, so that someone looks at the change before it goes in. When a team opens a pull request against its own master branch (now most call it the main branch), it doesn't need permission to integrate because it had already that permission.
+In 2010, GitHub also allowed pull requests between branches of the same repository. That changed the reason for opening one. In the kernel, a developer opened a pull request because they couldn't write to Linus's repository. It was the only way to get a change in. Inside a company, everyone on the team can write to the shared repository. A team opens a pull request anyway, so that someone looks at the change before it goes in. When a team opens a pull request against its own master branch (now most call it the main branch), it doesn't need permission to integrate because it had already the permission.
 
-The pull request never required a second pair of eyes. Linus as the maintainer would live with every change he pulled, so he wanted to decide what came in. In the kernel workflow, every change passed through a second person before it went in, because only the maintainer (Linus) could pull it. Inside a company, that second person disappears because everyone on the team can merge. The rules that came later bring the second person back. A required approval or a code owner's review says: one more person has to say yes before this change goes in. But in a company repository, there is no Linus. Nobody owns the code the way he owned the kernel. So whether these rules work depends on something else: why people wanted another person to look at their change in the first place.
+The pull request never required a second pair of eyes. Linus as the maintainer would live with every change he pulled, so he wanted to decide what came in. In the kernel workflow, every change passed through a second person before it was merged, because only the maintainer (Linus) could pull it. Inside a company, that second person disappears because everyone on the team can merge. The rules that came later bring the second person back. A required approval or a code owner's review says: one more person has to say yes before this change goes in.
+
+But in a company repository, there is no Linus at the keyboard. Someone still lives with every change, and at a payment company that someone is the company itself. It owns the code, but that is not the point. When a change moves money the wrong way or stops a payment going through, the company answers for it, to its customers and to its supervisor. That is not ownership of an asset. It is exposure to an outcome, and it sits nowhere near the merge button.
+
+Linus read the code and carried that exposure himself. Here the two are split: one developer reads the change, and the company carries what follows. The company never reads the change, so what it is exposed to depends entirely on that one developer. A required approval puts that developer there, but it doesn't say what they should do. So what is the second pair of eyes for?
 
 ### Why People Wanted Another Person
 
@@ -178,6 +182,7 @@ Today one pull request does all three jobs.
 
 The problem is the approval. The approver is usually another developer on the same team, with the same manager. It's a second person, but within the same part of the company. In other rules for banks, a function is independent only if its people don't do the work they check, and if they sit outside the team that does it. But those rules are written for risk management and internal audit, whose job is to watch the business. The change rule never says the approver has to be one of those. So the question stays open: is it enough that the approver didn't write this change, or must they sit outside the team that did?
 
+That question assumes the approval means something. All three roots assume it. Fagan assumed a reader who had prepared, Linus assumed he would live with whatever he pulled, and the regulator assumes an approving function exists and can be recorded. None of the three asked how many changes would arrive in a week.
 
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">02</span>
@@ -201,11 +206,13 @@ The problem is the approval. The approver is usually another developer on the sa
 
 We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. A PR written with AI waits more than 16 hours before it gets picked up. A PR written without AI waits about 3 hours.
 
-But once someone starts, the AI-written PR takes about 194 minutes against 252 to review. Sounds like reviewing got faster. But those PRs are a lot bigger, over 400 lines against 157. A bigger PR reviewed in less time is probably not really reviewed.
+But once someone picks it up, the AI-written PR reaches a decision in about 194 minutes against 252. Sounds like reviewing got faster. That is elapsed time though, not attention. Nobody measured how many of those minutes a reviewer spent reading. And those PRs are a lot bigger, over 400 lines against 157. A bigger PR decided in less time is probably not really read.
 
 Someone measured this directly. Researchers followed 400 reviewers through 11429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes stayed the same size, the waiting time got longer rather than shorter, and approval of human-written code fell in the same months. Developers approved more because agent-written code had become familiar, not because they had learned it was safe.
 
 Authors are no more careful with their own work. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
+
+Google reviewed code so that the next developer could understand it. These numbers say something worse. Half the time the code isn't understood by the developer who submitted it. The first reading, the one nobody ever wrote a rule for, has stopped happening.
 
 Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
 
@@ -215,7 +222,40 @@ In short, there are three problems:
 - Developers submit code they don't understand themselves.
 - An approval gets recorded with no real check.
 
+The inspection, the gate, the record. The first failure takes the inspection away. The third makes the record false, because it says a change was approved when nobody read it.
+
+The second failure is different. It removes the first reading. An agent writes 400 lines, the author skims them and opens the pull request, and the understanding that used to come with writing the change never happens. The tests still show a green check, the approval still shows a name, the record still shows who approved. Nothing on a pull request shows whether anyone understood the change.
+
+Nobody ever built a check for that, because the first reading used to come with the work. That is the check I try to build at the end of this piece: the author's half of four eyes.
+
 I've done this myself. I approved a change because the checks were green and I knew the developer who wrote it. I didn't read it. What the approval recorded was my confidence in the tests, not my reading of the change.
+
+### The Numbers Stopped Adding Up
+<!-- The honest version: nobody has measured minutes per review, so the
+     arithmetic rests on a stated assumption, not a constant. Say so.
+     Only effort figure available is ~6.4 h/week self-reported (Bosu &
+     Carver 2013, 287 responses). The Microsoft 2015 paper's "six hours
+     a week" cites that same OSS survey, so do NOT call it Microsoft
+     telemetry. Bacchelli & Bird has no per-review figure.
+     The 200-400 lines / 60-90 minutes limits are vendor guidance, not
+     research. Usable substitute with real telemetry (Czerwonka 2015):
+     useful feedback declines with more files, noticeable past 20.
+     Outcome evidence now exists, both ways. Xia & Miller
+     (arXiv 2607.09902v1, 10 Jul 2026, 182 repos): each 10pp increase in
+     a project's no-review rate is associated with ~6% more agentic
+     maintenance burden. Association, not causation. Counter-finding at
+     Google scale (arXiv 2608.06640v1, 3.52m changes): AI code reverted
+     LESS, ~0.9x, while build failures ran ~1.3x. Carry both. -->
+
+In 2009, Kemerer and Paulk measured what happens to a reviewer as they review faster. Up to 200 lines an hour, people found most of the defects. Faster than that, they found about half.
+
+Here is the thing. One in four PRs written with AI has over 400 lines. At 200 lines an hour, that is 2 hours of one person's attention for one single change.
+
+Almost nobody has two spare hours for a single PR. Before AI, developers spent about 3.2 hours a week reviewing at Google, and about 6.4 in open source. So one to three changes a week, against the 51% more changes per developer that Meta now reports.
+
+I should be careful with that number. Nobody publishes how many minutes a reviewer actually spends on a change, so 200 lines an hour is an assumption I'm carrying from a 2009 study, not a constant. The arithmetic is only as good as the assumption.
+
+The point is that nobody can review everything properly anymore. Most teams have therefore already stopped reviewing some changes. The important question now is whether developers chose consciously what they stopped reviewing.
 
 ### Restrict, Relax, or Move It Earlier
 <!-- The contrast, not just the maintainers. Open source regulated the
@@ -240,6 +280,8 @@ There are four main options to address this:
 1. Check PRs yourself before you open them.
 1. Make each PR simpler to approve.
 
+Three of them answer one of the three failures. Letting in fewer PRs and making each PR simpler both work on the first failure, that more code arrives than people can read. Checking it yourself works on the second, the reading the author didn't do. Approving more easily answers none of them. It accepts the third failure and writes it into policy.
+
 Here are a few examples for each option:
 
 **1. Let in fewer.** This is mostly open source.
@@ -255,6 +297,8 @@ Here are a few examples for each option:
 - Zalando also runs a classifier similar to Meta when the PR opens. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk PRs still need a human.
 - Spotify had 76% more PRs to review and started auto-merging the ones it judged safe.
 
+None of these three is a regulated financial company. The European rules want an approving function that is independent of the function implementing the change, and they never say that function has to be a person. A classifier that approves low-risk changes might satisfy the rule on paper. Whether it does depends on whether a classifier counts as a function, who owns it, and whether its decision lands somewhere an auditor can read. I haven't found anyone who has written that down.
+
 **3. Check it yourself first.** Ai harnesses like Claude Code have this already.
 
 The same reviewer that comments on your PR will also run on your branch before you open one. Anthropic ships one review skill as well as Codex and Cursor. Anthropic's own team told the agent to run a security review "as a final step before opening a PR". Some customers put that into a hook so it can't be skipped. Human review is still important, but only for "regulated or truly critical code".
@@ -266,32 +310,9 @@ Rust's policy says an LLM review **does not substitute for self-review**. Runnin
 - Shopify cleared about 70% of its security backlog in 11 days. Their system writes the fix, explains why it is needed, and keeps it ready to merge by a human developer.
 - Adyen runs more than 4000 automated merge requests and keeps a human approving. Each change touches fewer than five files on average, which makes it "fast to review, easy to approve".
 
-Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers may start to pattern-match and not scrutinize." Their answer was a designated person walking through approved changes before they merged. Well ;)
+Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers may start to pattern-match and not scrutinize." Their answer was a designated person walking through approved changes before they merged.
 
-### The Numbers Stopped Adding Up
-<!-- The honest version: nobody has measured minutes per review, so the
-     arithmetic rests on a stated assumption, not a constant. Say so.
-     Only effort figure available is ~6.4 h/week self-reported (Bosu &
-     Carver 2013, 287 responses). The Microsoft 2015 paper's "six hours
-     a week" cites that same OSS survey, so do NOT call it Microsoft
-     telemetry. Bacchelli & Bird has no per-review figure.
-     The 200-400 lines / 60-90 minutes limits are vendor guidance, not
-     research. Usable substitute with real telemetry (Czerwonka 2015):
-     useful feedback declines with more files, noticeable past 20.
-     Outcome evidence now exists, both ways. Xia & Miller
-     (arXiv 2607.09902v1, 10 Jul 2026, 182 repos): each 10pp increase in
-     a project's no-review rate is associated with ~6% more agentic
-     maintenance burden. Association, not causation. Counter-finding at
-     Google scale (arXiv 2608.06640v1, 3.52m changes): AI code reverted
-     LESS, ~0.9x, while build failures ran ~1.3x. Carry both. -->
-
-In 2009, Kemerer and Paulk measured what happens to a reviewer as they review faster. Up to 200 lines an hour, people found most of the defects. Faster than that, they found about half.
-
-Here is the thing. One in four PRs written with AI has over 400 lines. At 200 lines an hour, that is 2 hours of one person's attention for one single change.
-
-Almost nobody has two spare hours for a single PR. Before AI, developers spent about 3.2 hours a week reviewing at Google, and about 6.4 in open source. So one to three changes a week. Also, at Meta each developer produced 51% more changes in a year, with agents causing more than 80% of the increase.
-
-The point is that nobody can review everything properly anymore. Most teams have therefore already stopped reviewing some changes. The important question now is whether developers chose consciously what they stopped reviewing.
+Adyen is the only regulated payment company in these four options, and the only one that treated the empty approval as something to fix rather than a cost to accept. The designated person is a third pair of eyes, added because the second pair had stopped reading.
 
 ### The Approval Became a Setting
 <!-- New section. On 1 September 2026 GitHub shipped machine approval
@@ -305,6 +326,8 @@ The point is that nobody can review everything properly anymore. Most teams have
      the test suite. Nobody found using the toggles yet; adoption
      unverified, so do not claim it. -->
 
+Writing became cheap first. Approving became cheap after it, for the same reason: the tool that writes a change can also read it.
+
 Every Copilot review tells you whether a PR looks ready or not. On 1 September 2026, GitHub added a new setting that let Copilot also approve PRs.
 
 I wondered about that. The rule is that authors cannot approve their own PRs. But the rule works on identities, and Copilot has two. One that writes the code and one that reviews the code. The identity for writing is blocked while the reviewing one is free to approve.
@@ -316,6 +339,8 @@ GitHub's own documentation says that the agent "gets a second opinion on its cod
 Nothing in the documentation mentions segregation of duties, conflicts of interest, or independence. There is one line saying human review should be added on top. But that is an advice, not a control.
 
 For a European finance regulated company, this part is worrying. You can see the approval on the PR, under Copilot's name. But the audit log has no event for it. To find out what Copilot approved last quarter, you would have to walk through every PR and collect it yourself.
+
+So the approval is a setting now. Someone has to decide which repositories have it switched on, which changes are exempt from it, and who answers when a machine-approved change causes harm. On most teams nobody has been given that job. That is what I want to work out next.
 
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">03</span>
