@@ -50,6 +50,20 @@ Abstract, p. 534: "The recommended review rate of 200 LOC/hour or less was found
 
 **Three caveats that must travel with it.** The authors note the absolute effect "may be as few as one or two defects since the absolute numbers are not large". Slowing below 200 did not help measurably, with no significant difference between 0-100 and 100-200 lines an hour, so 200 is a ceiling rather than a target. But "defect removal effectiveness continues to decline as the review rate becomes faster."
 
+**The strongest objection, and the limit to state openly.** In the Personal Software Process the reviewer wrote the code. These were course assignments with a median size around 120 lines, in C and C++, reviewed by their own author. A pull request is someone else's unfamiliar code. The paper anticipates the size objection in section 4.6 and argues the task sizes are comparable, and notes the developers had a median of seven years of experience. It cannot answer the familiarity objection.
+
+Used carefully, this strengthens rather than weakens the essay's calculation: if 200 lines an hour is the ceiling for reviewing code you wrote yourself, reviewing a stranger's code is not faster. Treat it as an upper bound and say why.
+
+**Where 200 comes from**, p. 547: "the recommended rate is about 100 LOC/hour (maximum of 200 LOC/hour), and the recommended length of an inspection meeting that the developer would prepare for is 2 hours, the typical size of work product we might expect to see in an industry inspection would be about 200 LOC." So the recommended rate is nearer 100, with 200 as the maximum, and 200 lines is roughly what fits a two-hour session.
+
+**Two independent sources cap the session rather than the rate.** Fagan limits inspection sessions to two hours because detection efficiency dwindles after that. NASA-GB-A302, the Software Formal Inspections Guidebook of August 1993, specifies no rate at all but states that "Inspection meetings are limited to two hours" and that the product "should be of an appropriate size that it can be inspected during a two hour meeting."
+
+**The 400-line figure has no research behind it.** 200 does. Do not treat the vendor's 200 to 400 range as equivalent evidence.
+
+**Gilb could not be retrieved as a primary source**, and the widely repeated claim that each defect found saves nine hours remains unverified. If a Gilb rate is needed, cite the peer-reviewed secondary, Kemerer and Paulk p. 536: "Gilb and Graham, for example, suggest a preparation rate of 0.5 to 1.5 pages per hour; they also suggest that rates as slow as 0.1 page per hour may be profitable for critical documents."
+
+**No modern replication exists.** No post-2015 study tests rate in lines per hour against detection. Of 99 papers citing Kemerer and Paulk since 2015, none does. That rests on citation-graph traversal rather than a full search.
+
 **Fagan 1976 states rates too**, IBM Systems Journal 15(3), Table 3, original p. 190. For systems programming: design preparation 100 and inspection 130 lines an hour; code preparation 125 and inspection 150. The table footnote says these "apply to systems programming and are conservative. Comparable rates for applications programming are much higher", and Table 2 gives far faster applications rates from the Aetna COBOL project, preparation 898 and 709 lines an hour.
 
 So the defensible statement is a range, not a constant: somewhere between about 130 and 200 lines an hour for careful review of systems-style code, with applications code potentially faster.

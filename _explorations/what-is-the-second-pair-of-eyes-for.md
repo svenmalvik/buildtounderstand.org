@@ -291,7 +291,9 @@ The surprising part is that nobody has published this calculation. The three num
 
 So here it is, with the best numbers I could find.
 
-**How fast can you review?** In 2009, Kemerer and Paulk measured this across 371 reviews by 153 developers. Reviewers who stayed at or below 200 lines an hour found 66% and 57% of the design defects. Reviewers who went faster found 49% and 51%. Fagan's 1976 tables are stricter for systems code, 130 to 150 lines an hour. Going slower than 200 didn't help, so treat it as a ceiling rather than a target.
+**How fast can you review?** In 2009, Kemerer and Paulk measured this across 371 reviews by 153 developers. Reviewers who stayed at or below 200 lines an hour found 66% and 57% of the design defects. Reviewers who went faster found 49% and 51%. Fagan's 1976 tables are stricter for systems code, 130 to 150 lines an hour.
+
+One detail makes that number generous. In the 2009 study the reviewer had written the code. They were checking their own work, which is the easy case. Reading a change someone else wrote is not faster.
 
 **How big is a change?** At the 75th percentile, PRs written with AI run over 400 lines. Without AI, 157.
 
