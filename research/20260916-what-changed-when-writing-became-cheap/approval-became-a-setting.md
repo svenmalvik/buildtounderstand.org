@@ -120,9 +120,17 @@ Scope this claim carefully when writing. The researcher could not run open-web d
 
 ## Every platform restricts by role, not by species
 
-GitLab's approval settings list exactly three prohibitions: it "Prevents the author of a merge request from approving it", it "Prevents users who add commits to a merge request from also approving it", and code owners who commit to a merge request cannot approve it either.
+Verified across four platforms. Each disqualifies an approver for their role in the change, never for being a machine.
 
-All three concern role in the change. None concerns whether the approver is a person. The approval rules page says nothing about bots at all.
+**GitLab.** Three prohibitions, and that is the complete list: it "Prevents the author of a merge request from approving it", it "Prevents users who add commits to a merge request from also approving it", and "Code owners who commit to a merge request cannot approve it, if the merge request affects files they own." Bot users created for project access tokens "are members of the project" and "are granted permissions that correspond with the role and scope of the associated access token". They are members with roles, and no documented rule excludes them. Permitted by omission, and never discussed. GitLab Duo's merge request documentation makes no claim that it can approve.
+
+**Bitbucket Cloud.** "The author of the pull request (PR) can approve their own PR, but that approval does not count towards the number of approvals needed for the merge check to pass." Nothing about apps or bots. Permitted by omission.
+
+**Azure DevOps**, page dated 15 July 2026. The only identity limits are the author and the last pusher, and the setting names the compliance concept directly: "Select **Prohibit the most recent pusher from approving their own changes** to enforce segregation of duties." Nothing about service accounts or build identities. Permitted by omission.
+
+**Gerrit.** "The label values that a given user is allowed to set are defined according to the access controls". Gerrit assumes machine voting exists, noting that "Some CI tools expect to use the Verified label to vote on a change after running", but that is the Verified label rather than Code-Review. Nothing restricts a Code-Review approval to humans. Permitted by access control, not by species.
+
+The Azure DevOps wording is the most useful for the chapter, because it uses the exact compliance term from chapter 01 and then defines it entirely by role in the change.
 
 This matches what chapter 01 found in the regulation, which speaks of functions rather than persons. Neither the regulators nor the vendors ever wrote down that the second pair of eyes had to be human.
 

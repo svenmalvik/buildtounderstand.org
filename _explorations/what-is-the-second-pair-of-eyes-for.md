@@ -315,6 +315,8 @@ Then I went looking for what stops an agent approving its own work, and found so
 
 It goes further. If I ask Copilot to make a change, GitHub will not let me approve the result. It knows I am too close to it. The machine that reviews the same change has no such restriction.
 
+This is not a GitHub quirk. GitLab, Bitbucket, Azure DevOps and Gerrit all limit who may approve, and they all limit it the same way. You cannot approve your own change, or one you pushed, or code you own and then edited. Azure DevOps calls this enforcing segregation of duties. Not one of them says the approver has to be a person.
+
 GitHub's own documentation describes what this is for. The agent "gets a second opinion on its code with Copilot code review." A second opinion, from the same system, on its own work.
 
 None of this is hidden. There is no segregation of duties language in any of it, no conflict of interest warning, nothing about independence. There is one line of advice that human review should supplement it, which is advice and not a control.
