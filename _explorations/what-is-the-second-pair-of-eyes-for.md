@@ -305,15 +305,11 @@ The point is that nobody can review everything properly anymore. Most teams have
      the test suite. Nobody found using the toggles yet; adoption
      unverified, so do not claim it. -->
 
-On 1 September 2026, GitHub shipped a setting. Turn it on and Copilot can approve a pull request, and that approval counts as the one your rules require before a merge. Off by default. Three weeks old. Public preview.
+Every Copilot review tells whether a PR looks ready or not. On 1 September 2026, GitHub added a new setting that let Copilot also approve the PR. Someone posted the announcement to Hacker News. Zero interest. I could not find anyone arguing about it anywhere. For as long as I have worked, an approval meant a person has to to this.
 
-Every Copilot review already ended with an opinion on whether the change looked ready. That opinion was never a vote. What shipped in September is the vote.
+I wondered, the rule is that authors cannot approve their own PRs. But the rule works on identities, and Copilot has two. One that writes the code and one that reviews the code. The identity for writing is blocked while the reviewing one is not.
 
-Someone posted the announcement to Hacker News. One point, no comments. I could not find anyone arguing about it anywhere I looked. For as long as I have worked, a required approval meant a person. That changed, and nobody noticed.
-
-So I looked for what stops an agent approving its own work. The rule is that authors cannot approve their own pull requests. But the rule works on identities, and Copilot has two. One writes the code. The other reviews it. The writing one is blocked. The reviewing one is not.
-
-It goes further. If I ask Copilot to make a change, GitHub will not let me approve the result. It knows I am too close to it. The machine reviewing that same change has no such limit.
+It goes further. If I ask Copilot to make a change, GitHub will not let me approve the result. It knows I am too close to it. Copilot's reviewing half, looking at the same change, has no such limit.
 
 This is not only GitHub. GitLab, Bitbucket, Azure DevOps and Gerrit all limit who may approve, and they limit it the same way. You cannot approve your own change, or one you pushed, or code you own and then edited. Azure DevOps calls this segregation of duties. None of them says the approver has to be a person.
 
