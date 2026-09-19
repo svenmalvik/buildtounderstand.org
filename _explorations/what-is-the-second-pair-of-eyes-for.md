@@ -291,7 +291,7 @@ The surprising part is that nobody has published this calculation. The three num
 
 So here it is, with the best numbers I could find.
 
-**How fast can you review?** In 2009, Kemerer and Paulk measured this across 371 reviews by 153 developers. Reviewers who stayed at or below 200 lines an hour found most of the design defects, between 57% and 66%. Faster reviewers found about half. In 1976 Fagan recommended going slower still for systems code, 130 to 150 lines an hour.
+**How fast can you review?** In 2009, Kemerer and Paulk measured how review speed changes what reviewers find, across 371 reviews by 153 developers. Reviewers who stayed at or below 200 lines an hour found most of the design defects, between 57% and 66%. Faster reviewers found about half. In 1976 Fagan recommended going slower still for systems code, 130 to 150 lines an hour.
 
 One detail makes 200 generous. In the 2009 study the reviewer had written the code. They were checking their own work, which is the easy case. Reading code someone else wrote is not faster.
 
