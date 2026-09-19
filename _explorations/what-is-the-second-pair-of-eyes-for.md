@@ -231,47 +231,42 @@ I've done this myself. I approved a change because the checks were green and I k
      moves from 'find an engineer with capacity' to 'find a reviewer'."
      Research: research/20260916-what-changed-when-writing-became-cheap/ -->
 
-On whether AI created this shortage of developers who can review PRs, the Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that has become more important to address than ever before.
+The Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that has just become more urgent.
 
-There are four options:
+There are four main options to address this:
 
-- Let in fewer PRs.
-- Approve PRs more easily.
-- Check PRs yourself before you open them.
-- Make each PR simpler to approve.
+1. Let in fewer PRs.
+1. Approve PRs more easily.
+1. Check PRs yourself before you open them.
+1. Make each PR simpler to approve.
 
-**Let in fewer.** This is where open source went.
+Here are a few examples for each option:
 
-- Godot banned AI-generated code and kept the human: "All PRs must be reviewed and approved by a human before merging."
-- Five teams inside the Rust project limited how much of their code models may write. If models write more than half the merged changes in six weeks, model changes stop being merged for at least ten days.
+**1. Let in fewer.** This is mostly open source.
+
+- The Godot Foundation banned AI-generated code and kept the human: "All PRs must be reviewed and approved by a human before merging."
+- Five teams inside the Rust project limited how much of their code Ai may write. If Ai write more than half the merged changes in six weeks, Ai changes stop being merged for at least ten days.
 - GitHub shipped a project setting that limits how many PRs one person can have open.
-- curl removed the payment. About 20% of its security submissions were slop, fewer than one in twenty reports was a real vulnerability, and in January 2026 it ended its bug bounty.
+- curl removed the payment. About 20% of its security submissions were slop, fewer than one in twenty reports was a real vulnerability. It endet its Bug Bounty programm in January 2026.
 
-**Approve more easily.** This is where companies went.
+**2. Approve more easily.** This is what many companies do.
 
-- Meta scores each change for risk and merges the low-risk ones automatically. No human approves them.
-- Zalando runs a classifier when the PR opens. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk PRs still need a human.
+- Meta scores each change for risk and merges the low-risk ones automatically without any human in the loop.
+- Zalando also runs a classifier similar to Meta when the PR opens. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk PRs still need a human.
 - Spotify had 76% more PRs to review and started auto-merging the ones it judged safe.
 
-**Check it yourself first.** This one is already in the tools.
+**3. Check it yourself first.** Ai harnesses like Claude Code have this already.
 
-The same reviewer that comments on your PR will also run on your branch before you open one. Anthropic ships one review skill as well as Codex and Cursor. Anthropic's own team told the agent to run a security review "as a final step before opening a PR", and some customers turned that into a hook so it can't be skipped. Human review is still important, but only for "regulated or truly critical code". They don't say what counts as regulated. At a payment company it could be most of the codebase.
+The same reviewer that comments on your PR will also run on your branch before you open one. Anthropic ships one review skill as well as Codex and Cursor. Anthropic's own team told the agent to run a security review "as a final step before opening a PR". Some customers put that into a hook so it can't be skipped. Human review is still important, but only for "regulated or truly critical code".
 
-Rust drew the line the tools don't. Its policy says an LLM review "does not substitute for self-review". Running a machine over your own branch is not the same as having understood it.
+Rust's policy says an LLM review **does not substitute for self-review**. Running a machine over your own branch is not the same as having understood the code.
 
-**Make each PR simpler to approve.** The quiet option, and the only one that changes nothing about who decides.
+**4. Make each PR simpler to approve.**
 
-- Shopify cleared about 70% of its security backlog in eleven days without touching the approver. Their system writes the fix, explains why it is needed, and keeps it ready to merge.
-- Adyen runs more than 4,000 automated merge requests and keeps a human approving every one. Each change touches fewer than five files on average, which makes it "fast to review, easy to approve".
+- Shopify cleared about 70% of its security backlog in 11 days. Their system writes the fix, explains why it is needed, and keeps it ready to merge by a human developer.
+- Adyen runs more than 4000 automated merge requests and keeps a human approving. Each change touches fewer than five files on average, which makes it "fast to review, easy to approve".
 
-Adyen also wrote down the thing the habituation study measured. "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize." Their answer was a second layer, a designated person walking through approved changes before they merged.
-
-It is worth noticing what nobody chose. You could drop the pull request altogether. That mechanism was written up in 2021 as Ship/Show/Ask, where you open a change and merge it without waiting for anyone, and nobody has revived it because of AI. You could pair instead, so two people see the code as it is written, which was the original argument for skipping review. I found no team that started pairing because review became the bottleneck. And one 2026 study of pairing with an agent found it improved task completion while reducing the human's comprehension of the result, which turns the cure into another case of the second problem.
-
-So the pattern is the same everywhere there are real systems and real numbers. Nobody abandoned the pull request. They kept it and changed who approves it.
-
-One thing is missing from all of this. Almost nobody in European finance has published anything. I looked for banks and payment companies and found Adyen, Monzo, and silence from more than twenty others. The clearest accounts come from Zalando and Spotify, and neither is under DORA. Spotify is also the only European company I found that checked whether any of this hurt. It "did not identify AI-authored code as a material direct contributor" to its incidents, but found that "the volume of change increased faster than some of our verification controls could adapt." That is the whole problem in one sentence, and it came from outside my own industry.
-
+Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers may start to pattern-match and not scrutinize." Their answer was a designated person walking through approved changes before they merged. Well ;)
 
 ### The Arithmetic Nobody Escapes
 <!-- The honest version: nobody has measured minutes per review, so the
