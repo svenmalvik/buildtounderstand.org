@@ -125,7 +125,7 @@ Linus read the code and carried that exposure himself. Here the two are split: o
 
 When asking developers why review exists, the answers are almost always the same: to catch mistakes before they are shiped. Michael Fagan's 1976 paper on formal inspections was built around this, and one of his case studies found that inspection caught 82% of the errors eventually found in a program. Eric Raymond's 1997 line about open source, "given enough eyeballs, all bugs are shallow", says the same in one sentence.
 
-But that is not what a second person mostly does once you look at what they write during a review. At Microsoft, developers ranked finding defects as their top reason for reviewing code. When researchers then read the comments those same developers actually left, only 14% were about a defect. The largest category, at 29%, was suggestions to improve the code that already worked. The developers said one thing about why they reviewed and did something else once they were reviewing.
+But that is not what a second person mostly does once you look at what they write during a review. At Microsoft, developers ranked finding defects as their top reason for reviewing code. Then researchers read the comments those developers actually wrote. Only 14% pointed at a defect. The largest category, at 29%, was suggestions to improve the code that already worked. The developers said one thing about why they reviewed and did something else once they were reviewing.
 
 At Google, the person credited with introducing code review gave a different reason from the start. Review existed "to force developers to write code that other developers could understand." Catching bugs was welcome, but it was not why the practice began. This changes of course what the second person is checking. A reviewer looking for a bug reads the code once and asks whether it works. A reviewer checking for understanding reads the code the way the next engineer will, months later.
 
@@ -148,29 +148,25 @@ At Vipps MobilePay, a regulated payment company, there is a third reason for a s
 
 "Four eyes" in banking means two different things. The first is about who runs the company. European banking law grants a licence only where "at least two persons effectively direct the business". That rule is where the German term Vier-Augen-Prinzip comes from, and the English phrase four eyes is a translation of it. Those two people are accountable for everything the company does, including its software, but they approve no individual change.
 
-The second borrows the same phrase for something else: a control on single sensitive actions. When the Norwegian supervisor fined a savings bank in 2023, one finding was that no four-eyes check existed when an employee manually lowered a customer's money-laundering risk level.
+The second meaning is about a single sensitive action. One person does it, another checks it, before taking effect. When the Norwegian supervisor fined a savings bank in 2023, one finding was that no four-eyes check existed when an employee manually lowered a customer's money-laundering risk level.
 
 Both rules limit which decisions one person may make alone: running the company, or lowering a customer's risk level. The second person is there because the first one can make a mistake or cheat. However, neither rule ensures that the second person actually understood the work.
 
-Until June 2025 in Norway, a system could not go live before the responsible one had approved it. The rule never said who that was, and each firm decided for itself. However, since July 2025, payment and e-money institutions follow DORA instead, along with a second regulation that spells out what DORA's requirements mean in practice. Those detailed rules require "the independence of the functions that approve changes and the functions responsible for requesting and implementing those changes.". "The European rulebook it replaced asked for the same six steps, that every change be recorded, tested, assessed, approved, implemented and verified, and never asked the approver to be independent of the implementer.
+Until June 2025 in Norway, the rule said only that a firm must have procedures for handling changes, and must follow them. It never asked for an approver at all. Each firm wrote its own procedure and decided for itself whether a second person was involved. However, since July 2025, payment and e-money institutions follow DORA instead, along with a second regulation that spells out what DORA's requirements mean in practice. Those detailed rules require "the independence of the functions that approve changes and the functions responsible for requesting and implementing those changes.". "The European rulebook it replaced asked for the same six steps, that every change be recorded, tested, assessed, approved, implemented and verified, but never asked the approver to be independent of the implementer.
 
-Two words I want to highlight here are "functions" and "independence", which the law doesn't define. But everywhere else the law talks about a function, it means a part of the organisation: risk management, controls, internal audit. So a function is a role rather than a human being. What independence between two such roles requires, well, it never says. So the rule doesn't say who, or what, does the approving. Basel leaves similar room when it defines dual control, calling it two or more separate "entities (usually persons)" acting in concert.
+Two words I want to highlight here are "functions" and "independence", which the law doesn't define. But everywhere else the law talks about a function, it means a part of the organisation: risk management, controls, internal audit. So a function is a role rather than a human being. What independence between two such roles requires, well, it never says. So the rule doesn't say who, or what, does the approving. Basel leaves similar room when it defines dual control, calling it two or more separate "entities (usually persons)" acting in concert. In short, whatever approves has to be separate from whatever implements. Nothing says it must be a person.
 
 Together these rules don't ask the questions a developer would ask, which are whether the code works and whether the next person will understand it. They require every change to be recorded, tested, assessed, approved, implemented and verified in a controlled manner. Again, these rules never ask whether the approver understood a change. The reason they give for wanting independence is objectivity and avoiding conflicts of interest, not finding defects. And where the detailed rules do require "source code reviews", they define them as static and dynamic testing, which is a scanner rather than a person.
 
 How carefully a change is checked can also depend on its risk. The policy has to be "based on a risk assessment approach". A reversible configuration change and a change to how money moves don't have to receive the same scrutiny.
 
-When the European supervisors wrote about the risks of frontier AI models in July 2026, the statement never used the words approval, human, segregation, or four eyes. What it asked for was more automation in development and deployment. Nobody has written that a machine may or may not approve a change.
-
-So three different rules are called four eyes, and each one separates something different.
+When the European supervisors wrote about the risks of frontier AI models in July 2026, the statement never used the words approval, human, segregation, or four eyes. What it asked for was more automation in development and deployment. Nobody has written that AI may or may not approve a change.
 
 | Four eyes in | What must be separate |
 | --- | --- |
 | Running a bank | Two persons who direct the business |
 | A sensitive action | A second person, for one decision |
 | A software change | The function that approves from the one that implements |
-
-Only the third one reaches a pull request, and it is the only one of the three that is new.
 
 So the second pair of eyes came from three places. Fagan wanted defects found early. Linus wanted to choose what went into his own code. The regulator wants an independent function to approve the change, a record of it, and more care when the risk is higher.
 
@@ -182,7 +178,7 @@ Today one pull request does all three jobs.
 
 The problem is the approval. The approver is usually another developer on the same team, with the same manager. It's a second person, but within the same part of the company. In other rules for banks, a function is independent only if its people don't do the work they check, and if they sit outside the team that does it. But those rules are written for risk management and internal audit, whose job is to watch the business. The change rule never says the approver has to be one of those. So the question stays open: is it enough that the approver didn't write this change, or must they sit outside the team that did?
 
-That question assumes the approval means something. All three roots assume it. Fagan assumed a reader who had prepared, Linus assumed he would live with whatever he pulled, and the regulator assumes an approving function exists and can be recorded. None of the three asked how many changes would arrive in a week.
+Fagan, Linus, and the regulator all come from a time when changes were scarce. An inspection needed a meeting and a prepared reader. Linus read what he pulled. The regulator wants six steps on every single change. But there was never the question about what happens when the changes start to outnumber the people who can read them.
 
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">02</span>
