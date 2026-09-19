@@ -285,15 +285,13 @@ Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers ma
      Google scale (arXiv 2608.06640v1, 3.52m changes): AI code reverted
      LESS, ~0.9x, while build failures ran ~1.3x. Carry both. -->
 
-In 2009, Kemerer and Paulk measured what happens to a reviewer as they speed up. Up to 200 lines an hour, people found most of the defects. Faster than that, they found about half.
+In 2009, Kemerer and Paulk measured what happens to a reviewer as they review faster. Up to 200 lines an hour, people found most of the defects. Faster than that, they found about half.
 
-Now put that next to the work. One in four PRs written with AI runs over 400 lines. At 200 lines an hour, that is two hours of one person's attention, for one change.
+Here is the thing. One in four PRs written with AI has over 400 lines. At 200 lines an hour, that is 2 hours of one person's attention for one single change.
 
-Almost nobody has two spare hours. Before AI, developers spent about 3.2 hours a week reviewing at Google, and about 6.4 in open source. So one to three changes a week, properly reviewed. Not a day. A week.
+Almost nobody has two spare hours for a single PR. Before AI, developers spent about 3.2 hours a week reviewing at Google, and about 6.4 in open source. So one to three changes a week. Also, at Meta each developer produced 51% more changes in a year, with agents causing more than 80% of the increase.
 
-And the work is not spread evenly. Across Rust, Kubernetes and three Microsoft .NET projects, 20% of the developers do about 80% of the reviews, and that was measured before any of this. Meanwhile at Meta each developer produced 51% more changes in a year, with agents causing more than 80% of the increase.
-
-The point is that nobody can review everything properly anymore. Most teams have therefore already stopped reviewing some changes. The remaining question is then whether developers chose consciously what they stopped reviewing.
+The point is that nobody can review everything properly anymore. Most teams have therefore already stopped reviewing some changes. The important question now is whether developers chose consciously what they stopped reviewing.
 
 ### The Approval Became a Setting
 <!-- New section. On 1 September 2026 GitHub shipped machine approval
