@@ -285,6 +285,29 @@ Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers ma
      Google scale (arXiv 2608.06640v1, 3.52m changes): AI code reverted
      LESS, ~0.9x, while build failures ran ~1.3x. Carry both. -->
 
+Whatever you choose, the same arithmetic applies. Changes arrive at some rate. Each one takes a person some amount of attention. That attention comes out of the time reviewers actually have. If the first number grows and the other two don't, something gives.
+
+The surprising part is that nobody has published this calculation. The three numbers exist separately in the research. Nobody has multiplied them together.
+
+So here it is, with the best numbers I could find.
+
+**How fast can you review?** In 2009, Kemerer and Paulk measured this across 371 reviews by 153 developers. Reviewers who stayed at or below 200 lines an hour found 66% and 57% of the design defects. Reviewers who went faster found 49% and 51%. Fagan's 1976 tables are stricter for systems code, 130 to 150 lines an hour. Going slower than 200 didn't help, so treat it as a ceiling rather than a target.
+
+**How big is a change?** At the 75th percentile, PRs written with AI run over 400 lines. Without AI, 157.
+
+**How much time do reviewers have?** Nobody has measured minutes per review. The only figures are weekly: about 3.2 hours at Google, about 6.4 hours in open source. Both self-reported, both from before any of this.
+
+Now multiply. A 400-line change needs about two hours of attention to review at a rate that still finds defects. A reviewer with three to six hours a week can do one to three of them properly. Not one to three a day. One to three a week.
+
+That reviewer is also rarer than headcount suggests. Across five large projects, 20% of developers do about 80% of the reviews. On Rust it is 84%. That was measured before AI, so it is the starting position, not the damage.
+
+Meanwhile per-developer change volume at Meta rose 51% in a year, and agents caused more than 80% of that growth.
+
+I want to be careful about what this is. The rate comes from individual reviews of C and C++ in a training programme. The weekly hours are self-reported survey averages. None of it measures your team. It is a back-of-the-envelope calculation using the only public numbers that exist.
+
+But that is the point. Every team relaxing a review rule is doing this calculation implicitly. Almost nobody is doing it explicitly, because two of the three numbers have never been measured for their own code.
+
+
 ### The Approval Became a Setting
 <!-- New section. On 1 September 2026 GitHub shipped machine approval
      that satisfies the rule: "Copilot can submit an approval that counts

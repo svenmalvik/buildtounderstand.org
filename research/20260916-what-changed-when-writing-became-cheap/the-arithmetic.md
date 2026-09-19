@@ -32,6 +32,28 @@ The first sentence is the useful one for the essay: it says the arithmetic used 
 
 A similar account without numbers, and **not to be used until verified**: a Linux kernel mailing list message attributed to Linus Torvalds, 17 May 2026, saying "the continued flood of AI reports has basically made the security list almost entirely unmanageable, with enormous duplication". This reached the research secondhand through arXiv 2604.16754v2. Verify against the primary posting before quoting.
 
+## The rate that preserves detection, now sourced
+
+This closes the gap that previously forced the section to cite vendor marketing.
+
+**Kemerer and Paulk**, IEEE Transactions on Software Engineering 35(4), July/August 2009, pp. 534-550, DOI 10.1109/TSE.2009.27. **PEER REVIEWED.** Sample, p. 538: "the resulting C data set has 371 observations for 153 developers and the C++ data set has 246 observations for 90 developers." Developers had up to 34 years of experience, median seven.
+
+The threshold, section 4.5, p. 546:
+
+> "The recommended preparation rate is less than or equal to 200 LOC/hour [27], [47]. A faster rate is considered ineffective and a reinspection is recommended."
+
+The result, pp. 546-547:
+
+> "In all four cases, reviewers who adhere to the recommended review rate find more defects than those who do not. For design defects, they find 66 and 57 percent, respectively, and 56 and 57 percent for code defects. Reviewers using a faster-than-recommended review rate find only 49 and 51 percent of design defects and 47 and 45 percent of code defects."
+
+Abstract, p. 534: "The recommended review rate of 200 LOC/hour or less was found to be an effective rate for individual reviews, identifying nearly two-thirds of the defects in design reviews and more than half of the defects in code reviews."
+
+**Three caveats that must travel with it.** The authors note the absolute effect "may be as few as one or two defects since the absolute numbers are not large". Slowing below 200 did not help measurably, with no significant difference between 0-100 and 100-200 lines an hour, so 200 is a ceiling rather than a target. But "defect removal effectiveness continues to decline as the review rate becomes faster."
+
+**Fagan 1976 states rates too**, IBM Systems Journal 15(3), Table 3, original p. 190. For systems programming: design preparation 100 and inspection 130 lines an hour; code preparation 125 and inspection 150. The table footnote says these "apply to systems programming and are conservative. Comparable rates for applications programming are much higher", and Table 2 gives far faster applications rates from the Aetna COBOL project, preparation 898 and 709 lines an hour.
+
+So the defensible statement is a range, not a constant: somewhere between about 130 and 200 lines an hour for careful review of systems-style code, with applications code potentially faster.
+
 ## Term 2: effort per review, never measured
 
 Covered in [`what-a-review-costs-and-what-skipping-it-costs.md`](./what-a-review-costs-and-what-skipping-it-costs.md). In short: no study anywhere reports minutes of human attention per review. The only effort figures are self-reported weekly averages, about 6.4 hours in open source and about 3.2 hours at Google, and neither divides by the number of reviews.
