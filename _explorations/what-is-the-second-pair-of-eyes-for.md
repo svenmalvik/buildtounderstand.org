@@ -309,15 +309,13 @@ Every Copilot review tells whether a PR looks ready or not. On 1 September 2026,
 
 I wondered, the rule is that authors cannot approve their own PRs. But the rule works on identities, and Copilot has two. One that writes the code and one that reviews the code. The identity for writing is blocked while the reviewing one is not.
 
-It goes further. If I ask Copilot to make a change, GitHub will not let me approve the result. It knows I am too close to it. Copilot's reviewing half, looking at the same change, has no such limit.
+It goes further. If I ask Copilot to make a change, GitHub will not let me approve it. It knows I am too close to it. Copilot's reviewing identity has no such limit.
 
-This is not only GitHub. GitLab, Bitbucket, Azure DevOps and Gerrit all limit who may approve, and they limit it the same way. You cannot approve your own change, or one you pushed, or code you own and then edited. Azure DevOps calls this segregation of duties. None of them says the approver has to be a person.
+GitHub's own documentation says that the agent "gets a second opinion on its code with Copilot code review." which is a second opinion from the same system, on its own work.
 
-GitHub's own documentation says what this is for. The agent "gets a second opinion on its code with Copilot code review." A second opinion, from the same system, on its own work.
+None of this is hidden. Nothing in the documentation mentions segregation of duties, conflicts of interest, or independence. There is one line saying human review should be added on top. But that is an advice and not a control.
 
-None of this is hidden. Nothing in the documentation mentions segregation of duties, conflicts of interest, or independence. There is one line saying human review should be added on top. That is advice, not a control.
-
-And if you work somewhere regulated, this is the part to worry about. There is no audit log entry when a machine approves a change. You can prove when someone turned the setting on. You cannot prove which merges it let through.
+For a European finance regulated company, this part is worrying. You can see the approval on the pull request, under the bot's name, the same way you see a colleague's. What you cannot do is ask the audit log which changes a machine approved last quarter. There is no event for it. The log records that someone turned the setting on, not what it approved afterwards.
 
 I should say what I don't know. I found no company that has turned this on, and no measurement of what happens when they do. What changed in September is not that machines started approving our code. It is that the door opened, quietly, and nobody checked who walks through it.
 
