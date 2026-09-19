@@ -172,7 +172,7 @@ So the second pair of eyes came from three places. Fagan wanted defects found ea
 
 Today one pull request does all three jobs.
 
-- The comments are the inspection.
+- The comments are the reading.
 - The approval is the gate.
 - The pull request is the record.
 
@@ -202,29 +202,25 @@ Fagan, Linus, and the regulator all come from a time when changes were scarce. A
 
 We create more code than ever before. Meta reports 51% more changes per developer in one year, with agents causing over 80% of that growth. On GitHub, merged PRs went from about 25 million a month in January 2023 to over 90 million by June 2026. A PR written with AI waits more than 16 hours before it gets picked up. A PR written without AI waits about 3 hours.
 
-But once someone picks it up, the AI-written PR reaches a decision in about 194 minutes against 252. Sounds like reviewing got faster. That is elapsed time though, not attention. Nobody measured how many of those minutes a reviewer spent reading. And those PRs are a lot bigger, over 400 lines against 157. A bigger PR decided in less time is probably not really read.
+But once someone picks it up, the AI-written PR reaches a decision in about 194 minutes against 252. Sounds like reviewing got faster. Nobody measured how many of those minutes a reviewer spent reading. And those PRs are a lot bigger, over 400 lines against 157. A bigger PR decided in less time is probably not really read.
 
-Someone measured this directly. Researchers followed 400 reviewers through 11429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes stayed the same size, the waiting time got longer rather than shorter, and approval of human-written code fell in the same months. Developers approved more because agent-written code had become familiar, not because they had learned it was safe.
+Someone measured this directly. Researchers followed 400 reviewers through 11429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes stayed the same size, the waiting time got longer rather than shorter, and approval of human-written code fell in the same months. Developers approved more because agent-written code had become familiar.
 
 Authors are no more careful with their own work. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
 
-Google reviewed code so that the next developer could understand it. These numbers say something worse. Half the time the code isn't understood by the developer who submitted it. The first reading, the one nobody ever wrote a rule for, has stopped happening.
+Google reviewed code so the next developer could understand it. Now half of them don't check their own.
 
 Meta now scores each PR for risk and merges the low-risk ones automatically. No human approves them. That is how more than 331000 PRs reached production. A company like Meta wouldn't have built this if it wasn't a major issue for them.
 
-In short, there are three problems:
+There seem to be three problems:
 
 - More code arrives than people can read.
 - Developers submit code they don't understand themselves.
 - An approval gets recorded with no real check.
 
-The inspection, the gate, the record. The first failure takes the inspection away. The third makes the record false, because it says a change was approved when nobody read it.
+A pull request does three jobs: the comments are the reading, the approval is the gate, and the pull request is the record. The first failure overwhelms the reading, because more arrives than anyone can read. The third breaks the record, which now says a change was approved when nobody read it.
 
-The second failure is different. It removes the first reading. An agent writes 400 lines, the author skims them and opens the pull request, and the understanding that used to come with writing the change never happens. The tests still show a green check, the approval still shows a name, the record still shows who approved. Nothing on a pull request shows whether anyone understood the change.
-
-Nobody ever built a check for that, because the first reading used to come with the work. That is the check I try to build at the end of this piece: the author's half of four eyes.
-
-I've done this myself. I approved a change because the checks were green and I knew the developer who wrote it. I didn't read it. What the approval recorded was my confidence in the tests, not my reading of the change.
+The second failure is different. An agent writes 400 lines, the author skims them and opens the pull request, and the understanding that used to come with writing the change never happens because of AI. The tests still show a green check, the approval still shows a name, the record still shows who approved. However, nothing on a pull request shows whether anyone understood the change. Nobody ever built a check for that, because the first reading used to come with the work. That is the check I try to build at the end of this article: the author's half of four eyes.
 
 ### The Numbers Stopped Adding Up
 <!-- The honest version: nobody has measured minutes per review, so the
@@ -249,7 +245,7 @@ Here is the thing. One in four PRs written with AI has over 400 lines. At 200 li
 
 Almost nobody has two spare hours for a single PR. Before AI, developers spent about 3.2 hours a week reviewing at Google, and about 6.4 in open source. So one to three changes a week, against the 51% more changes per developer that Meta now reports.
 
-I should be careful with that number. Nobody publishes how many minutes a reviewer actually spends on a change, so 200 lines an hour is an assumption I'm carrying from a 2009 study, not a constant. The arithmetic is only as good as the assumption.
+I should be careful with that number. Nobody publishes how many minutes a reviewer actually spends on a change, so 200 lines an hour is an assumption from a 2009 study.
 
 The point is that nobody can review everything properly anymore. Most teams have therefore already stopped reviewing some changes. The important question now is whether developers chose consciously what they stopped reviewing.
 
@@ -267,27 +263,25 @@ The point is that nobody can review everything properly anymore. Most teams have
      moves from 'find an engineer with capacity' to 'find a reviewer'."
      Research: research/20260916-what-changed-when-writing-became-cheap/ -->
 
-The Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we successfully ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that has just become more urgent.
+The Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that just became more urgent.
 
 There are four main options to address this:
 
-1. Let in fewer PRs.
-1. Approve PRs more easily.
+1. Have fewer PRs.
+1. Approve some PRs without a human.
 1. Check PRs yourself before you open them.
 1. Make each PR simpler to approve.
 
-Three of them answer one of the three failures. Letting in fewer PRs and making each PR simpler both work on the first failure, that more code arrives than people can read. Checking it yourself works on the second, the reading the author didn't do. Approving more easily answers none of them. It accepts the third failure and writes it into policy.
-
 Here are a few examples for each option:
 
-**1. Let in fewer.** This is mostly open source.
+**1. Have fewer PRs.** This is mostly open source.
 
 - The Godot Foundation banned AI-generated code and kept the human: "All PRs must be reviewed and approved by a human before merging."
 - Five teams inside the Rust project limited how much of their code Ai may write. If Ai write more than half the merged changes in six weeks, Ai changes stop being merged for at least ten days.
 - GitHub shipped a project setting that limits how many PRs one person can have open.
 - curl removed the payment. About 20% of its security submissions were slop, fewer than one in twenty reports was a real vulnerability. It endet its Bug Bounty programm in January 2026.
 
-**2. Approve more easily.** This is what many companies do.
+**2. Approve some PRs without a human.** This is what many companies do.
 
 - Meta scores each change for risk and merges the low-risk ones automatically without any human in the loop.
 - Zalando also runs a classifier similar to Meta when the PR opens. "33% of our PRs are low-risk and are auto-approved by the bot." The author then merges their own change. Medium and high risk PRs still need a human.
@@ -295,7 +289,7 @@ Here are a few examples for each option:
 
 None of these three is a regulated financial company. The European rules want an approving function that is independent of the function implementing the change, and they never say that function has to be a person. A classifier that approves low-risk changes might satisfy the rule on paper. Whether it does depends on whether a classifier counts as a function, who owns it, and whether its decision lands somewhere an auditor can read. I haven't found anyone who has written that down.
 
-**3. Check it yourself first.** Ai harnesses like Claude Code have this already.
+**3. Check PRs yourself before you open them.** Ai harnesses like Claude Code have this already.
 
 The same reviewer that comments on your PR will also run on your branch before you open one. Anthropic ships one review skill as well as Codex and Cursor. Anthropic's own team told the agent to run a security review "as a final step before opening a PR". Some customers put that into a hook so it can't be skipped. Human review is still important, but only for "regulated or truly critical code".
 
@@ -322,11 +316,7 @@ Adyen is the only regulated payment company in these four options, and the only 
      the test suite. Nobody found using the toggles yet; adoption
      unverified, so do not claim it. -->
 
-Writing became cheap first. Approving became cheap after it, for the same reason: the tool that writes a change can also read it.
-
-Every Copilot review tells you whether a PR looks ready or not. On 1 September 2026, GitHub added a new setting that let Copilot also approve PRs.
-
-I wondered about that. The rule is that authors cannot approve their own PRs. But the rule works on identities, and Copilot has two. One that writes the code and one that reviews the code. The identity for writing is blocked while the reviewing one is free to approve.
+On 1 September 2026, GitHub added a new setting that let Copilot also approve PRs. I wondered about that. The rule is that authors cannot approve their own PRs. But the rule works on identities, and Copilot has two. One that writes code and one that reviews code. The identity for writing is blocked while the reviewing one is free to approve.
 
 It goes further. If I ask Copilot to make a change, GitHub will not let me approve it. It knows I am too close to it. However, Copilot's reviewing identity has no such limit.
 
@@ -336,7 +326,7 @@ Nothing in the documentation mentions segregation of duties, conflicts of intere
 
 For a European finance regulated company, this part is worrying. You can see the approval on the PR, under Copilot's name. But the audit log has no event for it. To find out what Copilot approved last quarter, you would have to walk through every PR and collect it yourself.
 
-So the approval is a setting now. Someone has to decide which repositories have it switched on, which changes are exempt from it, and who answers when a machine-approved change causes harm. On most teams nobody has been given that job. That is what I want to work out next.
+So the approval is a setting now. Someone has to decide which repositories have it switched on, which changes are exempt from it, and who answers when an AI-approved change causes harm. On most teams nobody has been given that job. That is what I want to work out next.
 
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">03</span>
