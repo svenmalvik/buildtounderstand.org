@@ -305,6 +305,23 @@ The point is that nobody can review everything properly anymore. Most teams have
      the test suite. Nobody found using the toggles yet; adoption
      unverified, so do not claim it. -->
 
+On 1 September 2026, GitHub shipped a setting. When you turn it on, Copilot can approve a pull request, and that approval satisfies the rule that says a change needs an approval before it merges. Off by default. Three weeks old. Public preview.
+
+The wording is careful. Every Copilot review already ended with an opinion about whether the change looked ready. That opinion never counted for anything. What shipped in September is the vote.
+
+Someone posted the announcement to Hacker News. It got one point and no comments. I could not find anyone arguing about it anywhere I looked. A rule that had meant a person for as long as any of us had been working changed, and the industry did not notice.
+
+Then I went looking for what stops an agent approving its own work, and found something stranger. The rule is that authors cannot approve their own pull requests. It binds an identity. When Copilot writes the code it acts as one identity, and when Copilot reviews the code it acts as another. The writing one is blocked from approving. The reviewing one is not.
+
+It goes further. If I ask Copilot to make a change, GitHub will not let me approve the result. It knows I am too close to it. The machine that reviews the same change has no such restriction.
+
+GitHub's own documentation describes what this is for. The agent "gets a second opinion on its code with Copilot code review." A second opinion, from the same system, on its own work.
+
+None of this is hidden. There is no segregation of duties language in any of it, no conflict of interest warning, nothing about independence. There is one line of advice that human review should supplement it, which is advice and not a control.
+
+And if you are in a regulated company, here is the part that should worry you. There is no audit log event when a machine approves a change. You can prove when someone switched the setting on. You cannot prove which merges it let through.
+
+
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">03</span>
   <div>
