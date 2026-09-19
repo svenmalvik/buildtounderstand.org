@@ -287,9 +287,9 @@ Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers ma
 
 In 2009, Kemerer and Paulk measured how review speed changes what reviewers find. Reviewers who reviewed up to 200 lines an hour found most issues, faster reviewers found about half of these. Meanwhile 1 in 4 PRs written with AI is over 400 lines. We know how much time people have spent reviewing in a week before Ai. At Google it was about 3.2 hours. In open source about 6.4.
 
-At 200 lines an hour, a 400-line change takes two hours. A reviewer with three to six hours a week can properly review one to three changes of that size. Across Rust, Kubernetes and three Microsoft .NET projects, 20% of the developers do about 80% of the reviews, and on Rust it is 84%. That was measured before AI, so it is where teams started. Meanwhile at Meta each developer produced 51% more changes in a year, and agents caused more than 80% of that growth.
+At 200 lines an hour, a 400-line change takes two hours. A reviewer with three to six hours a week can properly review one to three changes of that size. Across Rust, Kubernetes and three Microsoft .NET projects, 20% of the developers do about 80% of the reviews, and on Rust it is 84%. That was measured before AI. Meanwhile at Meta each developer produced 51% more changes in a year, and agents caused more than 80% of that increase.
 
-So nobody can review everything properly any more. That is arithmetic, not opinion. Every team has already stopped reviewing some of it. The only question left is whether they chose what to stop reviewing, or whether it just happened to them.
+So nobody can review everything properly any more. Every team has already stopped reviewing some of it. The only remaining question is whether developers chose consciously what to stop reviewing, or whether it happens at random.
 
 I want to be careful about what this is. The rate comes from people reviewing C and C++ in a training programme. The weekly hours are self-reported averages. None of it measures your team. It is a rough calculation using the only public numbers that exist. But every team that relaxes a review rule is doing this calculation without writing it down.
 
