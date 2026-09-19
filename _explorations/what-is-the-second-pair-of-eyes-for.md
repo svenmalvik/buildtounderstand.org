@@ -323,6 +323,8 @@ None of this is hidden. Nothing in the documentation mentions segregation of dut
 
 And if you work somewhere regulated, this is the part to worry about. There is no audit log entry when a machine approves a change. You can prove when someone turned the setting on. You cannot prove which merges it let through.
 
+I should say what I don't know. I found no company that has turned this on, and no measurement of what happens when they do. What changed in September is not that machines started approving our code. It is that the door opened, quietly, and nobody checked who walks through it.
+
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">03</span>
   <div>
