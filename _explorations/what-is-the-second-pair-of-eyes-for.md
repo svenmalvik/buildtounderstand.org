@@ -315,7 +315,7 @@ GitHub's own documentation says that the agent "gets a second opinion on its cod
 
 None of this is hidden. Nothing in the documentation mentions segregation of duties, conflicts of interest, or independence. There is one line saying human review should be added on top. But that is an advice and not a control.
 
-For a European finance regulated company, this part is worrying. You can see the approval on the pull request, under the bot's name, the same way you see a colleague's. What you cannot do is ask the audit log which changes a machine approved last quarter. There is no event for it. The log records that someone turned the setting on, not what it approved afterwards.
+For a European finance regulated company, this part is worrying. You can see the approval on the PR, under the Copilot's name. But the audit log has no event for it. To find out what a machine approved last quarter, you would have to walk every pull request and collect it yourself. The log tells you someone turned the setting on. It does not tell you what happened next.
 
 I should say what I don't know. I found no company that has turned this on, and no measurement of what happens when they do. What changed in September is not that machines started approving our code. It is that the door opened, quietly, and nobody checked who walks through it.
 
