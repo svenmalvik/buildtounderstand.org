@@ -285,29 +285,15 @@ Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers ma
      Google scale (arXiv 2608.06640v1, 3.52m changes): AI code reverted
      LESS, ~0.9x, while build failures ran ~1.3x. Carry both. -->
 
-Whatever you choose, the same arithmetic applies. Changes arrive at some rate. Each one needs some amount of a person's attention. That attention has to come from the time reviewers actually have. If the first number grows and the other two don't, something has to change.
+Three numbers decide this, and they are all measured.
 
-The surprising part is that nobody has published this calculation. The three numbers exist separately in the research. Nobody has multiplied them.
+In 2009, Kemerer and Paulk measured how review speed changes what reviewers find, across 371 reviews by 153 developers. Reviewers who stayed at or below 200 lines an hour found most of the design defects. Faster reviewers found about half. In 1976 Fagan recommended going slower for systems code, 130 to 150 lines an hour. Meanwhile one in four PRs written with AI is over 400 lines, against 157 without. And nobody has measured minutes per review, so the only numbers for reviewer time are weekly: about 3.2 hours at Google, about 6.4 hours in open source, both self-reported and both from before AI.
 
-So here it is, with the best numbers I could find.
+Now multiply. A 400-line change needs about two hours of attention to review at a speed that still finds defects. A reviewer with three to six hours a week can do one to three of them properly. Not one to three a day. One to three a week. And there are fewer such reviewers than the team size suggests: across five large projects, 20% of the developers do about 80% of the reviews, and on Rust it is 84%. That was measured before AI, so it is where teams started. Meanwhile at Meta each developer produced 51% more changes in a year, and agents caused more than 80% of that growth.
 
-**How fast can you review?** In 2009, Kemerer and Paulk measured how review speed changes what reviewers find, across 371 reviews by 153 developers. Reviewers who stayed at or below 200 lines an hour found most of the design defects, between 57% and 66%. Faster reviewers found about half. In 1976 Fagan recommended going slower still for systems code, 130 to 150 lines an hour.
+So nobody can review everything properly any more. That is arithmetic, not opinion. Every team has already stopped reviewing some of it. The only question left is whether they chose what to stop reviewing, or whether it just happened to them.
 
-One detail makes 200 generous. In the 2009 study the reviewer had written the code. They were checking their own work, which is the easy case. Reading code someone else wrote is not faster.
-
-**How big is a change?** One in four PRs written with AI is over 400 lines. Without AI, one in four is over 157.
-
-**How much time do reviewers have?** Nobody has measured minutes per review. The only numbers are weekly: about 3.2 hours at Google, about 6.4 hours in open source. Both are self-reported, and both are from before AI.
-
-Now multiply. A 400-line change needs about two hours of attention to review at a speed that still finds defects. A reviewer with three to six hours a week can do one to three of them properly. Not one to three a day. One to three a week.
-
-And there are fewer such reviewers than the team size suggests. Across five large projects, 20% of the developers do about 80% of the reviews. On Rust it is 84%. That was measured before AI, so it is where teams started, not the damage.
-
-Meanwhile at Meta each developer produced 51% more changes in a year, and agents caused more than 80% of that growth.
-
-I want to be careful about what this is. The rate comes from people reviewing C and C++ in a training programme. The weekly hours are self-reported averages. None of it measures your team. It is a rough calculation using the only public numbers that exist.
-
-But that is the point. Every team that relaxes a review rule is doing this calculation without writing it down. Almost nobody does it openly, because two of the three numbers have never been measured for their own code.
+I want to be careful about what this is. The rate comes from people reviewing C and C++ in a training programme. The weekly hours are self-reported averages. None of it measures your team. It is a rough calculation using the only public numbers that exist. But every team that relaxes a review rule is doing this calculation without writing it down.
 
 ### The Approval Became a Setting
 <!-- New section. On 1 September 2026 GitHub shipped machine approval
