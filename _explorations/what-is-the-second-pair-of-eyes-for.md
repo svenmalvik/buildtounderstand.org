@@ -915,6 +915,71 @@ The cognitive-science case is old and solid: prompting someone to explain someth
 **Verdict:** the first four are available today, already proven at real scale by someone else, and outsource no judgment. The fifth is unproven at the outcome level, grounded in real cognitive-science support, and the one this piece committed to designing for back in chapter 02. Its whole design problem is making it the second, not the ritual.
 
 ### What It Would Cost, and How to Leave It
+<!-- Chapter 04, section 2. Sourced live via web search and direct
+     document fetches on 20 Sep 2026, same method as the rest of
+     chapters 03-04.
+     Verified sources:
+     - GitHub Advanced Security billing docs and 2026 changelog: the
+       product split into two add-ons, Code Security (includes CodeQL)
+       at $30 per active committer/month and Secret Protection at $19
+       per active committer/month. Billing is per unique committer who
+       pushed to an enabled repo in a rolling 90-day window, not per
+       total headcount.
+     - GitHub Actions 2026 pricing (repriced 1 Jan 2026): hosted Linux
+       runners $0.006/min; self-hosted runners remain free — GitHub
+       proposed a $0.002/min charge for self-hosted runners on private
+       repos in Mar 2026, announced it, then reversed the decision two
+       days later after user backlash. Kept in because it's a real,
+       concrete example of a platform owner trying to add a cost after
+       the fact and being forced to back off — relevant to "how to
+       leave it" even though it isn't about leaving a review tool.
+     - Jennifer Riggins, "Why Up to 70% of Platform Engineering Teams
+       Fail to Deliver Impact" (The New Stack, 22 Oct 2025), reporting
+       from Fast Flow Conf, London, quoting Matthew Meckes (AWS). Real
+       journalism, named author, named speaker, named event — not an
+       SEO blog. The exact figures ("60 to 70% of platform projects
+       fail to leave impact," "almost half... disbanded or restructured
+       within 18 months") are the article's own framing of the
+       conference's argument, not a citation to one named study; treat
+       as industry reporting, not a peer-reviewed measurement.
+     - Reused, not re-verified: chapter 03 section 2's still-open gap —
+       no documented case exists of an organisation building a central
+       code review, AppSec or architecture review function and then
+       dismantling it. The Riggins piece is about platform engineering
+       generally, not review functions specifically, so it doesn't
+       close that gap — it's the closest adjacent evidence, and the
+       prose says so.
+     Explored and set aside: UK GDS's 2026 rework of its Service
+     Standard, moving away from stage-gate assessment toward continuous
+     improvement, looked promising as a "regulator devolving a central
+     review model" example, but the specific devolution claim couldn't
+     be pinned to a primary source in the time available. Not used.
+     Wikimedia Foundation disbanding its Community Tech team (20 May
+     2026) is a real, dated example of a central team being dismantled,
+     but it's developer-relations, not code review — too tangential to
+     use as evidence here. -->
+
+**Frame:** The list above is cheap to try. This checks that claim in real numbers, and asks the question this piece has been circling since chapter 03: if one of them doesn't work, how do you get out?
+
+**1. Three of the five have nothing to leave**
+means: turning on a setting, changing a policy, or swapping an API call has no contract to unwind and no vendor holding anything of yours.
+Turning on existing controls, tiering repos by risk, and pairing models across vendors are all decisions running on infrastructure the fintech already owns. Undoing any of them means deleting a line of config or reverting a policy — the same freedom chapter 03 found in a well-built audit log, not in a licence you'd have to cancel.
+
+**2. Centralizing the machinery costs real money, but the exit is still yours**
+means: this is a real subscription, priced per developer, but what you're buying is compute and a scanner licence, not a vendor's memory of your codebase — the exact distinction chapter 03 built its lock-in cost around.
+GitHub's own security add-ons cost $30 per active developer a month for code scanning and $19 for secret scanning — about $49 a head, or roughly $176.400 a year if all 300 of our developers push code in a given quarter. Cheaper paths exist: the same categories of check run as open-source tools on GitHub's free self-hosted runners. Either way, swapping the scanner or dropping the subscription takes nothing about the codebase's history with it.
+
+**3. The self-explanation check costs patience, not money, and its exit looks different**
+means: the risk here was already named in the list above — a mandatory field can turn into an empty ritual — and leaving it isn't a contract question, it's a matter of someone noticing.
+There's no invoice for the author's half of four eyes. The cost is friction: time spent explaining, and the real chance an "N/A" satisfies the check without the understanding it exists to prove. Leaving it, if that happens, means retiring one CI step — the cheapest exit on this list, but only if someone is watching for the day it stops meaning anything.
+
+**4. The honest risk isn't the vendor. It's whether the team survives**
+means: even the option with no lock-in has a failure mode nothing above has priced yet — the team that owns the machinery might not be there to maintain it.
+Reporting on platform engineering initiatives generally, not code review specifically, found 60 to 70% failing to show impact, with close to half disbanded or restructured within 18 months. Chapter 03 already noted that nobody has documented a company building a central review function and then dismantling it; this is the closest evidence available, and it's about survival, not contracts.
+
+**Verdict:** cost isn't the reason to hesitate on any of these five — none of them lock you in the way a managed review service would. The real risk is organizational, not contractual: whether the team that owns the machinery is still there in eighteen months.
+
+**Pivot to Conclusion:** that is the actual case for trying these first, not just the cheap one — every one of them can be left without asking a vendor's permission.
 
 ## Conclusion
 
