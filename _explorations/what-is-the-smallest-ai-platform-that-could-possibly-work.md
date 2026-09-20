@@ -257,7 +257,7 @@ That answers the question in the title. I still don't know how to start.
 
 Prototype 0.1 has one problem I should state directly: no team has used it. It is a file I wrote to find out whether the idea holds together, which is the same kind of evidence I said above that I no longer trust. The open question I have now is how a contract that nobody asked for reaches its first team.
 
-I see three ways, and I don't know which one is right.
+I see three ways.
 
 **Put it in the template.** Every agent generated through the internal template gets a contract by default. Teams receive it without asking. This is the fastest path to adoption, and it is the failure mode I described earlier. The numbers would look good and would mean nothing, because nobody chose it.
 
