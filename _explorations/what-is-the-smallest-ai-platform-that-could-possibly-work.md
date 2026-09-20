@@ -243,7 +243,9 @@ The same standard applies to the platform itself. I would reduce it when a simpl
 
 Removal is still a product change. It needs retention decisions, migration support, rollback, communication, and a budget. The cost of leaving is part of the cost of the platform.
 
-## Conclusion
+<div class="chapter-heading chapter-heading--finale">
+  <h2 id="conclusion">Conclusion</h2>
+</div>
 
 > For the scope explored here, the smallest AI platform I can justify is a narrow service built around a versioned agent contract.
 
