@@ -449,6 +449,14 @@ So the approval is a setting now. Someone has to decide which repositories have 
        there, and for one at one in two. It is also an association across
        3126 projects, not a measured intervention, so keep "you would
        expect" and never say the change causes the drop.
+     - The coverage finding is stated as a direction, not a number. The
+       figure is available if it is ever wanted: halving the number of
+       unreviewed pull requests predicts about 6% fewer security bugs
+       (Thompson & Wagner, PROMISE 2017, 3126 projects, 382771 pull
+       requests, effect called "small but significant"). It was cut
+       because the halving-plus-percentage construction did not read, and
+       the direction is what the argument needs. It is an association
+       across projects, never a measured intervention.
      - The security claim is security-only in the evidence. Braz &
        Bacchelli (182 practitioners) and Yu et al. (614 of 20995 comments)
        both measure security and nothing else. The licence and dependency
@@ -493,7 +501,7 @@ The attraction is easy to see. The work happens once, and every team gets the re
 
 **Nobody in the product team is looking for security.** True. Of almost 21000 review comments in two open source projects, only 614 touched security. But asked directly, the same developers said they always think about it. They knew how to do it. Nobody had asked them to.
 
-The useful claim is not that a managed reviewer reads better. It is that it reads everything. That is exactly what chapter 02 said a busy team can no longer do, because more changes now arrive than anyone has time to read.
+The useful claim is not that a managed reviewer reads better. It is that it reads everything. The research points the same way. Across more than 3000 projects, the fewer pull requests that went unreviewed, the fewer security bugs. How many people commented on each one made no difference. And reading everything is exactly what chapter 02 said a busy team can no longer do, because more changes now arrive than anyone has time to read.
 
 The second thing a product team cannot give itself is a record. GitHub keeps an audit log of what happens in your repositories, and when somebody reviews a pull request it notes that a review was submitted. It does not note whether that review approved the change or rejected it. There is no approval event at all, the decision survives only in the repository, and the log reaches back 180 days. For secret scanning GitHub does record the approval, the refusal, and the reason the person typed. So a central owner can show months later who allowed what and why, and a product team cannot.
 
