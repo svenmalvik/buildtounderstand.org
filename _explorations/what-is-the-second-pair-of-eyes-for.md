@@ -101,10 +101,14 @@ Sources kept out of the prose to protect readability. All accessed
   peer review retained. Cloudflare, 20 Apr 2026: 131,246 review runs,
   explicitly not a replacement for human review. Anthropic, 9 Mar 2026:
   substantive comments 16% to 54%; human approval retained.
-- DORA, 10 Mar 2026: the verification tax. DORA, teams empowered to choose
-  tools. Spotify, 3 Jun 2026: checks per component type. Atlassian,
-  29 Aug 2025: shared CI, team customization. Anjum 2026, Frontiers:
-  limited causal evidence on platform engineering.
+- DORA, 22 Apr 2026: the verification tax ("The ROI of AI-Assisted
+  Software Development," v.2026.1). DORA, teams empowered to choose
+  tools (living capability page, undated). Atlassian, 29 Aug 2025:
+  shared CI, team customization. Anjum 2026, Frontiers: limited
+  causal evidence on platform engineering. Spotify (checks per
+  component type, Soundcheck tracks) was researched and verified but
+  cut from section 4's prose 20 Sep 2026 — see that section's header
+  note before reusing it.
 -->
 
 <article class="exploration-article" markdown="1">
@@ -649,8 +653,164 @@ Cloudflare runs its reviewer across the whole company: more than 131,000 review 
 **Pivot to next section:** much of what Google's reviewers complained about was stuff a program could catch on its own → next question: how much of "review" needs a person's judgment at all?
 
 ### Most Checks Don't Need Judgment
+<!-- Chapter 03, section 3 of 4. Unlike sections 1 and 2, this section has
+     no pre-existing research folder. Sourced live via web search and direct
+     document fetches on 20 Sep 2026.
+     Verified primary sources, fetched and read directly, not taken from a
+     search summary:
+     - Winters, Manshreck & Tornhill, "Software Engineering at Google"
+       (O'Reilly, 2020), ch. 20 "Static Analysis" (abseil.io/resources/
+       swe-book/html/ch20.html). This is the SAME source already cited in
+       section 2's "Tricorder vintages" caution for the "just below 5%"
+       false-positive figure. New facts pulled from it here: the verbatim
+       quote "allow more expensive processes (such as human review and
+       testing) to focus on issues that are not mechanically verifiable";
+       the formatting quote; the Error Prone hash-code example (java
+       hashCode idiom, right-shift-by-32 no-op, fixed 31 times, then made
+       a compiler error); and the daily click counts ("please fix"
+       thousands/day, ~3,000 fixes/day applied, 250 "not useful"/day).
+       Confirmed against the raw fetched HTML, not the AI summary of it.
+     - Sadowski, Söderberg et al., "Modern Code Review: A Case Study at
+       Google" (ICSE-SEIP 2018) — same paper already cited at the top of
+       this document's source list for "understandability as the origin;
+       9m reviewed changes in the logs." New fact pulled from it here: the
+       four themes from interviews with Google engineers (education,
+       maintaining norms, gatekeeping, accident prevention) and the
+       "defect finding is welcomed but not the only focus" quote. PDF
+       fetched and text-extracted directly (sback.it/publications/
+       icse2018seip.pdf). This is single-company interview research (44
+       survey responses, ~1-hour interviews); the paper itself notes
+       results may not generalize. Flagged in the prose.
+     - Reused, not re-verified: the Microsoft 14%/29% comment-category
+       split and "correct code can still be unwanted" are already cited
+       in this document's chapter 01 (Bacchelli & Bird 2013; Gousios et
+       al. 2014). Not re-fetched here, just referenced.
+     Refused sources, recorded so nobody picks them up: a claim that
+     Tricorder caught "73% of concurrency bugs before human review" at
+     "Google I/O 2025" — untraceable to any primary source, does not
+     appear in the actual Tricorder paper or the SWE at Google book, almost
+     certainly fabricated. A dev.to post ("How AI Code Review Tools Are
+     Catching Bugs That Humans Miss") citing a "Cambridge University"
+     study of 2,847 production bugs, a Stripe race-condition anecdote
+     caught by "Snyk's DeepCode... in 4.7 seconds," and a "GitHub 2025
+     State of the Octoverse" stat of "41% more" vulnerabilities caught by
+     AI review — none of these check out against any findable primary
+     source; treat the entire article as fabricated SEO content.
+     Held for the next section, not used here: Google Cloud DORA team,
+     "The ROI of AI-Assisted Software Development" (v.2026.1), which
+     coins "the verification tax." Correction needed: this document's
+     top-of-file source list dates this "DORA, 10 Mar 2026", but the
+     verified release date is 22 Apr 2026. Fix that date when this report
+     is used in "Centralize the Machinery, Not the Decision". -->
+
+**Frame:** Chapter 01 already noted that where the rules require "source code reviews," the technical standards define them as static and dynamic testing — a scanner, not a person. This section asks how far that boundary actually goes.
+
+**1. Google already draws this line, in writing**
+means: the split between "needs a person" and "doesn't" isn't hypothetical — a company Google's size has run it for over a decade and published why.
+Google's own engineering book states the goal directly: static analysis exists so that "human review and testing" can "focus on issues that are not mechanically verifiable." Its static analysis platform, Tricorder, runs on every code change before a human reviewer ever sees it.
+
+**2. What "doesn't need judgment" looks like in practice**
+means: once a pattern is well understood, the fix gets promoted out of human hands entirely — from a suggestion to a rule the compiler enforces.
+Formatting is fixed automatically; the same book calls pointing out formatting errors "not a good use of a human reviewer's time." One known bug pattern, in how Java computes a hash code, was flagged by a checker, fixed 31 times across Google's codebase, then turned into a compiler error. After that, the mistake can no longer compile — nobody has to notice it again.
+
+**3. The scale this runs at, and the trust it earned**
+means: mechanical checks only get this much authority because they were held to a strict, measured bar, not because someone assumed they'd be fine.
+At Google, reviewers click "please fix" on automated suggestions thousands of times a day; developers apply the fix about 3,000 times a day. The same suggestions get a "not useful" click only 250 times a day. Company-wide, the false-positive rate stays just below 5%.
+
+**4. What's on the other side of the line**
+means: the comments that remain once the mechanical ones are stripped out are about things no scanner can evaluate — whether the code is wanted, not just whether it's correct.
+Chapter 01 already cited this: at Microsoft, only 14% of review comments pointed at a defect; the largest category, 29%, was suggestions to improve code that already worked. Separate research found the same pattern: correct code can still be unwanted.
+
+**5. What Google's own developers say review is actually for**
+means: the part of review that survives automation is about deciding what's allowed to exist in the codebase, not about catching mistakes.
+Interviewing Google engineers in 2018, researchers found four themes behind what review is expected to do: education, maintaining norms, gatekeeping, and accident prevention. "Defect finding is welcomed but not the only focus." Norms means a discretionary call where the style guide is silent, not a fixed formatting rule. Gatekeeping means setting and defending boundaries around design and source code — a decision, not a pattern match. This is one company's internal research, not a universal survey.
+
+**Verdict:** the dividing line isn't AI versus human, or vendor versus self-built. It's mechanically verifiable versus not. Everything mechanically verifiable can be centralized without controversy — none of the previous section's costs apply to a check that gets fixed once and never needs a second opinion again.
+
+**Pivot to next section:** if that line is real, the DevEx-team question from earlier in this chapter gets sharper. Not "should DevEx own the reviewer" — but which half of review DevEx should own: the machinery, or the decision.
 
 ### Centralize the Machinery, Not the Decision
+<!-- Chapter 03, section 4 of 4. Sourced live via web search and direct
+     document fetches on 20 Sep 2026, same as section 3. This section
+     finally uses four sources that sat unused in this document's
+     top-of-file "Sources kept out of the prose" list since it was first
+     drafted: DORA (teams choosing tools), Spotify, Atlassian, and Anjum
+     2026. Verified below; the top-of-file list's DORA date (10 Mar 2026)
+     is wrong and should be corrected to 22 Apr 2026 to match — fixed
+     there now that this section uses the report.
+     Verified sources:
+     - DORA capability page, "Empowering teams to choose tools"
+       (dora.dev/capabilities/teams-empowered-to-choose-tools/). Living
+       capability page, not a dated report — do not assign it a
+       publication date. Finding: teams choosing their own tools
+       correlates with higher software delivery performance and higher
+       job satisfaction, with DORA's own caveat that unconstrained tool
+       choice increases fragmentation and technical debt.
+     - Atlassian, "1 Billion Build Minutes Later: How we reinvented
+       Atlassian's CI/CD" (atlassian.com/blog/atlassian-engineering),
+       fetched directly, published 29 Aug 2025. Verbatim quote used:
+       "Centralized, structured, and extensible." Numbers verified from
+       the fetched page: 20+ CI/CD servers eliminated, 1 billion build
+       minutes/month on Bitbucket Pipelines, 45% build cost reduction on
+       one platform team, $4M annual savings, build time 6h to 1.5h
+       (75% reduction), lead time 2 days to 1.5h (96% reduction).
+       "Dynamic Pipelines" lets teams customize what runs at runtime
+       (e.g., selective test execution in large monorepos) on top of the
+       shared platform.
+     - CUT 20 Sep 2026, kept here so it isn't re-added blind: Spotify
+       Backstage / Soundcheck was researched and verified (checks bundled
+       into "tracks" per kind of component: Golden State for Web, Test
+       Certified for Backend, Fleet Management, all centrally built).
+       Real, but it answers a different question than this section asks —
+       whether centrally-owned checks can still vary by risk, not who
+       should own the check — and the sourcing was thinner than the rest
+       of this section (the 3 Jun 2026 date in the top-of-file list was
+       never confirmed against any single dated post). Cut on Sven's call
+       after review; do not restore without deciding what question it's
+       answering first.
+     - Anjum, "Platform engineering and internal developer portals: a
+       multivocal literature review" (Frontiers in Computer Science,
+       2026). The necessary hedge: platform engineering maturity
+       correlates with better DORA metrics and DevEx scores, but no
+       longitudinal or quasi-experimental study has established that PE
+       causes the improvement rather than high performers simply being
+       more likely to adopt it. Kept in deliberately, same as the
+       Edmundson study in section 1 — it weakens this section's own
+       argument and should not be cut to tidy the case.
+     - Reused from section 2, not re-verified: Cloudflare's design
+       (central reviewer, per-team config files, break-glass override).
+     - Reused from chapter 01: the RTS's risk-based approach to how much
+       scrutiny a change needs. -->
+
+**Frame:** Section 3 drew a line: mechanically verifiable, or not. This section asks who should own each side of it.
+
+**1. What "the machinery" is**
+means: the machinery is exactly what section 1 already said a managed reviewer is good at — reading everything, on a schedule nobody has to remember — not the decision that follows it.
+Formatters, linters, dependency and secret scanners, and an AI reviewer's first pass all belong here: none of them decide whether a change is wanted, they just surface what a person doesn't have to find by hand.
+
+**2. Centralizing tools and centralizing decisions are not the same choice**
+means: the research that supports centralizing infrastructure specifically protects tool choice — it says nothing about who gets to approve a change.
+DORA's own published research finds that teams choosing their own tools report higher software delivery performance and higher job satisfaction. The same research warns that unlimited, unconstrained choice increases fragmentation and technical debt — which is the argument for a shared platform, not for a shared approver.
+
+**3. What this looks like at real scale: Atlassian**
+means: this isn't a theory. A real company already ran the experiment and published what it saved.
+Atlassian replaced 20-plus CI/CD servers with one shared platform running a billion build minutes a month. One platform team cut build costs by 45%, saving $4 million a year. Build time on the platform dropped from 6 hours to 90 minutes; lead time from 2 days to 90 minutes. Teams still customize what runs, through what Atlassian calls Dynamic Pipelines — a large monorepo can choose to run only the tests a change actually touches, on the shared infrastructure, without asking a platform team's permission first.
+
+**4. The infrastructure is the bottleneck, not the model**
+means: a better AI reviewer does not fix a bad platform; the report that coined "the verification tax" says the returns come from the platform, not the tool.
+Google Cloud's DORA team argues that neither the verification tax nor the instability tax can be fixed by a better model — a coding assistant that writes twice as much code per prompt just doubles the verification load. Model quality is not the bottleneck; absorption capacity is. Their conclusion: "the greatest returns on AI investment come not from the tools themselves but from... the quality of the internal platform, the clarity of workflows, and the alignment of teams."
+
+**5. The honest caveat**
+means: none of this evidence proves that building a platform causes the improvement, rather than already-strong teams being the ones who bother to build one.
+A 2026 literature review found platform engineering maturity correlates with better delivery metrics and developer experience scores, but no study has tracked organizations before and after adoption, or compared matched organizations with and without it. The direction of causation is unproven.
+
+**6. Cloudflare already showed the shape of this**
+means: the earlier counter-example in this chapter was this pattern all along — one central tool, local configuration, and an escape hatch for the team that disagrees.
+Cloudflare's reviewer runs company-wide, but each team shapes it with a file in its own repository, and a break-glass override lets a team get past it in an emergency, logged every time.
+
+**Verdict:** centralize the machinery — the tools, the infrastructure, the checks that don't need judgment — and keep the decision local. That is the same line section 1 already found from the other direction: a managed service earns no advantage at the gate, no matter how it's built.
+
+**Pivot to chapter 04:** that is what I would actually try, before building a review service at all.
 
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">04</span>
