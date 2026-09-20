@@ -106,9 +106,9 @@ Sources kept out of the prose to protect readability. All accessed
   tools (living capability page, undated). Atlassian, 29 Aug 2025:
   shared CI, team customization. Anjum 2026, Frontiers: limited
   causal evidence on platform engineering. Spotify (checks per
-  component type, Soundcheck tracks) was researched and verified but
-  cut from section 4's prose 20 Sep 2026 — see that section's header
-  note before reusing it.
+  component type, Soundcheck tracks) was researched and verified in
+  chapter 03 section 4, cut from there 20 Sep 2026, then moved to
+  chapter 04 section 1 the same day — see chapter 04's header note.
 -->
 
 <article class="exploration-article" markdown="1">
@@ -757,17 +757,20 @@ Interviewing Google engineers in 2018, researchers found four themes behind what
        "Dynamic Pipelines" lets teams customize what runs at runtime
        (e.g., selective test execution in large monorepos) on top of the
        shared platform.
-     - CUT 20 Sep 2026, kept here so it isn't re-added blind: Spotify
-       Backstage / Soundcheck was researched and verified (checks bundled
-       into "tracks" per kind of component: Golden State for Web, Test
-       Certified for Backend, Fleet Management, all centrally built).
-       Real, but it answers a different question than this section asks —
-       whether centrally-owned checks can still vary by risk, not who
-       should own the check — and the sourcing was thinner than the rest
-       of this section (the 3 Jun 2026 date in the top-of-file list was
-       never confirmed against any single dated post). Cut on Sven's call
-       after review; do not restore without deciding what question it's
-       answering first.
+     - CUT from here 20 Sep 2026: Spotify Backstage / Soundcheck was
+       researched and verified (checks bundled into "tracks" per kind of
+       component: Golden State for Web, Test Certified for Backend,
+       Fleet Management, all centrally built). Real, but it answered a
+       different question than this section asks — whether
+       centrally-owned checks can still vary by risk, not who should own
+       the check — and the sourcing was thinner than the rest of this
+       section (the 3 Jun 2026 date in the top-of-file list was never
+       confirmed against any single dated post). MOVED to chapter 04,
+       section 1, item 2 ("tier repos by what they touch"), where Sven
+       confirmed on 20 Sep 2026 that question — different scrutiny for
+       different repos, not just different changes — was genuinely
+       missing from the piece. Do not also restore it here; one use is
+       enough.
      - Anjum, "Platform engineering and internal developer portals: a
        multivocal literature review" (Frontiers in Computer Science,
        2026). The necessary hedge: platform engineering maturity
@@ -820,6 +823,96 @@ Cloudflare's reviewer runs company-wide, but each team shapes it with a file in 
 </div>
 
 ### What I Would Try Before Building a Review Service
+<!-- Chapter 04, section 1. Restructured 20 Sep 2026 after Sven pointed
+     out the first draft only validated one candidate (now item 5)
+     instead of answering "what would I try first" as a list. Items 1,
+     3 and 4 are callbacks to what this document already established
+     elsewhere, not new research. Item 5 is where 20 Sep 2026's live web
+     research (Chi et al. 1994, GitHub Docs, thundergolfer.com,
+     Pirouzkhah/Wurzel Gonçalves/Bacchelli MSR '26, CodeRabbit Dec 2025,
+     GitHub required-field enforcement mechanics) now lives, compressed
+     rather than removed.
+     Item 2 added the same day, after Sven pointed out a separate gap:
+     the piece covers risk-based scrutiny per CHANGE (chapter 01's
+     regulatory framing, chapter 02's Meta/Zalando per-PR risk scoring)
+     but never risk-based treatment per REPOSITORY — a payment repo and
+     an internal tool repo are not the same bet even when a given change
+     to each looks equally small. The Spotify Soundcheck material that
+     answers this was cut from chapter 03 section 4 the same day for
+     answering a different question there; moved here instead, where it
+     directly answers "what would I try first." Do not duplicate it back
+     into chapter 03.
+     Full source detail for item 4, kept here so it isn't lost in the
+     compression:
+     - Chi, De Leeuw, Chiu & Lavancher, "Eliciting Self-Explanations
+       Improves Understanding" (Cognitive Science, 1994): self-explaining
+       while studying produces better recall and transfer than
+       re-reading; more self-explanation correlates with more
+       understanding.
+     - GitHub Docs, "Helping others review your changes": official
+       recommendation to self-review before requesting review. Undated
+       living page.
+     - thundergolfer.com/pr-self-review: one practitioner's essay, not a
+       study. Technique: read your own diff as an external critic
+       would. Its "fewer bugs" claim is personal experience, flagged as
+       such.
+     - Pirouzkhah, Wurzel Gonçalves & Bacchelli, "The Value of Effective
+       Pull Request Description" (MSR '26, Apr 2026) — same Bacchelli
+       already in this document's top-of-file list. Fetched and
+       text-extracted directly. 80,000 PRs, 156 projects, 5 languages.
+       Central, load-bearing finding: most PR description elements show
+       only limited, largely negligible relationships with review
+       outcomes; the exception is a description that explains the code
+       AND asks for a specific kind of feedback. Also: 34% of PRs
+       (via Liu et al.) have no description at all; templates used on
+       only ~1.2% of GitHub repos but correlate with shorter reviews
+       when well-structured.
+     - CodeRabbit, "State of AI vs Human Code Generation" (Dec 2025),
+       470 PRs. Vendor research selling an AI reviewer — the
+       ~1.7x-more-issues figure is directional only, same treatment as
+       Greptile's model-inversion stat elsewhere in this document.
+     - Enforcement mechanics (GitHub required template fields; bots like
+       probot/enforce-template-app) are real and available today.
+       Practitioners warn every required field has a cost: abandonment,
+       or a content-free "N/A" — the same empty-ritual failure chapter
+       02 already diagnosed, now the central risk for this specific
+       idea rather than a generic caveat.
+     OPEN, NOT RESOLVED: what Prototype 0.1 actually does. Open item 4
+     at the top of this document already flags this ("has not been used
+     by any team... decide whether to run it on one repository first").
+     Not invented here — the caption below is still empty on purpose.
+     Needs Sven's own account, the same way "the mistake" in chapter 03
+     section 1 needed his confirmation rather than an invented
+     candidate. -->
+
+**Frame:** Chapter 03 ended on a pivot: this is what I would actually try before building a review service at all. In roughly the order I'd try them — cheapest and most certain first.
+
+**1. Turn on what already exists and is unused**
+means: the cheapest thing to try costs nothing to build, because it's already built — it just isn't switched on.
+This document has an open item on exactly that: check which branch protections and similar controls are already available across our repositories and simply unused, before building anything new.
+- Requiring pull request reviews before merging
+- Requiring status checks (tests, linters) to pass before merge
+- Restricting who can push directly to protected branches
+- Dismissing stale approvals when new commits land
+- Secret scanning, dependency scanning (Dependabot) turned on per-repo
+
+**2. Tier repos by what they touch, not just by change size**
+means: a payment repo and an internal chatbot repo aren't the same bet, even when a single change to each looks equally small — chapter 01's risk-based rule was never mapped onto which repos count as high-risk in the first place.
+Spotify's Soundcheck platform runs different tracks of checks depending on what kind of component something is — a web frontend, a backend service, fleet-wide infrastructure — one shared platform, several tiers. The same idea applied here: decide which repos move money or hold customer risk data, and require more from them by default — more reviewers, mandatory security review, no auto-merge — while lower-stakes repos stay on a lighter version of the same machinery.
+
+**3. Centralize the machinery, not the decision**
+means: chapter 03's own conclusion is itself a thing to try — a shared platform for the checks that don't need judgment, before any AI reviewer enters the picture at all.
+Formatters, linters, dependency and secret scanning: centralize those the way Atlassian centralized its CI/CD, and keep the approval itself local. Real savings, no judgment outsourced.
+
+**4. Pair models across vendors for the one specific blind spot**
+means: cheap, and it fixes exactly one problem — that a model reviews its own family's code worse than anyone else's — without a vendor contract.
+Wire a different model's provider into CI as the reviewer for whatever wrote the change. This is the same idea Greptile sells as "the independent code validator," available for the cost of an API call instead of a seat licence.
+
+**5. The author's half of four eyes**
+means: the one genuinely new idea here, and the one this piece already promised to build — with real support and a real risk attached.
+The cognitive-science case is old and solid: prompting someone to explain something in their own words measurably deepens their own understanding. The industry half-believes this already — GitHub recommends self-review, and practitioners describe reading their own diff as a critic would. But a 2026 study of 80,000 pull requests found only limited, mostly negligible evidence that PR descriptions change what happens in review — except when the description explains the code and asks for specific feedback. And a vendor study suggests AI-written code raises the stakes on needing this, whatever the exact multiple really is. The risk: making an explanation mandatory is easy — GitHub and various bots already support it — but a required field can decay into exactly the empty ritual chapter 02 diagnosed, an "N/A" that satisfies the check without the understanding it was supposed to prove.
+
+**Verdict:** the first four are available today, already proven at real scale by someone else, and outsource no judgment. The fifth is unproven at the outcome level, grounded in real cognitive-science support, and the one this piece committed to building back in chapter 02. Its whole design problem is making it the second, not the ritual.
 
 <div class="prototype" markdown="1">
 <p class="prototype__label">Prototype 0.1 · the author's half of four eyes</p>
