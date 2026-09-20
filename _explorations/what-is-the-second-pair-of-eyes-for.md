@@ -241,7 +241,7 @@ There seem to be three problems:
 
 A pull request does three jobs: the comments are the reading, the approval is the gate, and the pull request is the record. The first failure overwhelms the reading, because more arrives than anyone can read. The third breaks the record, which now says a change was approved when nobody read it.
 
-The second failure is different. An agent writes 400 lines, the author skims them and opens the pull request, and the understanding that used to come with writing the change never happens because of AI. The tests still show a green check, the approval still shows a name, the record still shows who approved. However, nothing on a pull request shows whether anyone understood the change. Nobody ever built a check for that, because the first reading used to come with the work. That is the check I try to build at the end of this article: the author's half of four eyes.
+The second failure is different. An agent writes 400 lines, the author skims them and opens the pull request, and the understanding that used to come with writing the change never happens because of AI. The tests still show a green check, the approval still shows a name, the record still shows who approved. However, nothing on a pull request shows whether anyone understood the change. Nobody ever built a check for that, because the first reading used to come with the work. That is the check I want to design for at the end of this article: the author's half of four eyes.
 
 ### The Numbers Stopped Adding Up
 <!-- The honest version: nobody has measured minutes per review, so the
@@ -912,13 +912,7 @@ Wire a different model's provider into CI as the reviewer for whatever wrote the
 means: the one genuinely new idea here, and the one this piece already promised to build — with real support and a real risk attached.
 The cognitive-science case is old and solid: prompting someone to explain something in their own words measurably deepens their own understanding. The industry half-believes this already — GitHub recommends self-review, and practitioners describe reading their own diff as a critic would. But a 2026 study of 80,000 pull requests found only limited, mostly negligible evidence that PR descriptions change what happens in review — except when the description explains the code and asks for specific feedback. And a vendor study suggests AI-written code raises the stakes on needing this, whatever the exact multiple really is. The risk: making an explanation mandatory is easy — GitHub and various bots already support it — but a required field can decay into exactly the empty ritual chapter 02 diagnosed, an "N/A" that satisfies the check without the understanding it was supposed to prove.
 
-**Verdict:** the first four are available today, already proven at real scale by someone else, and outsource no judgment. The fifth is unproven at the outcome level, grounded in real cognitive-science support, and the one this piece committed to building back in chapter 02. Its whole design problem is making it the second, not the ritual.
-
-<div class="prototype" markdown="1">
-<p class="prototype__label">Prototype 0.1 · the author's half of four eyes</p>
-
-<p class="prototype__caption"></p>
-</div>
+**Verdict:** the first four are available today, already proven at real scale by someone else, and outsource no judgment. The fifth is unproven at the outcome level, grounded in real cognitive-science support, and the one this piece committed to designing for back in chapter 02. Its whole design problem is making it the second, not the ritual.
 
 ### What It Would Cost, and How to Leave It
 
