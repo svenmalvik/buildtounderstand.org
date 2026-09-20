@@ -25,10 +25,13 @@ Open items before publishing:
    2026, corrected by Sven: there is no such wish. Nobody at work asked for
    a centralized reviewer. Earlier drafts wrote "people keep asking" and
    "a wish exists", and both were invented. The section now presents the
-   managed service as one option the author would reach for first, and says
-   plainly that nobody asked for it. Do not reintroduce a claim about
-   colleagues wanting this. The conflict-of-interest line stands, because
-   he did build the tool such a service would run on.
+   managed service neutrally as one answer, argued against by three
+   rebuttals with no editorial framing beforehand. Do not reintroduce a
+   claim about colleagues wanting this. UPDATE 20 Sep 2026: the
+   conflict-of-interest line ("I built the tool such a service would run
+   on") was drafted, then cut by Sven ("I don't like it, so I removed
+   it"). It no longer stands and should not be reintroduced without
+   asking first.
 3. "Most of the cheap controls are available to us and unused" is copied
    from the adoption draft, where it is also unverified. Either check which
    branch protections are switched on across our repositories before
@@ -49,6 +52,16 @@ Open items before publishing:
 7. IKT-forskriften change management was § 9, not § 10 (§ 10 was repealed
    in 2015). Verify the art. 17 wording against EUR-Lex before print; the
    note relies on two secondary reproductions that agree.
+8. One first-hand claim is now IN the prose of chapter 03, section 1,
+   where it previously sat only in a note: that we have a DevEx team. The
+   piece already names Vipps MobilePay in chapter 01, so this adds to what
+   is public and needs the manager clearance the strategy note asks for,
+   alongside the internal system already named. The "twenty to thirty
+   product teams" figure was in this section briefly and has been cut; do
+   not reintroduce it without the same clearance. "I built the tool it
+   would run on" was also in the prose briefly, drafted then cut by Sven
+   (see item 2) — it is back to being unpublished and needs no clearance
+   unless it returns.
 
 Sources kept out of the prose to protect readability. All accessed
 14 September 2026; details and caveats in the research folder.
@@ -483,29 +496,33 @@ So the approval is a setting now. Someone has to decide which repositories have 
        for it. The only first-hand claim left in this section is that he
        built the tool such a service would run on. -->
 
-Chapter 02 ended with a setting. Copilot can now approve a pull request, and somebody has to decide which repositories have that switched on.
+Chapter 02 ended with a setting that Copilot can now approve a pull request. Great, the questions then are:
 
-At a payment company that is not only our decision. The European rules say an approval has to come from a function that is independent of the function doing the work, and chapter 01 showed they never say that function has to be a person. So on paper a setting could satisfy the rule.
+- which repositories have it switched on,
+- which changes are exempt from it, and
+- who is responsible when a change it approved causes harm.
 
-Look closer though. Chapter 02 showed that Copilot has two identities, one that writes code and one that reviews it, and only the writing one is blocked from approving. GitHub does not say whether the two run the same model, and from the outside there is no way to check. If they do, then the rule is being met by a name rather than by a difference. There is a measurement later in this chapter that makes the doubt concrete: a model is reliably worse at finding bugs in code from its own family than in anyone else's. Independence that disappears when you measure it is not independence.
+DORA and the technical standards under it want the approving function independent of the one that made the change. But Copilot's reviewer may be the same model as the one that wrote it. And if an agent wrote the change, no human did, which leaves the question: does the approver have to sit outside the team that shipped it?
 
-Chapter 01 left the same question in an older form. Is it enough that the approver did not write the change, or do they have to sit outside the team that did?
+One answer: let a DevEx team (developer experience team) build a centralized AI reviewer that everyone can use. It would approve the low-risk changes without a human. Three reasons are usually given for why this is smart:
 
-One possible answer is to give the job to our developer experience team. They would build an AI reviewer and make it to the product teams. It would look like the other things a developer experience team runs, where one group owns it and everyone else uses it. It is the option I would reach for first.
+**An outsider sees more.** You might assume this doesn't apply to a centralized AI reviewer, since it reads the most of the repo before commenting. But the research isn't measuring whether a reviewer read the text. It's measuring whether they have the context such as why a workaround exists, what incident it prevents, what the team already decided and why. Reading a diff for the first time doesn't give you that, no matter how fast the reading is. Microsoft asked 873 developers, and 9 of 10 said a change takes longer to review when they do not know the repo or files.
 
-The attraction is easy to see. The work happens once, and every team gets the result. But only if the service does something a product team cannot already do for itself. Three claims are usually made, and two fall apart.
+**AI never gets tired.** The people reading its reviews do. Chapter 02's familiarity study was about repeated code, not repeated reviews. However, one person facing every change will at some point just trust and approve.
 
-**An outsider sees more.** The research says the opposite. Microsoft asked 873 developers, and nine out of ten said a change takes longer to review when they do not know the files. The less reviewers know the code, the more bugs survive to production.
+**Nobody in the product team is looking for security.** True, and the reason matters. Of almost 21.000 review comments in two open source projects, only 614 touched security. But asked directly, the same developers said they always think about it. They knew how to do it. Nobody had asked them to. That is a problem you fix by asking, which is cheaper than a service.
 
-**A machine never gets tired.** But the people reading what it writes do, and one reviewer in front of every change piles that reading into one place. Every study says load makes a check worse. The study in chapter 02 asks for the opposite: spread reviews around.
+A managed reviewer doesn't reviews better. But it reviews everything, which is different. As you would expect, projects with fewer unreviewed pull requests had fewer security bugs. Reviewing everything is exactly what chapter 02 said a busy team can no longer do, because more pull requests arrive than anyone can review.
 
-**Nobody in the product team is looking for security.** True. Of almost 21000 review comments in two open source projects, only 614 touched security. But asked directly, the same developers said they always think about it. They knew how to do it. Nobody had asked them to.
+The second thing a product team cannot give itself is a record, something an auditor can check later without opening every pull request. You can see any single approval or rejection on the pull request itself. But GitHub's organization-wide audit log, the one built for searching across every repository at once, only notes that a review happened, not which way it went, and it only reaches back 180 days. Secret scanning is the exception: there, GitHub does log the approval, the refusal, and the reason typed. A central owner could search that log months later and see who allowed what and why.
 
-The useful claim is not that a managed reviewer reads better. It is that it reads everything. The research points the same way. Across more than 3000 projects, the fewer pull requests that went unreviewed, the fewer security bugs. How many people commented on each one made no difference. And reading everything is exactly what chapter 02 said a busy team can no longer do, because more changes now arrive than anyone has time to read.
+Chapter 01 said a pull request does three jobs.
 
-The second thing a product team cannot give itself is a record. GitHub keeps an audit log of what happens in your repositories, and when somebody reviews a pull request it notes that a review was submitted. It does not note whether that review approved the change or rejected it. There is no approval event at all, the decision survives only in the repository, and the log reaches back 180 days. For secret scanning GitHub does record the approval, the refusal, and the reason the person typed. So a central owner can show months later who allowed what and why, and a product team cannot.
+- Someone reads the code, and their comments prove it.
+- Someone approves it, and that approval is the gate the change has to pass through.
+- And the pull request itself stays behind as the record of what happened.
 
-Chapter 01 said a pull request does three jobs at once. The comments are the reading, the approval is the gate, and the pull request is the record. A managed service is better at two of them. It reads everything, and it keeps a record worth showing an auditor. The one job it has no advantage in is the gate.
+A managed service is clearly better at the first job: it reads every single change. It could also get better at the record, but only by keeping its own proper log, because GitHub's own log for ordinary reviews isn't good enough on its own. The one thing it hasn't managed to do better yet is the approval: coverage and logging are things you can build, but an approval you actually want to trust seems to be something else, at least for now.
 
 ### What a Managed Review Service Would Cost
 <!-- Chapter 03, section 2 of 4. Same research folder as the previous
@@ -597,7 +614,7 @@ Moving approval outside the team that writes the code has been tried more widely
 
 The money is the easy part. Published prices run from about $12 to $72 per developer per month, so a thousand developers cost a few hundred thousand dollars a year. An extra review costs between fifty cents and about $1.70. Notice what no price list charges you for: a review that turns out to be wrong.
 
-The reading is the real cost, and it never appears on an invoice. The largest independent study read more than 31,000 AI review comments across 239 repositories and checked what developers did with each one. They acted on 36% and rejected 56%. The biggest vendor reports much the same from its own side, with 43% accepted. So between half and three fifths of what the service says has to be read by a person and thrown away.
+The reading is the real cost, and it never appears on an invoice. The largest independent study read more than 31.000 AI review comments across 239 repositories and checked what developers did with each one. They acted on 36% and rejected 56%. The biggest vendor reports much the same from its own side, with 43% accepted. So between half and three fifths of what the service says has to be read by a person and thrown away.
 
 Google has a rule for this. Its code scanning platform, Tricorder, only lets a new check in if developers act on more than nine findings out of ten, and across the platform the rate of ignored findings sits just under 5%. Above 10% a check goes on probation, and above 25% Google can switch it off the same day. A managed AI reviewer today runs at 56%.
 
