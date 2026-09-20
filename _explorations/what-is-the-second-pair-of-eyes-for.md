@@ -982,6 +982,135 @@ Reporting on platform engineering initiatives generally, not code review specifi
 **Pivot to Conclusion:** that is the actual case for trying these first, not just the cheap one — every one of them can be left without asking a vendor's permission.
 
 ## Conclusion
+<!-- Synthesis only, no new research. Every claim below traces to a
+     specific block already in this document; the caution lists where.
+     Framed around Sven's own question on 20 Sep 2026: at a regulated
+     fintech, what would actually make the queue shorter and the
+     quality higher or the same, given everything chapters 01-04
+     already argued?
+     Traceability:
+     - "Don't buy the service" — chapter 03 section 2's full cost list
+       (items 1-8) and section 1's verdict that no build earns an
+       advantage at the gate.
+     - "The reading moves, it doesn't vanish" — chapter 03 section 2,
+       item 4 (PR close time rose 6h to 8h at one company after turning
+       a reviewer on; the licence and the reading come from different
+       budgets).
+     - "Centralize the machinery" — chapter 03 section 4's verdict, and
+       chapter 04 section 1 item 3, both citing Atlassian's real numbers.
+     - "Tier by what the repo touches" — chapter 04 section 1 item 2
+       (Spotify Soundcheck, moved there from chapter 03 section 4) and
+       chapter 01's risk-based regulatory framing.
+     - "Close the blind spot cheaply" — chapter 03 section 2 item 6 and
+       chapter 04 section 1 item 4 (cross-vendor pairing; Greptile's
+       "independent code validator" pitch).
+     - "Fix it before it's a queue problem" — chapter 02's second
+       failure (authors not understanding AI-written code) and chapter
+       04 section 1 item 5 (the author's half of four eyes).
+     - "Give the machinery its own log" — chapter 03 section 1's second
+       finding (a managed service could get better at the record, but
+       only by logging its own decisions the way secret scanning does;
+       GitHub's own audit log for ordinary reviews doesn't say which way
+       a review went). Added 20 Sep 2026 after Sven asked whether there
+       were more questions to answer — this thread existed in chapter
+       03 and had dropped out of the synthesis entirely.
+     - "The gate never moves" — chapter 03 section 1's verdict
+       ("coverage and logging are engineering choices, an independent
+       judgment is not"), and chapter 01's regulatory requirement that
+       the approving function be independent of the implementing one.
+       UPDATED 20 Sep 2026: this block now also names, rather than
+       quietly resolves, the question chapter 01 and chapter 03 both
+       raised and never answered — same team or outside it. Everything
+       in this conclusion assumes "same team is enough"; that assumption
+       is now stated, not buried.
+     - Verdict fixed 20 Sep 2026: it had bundled the cross-vendor fix
+       (evidenced, if vendor-sourced) with the author's-half-of-four-eyes
+       check (explicitly called "unproven at the outcome level" in
+       chapter 04) under one confident "quality goes up" claim. Split
+       so the hedge survives into the conclusion instead of getting
+       smoothed away.
+     SECOND PASS, 20 Sep 2026, after Sven asked again whether questions
+     remained. Four more gaps found and fixed:
+     - "Turn on what's already there" (new item) was chapter 04 section
+       1's own cheapest item and had dropped out of the synthesis
+       entirely. Restored, carrying the same unverified-claim hedge
+       chapter 04 used ("this document admits it hasn't checked").
+     - Centralizing the machinery now carries the two hedges chapter 03
+       and 04 already established but the first conclusion draft
+       dropped: the Anjum 2026 causation caveat (correlation with
+       platform engineering maturity, not proven causation), and the
+       platform-team survival risk from chapter 04 section 2 (60-70%
+       of platform initiatives fail to show impact, ~half disbanded or
+       restructured within 18 months).
+     - The repo-tiering item now carries the break-glass/opt-out lesson
+       from chapter 03 section 2 (Cloudflare's per-team override,
+       logged every time, versus GitHub's own org-wide no-opt-out
+       switch) as a design requirement, not just a historical anecdote.
+     - Two new items added: "what restricting would mean here" engages
+       chapter 02's first option (Godot/Rust/curl restricting volume)
+       honestly rather than silently dropping it — set aside because
+       the evidence is about open-source projects defending against
+       low-trust external contributors, a different problem from an
+       internal team's own tool use, not because restricting is wrong.
+       "Keep the gate honest over time" restores Adyen's spot-audit fix
+       from chapter 02 — the one regulated payment company in this
+       document's peer examples, and the only fix anywhere in this
+       piece for a gate that decays through pattern-matching even when
+       every approval is human.
+     - The closing block now also names chapter 01's finding that
+       regulators are silent on AI approval, not prohibiting it — so
+       keeping a human at the gate reads as this piece's own cautious
+       choice, not a compliance requirement with no alternative.
+     Nothing here resolves the open items still sitting at the top of
+     this document (manager clearance for the DevEx-team mention, the
+     unverified branch-protection claim, Prototype 0.1's actual
+     content). Those stay open; see "What I Don't Know Yet." -->
+
+**Frame:** Everything above answers one practical question: at a regulated fintech, how do you make the queue shorter and the quality higher, or at least no worse — without buying what chapter 03 spent two sections pricing out?
+
+**1. Don't buy the service**
+means: a managed reviewer is the one option that costs real money, earns no advantage at the one job that matters, and might not even shorten the queue.
+Chapter 03 priced this at $43,000 to $260,000 a year for our fintech, found eight separate costs against it, and concluded that no matter how it's built, it gets no advantage at the gate. At one real company, turning a reviewer on made the queue worse, not better — pull request close time rose from under six hours to over eight.
+
+**2. Turn on what's already there**
+means: the cheapest item on chapter 04's own list didn't make it into this synthesis the first time — it costs nothing because it's already built.
+Before centralizing anything, check which branch protections, required status checks, and required reviews are already available across our repositories and simply switched off. This document admits it hasn't checked; that check is the actual first step, before any of the rest.
+
+**3. Centralize the machinery — with the two costs already priced in**
+means: this is the one move with real, published numbers behind it, but "gets shorter for free" overclaims what the research actually supports.
+Formatters, linters, dependency and secret scanning, run once for the whole company instead of team by team, the way Atlassian did: build time cut 75%, lead time cut 96%, $4 million saved a year, by one platform team. Two things travel with that number, not around it. Nobody has shown platform engineering causes results like this rather than already-strong teams being the ones who bother to build platforms — chapter 03 kept that hedge in on purpose. And the team that would own it has a documented survival problem: platform engineering initiatives generally show 60 to 70% failing to leave impact, with close to half disbanded or restructured within 18 months.
+
+**4. Give the machinery its own log**
+means: chapter 03 already found this gap, and it dropped out of this synthesis the first time around — GitHub's own audit log for ordinary reviews doesn't say which way a review went, only secret scanning logs it properly.
+Build whatever gets centralized so it records its own decisions — approved, rejected, why — the way secret scanning already does. That is what chapter 03 said a managed service could actually do well, if built right. Nothing stops the fintech's own platform from doing the same, for free, instead of paying a vendor for the same gap.
+
+**5. Tier the machinery by what the repo touches, with a way out built in**
+means: the same centralized machinery applied evenly to every repo either over-checks the internal chatbot or under-checks the payment system, and it needs the escape hatch chapter 03 already found proof for.
+A payment repo and an internal tool aren't the same bet, even when a given change to each looks equally small. Run the shared machinery everywhere, but require more from the repos that move money or hold customer data, and let lower-stakes repos move faster on a lighter version of the same platform. Build in what Cloudflare already proved works, and GitHub's own version of this idea doesn't have: a break-glass override any team can use in an emergency, logged every time, rather than an org-wide switch nobody downstream can turn off.
+
+**6. Close the one real quality gap, cheaply**
+means: this is the single change with real evidence behind it, and it costs an API call.
+Whatever model wrote the change, have a different model review it. This fixes the one blind spot this document found real evidence for — a model catching fewer serious bugs in its own family's code — without a vendor contract.
+
+**7. Fix the queue where it actually starts**
+means: everything above manages the queue after code arrives. This is the only item that reduces what needed heavy scrutiny in the first place — and the one with the least evidence behind it.
+Chapter 02's second failure was never about volume — it was that authors stopped understanding what they submitted. The author's half of four eyes is the one piece that puts a check on that, before a pull request ever joins anyone's queue. It is also, by this piece's own admission in chapter 04, "unproven at the outcome level" and the easiest to get wrong: a mandatory field that isn't watched decays into the same empty ritual this piece has been diagnosing since chapter 02.
+
+**8. What restricting would mean here — set aside, not rejected**
+means: chapter 02 covered this as a real option other projects use; it doesn't map cleanly onto an internal team of employed developers, so it's parked rather than dismissed.
+Godot banned AI-generated code outright. Rust's teams run a circuit breaker: too much AI-written code merged in six weeks, and AI changes stop merging for ten days. curl dropped its bug bounty over slop reports. All three are open-source projects defending against low-trust external contributions — a different problem from a payments company deciding how much its own employed engineers may use a tool they were given. Chapter 02's evidence doesn't say restricting internal AI use would help here; it also doesn't say it wouldn't. Nobody has run that experiment on a team like ours.
+
+**9. Keep the gate honest over time**
+means: even a fully human, always-independent approval decays if the same people approve near-identical changes often enough — this is the one peer example from a regulated payment company, and its fix belongs on this list.
+Adyen is the one regulated payment company chapter 02 found treating this directly. Its own reviewers said that after approving a dozen near-identical changes, they start to pattern-match instead of scrutinize. Its fix was a designated person who periodically reviews already-approved changes — a second look at the gate itself, not at any single change. Nothing else in this document proposes checking whether the gate is still working; this is the one piece of evidence that says it's worth doing.
+
+**10. The one thing that never moves — and what this never answers**
+means: everything above is negotiable except this, and it's a choice made here, not fully forced by the regulation.
+The approval itself stays with a human, independent of whoever implemented the change. That is, finally, an answer to this piece's own title: the second pair of eyes is still for exactly what Fagan, Linus, and the regulator each wanted from it, one accountable check that nothing above found a way to safely outsource, at any price, built any way — including when the change was written by an AI. Two things are worth being honest about. Chapter 01 and chapter 03 both asked whether same-team approval is enough, or whether the approver must sit outside the team that shipped the change, and neither ever answered it; everything here assumes the first is enough. And chapter 01 also found that regulators have gone silent on whether an AI may approve at all — not forbidding it, just never addressing it. Keeping a human at the gate is the cautious reading of that silence, not the only one the rules currently allow.
+
+**Verdict:** the queue gets shorter by turning on what's already there, centralizing everything mechanical, giving it a real log, and tiering it by risk — not by buying a second opinion, and not by restricting how much a trusted employee may use AI, which answers a different problem than ours and stays parked. Quality goes up with real evidence behind it in exactly one place: closing the model-family blind spot. It might go up in two more — catching what the author didn't understand, and catching the gate quietly going stale the way Adyen found its own does — but both are design problems here, not results yet. The gate itself is the one line that doesn't move, at any price, though the rules would currently allow more movement than this conclusion chooses to use.
+
+**Pivot to "What I Don't Know Yet":** this is a synthesis of research, not a result. None of it has been run.
 
 ### What I Don't Know Yet
 
