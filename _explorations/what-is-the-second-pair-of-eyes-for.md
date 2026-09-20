@@ -981,7 +981,9 @@ Reporting on platform engineering initiatives generally, not code review specifi
 
 **Pivot to Conclusion:** that is the actual case for trying these first, not just the cheap one — every one of them can be left without asking a vendor's permission.
 
-## Conclusion
+<div class="chapter-heading chapter-heading--finale">
+  <h2 id="conclusion">Conclusion</h2>
+</div>
 <!-- Synthesis only, no new research. Every claim below traces to a
      specific block already in this document; the caution lists where.
      Framed around Sven's own question on 20 Sep 2026: at a regulated
@@ -1066,7 +1068,7 @@ Reporting on platform engineering initiatives generally, not code review specifi
      unverified branch-protection claim, Prototype 0.1's actual
      content). Those stay open; see "What I Don't Know Yet." -->
 
-**Frame:** Everything above answers one practical question: at a regulated fintech, how do you make the queue shorter and the quality higher, or at least no worse — without buying what chapter 03 spent two sections pricing out?
+**Frame:** Everything above works toward several practical questions, not one: how to shorten the queue without buying a service, how to keep or raise quality, how to keep a record a regulator can actually use, and, underneath all three, what the second pair of eyes is for now that a machine can write the code. Not everything below gets settled; where it doesn't, the piece says so rather than picking an answer it hasn't earned.
 
 **1. Don't buy the service**
 means: a managed reviewer is the one option that costs real money, earns no advantage at the one job that matters, and might not even shorten the queue.
@@ -1109,10 +1111,6 @@ means: everything above is negotiable except this, and it's a choice made here, 
 The approval itself stays with a human, independent of whoever implemented the change. That is, finally, an answer to this piece's own title: the second pair of eyes is still for exactly what Fagan, Linus, and the regulator each wanted from it, one accountable check that nothing above found a way to safely outsource, at any price, built any way — including when the change was written by an AI. Two things are worth being honest about. Chapter 01 and chapter 03 both asked whether same-team approval is enough, or whether the approver must sit outside the team that shipped the change, and neither ever answered it; everything here assumes the first is enough. And chapter 01 also found that regulators have gone silent on whether an AI may approve at all — not forbidding it, just never addressing it. Keeping a human at the gate is the cautious reading of that silence, not the only one the rules currently allow.
 
 **Verdict:** the queue gets shorter by turning on what's already there, centralizing everything mechanical, giving it a real log, and tiering it by risk — not by buying a second opinion, and not by restricting how much a trusted employee may use AI, which answers a different problem than ours and stays parked. Quality goes up with real evidence behind it in exactly one place: closing the model-family blind spot. It might go up in two more — catching what the author didn't understand, and catching the gate quietly going stale the way Adyen found its own does — but both are design problems here, not results yet. The gate itself is the one line that doesn't move, at any price, though the rules would currently allow more movement than this conclusion chooses to use.
-
-**Pivot to "What I Don't Know Yet":** this is a synthesis of research, not a result. None of it has been run.
-
-### What I Don't Know Yet
 
 ---
 

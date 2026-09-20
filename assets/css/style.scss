@@ -408,6 +408,24 @@ section #title p {
   font-size: clamp(1.45rem, 3.5vw, 2.1rem);
 }
 
+.chapter-heading--finale {
+  display: block;
+  margin: 104px 0 38px;
+  padding-bottom: 26px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.chapter-heading--finale h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6.5vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-shadow: none;
+}
+
 .exploration-article h3 {
   margin-top: 48px;
 }
