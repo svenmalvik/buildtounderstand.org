@@ -21,10 +21,14 @@ Open items before publishing:
    The other two candidates (a PR opened from agent output he couldn't
    explain; a review rule people bypassed) are NOT his experience and
    must not be written.
-2. The centralized AI review wish at work (chapter 03). Written to the same
-   limit as the adoption draft: a wish exists, ownership is unclear, the
-   decision isn't mine, I built the tool someone would centralize with.
-   Confirm what may be said publicly.
+2. The centralized AI review wish at work (chapter 03). RESOLVED 20 Sep
+   2026, corrected by Sven: there is no such wish. Nobody at work asked for
+   a centralized reviewer. Earlier drafts wrote "people keep asking" and
+   "a wish exists", and both were invented. The section now presents the
+   managed service as one option the author would reach for first, and says
+   plainly that nobody asked for it. Do not reintroduce a claim about
+   colleagues wanting this. The conflict-of-interest line stands, because
+   he did build the tool such a service would run on.
 3. "Most of the cheap controls are available to us and unused" is copied
    from the adoption draft, where it is also unverified. Either check which
    branch protections are switched on across our repositories before
@@ -261,6 +265,21 @@ The point is that nobody can review everything properly anymore. Most teams have
      days, security merges ~10% to 80%. Monzo 13 Aug 2026 kept the
      approver: "An engineer still reviews and merges, but the bottleneck
      moves from 'find an engineer with capacity' to 'find a reviewer'."
+     Adyen verified 20 Sep 2026 at
+     adyen.com/knowledge-hub/how-we-automated-code-modernization-with-openrewrite,
+     published 20 Aug 2026, "Stefano Dalla Palma - Development Tooling
+     Engineer, Adyen". All quotes verbatim. Caveat that must travel: these
+     are deterministic OpenRewrite recipes, and the post calls it "a
+     deterministic bot". Adyen is NOT an account of reviewing
+     model-written code. The review-capacity shape is the same; the
+     provenance is not. Say so if this paragraph grows. Note also that this
+     makes the pattern-matching quote an a fortiori argument: the diffs were
+     mechanical, under five files, and 100% human-approved, and reviewers
+     still went slack. It cannot be used to suggest that an LLM reviewer's
+     output would get more scrutiny than this did. The meta-review layer was
+     temporary, not standing: "Once we were confident in the recipe's
+     behavior, we relaxed that layer." The 4000 MRs, 70% merge rate, <2h
+     median and 400+ reviewers are all first-two-months figures.
      Research: research/20260916-what-changed-when-writing-became-cheap/ -->
 
 The Godot Foundation said this in June 2026: "This reviewer shortage was already a problem, but it was one that we ignored." Homebrew's maintainer said something similar. They had this problem for a while already. AI only accelerated it. So having too many PRs to review is an old problem that just became more urgent.
@@ -300,7 +319,7 @@ Rust's policy says an LLM review **does not substitute for self-review**. Runnin
 - Shopify cleared about 70% of its security backlog in 11 days. Their system writes the fix, explains why it is needed, and keeps it ready to merge by a human developer.
 - Adyen runs more than 4000 automated merge requests and keeps a human approving. Each change touches fewer than five files on average, which makes it "fast to review, easy to approve".
 
-Adyen also wrote this: "After approving a dozen near-identical PRs, reviewers may start to pattern-match and not scrutinize." Their answer was a designated person walking through approved changes before they merged.
+Adyen also wrote this: "After approving a dozen near-identical MRs, reviewers may start to pattern-match rather than scrutinize." Their answer was a designated person walking through approved changes before they merged.
 
 Adyen is the only regulated payment company in these four options, and the only one that treated the empty approval as something to fix rather than a cost to accept. The designated person is a third pair of eyes, added because the second pair had stopped reading.
 
@@ -335,7 +354,260 @@ So the approval is a setting now. Someone has to decide which repositories have 
   </div>
 </div>
 
-### What a Shared Reviewer Would Protect, and What It Would Cost
+### What a Managed Review Service Would Do for You
+<!-- Chapter 03, section 1 of 4. Research:
+     research/20260920-who-should-own-the-check/ (six notes:
+     what-a-shared-reviewer-protects, cost-of-a-shared-ai-reviewer,
+     external-approval-and-independence, googles-shared-reviewer,
+     central-review-reversals, ownership-and-exit).
+     PARAPHRASE WARNING, added when chapter 03 was rewritten for a
+     non-native reader at roughly grade 6. Most of the long academic
+     quotations were turned into plain paraphrase, because the quoted
+     wording was what held the reading level up. The exact wording of
+     every one of them is in the research notes listed above. Before
+     publishing, check each paraphrased claim back against the note, and
+     restore the quotation wherever the paraphrase drifts. Still verbatim
+     in this chapter: 'a heavyweight process', 'an archaic hazing
+     process', the Greptile seat definition, and 'which is deliberately
+     low'. Everything else is my wording, not the source's.
+     Large counts are also rounded in the prose for readability: 20995
+     review comments reads as 'almost 21,000', 382771 pull requests as
+     'nearly 400,000', and Cloudflare's 131246 / 48095 / 5169 as 'more
+     than 131,000' / '48,000' / 'over 5,000'. Percentages, prices and the
+     small counts stay exact. Exact figures are in the research notes.
+     Cautions:
+     - BSIMM16, published Jan 2026, 111 firms and 223700 developers. Median
+       1.8 security-group members per 100 developers; 1.13 at firms with
+       650+ developers. Top-quintile firms 2.7, bottom-quintile 6.8;
+       champions 12.3 vs 4.6 per 100 developers. BSIMM's authors state they
+       cannot separate cause from effect, and the text says so. The widely
+       repeated "1 AppSec engineer per 100 developers" has no traceable
+       source; use BSIMM or nothing.
+     - BSIMM's score counts observed activities out of ~125. It is not a
+       measure of defects caught or breaches avoided. Do not let the text
+       imply it is.
+     - The 30-reviewer / 7-vulnerability study is Edmundson et al., ESSoS
+       2013. Best reviewer found five, 20% found none, mean 2.33, and years
+       of security experience showed no significant correlation. Freelance
+       reviewers, one small PHP application, 2013, so transferability is
+       medium at best. It is kept in deliberately because it weakens this
+       section's own expertise argument. Do not remove it to tidy the case.
+     - The coverage result is Thompson & Wagner, PROMISE 2017, peer
+       reviewed, 3126 GitHub projects and 382771 pull requests. The authors
+       call the effect sizes "small but significant" and the data is open
+       source only. It is the strongest positive case for a managed reviewer
+       in this chapter and it is a coverage claim, never a quality claim.
+     - The missing comparative study is stated in the text as a finding.
+       Nobody has compared what a central security function finds against
+       what the implementing team finds on the same changes. If someone
+       later finds that study, this paragraph has to change.
+     - Refused sources, recorded so nobody picks them up: an uncited SEO
+       claim that champions catch "3x more logic-level security bugs" than
+       centralized review; the ProjectDiscovery State of AppSec 2026 blog
+       (all figures gated); and the Netflix "paved road is not mandatory"
+       phrasing, which returned 403 on every route to a primary source and
+       does not appear in the 2018 TechBlog post that is usually cited.
+     - DORA in this chapter is Google's DevOps Research and Assessment,
+       not the EU Digital Operational Resilience Act of chapter 01.
+     - Google readability: the internal velocity claim compares people who
+       finished the programme with people who have not, with no effect size
+       and no sample size published. Used here only for the costs and the
+       criticism, which are Google's own words.
+     - The habituation study (arXiv 2606.22721) measures repetition and
+       load, not team boundaries. It must never carry a same-team claim.
+     - GitHub audit-log finding read from src/audit-logs/data/fpt/ and
+       ghec/organization.json in github/docs on 20 Sep 2026. The rendered
+       docs page truncates; the data files are the primary source.
+     - The two-identities argument in the opening is built from chapter 02
+       (GitHub ships one Copilot identity that writes and one that reviews;
+       only the writing one is blocked from approving) plus the Greptile
+       model-inversion study later in this chapter. The bridge claim, that
+       the two identities may run the same model, is NOT verified. GitHub
+       does not document which model backs each identity, and Copilot lets
+       a customer pick models, so it may differ per install. The text says
+       "GitHub does not say ... and from the outside there is no way to
+       check", which is the most that can be supported. Never assert that
+       they are the same model.
+     - The opening leans on chapter 01 for the EU wording, so the two must
+       stay consistent. The claim that no regulator statement and no
+       incident report exists about an automated approver comes from
+       what-a-shared-reviewer-protects.md, which records it as "absence of
+       a search engine, not absence of the thing". The text says "I went
+       looking ... and I found neither", which is all I can support. Do not
+       upgrade it to "none exists".
+     - Cut on request: the line saying no study settles the central-versus-
+       team question. The gap itself is real and worth keeping somewhere,
+       because nobody has compared what a central security team finds with
+       what the product team finds on the same changes. It is no longer
+       stated anywhere in the prose. Consider it for "What I Don't Know
+       Yet" at the end of the piece.
+     - Do not name a target level for unreviewed pull requests. The
+       finding (Thompson & Wagner, PROMISE 2017) is proportional: halving
+       the number of unreviewed pull requests predicts about 6% fewer
+       security bugs, from whatever level you start at. Writing "get it
+       down to one in ten" makes the claim false for a project already
+       there, and for one at one in two. It is also an association across
+       3126 projects, not a measured intervention, so keep "you would
+       expect" and never say the change causes the drop.
+     - The security claim is security-only in the evidence. Braz &
+       Bacchelli (182 practitioners) and Yu et al. (614 of 20995 comments)
+       both measure security and nothing else. The licence and dependency
+       thread and the cross-cutting-architecture thread were never
+       evidenced: what-a-shared-reviewer-protects.md records "No evidence
+       gathered" for the first, and only a position paper for the second.
+       The text therefore states the generalisation as a guess and says so.
+       Do not turn it into a claim, and do not widen the bold line back to
+       "certain things" to cover it.
+     - Vocabulary rule, now that two kinds of team are named: never write
+       "the team" unqualified in this chapter. It is either the product
+       team (the one that wrote the change) or the central team (devex).
+       An unqualified "team" sends the reader back to work out which.
+     - Org shape, given by Sven on 20 Sep 2026 and new to this draft: one
+       developer experience team and twenty to thirty product teams. The
+       piece already names Vipps MobilePay in chapter 01, so this adds team
+       structure to what is public. Include it in the manager clearance the
+       strategy note asks for, alongside the internal system already named.
+       Do not invent what the devex team owns beyond this.
+     - There is no wish at work. Corrected by Sven on 20 Sep 2026: nobody
+       asked for a centralized reviewer, and earlier drafts that said
+       "people keep asking" invented it. The managed service is presented
+       as the author's own first instinct, and the text says nobody asked
+       for it. The only first-hand claim left in this section is that he
+       built the tool such a service would run on. -->
+
+Chapter 02 ended with a setting. Copilot can now approve a pull request, and somebody has to decide which repositories have that switched on.
+
+At a payment company that is not only our decision. The European rules say an approval has to come from a function that is independent of the function doing the work, and chapter 01 showed they never say that function has to be a person. So on paper a setting could satisfy the rule.
+
+Look closer though. Chapter 02 showed that Copilot has two identities, one that writes code and one that reviews it, and only the writing one is blocked from approving. GitHub does not say whether the two run the same model, and from the outside there is no way to check. If they do, then the rule is being met by a name rather than by a difference. There is a measurement later in this chapter that makes the doubt concrete: a model is reliably worse at finding bugs in code from its own family than in anyone else's. Independence that disappears when you measure it is not independence.
+
+Chapter 01 left the same question in an older form. Is it enough that the approver did not write the change, or do they have to sit outside the team that did?
+
+One possible answer is to give the job to our developer experience team. They would build an AI reviewer and make it to the product teams. It would look like the other things a developer experience team runs, where one group owns it and everyone else uses it. It is the option I would reach for first.
+
+The attraction is easy to see. The work happens once, and every team gets the result. But only if the service does something a product team cannot already do for itself. Three claims are usually made, and two fall apart.
+
+**An outsider sees more.** The research says the opposite. Microsoft asked 873 developers, and nine out of ten said a change takes longer to review when they do not know the files. The less reviewers know the code, the more bugs survive to production.
+
+**A machine never gets tired.** But the people reading what it writes do, and one reviewer in front of every change piles that reading into one place. Every study says load makes a check worse. The study in chapter 02 asks for the opposite: spread reviews around.
+
+**Nobody in the product team is looking for security.** True. Of almost 21000 review comments in two open source projects, only 614 touched security. But asked directly, the same developers said they always think about it. They knew how to do it. Nobody had asked them to.
+
+The useful claim is not that a managed reviewer reads better. It is that it reads everything. That is exactly what chapter 02 said a busy team can no longer do, because more changes now arrive than anyone has time to read.
+
+The second thing a product team cannot give itself is a record. GitHub keeps an audit log of what happens in your repositories, and when somebody reviews a pull request it notes that a review was submitted. It does not note whether that review approved the change or rejected it. There is no approval event at all, the decision survives only in the repository, and the log reaches back 180 days. For secret scanning GitHub does record the approval, the refusal, and the reason the person typed. So a central owner can show months later who allowed what and why, and a product team cannot.
+
+Chapter 01 said a pull request does three jobs at once. The comments are the reading, the approval is the gate, and the pull request is the record. A managed service is better at two of them. It reads everything, and it keeps a record worth showing an auditor. The one job it has no advantage in is the gate.
+
+### What a Managed Review Service Would Cost
+<!-- Chapter 03, section 2 of 4. Same research folder as the previous
+     section.
+     PARAPHRASE WARNING, added when chapter 03 was rewritten for a
+     non-native reader at roughly grade 6. Most of the long academic
+     quotations were turned into plain paraphrase, because the quoted
+     wording was what held the reading level up. The exact wording of
+     every one of them is in the research notes listed above. Before
+     publishing, check each paraphrased claim back against the note, and
+     restore the quotation wherever the paraphrase drifts. Still verbatim
+     in this chapter: 'a heavyweight process', 'an archaic hazing
+     process', the Greptile seat definition, and 'which is deliberately
+     low'. Everything else is my wording, not the source's.
+     Large counts are also rounded in the prose for readability: 20995
+     review comments reads as 'almost 21,000', 382771 pull requests as
+     'nearly 400,000', and Cloudflare's 131246 / 48095 / 5169 as 'more
+     than 131,000' / '48,000' / 'over 5,000'. Percentages, prices and the
+     small counts stay exact. Exact figures are in the research notes.
+     Cautions:
+     - Tricorder vintages: the 10% admission bar and the probation/25%
+       disable policy are ICSE 2015 (2014 data); "just below 5%" overall is
+       SWE at Google ch. 20 (2020). Keep them straight.
+     - Greptile's model-inversion study (21 Jul 2026, 2 x 500 PRs) is vendor
+       research selling the feature. Directional only. Same for the 43%
+       acceptance figure.
+     - The triage arithmetic is mine and is labelled as mine in the text.
+       Do not present it as a measurement.
+     - The 4335-PR study is Cihan et al., arXiv 2412.18531, ICSE 2025 SEIP.
+       An earlier brief attributed it to "Bosu et al. 2025", which does not
+       exist. Do not reintroduce that citation.
+     - FCA multi-firm review, 5 Feb 2021: lead with the 90% approval rate.
+       The 3.8% vs 1.6% failure rate is context, not proof, because major
+       changes are selected into CAB review for being risky.
+     - DORA here is Google's DevOps Research and Assessment.
+     - The refinement-attack figure (32 of 33) is arXiv 2603.18740v3,
+       Mar 2026, 33 CVEs across 20 projects against Claude Code and
+       CodeRabbit pipelines. Preprint, not peer-reviewed. Keep the
+       mechanism (attacker iterates against a local clone, defender gets
+       one attempt); it is the part that does not depend on the number.
+     - Cloudflare figures are first-party, 20 Apr 2026: 131246 review runs,
+       48095 merge requests, 5169 repositories, 30 days, median 3m39s,
+       ~1.2 findings per review, break-glass used 288 times (0.6%). Self-
+       reported, no baseline. Kept because it is the fair counter to this
+       section's freedom argument and should not be dropped.
+     - Exit was reframed on 20 Sep 2026 and the draft was wrong twice
+       before landing here. These tools post findings as native pull
+       request comments, which GitHub's REST API exports independently of
+       any vendor, so the reading is portable. The lock-in is the learned
+       context. CodeRabbit (docs.coderabbit.ai/knowledge-base/learnings) is
+       the only one of six with a documented learnings export, and it
+       imports CodeRabbit-to-CodeRabbit only. Greptile, Graphite and Qodo
+       have no export page; Bugbot exposes counts, not comment text.
+     - Verified again on 20 Sep 2026 with web search working: no first-party
+       account exists of any organisation switching AI code review vendors,
+       turning one off, or being blocked from opting out. The category is
+       young. Never let the draft imply such an account exists.
+     - Exporting the review comments: six vendors checked, six no's. None
+       documents an export of the comment text. It does not matter, because
+       the comments are native pull request comments in the customer's own
+       forge. Keep the argument on the tuning, not the record.
+     - Unused, kept for a later section: Greptile markets itself as "the
+       independent code validator", where independence means independence
+       from coding agents and model providers, not the customer's
+       independence from Greptile.
+     - Cloudflare reports no false-negative rate and no cost, and does not
+       separate the two readings of 0.6%. The text says so. Do not let the
+       number stand as evidence the reviewer is accurate.
+     - GitHub ruleset behaviour verified 20 Sep 2026: rules aggregate, most
+       restrictive wins, and no repository-level opt-out from an org or
+       enterprise ruleset is documented. Repos can decide whether Copilot's
+       approval counts, not whether the review runs. Cursor Bugbot's
+       per-engineer "only when mentioned" setting is the counterexample.
+     - Gap, still open: no documented case found of an organisation building
+       a central code review, AppSec or architecture review function and
+       then dismantling it. Postman narrowing a gate (Apr 2026, 25% of
+       releases auto-unblocked, ~2 business days off per-review closure,
+       self-reported with no denominator) is the nearest verified thing.
+       Do not write a reversal that isn't sourced. The search surface here
+       is thin rather than exhausted: the obvious companies were never
+       tried because the session ran out of web search, and UK GDS service
+       assessment devolution is an untested lead. Worth one more pass. -->
+
+Google has run a service like this for most of its life, and it publishes what the service costs.
+
+Google calls its version readability. Every change has to be written or reviewed by an engineer certified in that language, and the certificates come from a central pool of about one to two percent of Google's engineers. Google calls it "a heavyweight process", made compulsory by its own tooling. The first cost on its own list is the friction for a team with nobody certified, because that team has to go outside itself to get anything reviewed. Then come extra rounds of review, and a programme that can only grow by hiring more reviewers. Google even publishes the complaint its engineers make. Some call readability "an archaic hazing process", an old ritual that lost its purpose years ago. Google ran a study and promised in advance to kill the programme if the costs won. It survived. But it is worth noticing why anyone asked. Formatters and scanners had got good enough that nobody was sure the human reviewers were still earning their keep.
+
+Moving approval outside the team that writes the code has been tried more widely. In 2019 DORA studied companies that required approval from an outside body, and found them 2.6 times more likely to end up in the worst performing group, with no sign that the approval prevented failures. The UK financial regulator read more than a million production changes across 23 firms, and looked closely at change advisory boards, the committees that meet to approve releases. Those boards approved more than nine out of ten of the big changes they saw, and some firms had not turned down a single change all year. So the problem was never that a second reviewer existed. The problem was a second reviewer who approved everything, which is what a check turns into when it sits far from the work and has to look at all of it. That is chapter 02's empty approval, arriving from a different direction.
+
+The money is the easy part. Published prices run from about $12 to $72 per developer per month, so a thousand developers cost a few hundred thousand dollars a year. An extra review costs between fifty cents and about $1.70. Notice what no price list charges you for: a review that turns out to be wrong.
+
+The reading is the real cost, and it never appears on an invoice. The largest independent study read more than 31,000 AI review comments across 239 repositories and checked what developers did with each one. They acted on 36% and rejected 56%. The biggest vendor reports much the same from its own side, with 43% accepted. So between half and three fifths of what the service says has to be read by a person and thrown away.
+
+Google has a rule for this. Its code scanning platform, Tricorder, only lets a new check in if developers act on more than nine findings out of ten, and across the platform the rate of ignored findings sits just under 5%. Above 10% a check goes on probation, and above 25% Google can switch it off the same day. A managed AI reviewer today runs at 56%.
+
+Put rough numbers on it. Twenty thousand reviews a month with three comments each is sixty thousand comments, of which about thirty-four thousand get rejected. At two minutes each that is more than a thousand engineer hours in a month, against a licence that might cost thirty thousand dollars. The reading costs more than the tool, and it lands somewhere else. The licence comes out of the owner's budget, and the reading comes out of every product team. So does the waiting. After one company switched a reviewer on, the time to close a pull request rose from just under six hours to more than eight. Chapter 02 called this the first failure, where more arrives than anyone can read. A managed reviewer does not remove it. It moves it, and adds to it.
+
+There is a quieter cost as well. Rigby and Bird found that people who review code end up familiar with 66% to 150% more of the files in their project. Chapter 01 said Google started reviewing so that other developers would understand the code. A managed reviewer reads the change and keeps that understanding to itself, which is chapter 02's second failure seen from the other side.
+
+Then the blind spot. Greptile had Claude and Codex review 500 pull requests written by each, and both models did worse on code from their own family. Claude caught 62% of the serious bugs in Codex's code but only 53.7% in Claude's. GPT caught 60% in Claude's code but only 50.5% in Codex's. Greptile sells the feature, so I treat this as a direction rather than a measurement, and the direction is enough. One reviewer for the whole company is one blind spot for the whole company, lined up with whatever model everyone writes with. It is also one thing for an attacker to learn. Researchers rewrote the pull requests around 33 known security holes until the reviewer waved them through, and thirty-two got past both Claude Code and CodeRabbit. An attacker can practise against a copy of the pipeline, and the defender gets one attempt.
+
+Leaving is harder than it looks. Greptile counts a seat as "any developer who has gotten a review done by Greptile in that billing period", so once the reviewer runs everywhere every developer counts, and nobody can shrink the bill by using it less. The comments themselves are safe, which I had wrong at first, because these tools post findings as ordinary pull request comments that live in your own repository. What you cannot take with you is the tuning. Of six vendors, only CodeRabbit documents an export, and it only loads into another CodeRabbit account.
+
+The last cost is about who gets to say no. On GitHub a single rule turns Copilot review on for every repository in the company, and once it is set at the top an organisation below can see the policy but not change it. A repository may decide whether Copilot's approval counts toward the number it needs. It may not decide whether the review happens. Cursor built the opposite, letting an engineer ask for review only when they want it, and Qodo lets anyone who can edit the configuration leave files or branches out. Three vendors, three answers to whether the person being checked may decline.
+
+Cloudflare shows the way out can be designed in. Its reviewer runs across the whole company, and in one month it completed more than 131,000 review runs across 48,000 merge requests in over 5,000 repositories. It blocks merges. Each team shapes it with a file in its own repository, and when a team has to get past it there is an emergency override that Cloudflare calls break glass. Engineers used it on 0.6% of merge requests, and every use leaves a record. That number reads two ways though, and Cloudflare does not say which. Either the reviewer is almost always right, or nobody wants to be the engineer who broke the glass. Cloudflare also reports about 1.2 findings per review and calls that "deliberately low", which is less than half of what my rough numbers assumed. The cost of all that reading is a design choice as much as anything else.
+
+So the cost list is long, and against it stand only the reading and the record. Everything else a second pair of eyes was ever for, finding the bug, understanding the change, leaving the product team knowing more than it did before, gets weaker the further the reader sits from the code.
+
+Google's own complaints may hold the answer. A great deal of what its reviewers wrote about were things a program could have found on its own. Which is the next question. How much of what we call review needs a person at all?
 
 ### Most Checks Don't Need Judgment
 
