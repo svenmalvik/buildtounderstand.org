@@ -225,7 +225,7 @@ We create more code than ever before. Meta reports 51% more changes per develope
 
 But once someone picks it up, the AI-written PR reaches a decision in about 194 minutes against 252. Sounds like reviewing got faster. Nobody measured how many of those minutes a reviewer spent reading. And those PRs are a lot bigger, over 400 lines against 157. A bigger PR decided in less time is probably not really read.
 
-Someone measured this directly. Researchers followed 400 reviewers through 11429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30.1% to 36.8%, and their inline comments fell by 22%. The changes stayed the same size, the waiting time got longer rather than shorter, and approval of human-written code fell in the same months. Developers approved more because agent-written code had become familiar.
+Someone measured this directly. Researchers followed 400 reviewers through 11429 reviews of agent-written code over seven months. As each reviewer saw more agent-written code, their approval rate rose from 30,1% to 36,8%, and their inline comments fell by 22%. The changes stayed the same size, the waiting time got longer rather than shorter, and approval of human-written code fell in the same months. Developers approved more because agent-written code had become familiar.
 
 Authors are no more careful with their own work. Sonar asked 1149 developers. 96% said they don't fully trust that AI output is correct. But only 48% said they always verify it before committing. So people doubt their code but submit it anyway.
 
@@ -264,7 +264,7 @@ In 2009, Kemerer and Paulk measured what happens to a reviewer as they review fa
 
 Here is the thing. One in four PRs written with AI has over 400 lines. At 200 lines an hour, that is 2 hours of one person's attention for one single change.
 
-Almost nobody has two spare hours for a single PR. Before AI, developers spent about 3.2 hours a week reviewing at Google, and about 6.4 in open source. So one to three changes a week, against the 51% more changes per developer that Meta now reports.
+Almost nobody has two spare hours for a single PR. Before AI, developers spent about 3,2 hours a week reviewing at Google, and about 6,4 in open source. So one to three changes a week, against the 51% more changes per developer that Meta now reports.
 
 I should be careful with that number. Nobody publishes how many minutes a reviewer actually spends on a change, so 200 lines an hour is an assumption from a 2009 study.
 
@@ -610,37 +610,13 @@ A managed service is clearly better at the first job: it reads every single chan
        tried because the session ran out of web search, and UK GDS service
        assessment devolution is an untested lead. Worth one more pass. -->
 
-At Google, they have had a centralized *human* review function for many years. It's also a proxy that every team depends on. Engineers that are in this functio are all certified reviewers. As they have only about 1-2% of all Goggle engineers that actually are certified, this is quite a bottleneck because not every team at Google has such a certified reviewer on their team. And there is even a bigger issue with this setup. Reviewers who sits outside your team are forced to look at everything which ultimatly leads to a reviewer approving everything. They simply may give up at some point. A study done by DORA back in 2019 found that companies that had approvers that come from outside were 2.6 times more likely to land in the worst-performing group. The UK's FCA looked at 23 firms and over a million changes. Their change advisory boards (CAB), approved more than 90% of the riskiest changes they saw. Some approved every single one.
+A managed review service costs $12 to $72 per developer per month. For a fintech with about 300 engineers, that is $43.000 to $260.000 a year, paid no matter what. That is one of three costs.
 
-Unlike Google's centralized review function, there are managed services that do the same job. Such a managed review service subscription costs $12 to $72 per developer per month. For our fintech company with about 300 engineers, that's $43.000 to $260.000 a year. However the costs, you pay whether the review is right or wrong.
+The first is what happens to a check when one function reviews for everyone. Google has run a centralized *human* review function for many years. Every change needs approval from a certified reviewer, and only about 1 to 2% of Google's engineers are certified, so a team without one goes outside for every review. A reviewer who sits outside the team and has to look at everything ends up approving everything. Google's DevOps Research and Assessment program, another DORA, found in 2019 that companies with outside approvers were 2,6 times more likely to land in the worst-performing group. The UK's FCA looked at 23 firms and over a million changes. Their change advisory boards approved more than 90% of the riskiest changes they saw. Some approved every single one. A service that reads every change stops being an actual check.
 
-**4. Reading costs more than the licence**
-means: the real bill isn't the subscription, it's the hours every team spends reading and discarding bad comments — and by Google's own bar, this tool would already be switched off.
-One independent study read 31,000+ AI comments across 239 repositories. Developers acted on 36% and rejected 56%. A vendor's own numbers show the same pattern, 43% accepted. Google's own tools go on probation once developers ignore more than 10% of their findings, and get killed the same day past 25%. A managed AI reviewer today runs at 56% ignored. Put rough numbers on our own fintech: 6,000 reviews a month, three comments each, is 18,000 comments, of which about 10,000 get rejected. At two minutes each, that's more than 300 engineer-hours a month, against a licence that might cost $9,000. The licence comes out of the owner's budget. The reading comes out of every product team. At one company, turning a reviewer on raised the time to close a pull request from under six hours to over eight.
+The second one is different. Engineers who hand their reviews to a service stop understanding their own code. Chapter 01 found that understanding is what review mostly should achieve, not finding defects. A team that outsources review still gets its defects found. What it loses is the understanding, and that is the part it can't buy back later.
 
-**5. Nobody learns the codebase**
-means: review used to leave people smarter about the code; a centralized reviewer keeps that side benefit for itself.
-Reviewers become 66–150% more familiar with the codebase than people who don't review. A managed reviewer keeps that familiarity to itself.
-
-**6. One blind spot, company-wide**
-means: one model reviewing everything means one weakness reviewing everything, and it's a weakness an attacker can rehearse against.
-In a vendor study, Claude and Codex each reviewed 500 pull requests. Both did worse on code from their own model family: Claude caught 62% of Codex's serious bugs but only 53.7% of its own; GPT caught 60% of Claude's but only 50.5% of Codex's. Treat this as a direction, not a precise number. On security, attackers rewrote pull requests around 33 known holes. Thirty-two got past both Claude Code and CodeRabbit. Building your own reviewer instead of buying one does not fix this: a DevEx-built skill that runs on the same model that wrote the change is the same coupling as Copilot's two identities, just self-hosted. A cross-vendor pairing — Codex reviewing what Claude wrote, or the reverse, wired into your own CI — is a cheaper, real fix for this one problem specifically. It's not a new idea: Greptile sells the same pairing as a product, marketing itself as "the independent code validator."
-
-**7. Lock-in**
-means: what the tool learned about your codebase stays with the vendor if you ever want to leave.
-Greptile counts a "seat" as any developer who's had one review done that billing period, so using it less doesn't cut the bill. The comments themselves are portable, ordinary pull request comments in your own repository. The tuning isn't. Of six vendors checked, only CodeRabbit offers any export, and it only imports into another CodeRabbit account.
-
-**8. No opt-out**
-means: depending on the vendor, the team being reviewed may not get a say in whether the review happens at all.
-On GitHub, one org-wide setting turns Copilot review on everywhere. A repository can decide whether the approval counts, not whether the review runs. Cursor lets an engineer request review only when they want it. Qodo lets anyone editing the config exclude files or branches. GitHub offers neither.
-
-**Counter-example — Cloudflare (proof this can be designed well)**
-means: none of the above is inevitable — how much this costs is partly a design choice.
-Cloudflare runs its reviewer across the whole company: more than 131,000 review runs, 48,000 merge requests, 5,000+ repositories in one month. There's an emergency override, "break glass," used in 0.6% of cases and always logged. It reports about 1.2 findings per review, which it calls "deliberately low."
-
-**Verdict:** only "reads everything" and "the record" survive the cost list.
-
-**Pivot to next section:** much of what Google's reviewers complained about was stuff a program could catch on its own → next question: how much of "review" needs a person's judgment at all?
+Here is the third cost. Every reviewer has kinds of bugs it doesn't find. If one service reviews every repository, all repositories miss the same kinds of bugs, and an attacker only needs to find one of them. In a vendor study, Claude and Codex each reviewed 500 pull requests, and both did worse on code from their own model family. Claude caught 62% of Codex's serious bugs but only 53,7% of its own. GPT caught 60% of Claude's but only 50,5% of Codex's. A separate document shows how an attacker would use this. The researchers took 33 real, already-known security holes from 20 open source projects and wrote pull requests that re-implemented each hole back. Then they did what a patient attacker would do: run the same AI reviewer on their own machine, read what it flagged, and rewrite the title, description, and commit messages until it stopped objecting. 32 of the 33 got past both Claude Code and CodeRabbit. A skill built by the platform team that runs on the same model that wrote the change is the same coupling as Copilot's two identities, just self-hosted. Pairing models across vendors, Codex reviewing what Claude wrote or the reverse, wired into your CI is a cheaper fix for this one problem. Greptile sells exactly this pairing and markets itself as "the independent code validator".
 
 ### Most Checks Don't Need Judgment
 <!-- Chapter 03, section 3 of 4. Unlike sections 1 and 2, this section has
@@ -705,7 +681,7 @@ Formatting is fixed automatically; the same book calls pointing out formatting e
 
 **3. The scale this runs at, and the trust it earned**
 means: mechanical checks only get this much authority because they were held to a strict, measured bar, not because someone assumed they'd be fine.
-At Google, reviewers click "please fix" on automated suggestions thousands of times a day; developers apply the fix about 3,000 times a day. The same suggestions get a "not useful" click only 250 times a day. Company-wide, the false-positive rate stays just below 5%.
+At Google, reviewers click "please fix" on automated suggestions thousands of times a day; developers apply the fix about 3.000 times a day. The same suggestions get a "not useful" click only 250 times a day. Company-wide, the false-positive rate stays just below 5%.
 
 **4. What's on the other side of the line**
 means: the comments that remain once the mechanical ones are stripped out are about things no scanner can evaluate — whether the code is wanted, not just whether it's correct.
@@ -900,7 +876,7 @@ Wire a different model's provider into CI as the reviewer for whatever wrote the
 
 **5. The author's half of four eyes**
 means: the one genuinely new idea here, and the one this piece already promised to build — with real support and a real risk attached.
-The cognitive-science case is old and solid: prompting someone to explain something in their own words measurably deepens their own understanding. The industry half-believes this already — GitHub recommends self-review, and practitioners describe reading their own diff as a critic would. But a 2026 study of 80,000 pull requests found only limited, mostly negligible evidence that PR descriptions change what happens in review — except when the description explains the code and asks for specific feedback. And a vendor study suggests AI-written code raises the stakes on needing this, whatever the exact multiple really is. The risk: making an explanation mandatory is easy — GitHub and various bots already support it — but a required field can decay into exactly the empty ritual chapter 02 diagnosed, an "N/A" that satisfies the check without the understanding it was supposed to prove.
+The cognitive-science case is old and solid: prompting someone to explain something in their own words measurably deepens their own understanding. The industry half-believes this already — GitHub recommends self-review, and practitioners describe reading their own diff as a critic would. But a 2026 study of 80.000 pull requests found only limited, mostly negligible evidence that PR descriptions change what happens in review — except when the description explains the code and asks for specific feedback. And a vendor study suggests AI-written code raises the stakes on needing this, whatever the exact multiple really is. The risk: making an explanation mandatory is easy — GitHub and various bots already support it — but a required field can decay into exactly the empty ritual chapter 02 diagnosed, an "N/A" that satisfies the check without the understanding it was supposed to prove.
 
 **Verdict:** the first four are available today, already proven at real scale by someone else, and outsource no judgment. The fifth is unproven at the outcome level, grounded in real cognitive-science support, and the one this piece committed to designing for back in chapter 02. Its whole design problem is making it the second, not the ritual.
 
@@ -1062,7 +1038,7 @@ Reporting on platform engineering initiatives generally, not code review specifi
 
 **1. Don't buy the service**
 means: a managed reviewer is the one option that costs real money, earns no advantage at the one job that matters, and might not even shorten the queue.
-Chapter 03 priced this at $43,000 to $260,000 a year for our fintech, found eight separate costs against it, and concluded that no matter how it's built, it gets no advantage at the gate. At one real company, turning a reviewer on made the queue worse, not better — pull request close time rose from under six hours to over eight.
+Chapter 03 priced this at $43.000 to $260.000 a year for our fintech, found eight separate costs against it, and concluded that no matter how it's built, it gets no advantage at the gate. At one real company, turning a reviewer on made the queue worse, not better — pull request close time rose from under six hours to over eight.
 
 **2. Turn on what's already there**
 means: the cheapest item on chapter 04's own list didn't make it into this synthesis the first time — it costs nothing because it's already built.
