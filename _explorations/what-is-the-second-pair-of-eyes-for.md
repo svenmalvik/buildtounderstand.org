@@ -610,19 +610,9 @@ A managed service is clearly better at the first job: it reads every single chan
        tried because the session ran out of web search, and UK GDS service
        assessment devolution is an untested lead. Worth one more pass. -->
 
-**Frame:** Google has run a centralized *human* review function for decades. Use it as the proxy for what centralizing review costs.
+At Google, they have had a centralized *human* review function for many years. It's also a proxy that every team depends on. Engineers that are in this functio are all certified reviewers. As they have only about 1-2% of all Goggle engineers that actually are certified, this is quite a bottleneck because not every team at Google has such a certified reviewer on their team. And there is even a bigger issue with this setup. Reviewers who sits outside your team are forced to look at everything which ultimatly leads to a reviewer approving everything. They simply may give up at some point. A study done by DORA back in 2019 found that companies that had approvers that come from outside were 2.6 times more likely to land in the worst-performing group. The UK's FCA looked at 23 firms and over a million changes. Their change advisory boards (CAB), approved more than 90% of the riskiest changes they saw. Some approved every single one.
 
-**1. Central bottleneck (Google "readability")**
-means: putting one group in charge of review makes every other team dependent on that group's capacity, not its own.
-Only 1–2% of Google's engineers are certified reviewers. If nobody on your team is certified, you go outside for every review. Engineers call it "an archaic hazing process." Google almost killed it in a cost study. It survived.
-
-**2. Outside approval boards rubber-stamp**
-means: a reviewer far from the work, forced to look at everything, ends up approving everything — the check stops being a check.
-DORA's 2019 study found companies with outside sign-off were 2.6 times more likely to land in the worst-performing group. The UK's FCA looked at 23 firms and over a million changes. Their boards approved more than 90% of the riskiest changes they saw. Some approved every single one, all year.
-
-**3. The licence**
-means: the sticker price is real money, and none of it is tied to whether the tool is any good.
-A managed AI reviewer's subscription runs $12 to $72 per developer per month, from Sourcery's cheapest tier to CodeRabbit's most expensive one. For our fintech, 300 developers, that's $43,000 to $260,000 a year. Some vendors instead charge per extra review once you're past what your plan includes: Greptile charges $1 each, CodeRabbit charges $0.25 per file. Either way, the price is the same whether the review was right or wrong. Nothing in the pricing rewards accuracy or penalizes a bad call.
+Unlike Google's centralized review function, there are managed services that do the same job. Such a managed review service subscription costs $12 to $72 per developer per month. For our fintech company with about 300 engineers, that's $43.000 to $260.000 a year. However the costs, you pay whether the review is right or wrong.
 
 **4. Reading costs more than the licence**
 means: the real bill isn't the subscription, it's the hours every team spends reading and discarding bad comments — and by Google's own bar, this tool would already be switched off.
