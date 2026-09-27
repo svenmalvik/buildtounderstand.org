@@ -114,21 +114,7 @@
   .cols { display: flex; gap: 34px; align-items: flex-start; }
   .cols > * { flex: 1 1 0; min-width: 0; }
 
-  /* Agenda: a day-banded track of the seven steps */
-  .days { display: flex; margin: 22px 0 10px; }
-  .day {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .09em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-bottom: 7px;
-    margin: 0 7px;
-    border-bottom: 2px solid var(--line);
-  }
-  .day.last { color: var(--accent); border-bottom-color: var(--accent); }
-
+  /* Agenda: a track of the seven steps */
   .agenda { margin: auto 0; }
   .agenda .note { margin-top: 34px; }
   .track { display: flex; align-items: flex-start; }
@@ -164,6 +150,11 @@
   .step.repeat .bead { border-style: dashed; border-color: var(--accent); }
   .lbl { font-size: 15px; line-height: 1.34; padding: 0 9px; }
   .lbl b { display: block; font-weight: 700; }
+  .legend { display: flex; gap: 30px; margin: 34px 0 0; font-size: 15px; color: var(--muted); }
+  .legend span { display: flex; align-items: center; gap: 9px; }
+  .legend i { width: 15px; height: 15px; border-radius: 50%; border: 3px solid var(--accent); display: block; }
+  .legend i.cfg { border-color: var(--accent2); }
+  .legend i.rep { border-style: dashed; }
 
   pre {
     background: var(--code-bg);
@@ -284,30 +275,28 @@
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-notes="This is the agenda. Seven steps, banded by the day they land on. Days 1 and 2 are settings and files, and they are the cheapest. Day 3 is where the two decisions sit, the ones nobody currently owns. Day 4 is the author's half of four eyes. The last one is dashed because it repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Worth saying out loud here: chapter 04 of the exploration was the order for a company, and a developer who agrees with all of it still cannot act on most of it, because it is somebody else's budget and somebody else's platform. Everything on this track is in front of one person.">
+    <section class="slide" data-notes="This is the agenda. Seven steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and chapter 02 found that the second one is a setting nobody currently owns. The four blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Worth saying out loud: chapter 04 of the exploration was the order for a company, and a developer who agrees with all of it still cannot act on most of it, because it is somebody else's budget and somebody else's platform. Everything on this track is in front of one person.">
       <p class="kicker">The agenda</p>
       <h2>Seven steps, in the order they get done</h2>
 
       <div class="agenda">
-      <div class="days">
-        <div class="day" style="flex:2">Day 1</div>
-        <div class="day" style="flex:1">Day 2</div>
-        <div class="day" style="flex:2">Day 3</div>
-        <div class="day" style="flex:1">Day 4</div>
-        <div class="day last" style="flex:1">Every month</div>
-      </div>
-
       <div class="track">
         <div class="step"><span class="bead">01</span><span class="lbl"><b>Decide</b> what it touches</span></div>
         <div class="step alt"><span class="bead">02</span><span class="lbl"><b>Run</b> the checks</span></div>
-        <div class="step"><span class="bead">03</span><span class="lbl"><b>Require</b> the checks</span></div>
+        <div class="step alt"><span class="bead">03</span><span class="lbl"><b>Require</b> the checks</span></div>
         <div class="step alt"><span class="bead">04</span><span class="lbl"><b>Name</b> the owners</span></div>
         <div class="step"><span class="bead">05</span><span class="lbl"><b>Decide</b> on machine approval</span></div>
         <div class="step alt"><span class="bead">06</span><span class="lbl"><b>Ask</b> the author</span></div>
         <div class="step repeat"><span class="bead">07</span><span class="lbl"><b>Watch</b> the approvals</span></div>
       </div>
 
-      <p class="note">Every step is a file in the repository or a setting on it, except the dashed one, which is half an hour a month. <strong>Nothing here needs a platform team, a budget, or a vendor.</strong></p>
+      <div class="legend">
+        <span><i></i> Two you have to decide, and nobody owns today</span>
+        <span><i class="cfg"></i> Four you configure once</span>
+        <span><i class="rep"></i> One that repeats</span>
+      </div>
+
+      <p class="note">Everything on this track is a file in the repository or a setting on it, except the last, which is half an hour a month. <strong>Nothing here needs a platform team, a budget, or a vendor.</strong></p>
       </div>
       <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
     </section>
