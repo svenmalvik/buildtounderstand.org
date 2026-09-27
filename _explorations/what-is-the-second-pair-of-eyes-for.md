@@ -1077,6 +1077,24 @@ means: step 1 settled what the whole repository touches. Some paths inside it ca
 - List the paths that move money or hold customer data
 - Give each one a named reviewer or team, in `.github/CODEOWNERS`
 - Leave the rest of the repository on the lighter default
+- Switch on "require review from code owners" in branch protection, or the file only suggests
+
+A short one, for a repository that settles payments:
+
+```
+# .github/CODEOWNERS
+# Everything, unless a later line overrides it.
+*                     @payments-team
+
+# The paths that move money.
+/src/settlement/      @settlement-owners @security
+/src/ledger/          @settlement-owners
+
+# Anything that changes how the service is deployed.
+/.github/workflows/   @platform
+```
+
+The last matching line wins, so the catch-all goes first and the risky paths go underneath it. Without the branch protection setting, this file requests those reviewers and nothing more; with it, their approval is required before the merge.
 
 This is the risk-based approach the regulation asks for, written as a file rather than as a policy nobody reads. The file also answers a question the approval rule leaves open: not just that someone approved, but that someone who knows this code did.
 
