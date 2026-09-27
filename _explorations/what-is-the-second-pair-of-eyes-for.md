@@ -1128,6 +1128,26 @@ A `.github/pull_request_template.md` puts the same questions in front of every p
 - How to undo it
 - Which parts an agent wrote
 
+A short one:
+
+```markdown
+<!-- .github/pull_request_template.md -->
+
+## What this changes, and why it belongs here
+
+
+## What I want looked at
+<!-- Name one thing. "Anything" is not an answer. -->
+
+
+## How to undo it
+
+
+## What an agent wrote, and what I checked myself
+```
+
+The comments prompt the author while they type and disappear from the rendered description, so the pull request stays readable. The second heading is the load-bearing one, and it is the half most templates leave out.
+
 The wording matters more than having a template at all. Chapter 04 cited a 2026 study of 80.000 pull requests where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code *and* asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter.
 
 **7. Watch the gate, not only the change**
