@@ -138,6 +138,21 @@ The chapter "Where Did the Second Pair of Eyes Come From?" currently has two roo
 
 That third root sharpens the question. The regulation does not ask whether a human read every line. It asks whether an independent function approved the change, whether the change was recorded with its purpose and fallback, and whether depth followed risk. Those are the same three things the historical report found behind review: authorization, record, and proportionate examination. The four-eyes rule was never mainly a bug-finding rule in finance either.
 
+## From rule to review practice
+
+The approval decision and the checks that inform it are separate steps. Automated reviewers can test a change and prepare findings. Someone still has to decide whether the change belongs, with enough context to question the result. In his reported open-source workflow, DHH has agents screen pull requests and keeps the final merge decision himself. He also describes individually defensible agent changes that damaged Basecamp 5’s architecture when taken together. These are practitioner accounts, not measured outcomes or a compliance model. The source analysis is in `vce-context/research/pull-request-origins/dhh-review-principles-and-practices.md`, sections 1–3.
+
+For a proposed change, a useful review can ask:
+
+- Who requested and implemented it, and who will decide whether to accept it?
+- What problem does it solve, and why does it belong in this system?
+- What evidence from tests, security checks, and review supports that decision?
+- What surrounding code and earlier changes might alter its effect?
+- How can the change be aborted or reversed if it fails?
+- Which findings came from an agent, and who made the final decision?
+
+The depth of examination can follow the risk, but the decision and its basis should remain clear. Checking the diff alone may miss what a stream of changes does to the design.
+
 ## Confidence and gaps
 
 | Claim | Assessment |

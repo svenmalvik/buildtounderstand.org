@@ -908,6 +908,13 @@ The cognitive-science case is old and solid: prompting someone to explain someth
        within 18 months") are the article's own framing of the
        conference's argument, not a citation to one named study; treat
        as industry reporting, not a peer-reviewed measurement.
+     - Added 27 Sep 2026: DHH's reported Omarchy workflow keeps the final
+       merge decision with him after agent triage (Video 2, 32:36–33:39).
+       His Basecamp 5 account says individually defensible agent changes
+       damaged the architecture together (Video 2, 16:13–17:45).
+       Practitioner accounts, not measured outcomes; analysis in
+       vce-context/research/pull-request-origins/
+       dhh-review-principles-and-practices.md.
      - Reused, not re-verified: chapter 03 section 2's still-open gap —
        no documented case exists of an organisation building a central
        code review, AppSec or architecture review function and then
@@ -943,7 +950,11 @@ There's no invoice for the author's half of four eyes. The cost is friction: tim
 means: even the option with no lock-in has a failure mode nothing above has priced yet — the team that owns the machinery might not be there to maintain it.
 Reporting on platform engineering initiatives generally, not code review specifically, found 60 to 70% failing to show impact, with close to half disbanded or restructured within 18 months. Chapter 03 already noted that nobody has documented a company building a central review function and then dismantling it; this is the closest evidence available, and it's about survival, not contracts.
 
-**Verdict:** cost isn't the reason to hesitate on any of these five — none of them lock you in the way a managed review service would. The real risk is organizational, not contractual: whether the team that owns the machinery is still there in eighteen months.
+**5. The judgment still costs attention**
+means: the checks get cheaper to run, but somebody still has to understand the change and what a series of changes does to the system.
+DHH describes using agents to screen pull requests while keeping the merge decision himself. He also says that individually defensible agent changes to Basecamp 5 left its architecture worse when taken together. That is his account, not a measured result. It gives me one more cost to watch: enough engineering attention to question a clean report, inspect the surrounding code, and notice when small changes add up to a design nobody chose. I can retire a scanner or a template quickly. Restoring that judgment after a team has lost it would be harder.
+
+**Verdict:** cost isn't the reason to hesitate on any of these five — none of them lock you in the way a managed review service would. The risks are whether the team that owns the machinery survives and whether the people making the final decisions can still understand the system they accept.
 
 **Pivot to Conclusion:** that is the actual case for trying these first, not just the cheap one — every one of them can be left without asking a vendor's permission.
 
@@ -982,6 +993,11 @@ Reporting on platform engineering initiatives generally, not code review specifi
        a review went). Added 20 Sep 2026 after Sven asked whether there
        were more questions to answer — this thread existed in chapter
        03 and had dropped out of the synthesis entirely.
+     - "The judgment still costs attention" — chapter 04 section 2,
+       item 5, added from DHH's reported review practice and his
+       account of architectural damage across individually plausible
+       changes. The conclusion carries the cost without treating the
+       account as measured evidence.
      - "The gate never moves" — chapter 03 section 1's verdict
        ("coverage and logging are engineering choices, an independent
        judgment is not"), and chapter 01's regulatory requirement that
@@ -1074,9 +1090,9 @@ Adyen is the one regulated payment company chapter 02 found treating this direct
 
 **10. The one thing that never moves — and what this never answers**
 means: everything above is negotiable except this, and it's a choice made here, not fully forced by the regulation.
-The approval itself stays with a human, independent of whoever implemented the change. That is, finally, an answer to this piece's own title: the second pair of eyes is still for exactly what Fagan, Linus, and the regulator each wanted from it, one accountable check that nothing above found a way to safely outsource, at any price, built any way — including when the change was written by an AI. Two things are worth being honest about. Chapter 01 and chapter 03 both asked whether same-team approval is enough, or whether the approver must sit outside the team that shipped the change, and neither ever answered it; everything here assumes the first is enough. And chapter 01 also found that regulators have gone silent on whether an AI may approve at all — not forbidding it, just never addressing it. Keeping a human at the gate is the cautious reading of that silence, not the only one the rules currently allow.
+The approval itself stays with a human, independent of whoever implemented the change. That person needs to see the reason for the change, the evidence behind it, and what it could do beyond the diff. That is, finally, an answer to this piece's own title: the second pair of eyes is still for exactly what Fagan, Linus, and the regulator each wanted from it, one accountable check that nothing above found a way to safely outsource, at any price, built any way — including when the change was written by an AI. Two things are worth being honest about. Chapter 01 and chapter 03 both asked whether same-team approval is enough, or whether the approver must sit outside the team that shipped the change, and neither ever answered it; everything here assumes the first is enough. And chapter 01 also found that regulators have gone silent on whether an AI may approve at all — not forbidding it, just never addressing it. Keeping a human at the gate is the cautious reading of that silence, not the only one the rules currently allow.
 
-**Verdict:** the queue gets shorter by turning on what's already there, centralizing everything mechanical, giving it a real log, and tiering it by risk — not by buying a second opinion, and not by restricting how much a trusted employee may use AI, which answers a different problem than ours and stays parked. Quality goes up with real evidence behind it in exactly one place: closing the model-family blind spot. It might go up in two more — catching what the author didn't understand, and catching the gate quietly going stale the way Adyen found its own does — but both are design problems here, not results yet. The gate itself is the one line that doesn't move, at any price, though the rules would currently allow more movement than this conclusion chooses to use.
+**Verdict:** the queue gets shorter by turning on what's already there, centralizing everything mechanical, giving it a real log, and tiering it by risk — not by buying a second opinion, and not by restricting how much a trusted employee may use AI, which answers a different problem than ours and stays parked. Quality goes up with real evidence behind it in exactly one place: closing the model-family blind spot. It might go up in two more — catching what the author didn't understand, and catching the gate quietly going stale the way Adyen found its own does — but both are design problems here, not results yet. The gate itself is the one line that doesn't move, at any price, though the rules would currently allow more movement than this conclusion chooses to use. Keeping it useful also costs attention to the system beyond each pull request.
 
 ---
 
