@@ -856,6 +856,7 @@ Cloudflare's reviewer runs company-wide, but each team shapes it with a file in 
 **1. Turn on what already exists and is unused**
 means: the cheapest thing to try costs nothing to build, because it's already built — it just isn't switched on.
 This document has an open item on exactly that: check which branch protections and similar controls are already available across our repositories and simply unused, before building anything new.
+
 - Requiring pull request reviews before merging
 - Requiring status checks (tests, linters) to pass before merge
 - Restricting who can push directly to protected branches
@@ -864,19 +865,39 @@ This document has an open item on exactly that: check which branch protections a
 
 **2. Tier repos by what they touch, not just by change size**
 means: a payment repo and an internal chatbot repo aren't the same bet, even when a single change to each looks equally small — chapter 01's risk-based rule was never mapped onto which repos count as high-risk in the first place.
-Spotify's Soundcheck platform runs different tracks of checks depending on what kind of component something is — a web frontend, a backend service, fleet-wide infrastructure — one shared platform, several tiers. The same idea applied here: decide which repos move money or hold customer risk data, and require more from them by default — more reviewers, mandatory security review, no auto-merge — while lower-stakes repos stay on a lighter version of the same machinery.
+
+- Decide which repos move money or hold customer risk data
+- Require more from those by default: more reviewers, mandatory security review, no auto-merge
+- Leave lower-stakes repos on a lighter version of the same machinery
+
+Spotify's Soundcheck platform runs different tracks of checks depending on what kind of component something is — a web frontend, a backend service, fleet-wide infrastructure — one shared platform, several tiers.
 
 **3. Centralize the machinery, not the decision**
 means: chapter 03's own conclusion is itself a thing to try — a shared platform for the checks that don't need judgment, before any AI reviewer enters the picture at all.
-Formatters, linters, dependency and secret scanning: centralize those the way Atlassian centralized its CI/CD, and keep the approval itself local. Real savings, no judgment outsourced.
+
+- Formatters and linters
+- Dependency scanning
+- Secret scanning
+
+Centralize those the way Atlassian centralized its CI/CD, and keep the approval itself local. Real savings, no judgment outsourced.
 
 **4. Pair models across vendors for the one specific blind spot**
 means: cheap, and it fixes exactly one problem — that a model reviews its own family's code worse than anyone else's — without a vendor contract.
-Wire a different model's provider into CI as the reviewer for whatever wrote the change. This is the same idea Greptile sells as "the independent code validator," available for the cost of an API call instead of a seat licence.
+
+- Wire a different vendor's model into CI as the reviewer
+- Point it at whatever the first model wrote
+- Pay per API call instead of per seat
+
+This is the same idea Greptile sells as "the independent code validator," available for the cost of an API call instead of a seat licence.
 
 **5. The author's half of four eyes**
 means: the one genuinely new idea here, and the one this piece already promised to build — with real support and a real risk attached.
-The cognitive-science case is old and solid: prompting someone to explain something in their own words measurably deepens their own understanding. The industry half-believes this already — GitHub recommends self-review, and practitioners describe reading their own diff as a critic would. But a 2026 study of 80.000 pull requests found only limited, mostly negligible evidence that PR descriptions change what happens in review — except when the description explains the code and asks for specific feedback. And a vendor study suggests AI-written code raises the stakes on needing this, whatever the exact multiple really is. The risk: making an explanation mandatory is easy — GitHub and various bots already support it — but a required field can decay into exactly the empty ritual chapter 02 diagnosed, an "N/A" that satisfies the check without the understanding it was supposed to prove.
+
+- The support: prompting someone to explain something in their own words measurably deepens their own understanding, and GitHub already recommends self-review
+- The limit: across 80.000 pull requests, descriptions made mostly negligible difference, except when they explained the code and asked for specific feedback
+- The risk: a required field can decay into an "N/A" that satisfies the check without the understanding it was supposed to prove
+
+The cognitive-science case is old and solid, and the industry half-believes it already: practitioners describe reading their own diff as a critic would. A vendor study suggests AI-written code raises the stakes on needing this, whatever the exact multiple really is. Making an explanation mandatory is easy, because GitHub and various bots already support it. Making it mean something is the part nobody has shown.
 
 **Verdict:** the first four are available today, already proven at real scale by someone else, and outsource no judgment. The fifth is unproven at the outcome level, grounded in real cognitive-science support, and the one this piece committed to designing for back in chapter 02. Its whole design problem is making it the second, not the ritual.
 
@@ -1016,27 +1037,65 @@ DHH describes using agents to screen pull requests while keeping the merge decis
 
 **1. Make the mechanical checks run on every change**
 means: chapter 03's dividing line, applied to one repository. Everything mechanically verifiable runs before a person looks at the change.
-Formatting, linting, the test suite, and a static analysis pass belong in a workflow file under `.github/workflows/`. Dependency scanning is a `.github/dependabot.yml`. Secret scanning is a toggle in the repository settings. Google's reason is the one chapter 03 quoted: static analysis exists so that human review can "focus on issues that are not mechanically verifiable." The alternative, at this scale, is a reviewer spending their attention on formatting.
+
+- Formatting and linting, in a workflow file under `.github/workflows/`
+- The test suite, in the same file
+- A static analysis pass, in the same file
+- Dependency scanning, in `.github/dependabot.yml`
+- Secret scanning, a toggle in the repository settings
+
+Google's reason is the one chapter 03 quoted: static analysis exists so that human review can "focus on issues that are not mechanically verifiable." The alternative, at this scale, is a reviewer spending their attention on formatting.
 
 **2. Make them required, so they cannot be skipped**
 means: a check that runs is a suggestion. A check that blocks a merge is a control. This is the step that gets skipped.
-In branch protection, or in a repository ruleset: require those status checks by name, require a pull request before merging, and stop direct pushes to the default branch. Then dismiss stale approvals when new commits land, so that an approval refers to the code that actually merges. That last setting is the cheapest defence this document has found against chapter 02's third failure, where the record says approved and nobody read the version that shipped.
+
+- Require those status checks by name
+- Require a pull request before merging
+- Stop direct pushes to the default branch
+- Dismiss stale approvals when new commits land
+
+All four live in branch protection, or in a repository ruleset. The last one matters more than it looks. It makes an approval refer to the code that actually merges, which is the cheapest defence this document has found against chapter 02's third failure, where the record says approved and nobody read the version that shipped.
 
 **3. Name the owners of the paths that carry risk**
 means: chapter 04 tiered whole repositories by what they touch. Inside one repository the same idea fits in a file.
-A `.github/CODEOWNERS` file requires a named reviewer for the paths that move money or touch customer data, and leaves the rest of the repository on the lighter default. This is the risk-based approach the regulation asks for, written as a file rather than as a policy nobody reads. It also answers a question the approval rule leaves open: not just that someone approved, but that someone who knows this code did.
+
+- List the paths that move money or hold customer data
+- Give each one a named reviewer or team, in `.github/CODEOWNERS`
+- Leave the rest of the repository on the lighter default
+
+This is the risk-based approach the regulation asks for, written as a file rather than as a policy nobody reads. It also answers a question the approval rule leaves open: not just that someone approved, but that someone who knows this code did.
 
 **4. Decide, in writing, whether a machine may approve here**
 means: chapter 02 found the approval is now a setting. A setting with no owner is a decision nobody made.
-Whether Copilot's review counts toward this repository's required approvals is a per-repository choice, currently off by default. Write the answer down where the next person will find it, with the reason. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
+
+- Decide whether Copilot's review counts toward this repository's required approvals
+- Write the answer where the next person will look
+- Give the reason, not only the answer
+- Revisit it when what the repository touches changes
+
+The setting is currently off by default. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
 
 **5. Ask the author for what no check can see**
 means: the author's half of four eyes, in the one place a repository can host it.
-A `.github/pull_request_template.md` puts the same questions in front of every pull request: what changed, why it belongs here, what the author wants looked at, how to undo it, and which parts an agent wrote. The wording matters more than the existence. Chapter 04 cited a 2026 study of 80.000 pull requests where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code *and* asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter.
+
+A `.github/pull_request_template.md` puts the same questions in front of every pull request:
+
+- What changed, and why it belongs here
+- What the author wants looked at, specifically
+- How to undo it
+- Which parts an agent wrote
+
+The wording matters more than the existence. Chapter 04 cited a 2026 study of 80.000 pull requests where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code *and* asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter.
 
 **6. Watch the gate, not only the change**
 means: everything above decays quietly, and this is the only step that notices.
-A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where "N/A" appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved. In one repository that is a recurring calendar entry rather than a tool: read a sample of merged pull requests and ask whether the approvals on them meant anything. Nothing else in this list can tell you that it has stopped working.
+
+- Put a recurring entry in a calendar, not in a tool
+- Read a sample of already-merged pull requests
+- Ask whether the approvals on them meant anything
+- Watch for the day "N/A" starts appearing in the template
+
+A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where "N/A" appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved. Nothing else in this list can tell you that it has stopped working.
 
 **Verdict:** every item is a file in the repository or a setting on it, which is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 1 to 3 make that decision cheaper to reach, item 5 gives the decider something to read, and item 6 checks that the decision is still being made. None of them makes it.
 
