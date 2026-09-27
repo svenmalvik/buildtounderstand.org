@@ -244,11 +244,24 @@
   }
 
   @media print {
+    /* One slide per page, at the deck's own 16:9 size. */
+    @page { size: 13.333in 7.5in; margin: 0; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     html, body { overflow: visible; background: #fff; height: auto; }
     #stage { position: static; display: block; }
-    #deck { width: 100%; height: auto; transform: none !important; box-shadow: none; }
-    .slide { display: flex !important; position: relative; inset: auto; width: 1280px; height: 720px; page-break-after: always; box-shadow: none; }
-    #notes, #hint { display: none !important; }
+    #deck { width: 1280px; height: auto; transform: none !important; box-shadow: none; }
+    .slide {
+      display: flex !important;
+      position: relative;
+      inset: auto;
+      width: 1280px;
+      height: 720px;
+      break-after: page;
+      page-break-after: always;
+      box-shadow: none;
+    }
+    .slide:last-child { break-after: auto; page-break-after: auto; }
+    #notes, #hint, .progress { display: none !important; }
   }
 </style>
 </head>
@@ -510,8 +523,11 @@ and nothing logs that it happened.
 
   function render() {
     slides.forEach(function (el, n) { el.classList.toggle('on', n === i); });
-    var pgs = slides[i].querySelectorAll('.pg');
-    Array.prototype.forEach.call(pgs, function (p) { p.textContent = (i + 1) + ' / ' + slides.length; });
+    slides.forEach(function (el, n) {
+      Array.prototype.forEach.call(el.querySelectorAll('.pg'), function (p) {
+        p.textContent = (n + 1) + ' / ' + slides.length;
+      });
+    });
     bar.style.width = ((i + 1) / slides.length * 100) + '%';
     var n = slides[i].getAttribute('data-notes') || '';
     notesBox.innerHTML = '<b>Slide ' + (i + 1) + '</b> &nbsp; ' + n;
