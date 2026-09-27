@@ -416,6 +416,7 @@ Chapter 04 was the order for the company. This is the same order in one reposito
 - First, decide what this repository touches
 - Make the mechanical checks unskippable
 - Two decisions that follow from the tier
+- Keep the change small enough to be read
 - Ask the author for what no check can see
 - Where each step lives
 
@@ -477,7 +478,23 @@ Off by default today. A payment repository and an internal dashboard may answer 
 
 ---
 
-## Slide 26 — Ask the author for what no check can see
+## Slide 26 — Keep the change small enough to be read
+
+The reviewer named a moment ago has to be able to do the job. A change nobody can read in one sitting gets approved anyway.
+
+- **200 lines / h** beyond this, reviewers found about half the defects
+- **1 in 4** AI-written pull requests runs past 400 lines
+- **< 5 files** Adyen's automated changes, which is what makes them "fast to review, easy to approve"
+
+> Agree a size the repository does not go past without saying why, check it in CI, and keep the pull request in draft until the checks are green.
+
+**Notes:** Steps 3 and 4 quietly assume the reviewer can read what they are given. This is the step that makes that true. Kemerer and Paulk measured in 2009 what happens to a reviewer who speeds up: up to 200 lines an hour they found most of the defects, faster than that about half. One in four AI-written pull requests now runs past 400 lines, which is two hours of one person's attention for a single change. Adyen, the one regulated payment company in this deck with a published account, keeps its automated changes under five files on average. Make the CI check a warning everywhere and a failure on the repositories the tier marked as carrying risk. Two honest limits: a size threshold is not a quality bar, and no number makes a change worth reading. And the draft-until-green rule is mine rather than a finding.
+
+**Visual:** Three tiles, then the instruction as the quote. The middle tile is the one that lands: a quarter of AI-written changes are already past what a reviewer can read in an hour.
+
+---
+
+## Slide 27 — Ask the author for what no check can see
 
 One pull request template. The same questions in front of every change.
 
@@ -494,7 +511,7 @@ One pull request template. The same questions in front of every change.
 
 ---
 
-## Slide 27 — Where each step lives
+## Slide 28 — Where each step lives
 
 | Step | Do | Where it lives |
 | --- | --- | --- |
@@ -503,8 +520,9 @@ One pull request template. The same questions in front of every change.
 | 03 | Require those checks, require a pull request, stop direct pushes, dismiss stale approvals | Branch protection, or a ruleset |
 | 04 | A named reviewer for the paths that carry risk | .github/CODEOWNERS |
 | 05 | Whether a machine may approve here, and why | README, under "Review rules" |
-| 06 | The template that explains and asks | .github/pull_request_template.md |
-| 07 | Read ten merged pull requests and ask what you are seeing | A calendar entry, not a tool |
+| 06 | A size the repository does not go past without saying why | A CI check, plus draft until green |
+| 07 | The template that explains and asks | .github/pull_request_template.md |
+| 08 | Read ten merged pull requests and ask what you are seeing | A calendar entry, not a tool |
 
 Every step but the last is a file or a setting, copied to the next repository in minutes and reverted by deleting a line. The last one is half an hour a month. **I have not checked which of these are already on in ours.**
 
@@ -514,7 +532,7 @@ Every step but the last is a file or a setting, copied to the next repository in
 
 ---
 
-## Slide 28 — Conclusion
+## Slide 29 — Conclusion
 
 *Divider slide.*
 
@@ -526,7 +544,7 @@ What moves, what doesn't, and what I still don't know.
 
 ---
 
-## Slide 29 — What moves, and what doesn't
+## Slide 30 — What moves, and what doesn't
 
 **Shorter queue**
 Turn on what is there. Centralize the mechanical. Log it. Tier by risk.
@@ -545,7 +563,7 @@ Restricting AI use. Open source defends against strangers. We employ our authors
 
 ---
 
-## Slide 30 — What I don't know yet
+## Slide 31 — What I don't know yet
 
 **Same team, or outside it?**
 Everything here assumes same-team approval is enough. The regulation does not say.

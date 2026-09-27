@@ -986,7 +986,7 @@ DHH describes using agents to screen pull requests while keeping the merge decis
   </div>
 </div>
 
-### Seven Steps in a Repository
+### Eight Steps in a Repository
 <!-- Chapter 05, section 1 of 1. Added 28 Sep 2026 after Sven asked for
      the concrete next steps a developer can take in a single repository:
      "As a developer I want to know exactly what next steps I should
@@ -1035,6 +1035,15 @@ DHH describes using agents to screen pull requests while keeping the merge decis
      renders it as a prefilled body. Enforcement needs a CI check or a
      bot, and the text says so, because that is where the "N/A" failure
      enters.
+     - Item 6 (size) added 28 Sep 2026 after Sven pointed out the list
+       assumes a reviewer can read what they are given: "We need to ensure
+       that the human reviewer for let's say tier 1 applications is able to
+       review a PR." Evidence is already in chapter 02: Kemerer & Paulk 2009
+       (200 lines an hour, half the defects beyond it), one in four AI-written
+       PRs past 400 lines, and Adyen's under-five-files figure with its
+       "fast to review, easy to approve" quote. The draft-until-green bullet
+       is mine and is not sourced; it follows from step 3 rather than from a
+       study, and the text does not dress it as a finding.
      Still open, unchanged by this chapter: which of these are already on
      in our repositories. -->
 
@@ -1132,7 +1141,19 @@ approval on a change that moves money, and nothing logs that it happened.
 
 If your team already keeps decision records, put the reasoning there and link it from the README, so that the README stays the index rather than becoming a second copy. Machine approval is off by default today. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
 
-**6. Ask the author for what no check can see**
+**6. Keep the change small enough to be read**
+means: step 4 named a reviewer for the paths that carry risk. This is what makes their job possible, because a change nobody can read in one sitting gets approved anyway.
+
+- Agree a size this repository does not go past without saying why
+- Check it in CI: a warning everywhere, a failure on the repositories step 1 marked as carrying risk
+- Keep the pull request in draft until the checks from step 3 are green, so nobody is asked to read a change that is still failing
+- Split what is too large, or write in the description why it could not be split
+
+In 2009, Kemerer and Paulk measured what happens to a reviewer who speeds up. Up to 200 lines an hour they found most of the defects, and faster than that about half. One in four AI-written pull requests now runs past 400 lines, which is two hours of one person's attention for a single change. Adyen, the one regulated payment company in this piece that has published an account, keeps its automated changes under five files on average, and says that is what makes them "fast to review, easy to approve".
+
+A size limit is not a quality bar, and no threshold can make a change worth reading. What it does is keep the reviewer's job physically possible, which is the thing steps 3 and 4 quietly assume.
+
+**7. Ask the author for what no check can see**
 means: the author's half of four eyes, in the one place a repository can host it.
 
 A `.github/pull_request_template.md` puts the same questions in front of every pull request:
@@ -1164,8 +1185,8 @@ The comments prompt the author while they type and disappear from the rendered d
 
 The wording matters more than having a template at all. Chapter 04 cited a 2026 study of 80.000 pull requests where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code *and* asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter.
 
-**7. Watch for the day the approvals stop meaning anything**
-means: steps 1 to 6 can all be in place and still stop working, and nothing announces it when they do. The checks stay green, the approvals keep arriving, the template keeps getting filled in, and none of that requires a single person to have read the change. No setting reports this. Somebody has to go and look.
+**8. Watch for the day the approvals stop meaning anything**
+means: steps 1 to 7 can all be in place and still stop working, and nothing announces it when they do. The checks stay green, the approvals keep arriving, the template keeps getting filled in, and none of that requires a single person to have read the change. No setting reports this. Somebody has to go and look.
 
 Once a month, read ten pull requests that were merged and ask what you are seeing:
 
@@ -1176,7 +1197,7 @@ Once a month, read ten pull requests that were merged and ask what you are seein
 
 A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where "N/A" appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved, added because its reviewers said they had started to pattern-match after a dozen near-identical changes. That is the one fix in this document for a gate that decays while every approval stays human, and nothing else in this list would tell you it is happening here.
 
-**Verdict:** every item but the last is a file in the repository or a setting on it, and the last one is half an hour a month. That is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 2 to 4 make that decision cheaper to reach, item 6 gives the decider something to read, and item 7 checks that the decision is still being made. None of them makes it.
+**Verdict:** every item but the last is a file in the repository or a setting on it, and the last one is half an hour a month. That is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 2 to 4 make that decision cheaper to reach, items 6 and 7 give the decider a change they can actually read and something to read about it, and item 8 checks that the decision is still being made. None of them makes it.
 
 **Pivot to Conclusion:** and I should say plainly that I have not run this list against our own repositories. I do not know how many of these settings are already on, which makes item 2 the first thing I owe this argument.
 

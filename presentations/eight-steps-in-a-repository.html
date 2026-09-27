@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seven Steps in a Repository</title>
-<meta name="description" content="Seven steps a developer can run in a single repository, from the exploration What Is the Second Pair of Eyes For?">
+<title>Eight Steps in a Repository</title>
+<meta name="description" content="Eight steps a developer can run in a single repository, from the exploration What Is the Second Pair of Eyes For?">
 <style>
   :root {
     --bg: #f5f5f2;
@@ -272,17 +272,17 @@
     <!-- 1 -->
     <section class="slide dark on" data-notes="Everything in the wider argument about code review is a decision somebody else makes. This deck is for the developer who agrees with it and wants to do something on Monday. Nothing in it needs a platform team, a budget, or a vendor.">
       <p class="kicker">Build to Understand</p>
-      <h1>Seven Steps<br><span class="hl">in a Repository</span></h1>
-      <p class="lede">Seven steps, in the order I would do them. Every one is a file in the repository or a setting on it, except the last, which is half an hour a month.</p>
+      <h1>Eight Steps<br><span class="hl">in a Repository</span></h1>
+      <p class="lede">Eight steps, in the order I would do them. Every one is a file in the repository or a setting on it, except the last, which is half an hour a month.</p>
       <p class="lede" style="font-size:18px;color:#a9a5b8">From the exploration <em>What Is the Second Pair of Eyes For?</em></p>
       <div class="shapes"><i class="dot"></i><i class="sq"></i></div>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-notes="This is the agenda. Seven steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and the second is a setting that stays unanswered unless somebody answers it. The four blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Everything on this track is in front of one person. None of it needs a platform team, a budget, or a vendor, which is what makes it worth doing before anything larger.">
+    <section class="slide" data-notes="This is the agenda. Eight steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and the second is a setting that stays unanswered unless somebody answers it. The five blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Everything on this track is in front of one person. None of it needs a platform team, a budget, or a vendor, which is what makes it worth doing before anything larger.">
       <p class="kicker">The agenda</p>
-      <h2>Seven steps, in the order they get done</h2>
+      <h2>Eight steps, in the order they get done</h2>
 
       <div class="agenda">
       <div class="track">
@@ -291,13 +291,14 @@
         <div class="step alt"><span class="bead">03</span><span class="lbl"><b>Require</b> the checks</span></div>
         <div class="step alt"><span class="bead">04</span><span class="lbl"><b>Name</b> the owners</span></div>
         <div class="step"><span class="bead">05</span><span class="lbl"><b>Decide</b> on machine approval</span></div>
-        <div class="step alt"><span class="bead">06</span><span class="lbl"><b>Ask</b> the author</span></div>
-        <div class="step repeat"><span class="bead">07</span><span class="lbl"><b>Watch</b> the approvals</span></div>
+        <div class="step alt"><span class="bead">06</span><span class="lbl"><b>Size</b> the change</span></div>
+        <div class="step alt"><span class="bead">07</span><span class="lbl"><b>Ask</b> the author</span></div>
+        <div class="step repeat"><span class="bead">08</span><span class="lbl"><b>Watch</b> the approvals</span></div>
       </div>
 
       <div class="legend">
         <span><i></i> Two are decisions you write down</span>
-        <span><i class="cfg"></i> Four you configure once</span>
+        <span><i class="cfg"></i> Five you configure once</span>
         <span><i class="rep"></i> One that repeats</span>
       </div>
 
@@ -438,9 +439,25 @@ and nothing logs that it happened.
     </section>
 
     <!-- 8 -->
-    <section class="slide" data-notes="This is the author's half of four eyes, in the one place a repository can host it. The wording matters more than having a template at all. A 2026 study of 80.000 pull requests across 156 projects found description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code and asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter. The comments prompt the author while they type and disappear from the rendered description.">
+    <section class="slide" data-notes="Steps 3 and 4 quietly assume the reviewer can read what they are given. This is the step that makes that true. In 2009 Kemerer and Paulk measured what happens to a reviewer who speeds up: up to 200 lines an hour they found most of the defects, and faster than that about half. One in four AI-written pull requests now runs past 400 lines, which is two hours of one person's attention for a single change. Adyen, the one regulated payment company here that has published an account, keeps its automated changes under five files on average and says that is what makes them fast to review and easy to approve. Two honest limits. A size threshold is not a quality bar, and no number can make a change worth reading. And the draft-until-green rule is mine rather than a finding: it follows from step 3, not from a study.">
       <div class="num">06</div>
       <p class="kicker">Step 6</p>
+      <h2>Keep the change small enough to be read</h2>
+      <p class="means">Steps 3 and 4 assume the reviewer can read what they are given. A change nobody can read in one sitting gets approved anyway.</p>
+      <ul class="points">
+        <li>Agree a size this repository does not go past without saying why</li>
+        <li>Check it in CI: a warning everywhere, a failure where step 1 said the repository carries risk</li>
+        <li>Keep the pull request in draft until the checks from step 3 are green</li>
+        <li>Split what is too large, or say in the description why it could not be split</li>
+      </ul>
+      <p class="note">Beyond <strong>200 lines an hour</strong> reviewers found about half the defects. One in four AI-written pull requests runs past 400 lines. Adyen keeps its automated changes under five files, which is what makes them <strong>&ldquo;fast to review, easy to approve&rdquo;</strong>.</p>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-notes="This is the author's half of four eyes, in the one place a repository can host it. The wording matters more than having a template at all. A 2026 study of 80.000 pull requests across 156 projects found description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code and asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter. The comments prompt the author while they type and disappear from the rendered description.">
+      <div class="num">07</div>
+      <p class="kicker">Step 7</p>
       <h2>Ask the author for what no check can see</h2>
       <p class="means">One template, the same questions in front of every change. The second heading is the load-bearing one.</p>
       <div class="cols">
@@ -473,12 +490,12 @@ and nothing logs that it happened.
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
-    <!-- 9 -->
+    <!-- 10 -->
     <section class="slide" data-notes="A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where N/A appears. Adyen's answer was a designated person re-reading changes that had already been approved, added because its reviewers said they had started to pattern-match after a dozen near-identical changes. It is a fix for a gate that decays while every approval stays human.">
-      <div class="num">07</div>
-      <p class="kicker">Step 7</p>
+      <div class="num">08</div>
+      <p class="kicker">Step 8</p>
       <h2>Watch for the day the approvals stop meaning anything</h2>
-      <p class="means">Steps 1 to 6 can all be in place and still stop working, and nothing announces it. The checks stay green, the approvals keep arriving, the template keeps getting filled in, and none of that requires anyone to have read the change.</p>
+      <p class="means">Steps 1 to 7 can all be in place and still stop working, and nothing announces it. The checks stay green, the approvals keep arriving, the template keeps getting filled in, and none of that requires anyone to have read the change.</p>
       <p class="lede" style="font-size:19px;margin-bottom:14px"><strong>Once a month, read ten merged pull requests and ask what you are seeing:</strong></p>
       <ul class="points">
         <li>Approvals that arrived a minute after opening, on changes too long to read in a minute</li>
@@ -490,12 +507,12 @@ and nothing logs that it happened.
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
-    <!-- 10 -->
+    <!-- 11 -->
     <section class="slide dark" data-notes="On leverage and freedom, which are the governing values of the site: the workflow file and the template copy to the next repository in minutes, so the second repository costs a fraction of the first and the tenth costs almost nothing. Each item is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is decide whether the change is wanted. And the honest admission the exploration ends on: I have not run this list against our own repositories, so I do not know how many of these settings are already on.">
       <p class="kicker">What the list cannot do</p>
       <h2 style="font-size:36px">It makes the decision cheaper to reach.<br>It does not make the decision.</h2>
       <div class="rule"></div>
-      <p class="lede">Steps 2 to 4 make the judgement cheaper to reach. Step 6 gives the decider something to read. Step 7 checks that the decision is still being made. None of them decides whether the change is wanted.</p>
+      <p class="lede">Steps 2 to 4 make the judgement cheaper to reach. Steps 6 and 7 give the decider a change they can read and something to read about it. Step 8 checks that the decision is still being made. None of them decides whether the change is wanted.</p>
       <p class="lede" style="color:#ff9a6e"><strong>And I have not run this list against our own repositories.</strong> I do not know how many of these settings are already on, which makes step 3 the first thing I owe the argument.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
