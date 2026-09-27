@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The First Week in One Repository</title>
+<title>Seven Steps in a Repository</title>
 <meta name="description" content="Seven steps a developer can run in a single repository, from the exploration What Is the Second Pair of Eyes For?">
 <style>
   :root {
@@ -183,14 +183,6 @@
   }
   .note strong { color: var(--ink); }
 
-  table { border-collapse: collapse; width: 100%; font-size: 17px; }
-  th, td { text-align: left; padding: 9px 14px; vertical-align: top; }
-  thead th { background: var(--ink); color: var(--bg); font-size: 15px; letter-spacing: .04em; }
-  tbody tr:nth-child(even) { background: #ecebe6; }
-  tbody tr:last-child { background: #fff3ee; }
-  td.when { font-weight: 700; white-space: nowrap; }
-  td.where { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 15px; color: var(--muted); }
-
   .num {
     position: absolute;
     right: 64px;
@@ -265,17 +257,17 @@
   <div id="deck">
 
     <!-- 1 -->
-    <section class="slide dark on" data-notes="This is chapter 05 of the exploration, pulled out as a deck of its own. Everything in the wider piece is a decision somebody else makes. This chapter is for the developer who agrees with the argument and wants to do something on Monday. Nothing in it needs a platform team, a budget, or a vendor.">
+    <section class="slide dark on" data-notes="Everything in the wider argument about code review is a decision somebody else makes. This deck is for the developer who agrees with it and wants to do something on Monday. Nothing in it needs a platform team, a budget, or a vendor.">
       <p class="kicker">Build to Understand</p>
-      <h1>The First Week<br><span class="hl">in One Repository</span></h1>
+      <h1>Seven Steps<br><span class="hl">in a Repository</span></h1>
       <p class="lede">Seven steps, in the order I would do them. Every one is a file in the repository or a setting on it, except the last, which is half an hour a month.</p>
-      <p class="lede" style="font-size:18px;color:#a9a5b8">From the exploration <em>What Is the Second Pair of Eyes For?</em> &middot; chapter 05</p>
+      <p class="lede" style="font-size:18px;color:#a9a5b8">From the exploration <em>What Is the Second Pair of Eyes For?</em></p>
       <div class="shapes"><i class="dot"></i><i class="sq"></i></div>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-notes="This is the agenda. Seven steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and chapter 02 found that the second one is a setting nobody currently owns. The four blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Worth saying out loud: chapter 04 of the exploration was the order for a company, and a developer who agrees with all of it still cannot act on most of it, because it is somebody else's budget and somebody else's platform. Everything on this track is in front of one person.">
+    <section class="slide" data-notes="This is the agenda. Seven steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and the second one is a setting nobody currently owns. The four blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Worth saying out loud: the usual advice is written for a company, and a developer who agrees with all of it still cannot act on most of it, because it is somebody else's budget and somebody else's platform. Everything on this track is in front of one person.">
       <p class="kicker">The agenda</p>
       <h2>Seven steps, in the order they get done</h2>
 
@@ -298,15 +290,15 @@
 
       <p class="note">Everything on this track is a file in the repository or a setting on it, except the last, which is half an hour a month. <strong>Nothing here needs a platform team, a budget, or a vendor.</strong></p>
       </div>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 3 -->
-    <section class="slide" data-notes="Chapter 04 said to tier repositories by what they touch, and never said who does the tiering. A developer with one repository in front of them has to settle it, because the answer decides how strict every step after this one should be. Chapter 01 found the regulation asking for exactly this, a policy based on a risk assessment approach, and it never said the assessment had to be elaborate. The date matters because the answer expires: a repository that starts handling customer data has changed tier whether or not anybody wrote it down.">
+    <section class="slide" data-notes="The usual advice is to tier repositories by what they touch, and it never says who does the tiering. A developer with one repository in front of them has to settle it, because the answer decides how strict every step after this one should be. The regulation asks for exactly this, a policy based on a risk assessment approach, and it never said the assessment had to be elaborate. The date matters because the answer expires: a repository that starts handling customer data has changed tier whether or not anybody wrote it down.">
       <div class="num">01</div>
       <p class="kicker">Step 1</p>
       <h2>Decide what this repository touches</h2>
-      <p class="means">Chapter 04 tiered whole repositories and never said who does the tiering. This repository needs its own answer first, because the answer decides how strict the rest of the list should be.</p>
+      <p class="means">The usual advice is to tier repositories by what they touch, and it never says who does the tiering. This repository needs its own answer first, because the answer decides how strict the rest of the list should be.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
@@ -328,11 +320,11 @@ no auto-merge.</pre>
         </div>
       </div>
       <p class="note">One sentence in the README that a new joiner can find is <strong>more than most repositories have today</strong>.</p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 4 -->
-    <section class="slide" data-notes="This is chapter 03's dividing line applied to one repository: everything mechanically verifiable runs before a person looks at the change. Google's engineering book puts it directly, that static analysis exists so human review can focus on issues that are not mechanically verifiable. The alternative at this scale is a reviewer spending their attention on formatting.">
+    <section class="slide" data-notes="The dividing line is mechanically verifiable versus not: everything mechanically verifiable runs before a person looks at the change. Google's engineering book puts it directly, that static analysis exists so human review can focus on issues that are not mechanically verifiable. The alternative at this scale is a reviewer spending their attention on formatting.">
       <div class="num">02</div>
       <p class="kicker">Step 2</p>
       <h2>Make the mechanical checks run on every change</h2>
@@ -344,12 +336,12 @@ no auto-merge.</pre>
         <li>Dependency scanning, in <code>.github/dependabot.yml</code></li>
         <li>Secret scanning, a toggle in the repository settings</li>
       </ul>
-      <p class="note">Google's reason, quoted in chapter 03: static analysis exists so that human review can <strong>&ldquo;focus on issues that are not mechanically verifiable.&rdquo;</strong></p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <p class="note">Google's own reason: static analysis exists so that human review can <strong>&ldquo;focus on issues that are not mechanically verifiable.&rdquo;</strong></p>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 5 -->
-    <section class="slide" data-notes="This is the step that gets skipped. A check that merely runs is advice. All four settings live in branch protection, or in a repository ruleset. Dismissing stale approvals matters more than it looks: it makes an approval refer to the code that actually merges, which is the cheapest defence in the whole piece against chapter 02's third failure, where the record says approved and nobody read the version that shipped.">
+    <section class="slide" data-notes="This is the step that gets skipped. A check that merely runs is advice. All four settings live in branch protection, or in a repository ruleset. Dismissing stale approvals matters more than it looks: it makes an approval refer to the code that actually merges, which is the cheapest defence there is against a record that says approved when nobody read the version that shipped.">
       <div class="num">03</div>
       <p class="kicker">Step 3</p>
       <h2>Make the checks from step 2 block a merge</h2>
@@ -361,7 +353,7 @@ no auto-merge.</pre>
         <li>Dismiss stale approvals when new commits land</li>
       </ul>
       <p class="note">All four live in branch protection, or in a ruleset. <strong>Dismissing stale approvals</strong> makes an approval refer to the code that actually merges.</p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 6 -->
@@ -393,11 +385,11 @@ no auto-merge.</pre>
         </div>
       </div>
       <p class="note">The <strong>last matching line wins</strong>, so the catch-all goes first and the risky paths underneath it.</p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 7 -->
-    <section class="slide" data-notes="Chapter 02 found the approval is now a setting: since 1 September 2026 a Copilot review can count toward a repository's required approvals, off by default. A setting with no owner is a decision nobody made. The README is the answer to where, and the reason is the answer to why there. The setting itself has nowhere to hold a reason, and GitHub's organisation audit log records no event at all when a machine approves, so the repository's own README is the only place the decision survives in a form somebody can read later.">
+    <section class="slide" data-notes="The approval is now a setting: since 1 September 2026 a Copilot review can count toward a repository's required approvals, off by default. A setting with no owner is a decision nobody made. The README is the answer to where, and the reason is the answer to why there. The setting itself has nowhere to hold a reason, and GitHub's organisation audit log records no event at all when a machine approves, so the repository's own README is the only place the decision survives in a form somebody can read later.">
       <div class="num">05</div>
       <p class="kicker">Step 5</p>
       <h2>Decide whether a machine may approve here</h2>
@@ -429,7 +421,7 @@ and nothing logs that it happened.
         </div>
       </div>
       <p class="note">The setting has nowhere to hold a reason, and <strong>nothing logs a machine approval</strong>. The README is where the decision survives.</p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 8 -->
@@ -465,11 +457,11 @@ and nothing logs that it happened.
         </div>
       </div>
       <p class="note">Across <strong>80.000 pull requests</strong>, descriptions rarely changed the review. The exception explained the code <em>and</em> asked for specific feedback.</p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 9 -->
-    <section class="slide" data-notes="A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where N/A appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved, added because its reviewers said they had started to pattern-match after a dozen near-identical changes. That is the one fix in the whole piece for a gate that decays while every approval stays human.">
+    <section class="slide" data-notes="A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where N/A appears. Adyen's answer was a designated person re-reading changes that had already been approved, added because its reviewers said they had started to pattern-match after a dozen near-identical changes. It is the one fix anyone has published for a gate that decays while every approval stays human.">
       <div class="num">07</div>
       <p class="kicker">Step 7</p>
       <h2>Watch for the day the approvals stop meaning anything</h2>
@@ -482,39 +474,17 @@ and nothing logs that it happened.
         <li>Code owners approving paths they have never otherwise touched</li>
       </ul>
       <p class="note">No setting reports any of this. <strong>Somebody has to go and look.</strong></p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
     <!-- 10 -->
-    <section class="slide" data-notes="This is the takeaway slide, the one worth photographing. Every row but the last is a file or a setting, copied to the next repository in minutes and reverted by deleting a line. The last row is half an hour a month, and it is the only one that notices when the rest has stopped working.">
-      <p class="kicker">The whole list</p>
-      <h2>The first week</h2>
-      <div class="rule"></div>
-      <table>
-        <thead><tr><th>When</th><th>Do</th><th>Where it lives</th></tr></thead>
-        <tbody>
-          <tr><td class="when">Day 1</td><td>Write down what this repository touches, and what follows from it</td><td class="where">README, under &ldquo;Review rules&rdquo;</td></tr>
-          <tr><td class="when">Day 1</td><td>Format, lint, test, static analysis on every change</td><td class="where">.github/workflows/</td></tr>
-          <tr><td class="when">Day 1</td><td>Dependency and secret scanning</td><td class="where">.github/dependabot.yml, settings</td></tr>
-          <tr><td class="when">Day 2</td><td>Require those checks, require a pull request, stop direct pushes</td><td class="where">Branch protection, or a ruleset</td></tr>
-          <tr><td class="when">Day 2</td><td>Dismiss stale approvals when new commits land</td><td class="where">The same place</td></tr>
-          <tr><td class="when">Day 3</td><td>A named reviewer for the paths that carry risk</td><td class="where">.github/CODEOWNERS</td></tr>
-          <tr><td class="when">Day 3</td><td>Whether a machine may approve here, and why</td><td class="where">README, under &ldquo;Review rules&rdquo;</td></tr>
-          <tr><td class="when">Day 4</td><td>The template that explains and asks</td><td class="where">.github/pull_request_template.md</td></tr>
-          <tr><td class="when">Monthly</td><td>Read ten merged pull requests and ask what you are seeing</td><td class="where">A calendar entry, not a tool</td></tr>
-        </tbody>
-      </table>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
-    </section>
-
-    <!-- 11 -->
     <section class="slide dark" data-notes="On leverage and freedom, which are the governing values of the site: the workflow file and the template copy to the next repository in minutes, so the second repository costs a fraction of the first and the tenth costs almost nothing. Each item is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is decide whether the change is wanted. And the honest admission the exploration ends on: I have not run this list against our own repositories, so I do not know how many of these settings are already on.">
       <p class="kicker">What the list cannot do</p>
       <h2 style="font-size:36px">It makes the decision cheaper to reach.<br>It does not make the decision.</h2>
       <div class="rule"></div>
       <p class="lede">Steps 2 to 4 make the judgement cheaper to reach. Step 6 gives the decider something to read. Step 7 checks that the decision is still being made. None of them decides whether the change is wanted.</p>
       <p class="lede" style="color:#ff9a6e"><strong>And I have not run this list against our own repositories.</strong> I do not know how many of these settings are already on, which makes step 3 the first thing I owe the argument.</p>
-      <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
+      <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
   </div>

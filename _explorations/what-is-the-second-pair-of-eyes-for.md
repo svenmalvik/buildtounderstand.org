@@ -982,11 +982,11 @@ DHH describes using agents to screen pull requests while keeping the merge decis
 <div class="chapter-heading chapter-heading--compact">
   <span class="chapter-heading__number" aria-hidden="true">05</span>
   <div>
-    <h2 id="what-would-i-do-in-one-repository">What Would I Do in One Repository?</h2>
+    <h2 id="what-would-i-do-in-a-repository">What Would I Do in a Repository?</h2>
   </div>
 </div>
 
-### The First Week in One Repository
+### Seven Steps in a Repository
 <!-- Chapter 05, section 1 of 1. Added 28 Sep 2026 after Sven asked for
      the concrete next steps a developer can take in a single repository:
      "As a developer I want to know exactly what next steps I should

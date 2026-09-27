@@ -14,7 +14,7 @@ Presentation content derived from
 - **Slides:** 30, of which 6 are chapter dividers, plus a 4-slide appendix
   held in reserve
 - **What the audience should leave with:** the three jobs one pull request does,
-  the one line that does not move, five things to try in order, a first week
+  the one line that does not move, five things to try in order, seven steps
   they can run in their own repository, and a clear sense of where the
   reasoning is thin
 - **Rendering format:** two PowerPoint builds of this same content:
@@ -407,7 +407,7 @@ A required field decays into "N/A".
 
 ---
 
-## Slide 22 — Chapter 05: What would I do in one repository?
+## Slide 22 — Chapter 05: What would I do in a repository?
 
 *Divider slide.*
 
@@ -417,7 +417,7 @@ Chapter 04 was the order for the company. This is the same order in one reposito
 - Make the mechanical checks unskippable
 - Two decisions that follow from the tier
 - Ask the author for what no check can see
-- The first week
+- Where each step lives
 
 **Notes:** Everything so far has been a decision somebody else makes. This chapter is for the developer who agrees with the argument and wants to do something on Monday. Nothing in it needs a platform team, a budget, or a vendor. Every item is a file in the repository or a setting on it.
 
@@ -494,25 +494,23 @@ One pull request template. The same questions in front of every change.
 
 ---
 
-## Slide 27 — The first week
+## Slide 27 — Where each step lives
 
-| When | Do | Where it lives |
+| Step | Do | Where it lives |
 | --- | --- | --- |
-| Day 1 | Write down what this repository touches, and what follows from it | README, under "Review rules" |
-| Day 1 | Format, lint, test, static analysis on every change | .github/workflows/ |
-| Day 1 | Dependency and secret scanning | .github/dependabot.yml, repository settings |
-| Day 2 | Require those checks, require a pull request, stop direct pushes | Branch protection, or a ruleset |
-| Day 2 | Dismiss stale approvals when new commits land | The same place |
-| Day 3 | A named reviewer for the paths that carry risk | .github/CODEOWNERS |
-| Day 3 | Whether a machine may approve here, and why | README, under "Review rules" |
-| Day 4 | The template that explains and asks | .github/pull_request_template.md |
-| Monthly | Read ten merged pull requests and ask what you are seeing | A calendar entry, not a tool |
+| 01 | Write down what this repository touches, and what follows from it | README, under "Review rules" |
+| 02 | Format, lint, test, static analysis, dependency and secret scanning | .github/workflows/, .github/dependabot.yml, settings |
+| 03 | Require those checks, require a pull request, stop direct pushes, dismiss stale approvals | Branch protection, or a ruleset |
+| 04 | A named reviewer for the paths that carry risk | .github/CODEOWNERS |
+| 05 | Whether a machine may approve here, and why | README, under "Review rules" |
+| 06 | The template that explains and asks | .github/pull_request_template.md |
+| 07 | Read ten merged pull requests and ask what you are seeing | A calendar entry, not a tool |
 
-Every line but the last is a file or a setting, copied to the next repository in minutes and reverted by deleting a line. The last one is half an hour a month. **I have not checked which of these are already on in ours.**
+Every step but the last is a file or a setting, copied to the next repository in minutes and reverted by deleting a line. The last one is half an hour a month. **I have not checked which of these are already on in ours.**
 
 **Notes:** The last row is the one nothing else covers. Every row above it can be in place and still stop working: the checks stay green, the approvals keep arriving, the template keeps getting filled in, and none of that requires anyone to have read the change. What to look for in those ten pull requests: approvals that arrived a minute after opening on changes too long to read in a minute, template sections filled with N/A or the branch name, one person approving everything, code owners approving paths they never otherwise touch. That is Adyen's fix from chapter 02, the one regulated payment company in this deck, whose reviewers said they had started to pattern-match after a dozen near-identical changes. At one-repository scale it is a recurring calendar entry rather than a tool: read a sample of merged pull requests and ask whether the approvals on them meant anything. On leverage and freedom: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first. Each item is reverted by deleting a line, with no vendor to ask. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Days 1 to 3 make that decision cheaper to reach, day 4 gives the decider something to read, and the last row checks that the decision is still being made. None of them makes it. And I owe this argument the check in the last line: I do not know how many of these settings are already on in our repositories.
 
-**Visual:** The table takes the width and is the takeaway slide, the one worth photographing. The closing line keeps the unverified claim visible instead of letting the table look like a finished audit.
+**Visual:** The table takes the width and is the takeaway slide, the one worth photographing. Rows are numbered by step, not by day: nothing in the piece assigns steps to days. The closing line keeps the unverified claim visible instead of letting the table look like a finished audit.
 
 ---
 
