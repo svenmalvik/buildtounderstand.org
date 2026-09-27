@@ -267,7 +267,7 @@
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-notes="This is the agenda. Seven steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and the second one is a setting nobody currently owns. The four blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Worth saying out loud: the usual advice is written for a company, and a developer who agrees with all of it still cannot act on most of it, because it is somebody else's budget and somebody else's platform. Everything on this track is in front of one person.">
+    <section class="slide" data-notes="This is the agenda. Seven steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and the second is a setting that stays unanswered unless somebody answers it. The four blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Everything on this track is in front of one person. None of it needs a platform team, a budget, or a vendor, which is what makes it worth doing before anything larger.">
       <p class="kicker">The agenda</p>
       <h2>Seven steps, in the order they get done</h2>
 
@@ -283,7 +283,7 @@
       </div>
 
       <div class="legend">
-        <span><i></i> Two you have to decide, and nobody owns today</span>
+        <span><i></i> Two are decisions you write down</span>
         <span><i class="cfg"></i> Four you configure once</span>
         <span><i class="rep"></i> One that repeats</span>
       </div>
@@ -294,11 +294,11 @@
     </section>
 
     <!-- 3 -->
-    <section class="slide" data-notes="The usual advice is to tier repositories by what they touch, and it never says who does the tiering. A developer with one repository in front of them has to settle it, because the answer decides how strict every step after this one should be. The regulation asks for exactly this, a policy based on a risk assessment approach, and it never said the assessment had to be elaborate. The date matters because the answer expires: a repository that starts handling customer data has changed tier whether or not anybody wrote it down.">
+    <section class="slide" data-notes="Tiering repositories by what they touch is an idea that stops short of saying who does the tiering. A developer with one repository in front of them has to settle it, because the answer decides how strict every step after this one should be. The regulation asks for exactly this, a policy based on a risk assessment approach, and it never said the assessment had to be elaborate. The date matters because the answer expires: a repository that starts handling customer data has changed tier whether or not anybody wrote it down.">
       <div class="num">01</div>
       <p class="kicker">Step 1</p>
       <h2>Decide what this repository touches</h2>
-      <p class="means">The usual advice is to tier repositories by what they touch, and it never says who does the tiering. This repository needs its own answer first, because the answer decides how strict the rest of the list should be.</p>
+      <p class="means">Nothing settles this for you. Whether the repository moves money or holds customer data decides how strict every step after this one should be, so it goes first.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
@@ -319,7 +319,7 @@ change, security review required,
 no auto-merge.</pre>
         </div>
       </div>
-      <p class="note">One sentence in the README that a new joiner can find is <strong>more than most repositories have today</strong>.</p>
+      <p class="note">One dated sentence in the README, <strong>where a new joiner will find it</strong>.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
@@ -341,11 +341,11 @@ no auto-merge.</pre>
     </section>
 
     <!-- 5 -->
-    <section class="slide" data-notes="This is the step that gets skipped. A check that merely runs is advice. All four settings live in branch protection, or in a repository ruleset. Dismissing stale approvals matters more than it looks: it makes an approval refer to the code that actually merges, which is the cheapest defence there is against a record that says approved when nobody read the version that shipped.">
+    <section class="slide" data-notes="This is the step that gets skipped. A check that merely runs is advice. All four settings live in branch protection, or in a repository ruleset. Dismissing stale approvals matters more than it looks: it makes an approval refer to the code that actually merges, which is a cheap defence against a record that says approved when nobody read the version that shipped.">
       <div class="num">03</div>
       <p class="kicker">Step 3</p>
       <h2>Make the checks from step 2 block a merge</h2>
-      <p class="means">A check that runs is a suggestion. A check that blocks a merge is a control. This is the step that gets skipped.</p>
+      <p class="means">Running a check and requiring it are two different settings. A check that runs is a suggestion. A check that blocks a merge is a control.</p>
       <ul class="points">
         <li>Require the formatter, the linter, the tests and the static analysis pass, each by name</li>
         <li>Require a pull request before merging</li>
@@ -429,7 +429,7 @@ and nothing logs that it happened.
       <div class="num">06</div>
       <p class="kicker">Step 6</p>
       <h2>Ask the author for what no check can see</h2>
-      <p class="means">One template, the same questions in front of every change. The second heading is the load-bearing one, and it is the half most templates leave out.</p>
+      <p class="means">One template, the same questions in front of every change. The second heading is the load-bearing one.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
@@ -461,7 +461,7 @@ and nothing logs that it happened.
     </section>
 
     <!-- 9 -->
-    <section class="slide" data-notes="A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where N/A appears. Adyen's answer was a designated person re-reading changes that had already been approved, added because its reviewers said they had started to pattern-match after a dozen near-identical changes. It is the one fix anyone has published for a gate that decays while every approval stays human.">
+    <section class="slide" data-notes="A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where N/A appears. Adyen's answer was a designated person re-reading changes that had already been approved, added because its reviewers said they had started to pattern-match after a dozen near-identical changes. It is a fix for a gate that decays while every approval stays human.">
       <div class="num">07</div>
       <p class="kicker">Step 7</p>
       <h2>Watch for the day the approvals stop meaning anything</h2>
