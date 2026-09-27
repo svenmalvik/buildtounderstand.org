@@ -426,18 +426,18 @@ Chapter 04 was the order for the company. This is the same order in one reposito
 
 ## Slide 23 — Make the mechanical checks unskippable
 
-**Run them**
+**Run the checks**
 Format, lint, test and static analysis in a workflow file. Dependency and secret scanning switched on.
 
-**Require them**
-Require those checks by name. Require a pull request. Stop direct pushes to the default branch.
+**Require the checks**
+Require each check by name. Require a pull request. Stop direct pushes to the default branch.
 
-**Keep them honest**
+**Keep approvals current**
 Dismiss stale approvals when new commits land, so the approval refers to the code that actually merges.
 
 > A check that runs is a suggestion. A check that blocks a merge is a control.
 
-**Notes:** This is chapter 03's dividing line applied to one repository. Everything mechanically verifiable runs before a person looks at the change. Formatting, linting, the test suite and a static analysis pass go in a workflow file under .github/workflows. Dependency scanning is a dependabot.yml. Secret scanning is a toggle in the repository settings. Google's reason is the one from chapter 03: static analysis exists so that human review can focus on what is not mechanically verifiable. The second step is the one people skip. A check that merely runs is advice. In branch protection or a ruleset, require those status checks by name, require a pull request before merging, and stop direct pushes to the default branch. Then dismiss stale approvals when new commits land. That last setting is the cheapest defence in this whole deck against the third failure, where the record says approved and nobody read the version that shipped.
+**Notes:** This is chapter 03's dividing line applied to one repository. Everything mechanically verifiable runs before a person looks at the change. Formatting, linting, the test suite and a static analysis pass go in a workflow file under .github/workflows. Dependency scanning is a dependabot.yml. Secret scanning is a toggle in the repository settings. Google's reason is the one from chapter 03: static analysis exists so that human review can focus on what is not mechanically verifiable. The second step is the one people skip. A check that merely runs is advice. In branch protection or a ruleset, require those status checks by name, require a pull request before merging, and stop direct pushes to the default branch. Then dismiss stale approvals when new commits land. Dismissing stale approvals is the cheapest defence in this whole deck against the third failure, where the record says approved and nobody read the version that shipped.
 
 **Visual:** Three cards in the order they get done: run, require, keep honest. The quote is the sentence to say out loud.
 
