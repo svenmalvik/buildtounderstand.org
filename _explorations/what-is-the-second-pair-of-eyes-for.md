@@ -1150,17 +1150,19 @@ The comments prompt the author while they type and disappear from the rendered d
 
 The wording matters more than having a template at all. Chapter 04 cited a 2026 study of 80.000 pull requests where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code *and* asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter.
 
-**7. Watch the gate, not only the change**
-means: everything above decays quietly, and this is the only step that notices.
+**7. Watch for the day the approvals stop meaning anything**
+means: steps 1 to 6 can all be in place and still stop working, and nothing announces it when they do. The checks stay green, the approvals keep arriving, the template keeps getting filled in, and none of that requires a single person to have read the change. No setting reports this. Somebody has to go and look.
 
-- Put a recurring entry in a calendar, not in a tool
-- Read a sample of already-merged pull requests
-- Ask whether the approvals on those pull requests meant anything
-- Watch for the day "N/A" starts appearing in the template
+Once a month, read ten pull requests that were merged and ask what you are seeing:
 
-A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where "N/A" appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved. Nothing else in this list can tell you that the gate has stopped working.
+- Approvals that arrived a minute after the pull request opened, on changes too long to read in a minute
+- Template sections filled with "N/A", the branch name, or the commit message pasted back
+- The same person approving everything, including the parts they do not work on
+- Code owners approving changes to paths they have never otherwise touched
 
-**Verdict:** every item is a file in the repository or a setting on it, which is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 2 to 4 make that decision cheaper to reach, item 6 gives the decider something to read, and item 7 checks that the decision is still being made. None of them makes it.
+A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where "N/A" appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved, added because its reviewers said they had started to pattern-match after a dozen near-identical changes. That is the one fix in this document for a gate that decays while every approval stays human, and nothing else in this list would tell you it is happening here.
+
+**Verdict:** every item but the last is a file in the repository or a setting on it, and the last one is half an hour a month. That is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 2 to 4 make that decision cheaper to reach, item 6 gives the decider something to read, and item 7 checks that the decision is still being made. None of them makes it.
 
 **Pivot to Conclusion:** and I should say plainly that I have not run this list against our own repositories. I do not know how many of these settings are already on, which makes item 2 the first thing I owe this argument.
 
