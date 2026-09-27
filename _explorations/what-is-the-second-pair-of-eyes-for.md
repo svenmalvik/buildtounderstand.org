@@ -1003,7 +1003,12 @@ DHH describes using agents to screen pull requests while keeping the merge decis
        section 1 item 1, which lists exactly these controls and admits
        this document has not checked which are switched on. That
        admission is repeated here rather than quietly dropped.
-     - Item 3 (CODEOWNERS) — chapter 04 section 1 item 2 (tier by what
+     - Item 1 (decide what the repo touches) — chapter 04 section 1 item 2
+       tiers repositories but never says who does the tiering. Added 28 Sep
+       2026 after Sven asked whether a concrete repository has to settle its
+       own tier first. It does, because that answer sets the strictness of
+       items 3, 4 and 5, so it is now step 1 rather than an assumption.
+     - Item 4 (CODEOWNERS) — chapter 04 section 1 item 2 (tier by what
        the repo touches) and chapter 01's risk-based regulatory framing.
      - Item 4 (machine approval) — chapter 02 section 4, "The Approval
        Became a Setting": Copilot's approval can count toward required
@@ -1035,7 +1040,17 @@ DHH describes using agents to screen pull requests while keeping the merge decis
 
 **Frame:** Chapter 04 was the order for a company. A developer who agrees with all of it still has to do something on Monday, in one repository, and most of that list is somebody else's decision. This is the same order narrowed to the files and settings in front of one person. Nothing below needs a platform team, a budget, or a vendor.
 
-**1. Make the mechanical checks run on every change**
+**1. Decide what this repository touches, and write it down**
+means: chapter 04 tiered whole repositories by what they touch, and never said who does the tiering. This repository needs its own answer before any setting below, because the answer decides how strict the rest of the list should be.
+
+- Answer one question: does this repository move money, hold customer data, or neither?
+- Write the answer in the README, with the date
+- Say what follows from it: how many reviewers, whether a machine may approve, whether a security review is mandatory
+- Revisit the answer when the repository starts touching something new
+
+A payment repository and an internal dashboard are not the same bet, even when a change to each looks equally small. Chapter 01 found the regulation asking for exactly this, a policy "based on a risk assessment approach", and it never said the assessment had to be elaborate. One sentence in the README that a new joiner can find is more than most repositories have today.
+
+**2. Make the mechanical checks run on every change**
 means: chapter 03's dividing line, applied to one repository. Everything mechanically verifiable runs before a person looks at the change.
 
 - Formatting and linting, in a workflow file under `.github/workflows/`
@@ -1046,7 +1061,7 @@ means: chapter 03's dividing line, applied to one repository. Everything mechani
 
 Google's reason is the one chapter 03 quoted: static analysis exists so that human review can "focus on issues that are not mechanically verifiable." The alternative, at this scale, is a reviewer spending their attention on formatting.
 
-**2. Make the checks from step 1 block a merge**
+**3. Make the checks from step 2 block a merge**
 means: a check that runs is a suggestion. A check that blocks a merge is a control. This is the step that gets skipped.
 
 - Require the formatter, the linter, the tests and the static analysis pass, each by name
@@ -1056,8 +1071,8 @@ means: a check that runs is a suggestion. A check that blocks a merge is a contr
 
 All four settings live in branch protection, or in a repository ruleset. Dismissing stale approvals matters more than it looks: it makes an approval refer to the code that actually merges, which is the cheapest defence this document has found against chapter 02's third failure, where the record says approved and nobody read the version that shipped.
 
-**3. Name the owners of the paths that carry risk**
-means: chapter 04 tiered whole repositories by what they touch. Inside one repository the same idea fits in a file.
+**4. Name the owners of the paths that carry risk**
+means: step 1 settled what the whole repository touches. Some paths inside it carry more than the rest, and that difference fits in a file.
 
 - List the paths that move money or hold customer data
 - Give each one a named reviewer or team, in `.github/CODEOWNERS`
@@ -1065,7 +1080,7 @@ means: chapter 04 tiered whole repositories by what they touch. Inside one repos
 
 This is the risk-based approach the regulation asks for, written as a file rather than as a policy nobody reads. The file also answers a question the approval rule leaves open: not just that someone approved, but that someone who knows this code did.
 
-**4. Decide, in writing, whether a machine may approve here**
+**5. Decide, in writing, whether a machine may approve here**
 means: chapter 02 found the approval is now a setting. A setting with no owner is a decision nobody made.
 
 - Decide whether Copilot's review counts toward this repository's required approvals
@@ -1075,7 +1090,7 @@ means: chapter 02 found the approval is now a setting. A setting with no owner i
 
 Machine approval is off by default today. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
 
-**5. Ask the author for what no check can see**
+**6. Ask the author for what no check can see**
 means: the author's half of four eyes, in the one place a repository can host it.
 
 A `.github/pull_request_template.md` puts the same questions in front of every pull request:
@@ -1087,7 +1102,7 @@ A `.github/pull_request_template.md` puts the same questions in front of every p
 
 The wording matters more than having a template at all. Chapter 04 cited a 2026 study of 80.000 pull requests where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code *and* asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter.
 
-**6. Watch the gate, not only the change**
+**7. Watch the gate, not only the change**
 means: everything above decays quietly, and this is the only step that notices.
 
 - Put a recurring entry in a calendar, not in a tool
@@ -1097,7 +1112,7 @@ means: everything above decays quietly, and this is the only step that notices.
 
 A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where "N/A" appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved. Nothing else in this list can tell you that the gate has stopped working.
 
-**Verdict:** every item is a file in the repository or a setting on it, which is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 1 to 3 make that decision cheaper to reach, item 5 gives the decider something to read, and item 6 checks that the decision is still being made. None of them makes it.
+**Verdict:** every item is a file in the repository or a setting on it, which is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 2 to 4 make that decision cheaper to reach, item 6 gives the decider something to read, and item 7 checks that the decision is still being made. None of them makes it.
 
 **Pivot to Conclusion:** and I should say plainly that I have not run this list against our own repositories. I do not know how many of these settings are already on, which makes item 2 the first thing I owe this argument.
 

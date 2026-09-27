@@ -11,7 +11,7 @@ Presentation content derived from
   anything.
 - **Length:** ~40 minutes for the main line, leaving the rest of the slot for
   discussion
-- **Slides:** 29, of which 6 are chapter dividers, plus a 4-slide appendix
+- **Slides:** 30, of which 6 are chapter dividers, plus a 4-slide appendix
   held in reserve
 - **What the audience should leave with:** the three jobs one pull request does,
   the one line that does not move, five things to try in order, a first week
@@ -413,8 +413,9 @@ A required field decays into "N/A".
 
 Chapter 04 was the order for the company. This is the same order in one repository, with the file each step lives in.
 
+- First, decide what this repository touches
 - Make the mechanical checks unskippable
-- Two decisions the repository owner makes
+- Two decisions that follow from the tier
 - Ask the author for what no check can see
 - The first week
 
@@ -424,7 +425,24 @@ Chapter 04 was the order for the company. This is the same order in one reposito
 
 ---
 
-## Slide 23 — Make the mechanical checks unskippable
+## Slide 23 — First, decide what this repository touches
+
+Chapter 04 tiered repositories and never said who does the tiering. This repository has to answer for itself, because the answer sets how strict everything after it should be.
+
+- Does it move money, hold customer data, or neither?
+- Write the answer in the README, with the date
+- Say what follows: how many reviewers, whether a machine may approve, whether a security review is mandatory
+- Revisit it when the repository starts touching something new
+
+> One sentence in the README that a new joiner can find is more than most repositories have today.
+
+**Notes:** Chapter 04 said to tier repositories by what they touch, and never said who does the tiering. A developer with one repository in front of them has to settle it, because the answer decides how strict every step after this one should be: how many reviewers, whether a machine may approve, whether a security review is mandatory. A payment repository and an internal dashboard are not the same bet, even when a change to each looks equally small. Chapter 01 found the regulation asking for exactly this, a policy based on a risk assessment approach, and it never said the assessment had to be elaborate. One sentence in the README, dated, that a new joiner can find, is more than most repositories have today. The date matters because the answer expires: a repository that starts handling customer data has changed tier whether or not anybody wrote it down.
+
+**Visual:** The question as the body, the three answers left deliberately plain. This is a ten-minute decision, and the slide should look like one.
+
+---
+
+## Slide 24 — Make the mechanical checks unskippable
 
 **Run the checks**
 Format, lint, test and static analysis in a workflow file. Dependency and secret scanning switched on.
@@ -443,7 +461,7 @@ Dismiss stale approvals when new commits land, so the approval refers to the cod
 
 ---
 
-## Slide 24 — Two decisions the repository owner makes
+## Slide 25 — Two decisions that follow from the tier
 
 **Who reviews the paths that carry risk**
 A CODEOWNERS file requires a named reviewer for the code that moves money or touches customer data. The rest of the repository stays on the lighter default.
@@ -453,13 +471,13 @@ Off by default today. A payment repository and an internal dashboard may answer 
 
 > Write the second answer down, with the reason. A setting with no owner is a decision nobody made.
 
-**Notes:** Chapter 04 tiered whole repositories by what they touch. Inside one repository the same idea fits in a file. A CODEOWNERS file requires a named reviewer for the paths that move money or hold customer data, and leaves the rest on the lighter default. That is the risk-based approach the regulation asks for, written as a file rather than a policy nobody reads. It also answers something the approval rule leaves open: not just that someone approved, but that someone who knows this code did. The second decision comes from chapter 02. Whether Copilot's review counts toward this repository's required approvals is a per-repository choice, currently off by default. Write the answer down where the next person will find it, with the reason. Both repositories are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
+**Notes:** Step 1 settled what the whole repository touches. Both decisions here follow from that answer. A CODEOWNERS file requires a named reviewer for the paths that move money or hold customer data, and leaves the rest on the lighter default. That is the risk-based approach the regulation asks for, written as a file rather than a policy nobody reads. It also answers something the approval rule leaves open: not just that someone approved, but that someone who knows this code did. The second decision comes from chapter 02. Whether Copilot's review counts toward this repository's required approvals is a per-repository choice, currently off by default. Write the answer down where the next person will find it, with the reason. Both repositories are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
 
 **Visual:** Two cards, deliberately only two. The quote is the point: the second decision is the one nobody currently owns.
 
 ---
 
-## Slide 25 — Ask the author for what no check can see
+## Slide 26 — Ask the author for what no check can see
 
 One pull request template. The same questions in front of every change.
 
@@ -476,10 +494,11 @@ One pull request template. The same questions in front of every change.
 
 ---
 
-## Slide 26 — The first week
+## Slide 27 — The first week
 
 | When | Do | Where it lives |
 | --- | --- | --- |
+| Day 1 | Write down what this repository touches, and what follows from it | README |
 | Day 1 | Format, lint, test, static analysis on every change | .github/workflows/ |
 | Day 1 | Dependency and secret scanning | .github/dependabot.yml, repository settings |
 | Day 2 | Require those checks, require a pull request, stop direct pushes | Branch protection, or a ruleset |
@@ -497,7 +516,7 @@ Every line is a file or a setting, copied to the next repository in minutes and 
 
 ---
 
-## Slide 27 — Conclusion
+## Slide 28 — Conclusion
 
 *Divider slide.*
 
@@ -509,7 +528,7 @@ What moves, what doesn't, and what I still don't know.
 
 ---
 
-## Slide 28 — What moves, and what doesn't
+## Slide 29 — What moves, and what doesn't
 
 **Shorter queue**
 Turn on what is there. Centralize the mechanical. Log it. Tier by risk.
@@ -528,7 +547,7 @@ Restricting AI use. Open source defends against strangers. We employ our authors
 
 ---
 
-## Slide 29 — What I don't know yet
+## Slide 30 — What I don't know yet
 
 **Same team, or outside it?**
 Everything here assumes same-team approval is enough. The regulation does not say.
