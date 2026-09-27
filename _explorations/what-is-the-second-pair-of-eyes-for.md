@@ -1044,7 +1044,7 @@ DHH describes using agents to screen pull requests while keeping the merge decis
 means: chapter 04 tiered whole repositories by what they touch, and never said who does the tiering. This repository needs its own answer before any setting below, because the answer decides how strict the rest of the list should be.
 
 - Answer one question: does this repository move money, hold customer data, or neither?
-- Write the answer in the README, with the date
+- Write the answer in the README, under a short "Review rules" heading, with the date
 - Say what follows from it: how many reviewers, whether a machine may approve, whether a security review is mandatory
 - Revisit the answer when the repository starts touching something new
 
@@ -1102,11 +1102,21 @@ This is the risk-based approach the regulation asks for, written as a file rathe
 means: chapter 02 found the approval is now a setting. A setting with no owner is a decision nobody made.
 
 - Decide whether Copilot's review counts toward this repository's required approvals
-- Write the answer where the next person will look
+- Add the answer to the same "Review rules" heading in the README that step 1 started
 - Give the reason, not only the answer
 - Revisit the decision when what the repository touches changes
 
-Machine approval is off by default today. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
+The README is the answer to where, and the reason is the answer to why there. The setting itself has nowhere to hold a reason, and chapter 02 found that GitHub's organisation audit log records no event at all when a machine approves. So the repository's own README is the only place the decision survives in a form somebody can read later. Two lines are enough:
+
+```
+## Review rules
+Touches: customer money, through settlement and the ledger. 2026-09-28
+Machine approval: not allowed here. A machine approval would be the only
+approval on a change that moves money, and nothing logs that it happened.
+2026-09-28
+```
+
+If your team already keeps decision records, put the reasoning there and link it from the README, so that the README stays the index rather than becoming a second copy. Machine approval is off by default today. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
 
 **6. Ask the author for what no check can see**
 means: the author's half of four eyes, in the one place a repository can host it.

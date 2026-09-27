@@ -430,7 +430,7 @@ Chapter 04 was the order for the company. This is the same order in one reposito
 Chapter 04 tiered repositories and never said who does the tiering. This repository has to answer for itself, because the answer sets how strict everything after it should be.
 
 - Does it move money, hold customer data, or neither?
-- Write the answer in the README, with the date
+- Write the answer in the README, under a short "Review rules" heading
 - Say what follows: how many reviewers, whether a machine may approve, whether a security review is mandatory
 - Revisit it when the repository starts touching something new
 
@@ -469,9 +469,9 @@ A CODEOWNERS file requires a named reviewer for the code that moves money or tou
 **Whether a machine may approve here**
 Off by default today. A payment repository and an internal dashboard may answer differently. Neither should answer by accident.
 
-> Write the second answer down, with the reason. A setting with no owner is a decision nobody made.
+> Write it in the README next to the tier, with the reason. The setting has nowhere to hold one, and nothing logs a machine approval.
 
-**Notes:** Step 1 settled what the whole repository touches. Both decisions here follow from that answer. A CODEOWNERS file requires a named reviewer for the paths that move money or hold customer data, and leaves the rest on the lighter default. That is the risk-based approach the regulation asks for, written as a file rather than a policy nobody reads. It also answers something the approval rule leaves open: not just that someone approved, but that someone who knows this code did. The second decision comes from chapter 02. Whether Copilot's review counts toward this repository's required approvals is a per-repository choice, currently off by default. Write the answer down where the next person will find it, with the reason. Both repositories are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
+**Notes:** Step 1 settled what the whole repository touches. Both decisions here follow from that answer. A CODEOWNERS file requires a named reviewer for the paths that move money or hold customer data, and leaves the rest on the lighter default. That is the risk-based approach the regulation asks for, written as a file rather than a policy nobody reads. It also answers something the approval rule leaves open: not just that someone approved, but that someone who knows this code did. The second decision comes from chapter 02. Whether Copilot's review counts toward this repository's required approvals is a per-repository choice, currently off by default. Write the answer into the README under the same Review rules heading step 1 started, with the reason. The setting has nowhere to hold a reason, and chapter 02 found GitHub's organisation audit log records no event at all when a machine approves, so the README is the only place the decision survives. Both repositories are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
 
 **Visual:** Two cards, deliberately only two. The quote is the point: the second decision is the one nobody currently owns.
 
@@ -498,13 +498,13 @@ One pull request template. The same questions in front of every change.
 
 | When | Do | Where it lives |
 | --- | --- | --- |
-| Day 1 | Write down what this repository touches, and what follows from it | README |
+| Day 1 | Write down what this repository touches, and what follows from it | README, under "Review rules" |
 | Day 1 | Format, lint, test, static analysis on every change | .github/workflows/ |
 | Day 1 | Dependency and secret scanning | .github/dependabot.yml, repository settings |
 | Day 2 | Require those checks, require a pull request, stop direct pushes | Branch protection, or a ruleset |
 | Day 2 | Dismiss stale approvals when new commits land | The same place |
 | Day 3 | A named reviewer for the paths that carry risk | .github/CODEOWNERS |
-| Day 3 | Whether a machine may approve here, and why | Written down where the next person looks |
+| Day 3 | Whether a machine may approve here, and why | README, under "Review rules" |
 | Day 4 | The template that explains and asks | .github/pull_request_template.md |
 | Ongoing | Read a sample of already-approved changes | A calendar entry, not a tool |
 
