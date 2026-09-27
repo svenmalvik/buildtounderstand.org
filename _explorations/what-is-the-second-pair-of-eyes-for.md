@@ -1048,6 +1048,16 @@ means: chapter 04 tiered whole repositories by what they touch, and never said w
 - Say what follows from it: how many reviewers, whether a machine may approve, whether a security review is mandatory
 - Revisit the answer when the repository starts touching something new
 
+Two lines, for a repository that settles payments:
+
+```
+## Review rules
+
+Touches: customer money, through settlement and the ledger.  2026-09-28
+What follows: two reviewers on every change, security review required,
+no auto-merge.
+```
+
 A payment repository and an internal dashboard are not the same bet, even when a change to each looks equally small. Chapter 01 found the regulation asking for exactly this, a policy "based on a risk assessment approach", and it never said the assessment had to be elaborate. One sentence in the README that a new joiner can find is more than most repositories have today.
 
 **2. Make the mechanical checks run on every change**
@@ -1106,11 +1116,15 @@ means: chapter 02 found the approval is now a setting. A setting with no owner i
 - Give the reason, not only the answer
 - Revisit the decision when what the repository touches changes
 
-The README is the answer to where, and the reason is the answer to why there. The setting itself has nowhere to hold a reason, and chapter 02 found that GitHub's organisation audit log records no event at all when a machine approves. So the repository's own README is the only place the decision survives in a form somebody can read later. Two lines are enough:
+The README is the answer to where, and the reason is the answer to why there. The setting itself has nowhere to hold a reason, and chapter 02 found that GitHub's organisation audit log records no event at all when a machine approves. So the repository's own README is the only place the decision survives in a form somebody can read later. Added to the block step 1 started, it reads:
 
 ```
 ## Review rules
-Touches: customer money, through settlement and the ledger. 2026-09-28
+
+Touches: customer money, through settlement and the ledger.  2026-09-28
+What follows: two reviewers on every change, security review required,
+no auto-merge.
+
 Machine approval: not allowed here. A machine approval would be the only
 approval on a change that moves money, and nothing logs that it happened.
 2026-09-28

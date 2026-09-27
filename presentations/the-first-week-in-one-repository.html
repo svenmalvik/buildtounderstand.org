@@ -73,6 +73,7 @@
     line-height: 1.16;
     margin: 0 0 8px;
     letter-spacing: -.015em;
+    max-width: 950px;
   }
   .rule {
     width: 96px;
@@ -247,12 +248,26 @@
       <p class="kicker">Step 1</p>
       <h2>Decide what this repository touches</h2>
       <p class="means">Chapter 04 tiered whole repositories and never said who does the tiering. This repository needs its own answer first, because the answer decides how strict the rest of the list should be.</p>
-      <ul class="points">
-        <li>Answer one question: does it move money, hold customer data, or neither?</li>
-        <li>Write the answer in the README, under a short &ldquo;Review rules&rdquo; heading, with the date</li>
-        <li>Say what follows: how many reviewers, whether a machine may approve, whether a security review is mandatory</li>
-        <li>Revisit it when the repository starts touching something new</li>
-      </ul>
+      <div class="cols">
+        <div>
+          <ul class="points" style="margin-bottom:0">
+            <li>Does it move money, hold customer data, or neither?</li>
+            <li>Write the answer in the README, under &ldquo;Review rules&rdquo;, with the date</li>
+            <li>Say what follows: reviewers, machine approval, security review</li>
+            <li>Revisit it when the repository starts touching something new</li>
+          </ul>
+        </div>
+        <div>
+<pre><span class="c">## Review rules</span>
+
+<span class="k">Touches:</span> customer money, through
+settlement and the ledger.  <span class="t">2026-09-28</span>
+
+<span class="k">What follows:</span> two reviewers on every
+change, security review required,
+no auto-merge.</pre>
+        </div>
+      </div>
       <p class="note">One sentence in the README that a new joiner can find is <strong>more than most repositories have today</strong>.</p>
       <div class="foot"><span>Build to Understand</span><span class="pg"></span></div>
     </section>
@@ -326,8 +341,8 @@
     <section class="slide" data-notes="Chapter 02 found the approval is now a setting: since 1 September 2026 a Copilot review can count toward a repository's required approvals, off by default. A setting with no owner is a decision nobody made. The README is the answer to where, and the reason is the answer to why there. The setting itself has nowhere to hold a reason, and GitHub's organisation audit log records no event at all when a machine approves, so the repository's own README is the only place the decision survives in a form somebody can read later.">
       <div class="num">05</div>
       <p class="kicker">Step 5</p>
-      <h2>Decide, in writing, whether a machine may approve here</h2>
-      <p class="means">A setting with no owner is a decision nobody made. The README is the answer to where. The reason is the answer to why there.</p>
+      <h2>Decide whether a machine may approve here</h2>
+      <p class="means">Write it down. A setting with no owner is a decision nobody made. The README is the answer to where, and the reason is the answer to why there.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
@@ -338,14 +353,20 @@
           </ul>
         </div>
         <div>
-<pre><span class="c">## Review rules</span>
-Touches: customer money, through settlement
-and the ledger. <span class="t">2026-09-28</span>
+<pre><span class="c">## Review rules
 
-Machine approval: <span class="k">not allowed here</span>. A machine
-approval would be the only approval on a
-change that moves money, and nothing logs
-that it happened. <span class="t">2026-09-28</span></pre>
+Touches: customer money, through
+settlement and the ledger.  2026-09-28
+
+What follows: two reviewers on every
+change, security review required,
+no auto-merge.</span>
+
+<span class="k">Machine approval:</span> not allowed here. A
+machine approval would be the only
+approval on a change that moves money,
+and nothing logs that it happened.
+<span class="t">2026-09-28</span></pre>
         </div>
       </div>
       <p class="note">The setting has nowhere to hold a reason, and <strong>nothing logs a machine approval</strong>. The README is where the decision survives.</p>
