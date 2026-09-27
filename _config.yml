@@ -34,3 +34,7 @@ exclude:
   - CLAUDE.md
   - README.md
   - _templates
+  # Working material. Kept in the repository, kept off the published site.
+  - presentations
+  - research
+  - linkedin
