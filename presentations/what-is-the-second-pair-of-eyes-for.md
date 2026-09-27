@@ -9,21 +9,23 @@ Presentation content derived from
   building a review service. Collect reactions, especially disagreement.
   **This is not a decision meeting.** Nobody is being asked to approve or fund
   anything.
-- **Length:** ~30 minutes for the main line, leaving the rest of the slot for
+- **Length:** ~40 minutes for the main line, leaving the rest of the slot for
   discussion
-- **Slides:** 24, of which 5 are chapter dividers, plus a 4-slide appendix
+- **Slides:** 29, of which 6 are chapter dividers, plus a 4-slide appendix
   held in reserve
 - **What the audience should leave with:** the three jobs one pull request does,
-  the one line that does not move, five things to try in order, and a clear
-  sense of where the reasoning is thin
+  the one line that does not move, five things to try in order, a first week
+  they can run in their own repository, and a clear sense of where the
+  reasoning is thin
 - **Rendering format:** two PowerPoint builds of this same content:
   `…-eyes-for.pptx` (neutral dark theme) and `…-eyes-for-vippsmobilepay.pptx`
   (Vipps MobilePay corporate design: Off White / Dark Blue surfaces, VM Orange
   and VM Blue balanced, Arial as the sanctioned substitute for the brand fonts)
 
-**Four chapters and a conclusion**, each opened by a divider slide carrying the
+**Five chapters and a conclusion**, each opened by a divider slide carrying the
 chapter question and the slides inside it. The structure follows the exploration's
-own chapters.
+own chapters. Chapter 05 is the practical one: what a developer does in a single
+repository, and it is the only chapter that names files and settings.
 
 **One idea per slide.** Each slide carries one claim and one piece of evidence,
 about 50 words. The reasoning behind it sits in the *Notes* block under each
@@ -405,7 +407,97 @@ A required field decays into "N/A".
 
 ---
 
-## Slide 22 — Conclusion
+## Slide 22 — Chapter 05: What would I do in one repository?
+
+*Divider slide.*
+
+Chapter 04 was the order for the company. This is the same order in one repository, with the file each step lives in.
+
+- Make the mechanical checks unskippable
+- Two decisions the repository owner makes
+- Ask the author for what no check can see
+- The first week
+
+**Notes:** Everything so far has been a decision somebody else makes. This chapter is for the developer who agrees with the argument and wants to do something on Monday. Nothing in it needs a platform team, a budget, or a vendor. Every item is a file in the repository or a setting on it.
+
+**Visual:** Chapter divider, same treatment as the others. This is the practical chapter, so the items read as actions rather than questions.
+
+---
+
+## Slide 23 — Make the mechanical checks unskippable
+
+**Run them**
+Format, lint, test and static analysis in a workflow file. Dependency and secret scanning switched on.
+
+**Require them**
+Require those checks by name. Require a pull request. Stop direct pushes to the default branch.
+
+**Keep them honest**
+Dismiss stale approvals when new commits land, so the approval refers to the code that actually merges.
+
+> A check that runs is a suggestion. A check that blocks a merge is a control.
+
+**Notes:** This is chapter 03's dividing line applied to one repository. Everything mechanically verifiable runs before a person looks at the change. Formatting, linting, the test suite and a static analysis pass go in a workflow file under .github/workflows. Dependency scanning is a dependabot.yml. Secret scanning is a toggle in the repository settings. Google's reason is the one from chapter 03: static analysis exists so that human review can focus on what is not mechanically verifiable. The second step is the one people skip. A check that merely runs is advice. In branch protection or a ruleset, require those status checks by name, require a pull request before merging, and stop direct pushes to the default branch. Then dismiss stale approvals when new commits land. That last setting is the cheapest defence in this whole deck against the third failure, where the record says approved and nobody read the version that shipped.
+
+**Visual:** Three cards in the order they get done: run, require, keep honest. The quote is the sentence to say out loud.
+
+---
+
+## Slide 24 — Two decisions the repository owner makes
+
+**Who reviews the paths that carry risk**
+A CODEOWNERS file requires a named reviewer for the code that moves money or touches customer data. The rest of the repository stays on the lighter default.
+
+**Whether a machine may approve here**
+Off by default today. A payment repository and an internal dashboard may answer differently. Neither should answer by accident.
+
+> Write the second answer down, with the reason. A setting with no owner is a decision nobody made.
+
+**Notes:** Chapter 04 tiered whole repositories by what they touch. Inside one repository the same idea fits in a file. A CODEOWNERS file requires a named reviewer for the paths that move money or hold customer data, and leaves the rest on the lighter default. That is the risk-based approach the regulation asks for, written as a file rather than a policy nobody reads. It also answers something the approval rule leaves open: not just that someone approved, but that someone who knows this code did. The second decision comes from chapter 02. Whether Copilot's review counts toward this repository's required approvals is a per-repository choice, currently off by default. Write the answer down where the next person will find it, with the reason. Both repositories are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
+
+**Visual:** Two cards, deliberately only two. The quote is the point: the second decision is the one nobody currently owns.
+
+---
+
+## Slide 25 — Ask the author for what no check can see
+
+One pull request template. The same questions in front of every change.
+
+- What changed, and why it belongs here
+- What you want looked at, specifically
+- How to undo it
+- Which parts an agent wrote
+
+> Across 80.000 pull requests, descriptions rarely changed the review. The exception was one that explains the code and asks for a specific kind of feedback. So ask for both.
+
+**Notes:** This is the author's half of four eyes, in the one place a repository can host it. A pull_request_template.md in the .github folder puts the same questions in front of every pull request. The wording matters more than the existence. Chapter 04 cited a 2026 study of 80.000 pull requests across 156 projects where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code and asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter. One honest limit: a template is a prompt, not a control. GitHub prefills it and nothing stops someone deleting it. Enforcing it takes a CI check, and an enforced field is exactly where N/A appears.
+
+**Visual:** The four questions as the body of the slide, because they are the deliverable. The quote carries the one finding that shapes the wording.
+
+---
+
+## Slide 26 — The first week
+
+| When | Do | Where it lives |
+| --- | --- | --- |
+| Day 1 | Format, lint, test, static analysis on every change | .github/workflows/ |
+| Day 1 | Dependency and secret scanning | .github/dependabot.yml, repository settings |
+| Day 2 | Require those checks, require a pull request, stop direct pushes | Branch protection, or a ruleset |
+| Day 2 | Dismiss stale approvals when new commits land | The same place |
+| Day 3 | A named reviewer for the paths that carry risk | .github/CODEOWNERS |
+| Day 3 | Whether a machine may approve here, and why | Written down where the next person looks |
+| Day 4 | The template that explains and asks | .github/pull_request_template.md |
+| Ongoing | Read a sample of already-approved changes | A calendar entry, not a tool |
+
+Every line is a file or a setting, copied to the next repository in minutes and reverted by deleting a line. **I have not checked which of these are already on in ours.**
+
+**Notes:** The last row is the one nothing else covers. Everything above it decays quietly, and only a person re-reading approved changes notices. That is Adyen's fix from chapter 02, the one regulated payment company in this deck, whose reviewers said they had started to pattern-match after a dozen near-identical changes. At one-repository scale it is a recurring calendar entry rather than a tool: read a sample of merged pull requests and ask whether the approvals on them meant anything. On leverage and freedom: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first. Each item is reverted by deleting a line, with no vendor to ask. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Days 1 to 3 make that decision cheaper to reach, day 4 gives the decider something to read, and the last row checks that the decision is still being made. None of them makes it. And I owe this argument the check in the last line: I do not know how many of these settings are already on in our repositories.
+
+**Visual:** The table takes the width and is the takeaway slide, the one worth photographing. The closing line keeps the unverified claim visible instead of letting the table look like a finished audit.
+
+---
+
+## Slide 27 — Conclusion
 
 *Divider slide.*
 
@@ -417,7 +509,7 @@ What moves, what doesn't, and what I still don't know.
 
 ---
 
-## Slide 23 — What moves, and what doesn't
+## Slide 28 — What moves, and what doesn't
 
 **Shorter queue**
 Turn on what is there. Centralize the mechanical. Log it. Tier by risk.
@@ -436,7 +528,7 @@ Restricting AI use. Open source defends against strangers. We employ our authors
 
 ---
 
-## Slide 24 — What I don't know yet
+## Slide 29 — What I don't know yet
 
 **Same team, or outside it?**
 Everything here assumes same-team approval is enough. The regulation does not say.

@@ -956,7 +956,91 @@ DHH describes using agents to screen pull requests while keeping the merge decis
 
 **Verdict:** cost isn't the reason to hesitate on any of these five — none of them lock you in the way a managed review service would. The risks are whether the team that owns the machinery survives and whether the people making the final decisions can still understand the system they accept.
 
-**Pivot to Conclusion:** that is the actual case for trying these first, not just the cheap one — every one of them can be left without asking a vendor's permission.
+**Pivot to chapter 05:** that is the actual case for trying these first, not just the cheap one — every one of them can be left without asking a vendor's permission. What none of it says yet is what a developer does on Monday morning, in one repository, with nobody's permission but their own.
+
+<div class="chapter-heading chapter-heading--compact">
+  <span class="chapter-heading__number" aria-hidden="true">05</span>
+  <div>
+    <h2 id="what-would-i-do-in-one-repository">What Would I Do in One Repository?</h2>
+  </div>
+</div>
+
+### The First Week in One Repository
+<!-- Chapter 05, section 1 of 1. Added 28 Sep 2026 after Sven asked for
+     the concrete next steps a developer can take in a single repository:
+     "As a developer I want to know exactly what next steps I should
+     take", naming automated static checks and GitHub pull request
+     templates as examples.
+     This chapter introduces NO new research. Every claim traces to a
+     block already in this document, and the items are chapter 04's
+     org-level list narrowed to one repository. Traceability:
+     - Item 1 (mechanical checks) — chapter 03 section 3, "Most Checks
+       Don't Need Judgment": Google's line that static analysis exists so
+       human review can "focus on issues that are not mechanically
+       verifiable."
+     - Item 2 (required checks, dismiss stale approvals) — chapter 04
+       section 1 item 1, which lists exactly these controls and admits
+       this document has not checked which are switched on. That
+       admission is repeated here rather than quietly dropped.
+     - Item 3 (CODEOWNERS) — chapter 04 section 1 item 2 (tier by what
+       the repo touches) and chapter 01's risk-based regulatory framing.
+     - Item 4 (machine approval) — chapter 02 section 4, "The Approval
+       Became a Setting": Copilot's approval can count toward required
+       approvals since 1 Sep 2026, off by default, and nobody owns the
+       decision.
+     - Item 5 (pull request template) — chapter 04 section 1 item 5. The
+       load-bearing finding is Pirouzkhah, Wurzel Gonçalves & Bacchelli,
+       MSR '26: across 80.000 pull requests, description elements show
+       largely negligible relationships with review outcomes EXCEPT a
+       description that explains the code AND asks for a specific kind of
+       feedback. The template therefore asks for both. Do not soften this
+       into "write a good description", which is what the study found
+       does not matter.
+     - Item 6 (watch the gate) — chapter 02's Adyen spot-audit, the one
+       fix in this document for a gate that decays while every approval
+       stays human.
+     GitHub mechanics named here are all real and current: workflow files
+     under .github/workflows/, .github/dependabot.yml, secret scanning as
+     a repository toggle, branch protection and rulesets (required status
+     checks, require a pull request, restrict direct pushes, dismiss
+     stale approvals), .github/CODEOWNERS, and
+     .github/pull_request_template.md. Deliberately NOT claimed: that a
+     pull request template can have required fields. It cannot; GitHub
+     renders it as a prefilled body. Enforcement needs a CI check or a
+     bot, and the text says so, because that is where the "N/A" failure
+     enters.
+     Still open, unchanged by this chapter: which of these are already on
+     in our repositories. -->
+
+**Frame:** Chapter 04 was the order for a company. A developer who agrees with all of it still has to do something on Monday, in one repository, and most of that list is somebody else's decision. This is the same order narrowed to the files and settings in front of one person. Nothing below needs a platform team, a budget, or a vendor.
+
+**1. Make the mechanical checks run on every change**
+means: chapter 03's dividing line, applied to one repository. Everything mechanically verifiable runs before a person looks at the change.
+Formatting, linting, the test suite, and a static analysis pass belong in a workflow file under `.github/workflows/`. Dependency scanning is a `.github/dependabot.yml`. Secret scanning is a toggle in the repository settings. Google's reason is the one chapter 03 quoted: static analysis exists so that human review can "focus on issues that are not mechanically verifiable." The alternative, at this scale, is a reviewer spending their attention on formatting.
+
+**2. Make them required, so they cannot be skipped**
+means: a check that runs is a suggestion. A check that blocks a merge is a control. This is the step that gets skipped.
+In branch protection, or in a repository ruleset: require those status checks by name, require a pull request before merging, and stop direct pushes to the default branch. Then dismiss stale approvals when new commits land, so that an approval refers to the code that actually merges. That last setting is the cheapest defence this document has found against chapter 02's third failure, where the record says approved and nobody read the version that shipped.
+
+**3. Name the owners of the paths that carry risk**
+means: chapter 04 tiered whole repositories by what they touch. Inside one repository the same idea fits in a file.
+A `.github/CODEOWNERS` file requires a named reviewer for the paths that move money or touch customer data, and leaves the rest of the repository on the lighter default. This is the risk-based approach the regulation asks for, written as a file rather than as a policy nobody reads. It also answers a question the approval rule leaves open: not just that someone approved, but that someone who knows this code did.
+
+**4. Decide, in writing, whether a machine may approve here**
+means: chapter 02 found the approval is now a setting. A setting with no owner is a decision nobody made.
+Whether Copilot's review counts toward this repository's required approvals is a per-repository choice, currently off by default. Write the answer down where the next person will find it, with the reason. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
+
+**5. Ask the author for what no check can see**
+means: the author's half of four eyes, in the one place a repository can host it.
+A `.github/pull_request_template.md` puts the same questions in front of every pull request: what changed, why it belongs here, what the author wants looked at, how to undo it, and which parts an agent wrote. The wording matters more than the existence. Chapter 04 cited a 2026 study of 80.000 pull requests where description elements made largely negligible difference to review outcomes, with one exception: a description that explains the code *and* asks for a specific kind of feedback. So the template asks for both. A template that only asks for a summary is asking for the thing the study found does not matter.
+
+**6. Watch the gate, not only the change**
+means: everything above decays quietly, and this is the only step that notices.
+A template is a prompt, not a control. GitHub prefills it and nothing stops a developer from deleting it, so enforcing it takes a CI check, and an enforced field is exactly where "N/A" appears. Adyen's answer, from chapter 02, was a designated person re-reading changes that had already been approved. In one repository that is a recurring calendar entry rather than a tool: read a sample of merged pull requests and ask whether the approvals on them meant anything. Nothing else in this list can tell you that it has stopped working.
+
+**Verdict:** every item is a file in the repository or a setting on it, which is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 1 to 3 make that decision cheaper to reach, item 5 gives the decider something to read, and item 6 checks that the decision is still being made. None of them makes it.
+
+**Pivot to Conclusion:** and I should say plainly that I have not run this list against our own repositories. I do not know how many of these settings are already on, which makes item 2 the first thing I owe this argument.
 
 <div class="chapter-heading chapter-heading--finale">
   <h2 id="conclusion">Conclusion</h2>
