@@ -362,7 +362,7 @@ no auto-merge.</pre>
       <h2>Make the checks from step 2 block a merge</h2>
       <p class="means">By default a failing check does not stop anyone. Running a check and requiring it are two different settings. A check that runs is a suggestion. A check that blocks a merge is a rule.</p>
       <ul class="points">
-        <li>Require each check by name, so a renamed check cannot quietly stop counting</li>
+        <li>Name each check in the settings, one by one. A check you add later is not required until you add it to that list</li>
         <li>Require a pull request before anything is merged</li>
         <li>Stop anyone pushing straight to the main branch</li>
         <li>Cancel an approval when new commits arrive after it</li>
