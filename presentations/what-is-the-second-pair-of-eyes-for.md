@@ -428,14 +428,14 @@ Chapter 04 was the order for the company. This is the same order in one reposito
 
 ## Slide 23 — First, decide what this repository touches
 
-Chapter 04 tiered repositories and never said who does the tiering. This repository has to answer for itself, because the answer sets how strict everything after it should be.
+Chapter 04 tiered repositories and never said who does the tiering. Every step after this one is stricter or lighter depending on the answer. Without one, this repository gets the same treatment as every other, whatever it holds.
 
 - Does it move money, hold customer data, or neither?
 - Write the answer in the README, under a short "Review rules" heading
 - Say what follows: how many reviewers, whether a machine may approve, whether a security review is mandatory
 - Revisit it when the repository starts touching something new
 
-> One sentence in the README that a new joiner can find is more than most repositories have today.
+> It is also the risk assessment the rules ask for: a policy "based on a risk assessment approach", with nothing said about it having to be elaborate.
 
 **Notes:** Chapter 04 said to tier repositories by what they touch, and never said who does the tiering. A developer with one repository in front of them has to settle it, because the answer decides how strict every step after this one should be: how many reviewers, whether a machine may approve, whether a security review is mandatory. A payment repository and an internal dashboard are not the same bet, even when a change to each looks equally small. Chapter 01 found the regulation asking for exactly this, a policy based on a risk assessment approach, and it never said the assessment had to be elaborate. One sentence in the README, dated, that a new joiner can find, is more than most repositories have today. The date matters because the answer expires: a repository that starts handling customer data has changed tier whether or not anybody wrote it down.
 
