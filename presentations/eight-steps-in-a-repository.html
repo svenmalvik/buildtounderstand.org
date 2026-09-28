@@ -361,13 +361,31 @@ no auto-merge.</pre>
       <p class="kicker">Step 3</p>
       <h2>Make the checks from step 2 block a merge</h2>
       <p class="means">By default a failing check does not stop anyone. Running a check and requiring it are two different settings. A check that runs is a suggestion. A check that blocks a merge is a rule.</p>
-      <ul class="points">
-        <li>Name each check in the settings, one by one. A check you add later is not required until you add it to that list</li>
-        <li>Require a pull request before anything is merged</li>
-        <li>Stop anyone pushing straight to the main branch</li>
-        <li>Cancel an approval when new commits arrive after it</li>
-      </ul>
-      <p class="note">All four are settings on the repository, under branch protection or a ruleset. <strong>The last one matters most.</strong> Without it, someone can approve a change and then add more code that nobody has read.</p>
+      <div class="cols">
+        <div>
+          <ul class="points" style="margin-bottom:0">
+            <li>Name each check in the list, one by one. A check you add later is not required until you add it here too</li>
+            <li>Require a pull request before anything is merged</li>
+            <li>Stop anyone pushing straight to the main branch</li>
+            <li>Cancel an approval when new commits arrive after it</li>
+          </ul>
+        </div>
+        <div>
+<pre><span class="c">Settings &gt; Branches &gt; main</span>
+
+<span class="k">[x]</span> Require a pull request before merging
+    <span class="k">[x]</span> Dismiss stale approvals when new
+        commits are pushed
+
+<span class="k">[x]</span> Require status checks to pass
+      <span class="t">lint</span>
+      <span class="t">test</span>
+      <span class="t">static-analysis</span>
+
+<span class="k">[x]</span> Restrict who can push to this branch</pre>
+        </div>
+      </div>
+      <p class="note"><strong>The last one matters most.</strong> Without it, someone can approve a change and then add code nobody has read.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 

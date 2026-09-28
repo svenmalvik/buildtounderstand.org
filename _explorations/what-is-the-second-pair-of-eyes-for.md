@@ -1088,7 +1088,21 @@ means: a check that runs is a suggestion. A check that blocks a merge is a contr
 - Stop direct pushes to the default branch
 - Dismiss stale approvals when new commits land
 
-All four settings live in branch protection, or in a repository ruleset. Dismissing stale approvals matters more than it looks: it makes an approval refer to the code that actually merges, which is the cheapest defence this document has found against chapter 02's third failure, where the record says approved and nobody read the version that shipped.
+All four live in the same place, under `Settings > Branches` for a classic branch protection rule, or `Settings > Rules > Rulesets` for the newer form:
+
+```
+[x] Require a pull request before merging
+    [x] Dismiss stale approvals when new commits are pushed
+
+[x] Require status checks to pass
+      lint
+      test
+      static-analysis
+
+[x] Restrict who can push to this branch
+```
+
+Each check has to be listed by name, and a check added to the pipeline later is not required until somebody adds it to that list as well. Until then it runs, it can fail, and the merge still goes through. Dismissing stale approvals matters more than it looks: it makes an approval refer to the code that actually merges, which is the cheapest defence this document has found against chapter 02's third failure, where the record says approved and nobody read the version that shipped.
 
 **4. Name the owners of the paths that carry risk**
 means: step 1 settled what the whole repository touches. Some paths inside it carry more than the rest, and that difference fits in a file.
