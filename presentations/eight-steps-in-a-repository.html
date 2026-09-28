@@ -273,7 +273,8 @@
     <section class="slide dark on" data-notes="Everything in the wider argument about code review is a decision somebody else makes. This deck is for the developer who agrees with it and wants to do something on Monday. Nothing in it needs a platform team, a budget, or a vendor.">
       <p class="kicker">Build to Understand</p>
       <h1>Eight Steps<br><span class="hl">in a Repository</span></h1>
-      <p class="lede">Eight steps, in the order I would do them. Every one is a file in the repository or a setting on it, except the last, which is half an hour a month.</p>
+      <p class="lede">A person still has to approve every change. These eight steps are meant to make that approval mean something.</p>
+      <p class="lede" style="font-size:18px;color:#a9a5b8">Seven of them are one file you add, or one setting you turn on. The eighth is half an hour of reading, once a month.</p>
       <div class="shapes"><i class="dot"></i><i class="sq"></i></div>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
@@ -282,6 +283,7 @@
     <section class="slide" data-notes="This is the agenda. Eight steps, in the order they get done. The two orange beads are the ones to slow down on: deciding what the repository touches, and deciding whether a machine may approve here. Both are judgements, both have to be written down, and the second is a setting that stays unanswered unless somebody answers it. The five blue ones are configuration, done once. The dashed one repeats: half an hour a month, and it is the only step that notices when the rest has stopped working. Everything on this track is in front of one person. None of it needs a platform team, a budget, or a vendor, which is what makes it worth doing before anything larger.">
       <p class="kicker">The agenda</p>
       <h2>Eight steps, in the order they get done</h2>
+      <p class="means" style="margin-bottom:0">When a change is approved, the approval should mean a person read it and understood it. These steps are what makes that true inside one repository.</p>
 
       <div class="agenda">
       <div class="track">
@@ -311,7 +313,7 @@
       <div class="num">01</div>
       <p class="kicker">Step 1</p>
       <h2>Decide what this repository touches</h2>
-      <p class="means">Every step after this one is stricter or lighter depending on the answer. Without one, this repository gets the same treatment as every other, whatever it holds.</p>
+      <p class="means">The answer decides how strict the later steps should be. A repository that moves money needs more care than one that runs an internal dashboard. If nobody decides, both are treated the same.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
@@ -332,7 +334,7 @@ change, security review required,
 no auto-merge.</pre>
         </div>
       </div>
-      <p class="note">It is also the risk assessment the rules ask for: a policy <strong>based on a risk assessment approach</strong>, with nothing said about it having to be elaborate. One dated sentence in the README.</p>
+      <p class="note">Financial rules ask for the same thing. They say the policy must be <strong>based on a risk assessment</strong>, and they never say the assessment has to be long. One dated sentence in the README is enough.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
@@ -341,15 +343,15 @@ no auto-merge.</pre>
       <div class="num">02</div>
       <p class="kicker">Step 2</p>
       <h2>Make the mechanical checks run on every change</h2>
-      <p class="means">Everything mechanically verifiable runs before a person looks at the change.</p>
+      <p class="means">Some things a machine can check on its own, with no judgement needed. Those checks should run before a person reads the change, so the reviewer never spends attention on them.</p>
       <ul class="points">
-        <li>Formatting and linting, in a workflow file under <code>.github/workflows/</code></li>
-        <li>The test suite, in the same file</li>
-        <li>A static analysis pass, in the same file</li>
-        <li>Dependency scanning, in <code>.github/dependabot.yml</code></li>
-        <li>Secret scanning, a toggle in the repository settings</li>
+        <li>Formatting and style, so no reviewer spends time on spacing</li>
+        <li>The test suite</li>
+        <li>Static analysis, a tool that reads the code and flags known mistakes</li>
+        <li>Dependency scanning, a warning when a library has a known problem</li>
+        <li>Secret scanning, which catches a password or key committed by accident</li>
       </ul>
-      <p class="note">Google's own reason: static analysis exists so that human review can <strong>&ldquo;focus on issues that are not mechanically verifiable.&rdquo;</strong></p>
+      <p class="note">The first three run from one file, <code>.github/workflows/</code>. Dependency scanning is <code>.github/dependabot.yml</code>. Secret scanning is a switch in the repository settings. Google's reason for all of it: leave human review for <strong>the questions a machine cannot answer</strong>.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
@@ -358,14 +360,14 @@ no auto-merge.</pre>
       <div class="num">03</div>
       <p class="kicker">Step 3</p>
       <h2>Make the checks from step 2 block a merge</h2>
-      <p class="means">Running a check and requiring it are two different settings. A check that runs is a suggestion. A check that blocks a merge is a control.</p>
+      <p class="means">By default a failing check does not stop anyone. Running a check and requiring it are two different settings. A check that runs is a suggestion. A check that blocks a merge is a rule.</p>
       <ul class="points">
-        <li>Require the formatter, the linter, the tests and the static analysis pass, each by name</li>
-        <li>Require a pull request before merging</li>
-        <li>Stop direct pushes to the default branch</li>
-        <li>Dismiss stale approvals when new commits land</li>
+        <li>Require each check by name, so a renamed check cannot quietly stop counting</li>
+        <li>Require a pull request before anything is merged</li>
+        <li>Stop anyone pushing straight to the main branch</li>
+        <li>Cancel an approval when new commits arrive after it</li>
       </ul>
-      <p class="note">All four live in branch protection, or in a ruleset. <strong>Dismissing stale approvals</strong> makes an approval refer to the code that actually merges.</p>
+      <p class="note">All four are settings on the repository, under branch protection or a ruleset. <strong>The last one matters most.</strong> Without it, someone can approve a change and then add more code that nobody has read.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
@@ -374,14 +376,14 @@ no auto-merge.</pre>
       <div class="num">04</div>
       <p class="kicker">Step 4</p>
       <h2>Name the owners of the paths that carry risk</h2>
-      <p class="means">Step 1 settled what the whole repository touches. Some paths inside it carry more than the rest, and that difference fits in a file.</p>
+      <p class="means">Step 1 described the whole repository. Inside it, some folders matter more than others. A file named CODEOWNERS says who has to review which folders.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
-            <li>List the paths that move money or hold customer data</li>
-            <li>Give each a named reviewer or team</li>
-            <li>Leave the rest on the lighter default</li>
-            <li>Switch on &ldquo;require review from code owners&rdquo;, or the file only suggests</li>
+            <li>List the folders that move money or hold customer data</li>
+            <li>Give each one a named person or team</li>
+            <li>Leave the rest of the repository as it is</li>
+            <li>Switch on &ldquo;require review from code owners&rdquo; in the settings. Without that, the file only suggests reviewers</li>
           </ul>
         </div>
         <div>
@@ -397,7 +399,7 @@ no auto-merge.</pre>
 <span class="k">/.github/workflows/</span>   <span class="t">@platform</span></pre>
         </div>
       </div>
-      <p class="note">The <strong>last matching line wins</strong>, so the catch-all goes first and the risky paths underneath it.</p>
+      <p class="note">Order matters. <strong>The last line that matches a file wins</strong>, so the line covering everything goes first, and the folders that carry risk go below it.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
@@ -406,7 +408,7 @@ no auto-merge.</pre>
       <div class="num">05</div>
       <p class="kicker">Step 5</p>
       <h2>Decide whether a machine may approve here</h2>
-      <p class="means">Write it down. A setting with no owner is a decision nobody made. The README is the answer to where, and the reason is the answer to why there.</p>
+      <p class="means">Since September 2026, a review written by a machine can count as the approval a repository requires. It stays off until somebody turns it on. If nobody decides, the default decides.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
@@ -420,11 +422,7 @@ no auto-merge.</pre>
 <pre><span class="c">## Review rules
 
 Touches: customer money, through
-settlement and the ledger.  2026-09-28
-
-What follows: two reviewers on every
-change, security review required,
-no auto-merge.</span>
+settlement and the ledger.  2026-09-28</span>
 
 <span class="k">Machine approval:</span> not allowed here. A
 machine approval would be the only
@@ -433,7 +431,7 @@ and nothing logs that it happened.
 <span class="t">2026-09-28</span></pre>
         </div>
       </div>
-      <p class="note">The setting has nowhere to hold a reason, and <strong>nothing logs a machine approval</strong>. The README is where the decision survives.</p>
+      <p class="note">The setting has no room for a reason, and <strong>the organisation-wide log records nothing when a machine approves</strong>. The README is the only place the decision survives.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
@@ -442,11 +440,11 @@ and nothing logs that it happened.
       <div class="num">06</div>
       <p class="kicker">Step 6</p>
       <h2>Keep the change small enough to be read</h2>
-      <p class="means">Steps 3 and 4 assume the reviewer can read what they are given. A change nobody can read in one sitting gets approved anyway.</p>
+      <p class="means">Steps 3 and 4 hand the change to a reviewer. They assume that person can actually read it. A change too large to read in one sitting still gets approved.</p>
       <ul class="points">
         <li>Agree a size this repository does not go past without saying why</li>
         <li>Check it in CI: a warning everywhere, a failure where step 1 said the repository carries risk</li>
-        <li>Keep the pull request in draft until the checks from step 3 are green</li>
+        <li>Keep the pull request marked as a draft until the checks pass, so nobody is asked to read a broken change</li>
         <li>Split what is too large, or say in the description why it could not be split</li>
       </ul>
       <p class="note">Beyond <strong>200 lines an hour</strong> reviewers found about half the defects. One in four AI-written pull requests runs past 400 lines. Adyen keeps its automated changes under five files, which is what makes them <strong>&ldquo;fast to review, easy to approve&rdquo;</strong>.</p>
@@ -458,7 +456,7 @@ and nothing logs that it happened.
       <div class="num">07</div>
       <p class="kicker">Step 7</p>
       <h2>Ask the author for what no check can see</h2>
-      <p class="means">One template, the same questions in front of every change. The second heading is the load-bearing one.</p>
+      <p class="means">A template fills every new pull request with the same questions, so the author answers them before anyone is asked to review. The second question is the one that matters.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
@@ -473,19 +471,16 @@ and nothing logs that it happened.
 
 <span class="k">## What this changes, and why it belongs here</span>
 
-
 <span class="k">## What I want looked at</span>
 <span class="c">&lt;!-- Name one thing. "Anything" is not
      an answer. --&gt;</span>
 
-
 <span class="k">## How to undo it</span>
-
 
 <span class="k">## What an agent wrote, and what I checked</span></pre>
         </div>
       </div>
-      <p class="note">Across <strong>80.000 pull requests</strong>, descriptions rarely changed the review. The exception explained the code <em>and</em> asked for specific feedback.</p>
+      <p class="note">Across <strong>80.000 pull requests</strong>, a description rarely changed the review. The exception explained the code <em>and</em> asked what to look at. A summary alone is not enough.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
@@ -511,7 +506,7 @@ and nothing logs that it happened.
       <p class="kicker">What the list cannot do</p>
       <h2 style="font-size:36px">It makes the decision cheaper to reach.<br>It does not make the decision.</h2>
       <div class="rule"></div>
-      <p class="lede">Steps 2 to 4 make the judgement cheaper to reach. Steps 6 and 7 give the decider a change they can read and something to read about it. Step 8 checks that the decision is still being made. None of them decides whether the change is wanted.</p>
+      <p class="lede">Steps 2 to 4 clear away everything a machine can check. Steps 6 and 7 give the reviewer a change they can read, and an explanation of it. Step 8 checks that someone is still reading. None of them decides whether the change should exist. A person does that.</p>
       <p class="lede" style="color:#ff9a6e"><strong>And I have not run this list against our own repositories.</strong> I do not know how many of these settings are already on, which makes step 3 the first thing I owe the argument.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
