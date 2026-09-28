@@ -1054,7 +1054,7 @@ means: chapter 04 tiered whole repositories by what they touch, and never said w
 
 - Answer one question: does this repository move money, hold customer data, or neither?
 - Write the answer in the README, under a short "Review rules" heading, with the date
-- Say what follows from it: how many reviewers, whether a machine may approve, whether a security review is mandatory
+- Say what follows from it: how many reviewers, whether a security review is mandatory, how large a change may be
 - Revisit the answer when the repository starts touching something new
 
 Two lines, for a repository that settles payments:
@@ -1134,11 +1134,10 @@ This is the risk-based approach the regulation asks for, written as a file rathe
 **5. Decide, in writing, whether a machine may approve here**
 means: chapter 02 found the approval is now a setting. A setting with no owner is a decision nobody made.
 
-- Take the answer from step 1's tier, not change by change
-- Decide whether Copilot's review counts toward this repository's required approvals
-- Add the answer to the same "Review rules" heading in the README that step 1 started
+- Leave the setting off, and write that down
 - Give the reason, not only the answer
-- Revisit the decision when what the repository touches changes
+- Add the answer to the same "Review rules" heading in the README that step 1 started
+- Revisit the decision if the tooling changes
 
 The README is the answer to where, and the reason is the answer to why there. The setting itself has nowhere to hold a reason, and chapter 02 found that GitHub's organisation audit log records no event at all when a machine approves. So the repository's own README is the only place the decision survives in a form somebody can read later. Added to the block step 1 started, it reads:
 
@@ -1149,12 +1148,14 @@ Touches: customer money, through settlement and the ledger.  2026-09-28
 What follows: two reviewers on every change, security review required,
 no auto-merge.
 
-Machine approval: not allowed here. A machine approval would be the only
-approval on a change that moves money, and nothing logs that it happened.
+Machine approval: not allowed. Copilot would be reviewing its own work,
+and nothing logs that it happened.
 2026-09-28
 ```
 
-If your team already keeps decision records, put the reasoning there and link it from the README, so that the README stays the index rather than becoming a second copy. Machine approval is off by default today. A repository that moves money and a repository holding an internal dashboard are allowed to answer differently. What neither should do is answer by accident, which is what happens when nobody decides.
+If your team already keeps decision records, put the reasoning there and link it from the README, so that the README stays the index rather than becoming a second copy.
+
+The rules would allow the other answer. Chapter 01 found that they ask for an approving function independent of the one that requests and implements, and that they never say that function has to be human. So answering no here is a choice, not a requirement, and it should be written down as one. My reason is the one chapter 02 found: Copilot reviews with one identity what it wrote with another, GitHub does not say whether the same model sits behind both, and nothing in the organisation log records that a machine approved at all. What no repository should do is answer by accident, which is what happens when nobody decides.
 
 **6. Keep the change small enough to be read**
 means: step 4 named a reviewer for the paths that carry risk. This is what makes their job possible, because a change nobody can read in one sitting gets approved anyway.

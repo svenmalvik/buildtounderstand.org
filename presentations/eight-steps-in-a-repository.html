@@ -273,7 +273,7 @@
     <section class="slide dark on" data-notes="Everything in the wider argument about code review is a decision somebody else makes. This deck is for the developer who agrees with it and wants to do something on Monday. Nothing in it needs a platform team, a budget, or a vendor.">
       <p class="kicker">Build to Understand</p>
       <h1>Eight Steps<br><span class="hl">in a Repository</span></h1>
-      <p class="lede">A person still has to approve every change. These eight steps are meant to make that approval mean something.</p>
+      <p class="lede">These eight steps keep a person at the approval, in every repository, and make that approval mean something. The regulation would allow less.</p>
       <p class="lede" style="font-size:18px;color:#a9a5b8">Seven of them are one file you add, or one setting you turn on. The eighth is half an hour of reading, once a month.</p>
       <div class="shapes"><i class="dot"></i><i class="sq"></i></div>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
@@ -319,7 +319,7 @@
           <ul class="points" style="margin-bottom:0">
             <li>Does it move money, hold customer data, or neither?</li>
             <li>Write the answer in the README, under &ldquo;Review rules&rdquo;, with the date</li>
-            <li>Say what follows: reviewers, machine approval, security review</li>
+            <li>Say what follows: how many reviewers, whether a security review is required, how large a change may be</li>
             <li>Revisit it when the repository starts touching something new</li>
           </ul>
         </div>
@@ -426,14 +426,14 @@ no auto-merge.</pre>
       <div class="num">05</div>
       <p class="kicker">Step 5</p>
       <h2>Decide whether a machine may approve here</h2>
-      <p class="means">Since 1 September 2026, a review from GitHub Copilot can count as the approval a repository requires. It stays off until somebody turns it on. The answer follows from step 1: what the repository touches decides it.</p>
+      <p class="means">Since 1 September 2026, a review from GitHub Copilot can count as the approval a repository requires. It stays off until somebody turns it on. This list answers no, in every repository, and writes down why.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
-            <li>Take the answer from the tier in step 1, not change by change</li>
-            <li>Decide whether a Copilot review counts toward this repository&rsquo;s required approvals</li>
-            <li>Write the answer <em>and</em> the reason. The setting has no room for one, and nothing logs a machine approval, so this is the only record</li>
-            <li>Revisit it when the repository touches something new. A reason can be checked against the repository as it is today. A bare answer cannot</li>
+            <li>Leave the setting off, and write that down where the next person will look</li>
+            <li>Give the reason. Copilot reviews with one identity what it wrote with another, and GitHub does not say whether one model sits behind both</li>
+            <li>Write the reason, not the answer alone. The setting has no room for one, and nothing logs a machine approval</li>
+            <li>Revisit it if the tooling changes. A reason can be checked. A bare answer cannot</li>
           </ul>
         </div>
         <div>
@@ -442,14 +442,13 @@ no auto-merge.</pre>
 Touches: customer money, through
 settlement and the ledger.  2026-09-28</span>
 
-<span class="k">Machine approval:</span> not allowed here. A
-machine approval would be the only
-approval on a change that moves money,
-and nothing logs that it happened.
+<span class="k">Machine approval:</span> not allowed. Copilot
+would be reviewing its own work, and
+nothing logs that it happened.
 <span class="t">2026-09-28</span></pre>
         </div>
       </div>
-      <p class="note">A money repository and an internal dashboard may answer differently. Both go under <strong>&ldquo;Review rules&rdquo;</strong>.</p>
+      <p class="note"><strong>The regulation would allow the other answer.</strong> It asks for an approving function independent of the one that implements, and never says that function has to be human. This is a choice, not a requirement.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
