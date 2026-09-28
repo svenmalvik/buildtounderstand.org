@@ -1134,6 +1134,7 @@ This is the risk-based approach the regulation asks for, written as a file rathe
 **5. Decide, in writing, whether a machine may approve here**
 means: chapter 02 found the approval is now a setting. A setting with no owner is a decision nobody made.
 
+- Take the answer from step 1's tier, not change by change
 - Decide whether Copilot's review counts toward this repository's required approvals
 - Add the answer to the same "Review rules" heading in the README that step 1 started
 - Give the reason, not only the answer

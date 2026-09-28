@@ -426,13 +426,13 @@ no auto-merge.</pre>
       <div class="num">05</div>
       <p class="kicker">Step 5</p>
       <h2>Decide whether a machine may approve here</h2>
-      <p class="means">Since 1 September 2026, a review from GitHub Copilot can count as the approval a repository requires. It stays off until somebody turns it on. If nobody decides, the default decides.</p>
+      <p class="means">Since 1 September 2026, a review from GitHub Copilot can count as the approval a repository requires. It stays off until somebody turns it on. The answer follows from step 1: what the repository touches decides it.</p>
       <div class="cols">
         <div>
           <ul class="points" style="margin-bottom:0">
+            <li>Take the answer from the tier in step 1, not change by change</li>
             <li>Decide whether a Copilot review counts toward this repository&rsquo;s required approvals</li>
-            <li>Add it to the same &ldquo;Review rules&rdquo; heading step 1 started</li>
-            <li>Give the reason, not only the answer</li>
+            <li>Write the answer and the reason, not the answer alone</li>
             <li>Revisit it when what the repository touches changes</li>
           </ul>
         </div>
@@ -449,7 +449,7 @@ and nothing logs that it happened.
 <span class="t">2026-09-28</span></pre>
         </div>
       </div>
-      <p class="note">The setting has no room for a reason, and <strong>the organisation-wide log records nothing when a machine approves</strong>. The README is the only place the decision survives.</p>
+      <p class="note">A repository that moves money and one that runs an internal dashboard may answer differently. Both answers belong under the same <strong>&ldquo;Review rules&rdquo;</strong> heading, because the setting has no room for a reason and the organisation-wide log records nothing when a machine approves.</p>
       <div class="foot"><span>What would I do in a repository?</span><span class="pg"></span></div>
     </section>
 
