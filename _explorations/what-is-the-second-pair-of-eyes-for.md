@@ -270,6 +270,51 @@ I should be careful with that number. Nobody publishes how many minutes a review
 
 The point is that nobody can review everything properly anymore. Most teams have therefore already stopped reviewing some changes. The important question now is whether developers chose consciously what they stopped reviewing.
 
+### The Reader Who Doesn't Feel Qualified
+<!-- Chapter 02, new section. Added 8 Oct 2026 from an internal Slack
+     discussion about review on our iOS app, which Sven was brought into
+     to help write guidelines for code contribution.
+     ANONYMISED ON PURPOSE. No colleague is named, no internal repository
+     is named, no vendor evaluation is repeated, and nothing is quoted
+     verbatim from Slack or from the internal proposal. Everything below
+     is paraphrase. Keep it that way.
+     NEEDS MANAGER CLEARANCE BEFORE PUBLISHING, and asks for more than the
+     earlier items did. It adds to what is public: that the iOS app was
+     opened to product-team contribution, that review did not spread with
+     it, that reviewing concentrates on a few developers, and that a
+     contribute-means-own model is being discussed. Add it to the same
+     clearance request as the DevEx team mention in chapter 03.
+     Confidence, claim by claim:
+     - The Swift competence finding is one developer's feedback relayed by
+       a manager in the discussion. It is not a survey and not a count.
+       The text says "the answer that came back". Do not upgrade it to
+       "developers say" or attach a number to it.
+     - "A narrow set of developers does most of the reviews" is asserted
+       in an internal proposal, not measured. It is written here as that
+       proposal's own claim.
+     - Contribute-means-own is under discussion, not decided. Do not write
+       it as policy.
+     - NOT ESTABLISHED: whether Sven asked the developers himself or heard
+       it relayed. The text avoids claiming either. Confirm before
+       publishing.
+     Deliberately left out: which review tools the company compared and
+     what it concluded about their cost, which is commercially sensitive
+     and not needed for the argument. -->
+
+So far this chapter has treated the shortage as arithmetic. More changes arrive than there are hours to read them, and the hours run out. There is a second reason people do not review, and it appears in none of those numbers.
+
+Our iOS app was opened up so that any product team could contribute to it. The platform stayed roughly as it was, and little was asked of the people arriving. Review did not spread along with the contributions. When the question was put to developers directly, the answer that came back was not about time. They said they did not know Swift well enough to review Swift. These were not beginners. They were experienced developers who review without hesitation in the languages they work in every day.
+
+That is a different failure from the one the arithmetic describes. A reviewer who is short of time reviews late. A reviewer who is unsure whether they are qualified does not review at all, and does not say so. In the queue, the two look identical.
+
+What follows is that the reading concentrates. An internal proposal puts it plainly: most of the reviews are done by a narrow set of developers. Throughput then depends on whether those few people are available, and what they know stays with them. Nobody decided this. It is what is left when everyone else quietly steps back. Chapter 03 puts a price on a central reviewing function that an organisation chooses to build. This is the same shape arriving by accident, with none of the things you would have built it for.
+
+The shortage is older than AI, which is what the Godot Foundation said about its own. What AI changes is that the two gaps now arrive together. An agent will write Swift for somebody who does not write Swift. The volume problem and the competence problem turn up in the same pull request.
+
+Every version of the second pair of eyes assumes the second person can read the code. Fagan's inspection assumed a prepared reader with a role. Linus knew the kernel. The regulator asks for an approving function independent of the implementing one, and says nothing at all about whether it understands what it approves. None of them pictured a reader sitting there unsure whether they are entitled to object.
+
+One answer being discussed where I work is to move the consequence rather than the reading. If a team contributes a change, that team owns what follows: the incidents, the fixes, the upkeep. It is an attempt to put the exposure back beside the person making the change, which is exactly what chapter 01 found had come apart. It also has an obvious cost, and a colleague named it. When you can see something wrong in a change another team owns, you still have to decide whether to say so or let it through, and letting it through is uncomfortable.
+
 ### Restrict, Relax, or Move It Earlier
 <!-- The contrast, not just the maintainers. Open source regulated the
      input and kept human approval: Godot 30 Jun 2026 (restricted AI
@@ -617,6 +662,73 @@ The first is what happens to a check when one function reviews for everyone. Goo
 The second one is different. Engineers who hand their reviews to a service stop understanding their own code. Chapter 01 found that understanding is what review mostly should achieve, not finding defects. A team that outsources review still gets its defects found. What it loses is the understanding, and that is the part it can't buy back later.
 
 Here is the third cost. Every reviewer has kinds of bugs it doesn't find. If one service reviews every repository, all repositories miss the same kinds of bugs, and an attacker only needs to find one of them. In a vendor study, Claude and Codex each reviewed 500 pull requests, and both did worse on code from their own model family. Claude caught 62% of Codex's serious bugs but only 53,7% of its own. GPT caught 60% of Claude's but only 50,5% of Codex's. A separate document shows how an attacker would use this. The researchers took 33 real, already-known security holes from 20 open source projects and wrote pull requests that re-implemented each hole back. Then they did what a patient attacker would do: run the same AI reviewer on their own machine, read what it flagged, and rewrite the title, description, and commit messages until it stopped objecting. 32 of the 33 got past both Claude Code and CodeRabbit. A skill built by the platform team that runs on the same model that wrote the change is the same coupling as Copilot's two identities, just self-hosted. Pairing models across vendors, Codex reviewing what Claude wrote or the reverse, wired into your CI is a cheaper fix for this one problem. Greptile sells exactly this pairing and markets itself as "the independent code validator".
+
+### The Reviewer That Makes the Change Bigger
+<!-- Chapter 03, new section. Added 8 Oct 2026 from the same internal
+     discussion as chapter 02's "The Reader Who Doesn't Feel Qualified",
+     plus a wider internal thread where teams across the company shared
+     what automatic pull request review is actually doing for them.
+     ANONYMISED: no colleague, team, repository or vendor named. All
+     paraphrase, no verbatim quotation from Slack. Same clearance request
+     as the chapter 02 section.
+     What kind of evidence this is, and the limit that travels with it:
+     these are practitioner reports from several teams in one company,
+     volunteered in a thread. They are not measurements, there is no
+     denominator, and nobody was sampling. They agree with each other,
+     which is the only reason they are here. The prose says "teams
+     describe" and "report", never "research shows". Do not upgrade.
+     Traceability for each item:
+     - Risk judgement and complexity: two teams independently, one on app
+       code and one on data pipeline code.
+     - The 50-lines-to-thousands example: one team, data pipeline code,
+       describing a coding agent and a reviewing agent left to iterate.
+       Approximate by the speaker's own account. Keep "around".
+     - Review-fix-review with no natural end: three teams.
+     - Pushing back as the brake: two teams, one describing a
+       reflect-then-answer loop.
+     - Variation by repository type: one team running the same tooling
+       across declarative infrastructure, app code and data pipelines.
+     - "Should not have been created in the first place": one team.
+     - Not using weak modules as examples for generated code: from the
+       internal proposal, where it is a recommendation rather than
+       something already in place.
+     Deliberately left out: vendor names and the company's cost
+     comparison between them. The argument needs neither, and both are
+     commercially sensitive. -->
+
+**Frame:** The costs in the previous section are about what a shared reviewer fails to catch and what it costs to run. There is one more, and it is different in kind. It lands in the code.
+
+**1. It cannot tell a likely risk from an unlikely one**
+means: this is the first thing practitioners say about automatic review, and it is not a gap in coverage. It is a judgement the tool does not have.
+Teams here run automatic review on every pull request, and the thing they say it does worst is weigh risk. It leans towards safety. It asks for handling of conditions that will not occur in practice. Follow it without applying your own judgement and you get code that is genuinely solid and far more complicated than the problem required.
+
+**2. The complexity it adds does not go away**
+means: a defect the reviewer misses costs once, when somebody finds it. Complexity the reviewer adds costs every time anyone reads that code afterwards.
+One team described a change that could have been around 50 lines growing into thousands, when a coding agent and a reviewing agent were left to pass it back and forth with nobody in between. Nothing in that loop is wrong on its own. Each suggestion is defensible. The team still owns the result, and the next person to read it pays for it again.
+
+**3. The loop has no natural end**
+means: there is always one more thing a reviewer can say, so something outside the loop has to stop it.
+Teams describe the same cycle. Review, fix, review again, and the reviewer finds something new each time. Where the findings are advisory, people learn to ignore them, which is the empty approval from earlier in this piece wearing different clothes. Where they are enforced, or where an agent is told to keep going until everything is addressed, the change grows instead.
+
+**4. What stops it is a person deciding not to act**
+means: the brake on this is the thing the chapter has been asking whether we can do without.
+The people who have this working describe pushing back. They tell the agent that a case is too unlikely to be worth handling, or that a trade-off was accepted deliberately. One described asking the agent to come back with a short list of what it thinks and why, then answering it line by line: not that one, explain this one better, the rest are fine. That is a person reading and judging, before anything is applied.
+
+**5. It behaves differently depending on how many ways there are to be right**
+means: the dividing line the next section draws has a sharper edge than mechanically verifiable.
+The same tooling, inside one company, gets different reports from different repositories. On declarative infrastructure, where there are not many ways to go off track, teams say it works well. On application code and on data pipelines, where several solutions are defensible, it pushes towards corner cases and complexity. So the useful question is not only whether a machine can check the thing. It is whether the thing has one right answer.
+
+**6. It does not ask whether the change should exist**
+means: chapter 01's finding arriving again, from a direction I did not expect.
+What an automatic reviewer checks is whether the code is coherent and of reasonable quality. The reasons people give for rejecting a change anyway are that the problem was not solved in the best way, or that the pull request should not have been opened at all. Chapter 01 cited 2014 research finding that correct code can still be unwanted, and that was about human reviewers. A reviewer reading a diff with no view of what the team agreed cannot see it either.
+
+**7. What gets merged teaches the next change**
+means: review has a second audience now, and it is not a person.
+An internal proposal I have seen makes this explicit. It recommends keeping a list of modules that AI should not take as a model, because they are legacy, unmaintained or inconsistent, and revisiting that list as they are modernised. The reasoning is that generated code learns from the code already there. A weak change used to cost whatever it cost. Now it also teaches, and the next change inherits it.
+
+**Verdict:** The previous section priced a shared reviewer by what it costs and by what it misses. This is a cost that lands in the codebase rather than the budget. A reviewer that cannot weigh risk does not hand the change back as it found it. It hands back a bigger one, and the team carries that from then on.
+
+**Pivot to next section:** which makes the line between what needs judgement and what does not more urgent, not less.
 
 ### Most Checks Don't Need Judgment
 <!-- Chapter 03, section 3 of 4. Unlike sections 1 and 2, this section has
@@ -1129,7 +1241,7 @@ A short one, for a repository that settles payments:
 
 The last matching line wins, so the catch-all goes first and the risky paths go underneath it. Without the branch protection setting, this file requests those reviewers and nothing more; with it, their approval is required before the merge.
 
-This is the risk-based approach the regulation asks for, written as a file rather than as a policy nobody reads. The file also answers a question the approval rule leaves open: not just that someone approved, but that someone who knows this code did.
+Colleagues working on our iOS app arrived at the same arrangement independently, and went further with it: a named group of reviewers for cross-cutting and high-risk areas such as payment, login, onboarding and shared architecture, required through this same file. That is some evidence the idea is a natural one rather than mine. This is also the risk-based approach the regulation asks for, written as a file rather than as a policy nobody reads. The file also answers a question the approval rule leaves open: not just that someone approved, but that someone who knows this code did.
 
 **5. Decide, in writing, whether a machine may approve here**
 means: chapter 02 found the approval is now a setting. A setting with no owner is a decision nobody made.
@@ -1215,7 +1327,36 @@ A template is a prompt, not a control. GitHub prefills it and nothing stops a de
 
 **Verdict:** every item but the last is a file in the repository or a setting on it, and the last one is half an hour a month. That is what makes them worth doing before anything larger. The leverage is real but modest and worth naming honestly: the workflow file and the template are copied to the next repository in minutes, so the second repository costs a fraction of the first, and the tenth costs almost nothing. The freedom is that each one is reverted by deleting a line, with no vendor to ask and no contract to leave. What the list cannot do is the job chapter 01 found underneath all three: decide whether the change is wanted. Items 2 to 4 make that decision cheaper to reach, items 6 and 7 give the decider a change they can actually read and something to read about it, and item 8 checks that the decision is still being made. None of them makes it.
 
-**Pivot to Conclusion:** and I should say plainly that I have not run this list against our own repositories. I do not know how many of these settings are already on, which makes item 2 the first thing I owe this argument.
+**Pivot to next section:** and I should say plainly that I have not run this list against our own repositories. I do not know how many of these settings are already on, which makes item 2 the first thing I owe this argument. There is also an objection to the whole list that I have not been able to answer.
+
+### The Objection the List Does Not Answer
+<!-- Chapter 05, new closing section. Added 8 Oct 2026 from the same
+     internal discussion as the chapter 02 and 03 additions. Anonymised,
+     paraphrased, same clearance request.
+     This is kept because it is the strongest argument against this
+     piece's own framing that I have heard, and it came from people who
+     would have to live with the list. Two speakers, both practitioners.
+     The "last guard in the chain" argument and the "agree before the
+     change is written" answer are one person's. The "it does not tell you
+     we already have this" objection is another's, made separately and
+     about pre-PR AI review specifically.
+     NOT TESTED. Nobody has run the experiment, here or anywhere this
+     piece has found. The section says so and must keep saying so. Do not
+     resolve it in a later edit without evidence. -->
+
+Everything in this piece looks at the pull request. The eight steps above make the change readable, put a competent person in front of it, and check afterwards that the approval still means something. Two colleagues made an objection to all of it that I have not been able to dismiss.
+
+The technical review, one of them pointed out, is among the last guards in the chain. Improving it on its own is optimising the smaller picture. What works better, in their experience, is for people to agree on the idea before the change is written. The pull request then becomes a compiled version of something already decided, and the review has a narrow question it can actually answer: is this still what we agreed?
+
+Read that against chapter 01 and it is hard to argue with. The reason a reviewer cannot tell whether a change is wanted is that the decision about whether it was wanted never happened anywhere they can see. The pull request is where we find out, which is late. Everything this piece proposes makes a late decision cheaper to reach. None of it moves the decision earlier.
+
+The second objection is sharper, and it is aimed at the fashionable fix. Running an AI review before a human sees the change does improve the code and its edge cases. It does not tell anyone that we already have this somewhere, or that the change is more complicated than the business needs. Those two judgements are the ones that matter most, and neither comes from reading a diff. They come from knowing the system and what it is for.
+
+I do not think this makes the eight steps wrong. A repository still needs its checks to run, its risky paths named, and a person at the approval. But it does make them smaller than they look. If the second pair of eyes is mostly recovering a decision that was never made in the open, then the second pair of eyes is doing cleanup, and the cheaper fix sits further upstream than anything on my list.
+
+I have not tested that. It is the strongest argument against my own answer that I have, and I would rather end here than pretend I have dealt with it.
+
+**Pivot to Conclusion:** with that left open, here is what I would still hold to.
 
 <div class="chapter-heading chapter-heading--finale">
   <h2 id="conclusion">Conclusion</h2>
